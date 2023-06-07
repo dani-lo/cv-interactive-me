@@ -1,0 +1,314 @@
+.StyledJobContainer {   
+    margin-top: var(--gap-large);
+    border: 1px dotted var(--border-col);
+    padding:  var(--gap-medium);
+    background: var(--white);
+    width: 380px;
+}
+
+
+
+.StyledJobContainer .job-list-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.StyledJobContainer h2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dotted var(--border-col);
+}
+
+.StyledJobContainer i.job-selector {
+    font-size: 2rem;
+    color: var(--text-inactive);
+    cursor: pointer;    
+}
+
+.StyledJobContainer.selected {
+    background: var(--active-action);
+    cursor: default;
+    pointer-events: none; 
+}
+
+.StyledJobContainer.selected i.job-selector {
+    color: var(--text-dark);
+    cursor: default;
+    pointer-events: none;
+}
+.StyledJobContainer i.job-selector::hover {
+    opacity: 0.7;
+}
+
+.StyledJobContainer p span {
+    padding-right:  var(--gap-medium);
+}
+
+.StyledJobContainer  span.job-period {
+    font-size: 0.8rem;
+    font-weight: normal;
+    font-family: 'Manrope', sans-serif;
+}
+
+.StyledJobDetailContainer {
+    position: fixed;
+    width: 420px;
+    overflow-y: scroll;
+    height: 100%;
+    top: 0;
+    padding-top: 2rem;
+}
+
+.StyledSidebar {
+    width: 320px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--white);
+    border-right: 1px dotted var(--border-col);
+    height: 100%;
+    padding: var(--gap-large);
+}
+
+.StyledModalWrap {
+    border:1px dotted var(--border-col);
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: var(--white);
+    width: 500px;
+    margin: 5em auto;
+    height: fit-content;
+    border-radius: 5px;
+    padding: var(--gap-large) 2em 2em;
+    position: relative;
+    z-index: var(z-3);
+}
+
+.StyledModalWrap span.btn-close {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    cursor: pointer;
+}
+
+.StyledModalWrap span.btn-close:hover i {
+    color: var(--active-action);
+}
+
+.StyledModalWrap span.btn-close i {
+    font-size: 1em;
+}
+
+.StyledModalWrap h2 {
+    text-transform: capitalize;
+}
+
+.StyledModalWrap .action {
+    padding: var(--gap-medium) 0;
+    border-bottom: 1px dotted var(--border-col);
+}
+
+.StyledModalWrap .action-unactive {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.StyledCompanyContainer {
+    background: var(--white);
+    border: 1px dotted var(--border-col);
+    margin: var(--gap-large) 0;
+    padding: var(--gap-medium);
+}
+
+.StyledJobDescriptionList {
+    margin-top: var(--gap-large);
+}
+
+.StyledActionsList li {
+    list-style: none;
+    padding: var(--gap-micro) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dotted var(--border-col);        
+}
+
+.StyledActionsList li.list-footer-meta-action {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.StyledActionsList li.list-footer-meta-action:hover {
+    opacity: 0.7;
+}
+
+.StyledProjectStatusList {
+    margin: var(--gap-large) 0;
+}
+
+
+.StyledLoaderRipple {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-4);
+    width: 100%;
+    top: 0;
+    height: 100%;
+}
+
+.StyledLoaderRipple > div.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    opacity: 0.4;
+}
+
+.StyledLoaderRipple > div  {
+    width: 80px;
+    margin: auto;
+    position: relative; 
+}
+   
+
+
+.StyledLoaderRipple > div div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+}
+
+.StyledLoaderRipple > div div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+.StyledLoaderRipple  p{
+    position: absolute;
+    top: 200px;
+    z-index: var(--z-4);
+    text-align: center;
+    width: 100%;
+
+    
+}
+
+.StyledLoaderRipple p  span {
+    display: inline-block;
+    margin: auto;
+    background: var(--active-pink);
+    padding: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+.StyledPrompt {
+    width: 450px;
+    z-index: var(--z-4);
+    position: fixed;
+    right: var(--gap-large);
+    padding:  var(--gap-medium);
+    background: var(--active-action);
+    background: var(--white);
+    border: 2px solid var(--border-col);
+    text-align: center;
+    top: -320px;
+    transition: top 0.5s;
+    padding: var(--gap-large);
+}
+.StyledPrompt.active {
+    top: var(--gap-large);
+}
+
+.StyledPrompt  p {
+    text-align: left;
+}
+
+.StyledPrompt  .prompt {
+    display: flex;
+    align-items: center;
+
+}
+
+.StyledPrompt .prompt button {
+    margin: 0  var(--gap-small);
+}
+
+.StyledPrompt .prompt p {
+    display: inline-block;
+    margin: 0 var(--gap-large) 0 0;
+}
+
+@keyframes lds-ripple {
+    0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin-top:100px
+    }
+    4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin-top:100px
+    }
+    5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+    margin-top:100px
+    }
+    100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+    margin-top:100px
+    }
+}
+
+
+
+
+/***
+
+
+clibwasm
+
+
+***/
+
+.clibwasm-modal-wrap {
+    position: fixed;
+    z-index: var(--z-3);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.clibwasm-modal-wrap > div:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background: var(--bg-grey);
+    width: 100%;
+    height: 100%;
+}

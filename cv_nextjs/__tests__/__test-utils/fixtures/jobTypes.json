@@ -1,0 +1,18 @@
+[   
+    {
+        "uid": 1,
+        "name": "permanent"
+    },    
+    {
+        "uid": 2,
+        "name": "contract"
+    },
+    {
+        "uid": 3,
+        "name": "remote"
+    },
+    {
+        "uid": 4,
+        "name": "office"
+    }
+]

@@ -1,0 +1,136 @@
+# This is the SAM template that represents the architecture of your serverless application
+# https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-basics.html
+
+# The AWSTemplateFormatVersion identifies the capabilities of the template
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/format-version-structure.html
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  cv-api
+
+# Transform section specifies one or more macros that AWS CloudFormation uses to process your template
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-section-structure.html
+Transform:
+- AWS::Serverless-2016-10-31
+
+# Resources declares the AWS resources that you want to include in the stack
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Tracing: Active
+  Api:
+    TracingEnabled: True
+
+Resources:
+  getJobsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/jobs.getJobsHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve jobs
+     
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /jobs
+            Method: GET
+
+  getJobTypesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/jobTypes.getJobTypesHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve job types
+     
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /jobtypes
+            Method: GET
+
+  getCompaniesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/companies.getCompaniesHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve companies data
+      
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /companies
+            Method: GET
+
+  getTechFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/tech.getTechHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve tech data
+     
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /tech
+            Method: GET
+            
+  getFieldsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/fields.getFieldsHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve fields data
+     
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /fields
+            Method: GET
+
+  getProjectsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/get/cv/projects.getProjectsHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Retrieve projects data
+     
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /projects
+            Method: GET
+  
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

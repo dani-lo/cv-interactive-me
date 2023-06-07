@@ -1,0 +1,20 @@
+{
+  "presets": [
+    "next/babel",
+    [
+      "@babel/preset-typescript",
+      { "allowDeclareFields": true }
+    ]
+  ],
+  "plugins": [
+    
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ]
+  ]
+}
