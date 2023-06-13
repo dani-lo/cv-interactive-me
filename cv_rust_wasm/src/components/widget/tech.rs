@@ -22,16 +22,14 @@ use crate::{
 pub struct TechProps {
     pub job_uid: usize,
     pub job_techs: Vec<TechModel>,
-    // pub set_modal_item: Callback<Actionable>,
     pub actionable: bool,
 }
 
 
 #[function_component(TechComponent)]
-pub fn job_type(TechProps { 
+pub fn job_tech(TechProps { 
             job_uid,
             job_techs, 
-            // set_modal_item,
             actionable} : &TechProps) -> Html {
     
 
@@ -50,7 +48,6 @@ pub fn job_type(TechProps {
             {
                 show_techs.iter().map(|jt| {
 
-                    // let set_modal_item_tech = set_modal_item.clone();
                     let c_tech = jt.clone();
 
                     html!{
@@ -64,10 +61,6 @@ pub fn job_type(TechProps {
                                     <span class="action-wrap">
                                         <i 
                                             class="action fa fa-plus" 
-                                            // onclick={ move |_| set_modal_item_tech.emit(Actionable { 
-                                            //     resource_type: Some(ModelTypes::Tech), 
-                                            //     resource_id: Some(c_tech.uid), 
-                                            // })} 
                                             onclick={
                                                 move |_| dispatcher.reduce_mut(|s| s.set_modal_item(
                                                     ModelTypes::Tech,

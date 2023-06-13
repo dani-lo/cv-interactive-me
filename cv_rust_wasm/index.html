@@ -4,9 +4,13 @@
         <title>Cv Jobs Yew</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Manrope:wght@300&family=Noto+Sans:wght@200;400&family=Roboto:wght@300&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet" /> 
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet" />  
+       
 
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet"> 
         
         <link data-trunk rel="css"   href="tailwind-output.css" />
         <link data-trunk rel="css"   href="global.css">
@@ -15,21 +19,26 @@
     <body>
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
       <script>
+
         var listenerJobSelect = window.addEventListener("click", function (e) {
           
           if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
+
             var jobId = e.target.getAttribute("id").replace("job-selector-", "")
 
             window.history.pushState({}, '', "/jobs?uid=" + jobId);
           }
         })
-      </script>
-      <script>
-        window.CvAppJs = {
+
+        window.WasmLinkJs = {
           notify: function (msg) {
             console.log(msg)
           }
         }
+        
+      </script>
+      <script>
+        
       </script>
     </body>
 </html>

@@ -94,7 +94,7 @@ pub fn actions_list ()  -> Html {
     html! {
         <div>
             <div>
-                <h3>{ "Your Filters" }</h3>
+                <h3>{ "Filters" }</h3>
                     {
                         if filters.len() > 0 { 
                             html!{
@@ -110,7 +110,7 @@ pub fn actions_list ()  -> Html {
                             }
                         }
                     }
-                    <h3>{ "Your Bookmarks" }</h3>
+                    <h3>{ "Bookmarks" }</h3>
                     {
                         if bookmarks.len() > 0 { 
                            html!{
@@ -126,7 +126,7 @@ pub fn actions_list ()  -> Html {
                            }
                        }
                    }
-                   <h3>{ "Your Annotations" }</h3>
+                   <h3>{ "Annotations" }</h3>
                    {
                     if annotations.len() > 0 { 
                        html!{

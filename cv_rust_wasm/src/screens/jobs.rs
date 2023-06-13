@@ -31,7 +31,7 @@ use crate::{
         store_app_types:: { 
             AppStaticDataHashes, 
             Collectable
-        },
+        }, store_ui::StoreUI,
     }, 
     components::{
         appmenu::AppMenuComponent,
@@ -42,7 +42,8 @@ use crate::{
         jobs::{ 
             jobs_list::JobsListComponent,
             job_detail::JobDetailComponent,
-        }
+        },
+        widget::settings::ConfigSettingsListComponent,
     },
     traits::ActionTypes, 
     util::{
@@ -62,20 +63,24 @@ pub struct JobsProps {
 pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+
+    // let settings_list = use_state(|| false);
+    let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
     let dispatcher = dispatch.clone();
+    let settings_ui_dipatcher = ui_dispatch.clone();
 
     let nav_location = BrowserHistory::new().location();
     let query_st = nav_location.query_str();
     let maybe_appquery = get_query_params(query_st);
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
-    let store_jobs = m_hashes.jobs.values().cloned().collect::<Vec<JobModel>>();
-    let jobs:UseStateHandle<Vec<JobModel>> = use_state(||  store_jobs);
 
-    let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
-    let c_user = user.clone();
-    
+    let jobs:UseStateHandle<Vec<JobModel>> = use_state(||  {
+        m_hashes.jobs.values().cloned().collect::<Vec<JobModel>>()
+    });
+
     let selected_job_uid: UseStateHandle<Option<usize>> = use_state(|| {
         if maybe_appquery.is_some() { 
             Some(maybe_appquery.unwrap().uid) 
@@ -132,12 +137,17 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     html! {
         <div class="page">  
+            <ConfigSettingsListComponent />
             <ActionsModalComponent />
             <div class="StyledSidebar">
-            <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
+                <span 
+                    class="html-icon"
+                    onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                        {  	"\u{2630}" }
+                </span> 
+                <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
                 {   
-
                     unsafe {
                         if CV_APP_LOADED.unwrap() == false {
 
@@ -149,8 +159,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                                 <ActionsListComponent />
                             }
                         }
-                    }
-                    
+                    } 
                 }  
             </div>
             <div class="page-grid">

@@ -24,7 +24,7 @@ use crate::{
             AppStaticDataHashes, 
             Collectable
         }, 
-        store_app::StoreApp, 
+        store_app::StoreApp, store_ui::StoreUI, 
         
     }, 
     traits::ActionTypes, 
@@ -52,6 +52,7 @@ use crate::{
             projects_list::ProjectsListComponent,
             project_detail::ProjectDetailComponent,
         },
+        widget::settings::ConfigSettingsListComponent,
     },
     CV_APP_LOADED,
 };
@@ -65,9 +66,11 @@ pub struct JobsProps {
 pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let dispatcher = dispatch.clone();
-    
+    let settings_ui_dipatcher = ui_dispatch.clone();
+
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
     let projects:UseStateHandle<Vec<ProjectModel>> = use_state(|| store_projects);
@@ -129,9 +132,14 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
 
     html! {
         <div class="page">  
-            
+            <ConfigSettingsListComponent />
             <ActionsModalComponent />
             <div class="StyledSidebar">
+            <span 
+                class="html-icon"
+                onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                    {  	"\u{2630}" }
+            </span> 
             <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
                 {

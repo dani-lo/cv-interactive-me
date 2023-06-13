@@ -216,35 +216,35 @@ pub fn pending_actions_component() -> Html {
                                 {"your filters etc with colleagues"}
                                 </p>
                         </div>
-                        <div class="pending-actions-user-opts">
-                            <p><strong>{"Do not show this again"}</strong></p>
-                            <div class="StyledInputContainer pending-actions-user-opt">
-                                <input type="checkbox" name="ban_persist_always" onclick={ Callback::from(move |e| { c_ban_persist_always.set(!*c_ban_persist_always) })} />
-                                <label>{"Ever"}</label>
-                            </div>
-                            <div class="StyledInputContainer pending-actions-user-opt">
-                                <input type="checkbox" name="ban_persist_tmp"  onclick={ Callback::from(move |e| { c_ban_persist_tmp.set(!*c_ban_persist_tmp) })} />
-                                <label>{"For the duration of this session"}</label>
-                            </div>
-                            <div class="StyledInputContainer pending-actions-user-opt">
-                                <button onclick={ move |_e|{
+                        // <div class="pending-actions-user-opts">
+                        //     <p><strong>{"Do not show this again"}</strong></p>
+                        //     <div class="StyledInputContainer pending-actions-user-opt">
+                        //         <input type="checkbox" name="ban_persist_always" onclick={ Callback::from(move |e| { c_ban_persist_always.set(!*c_ban_persist_always) })} />
+                        //         <label>{"Ever"}</label>
+                        //     </div>
+                        //     <div class="StyledInputContainer pending-actions-user-opt">
+                        //         <input type="checkbox" name="ban_persist_tmp"  onclick={ Callback::from(move |e| { c_ban_persist_tmp.set(!*c_ban_persist_tmp) })} />
+                        //         <label>{"For the duration of this session"}</label>
+                        //     </div>
+                        //     <div class="StyledInputContainer pending-actions-user-opt">
+                        //         <button onclick={ move |_e|{
 
-                                    if *ban_persist_always {
+                        //             if *ban_persist_always {
     
-                                        UserModel::store_ban_trackig_feeback();
-                                        ui_dispatch.reduce_mut(|s| s.notify("All Done"));
+                        //                 UserModel::store_ban_trackig_feeback();
+                        //                 ui_dispatch.reduce_mut(|s| s.notify("All Done"));
 
-                                    } else if *ban_persist_tmp {
+                        //             } else if *ban_persist_tmp {
 
-                                        ui_dispatch.reduce_mut(|s| {
-                                            s.ban_feedback_tmp();
-                                            s.notify("All Done");
-                                    });
+                        //                 ui_dispatch.reduce_mut(|s| {
+                        //                     s.ban_feedback_tmp();
+                        //                     s.notify("All Done");
+                        //             });
 
-                                    }
-                                } }>{"Ok"}</button>
-                            </div>
-                        </div>
+                        //             }
+                        //         } }>{"Ok"}</button>
+                        //     </div>
+                        // </div>
                     </div>
                     }
                 } else {

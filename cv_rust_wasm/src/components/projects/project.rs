@@ -65,7 +65,7 @@ pub fn project(ProjectProps {
                             }).collect::<Html>()
                         }
                         </ul>
-                        <p><a href={ project.repo.clone() }>{ "Github Repo" }</a></p>
+                        <p><strong><a href={ project.repo.clone() }>{ "Github Repo" }</a></strong></p>
                     </div>       
                     <div>
                         <i 

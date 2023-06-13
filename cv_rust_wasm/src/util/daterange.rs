@@ -37,6 +37,6 @@ impl DateRange {
          1, 
          1).unwrap();
       
-      format!("{} to {}", date_time_from.format("%b %Y"), date_time_to.format("%b %Y"))
+      format!("{} - {}", date_time_from.format("%b %Y"), date_time_to.format("%b %Y"))
    }
 }

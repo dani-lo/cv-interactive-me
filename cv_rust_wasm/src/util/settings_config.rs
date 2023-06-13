@@ -1,30 +1,23 @@
-use std::{
-    collections::HashMap, 
-    fmt::{
-        Formatter,
-        Result,
-        Display,
-    },
-};
+use std::collections::HashMap;
+use std::fmt::{Formatter, Display};
 
 use log::info;
+use serde::{Serialize, Deserialize};
 
-pub struct SettingsConfig {
-    items: HashMap<ConfigKeys, ConfigItem>
-}
-
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Serialize, Deserialize)]
 pub struct ConfigItem {
-    default: bool,
-    key: &'static str,
-    val: Option<bool>,
+    pub default: bool,
+    pub key: String,
+    pub val: Option<bool>,
+    pub desc: String,
+    pub label: String,
 }
 
-
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Serialize, Deserialize)]
 pub enum ConfigKeys {
-    PersistingPrompt,
-    Tracking,
-    Toast,
+    ShowPersistFeedback,
+    AutoPersist,
+    UserTok,
 }
 
 pub fn storage_val_from_str (v: String) -> bool {
@@ -37,38 +30,42 @@ pub fn storage_val_from_bool (v: bool) -> String {
 
 impl Display for ConfigKeys {
 
-    fn fmt(&self, f: &mut Formatter) -> Result {
+    fn fmt(&self, f: &mut Formatter) -> Result<(), std::fmt::Error> {
+        
         match *self {
-            ConfigKeys::Tracking => write!(f, "tracking settings"),
-            ConfigKeys::PersistingPrompt => write!(f, "persisting prompt settings"),
-            ConfigKeys::Toast => write!(f, "toast setting"),
+            ConfigKeys::ShowPersistFeedback => write!(f, "show persist feedback"),
+            ConfigKeys::AutoPersist => write!(f, "auto persist changes"),
+            ConfigKeys::UserTok => write!(f, "current user token"),
         }
     }
+}
+
+
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub struct SettingsConfig {
+    pub items: HashMap<ConfigKeys, ConfigItem>,
 }
 
 impl SettingsConfig {
 
     pub fn new () -> Self {
         
-        let mut items = HashMap::<ConfigKeys, ConfigItem>::new();
+        let mut items = HashMap::new();
 
-        items.insert(ConfigKeys::Tracking, ConfigItem {
+        items.insert(ConfigKeys::AutoPersist, ConfigItem {
             default: true,
-            key: "tracking",
+            key: "auto_persist".to_string(),
             val: None,
+            desc: "Lorem ipso dolor sit amet etiam non vai ben bene cosi - bugiarda quando ti conviene ..".to_string(),
+            label: "Auto Persist".to_string(),
         });
 
-        items.insert(ConfigKeys::PersistingPrompt, ConfigItem {
+        items.insert(ConfigKeys::ShowPersistFeedback, ConfigItem {
             default: true,
-
-            key: "prompt",
+            key: "show_persist_feedback".to_string(),
             val: None,
-        });
-
-        items.insert(ConfigKeys::Toast, ConfigItem {
-            default: true,
-            key: "toast",
-            val: None,
+            desc: "Lorem ipso dolor sit amet etiam non sei mica bugiarda quando ti conviene pero foo is a bar is a bar is a foo, usually".to_string(),
+            label: "Show Persist Feedback".to_string(),
         });
 
         Self {
@@ -76,83 +73,44 @@ impl SettingsConfig {
         }
     }
 
-    pub fn populate (&mut self) {
+    fn read_value_into_item (&mut self, item_key: &ConfigKeys) {
+        
+        let item_opt = self.items.get(&item_key);
 
-        let storage: web_sys::Storage = web_sys::window().unwrap().local_storage().unwrap().unwrap();
+        if (item_opt.is_some()) {
 
-        let tracking_val_result : Option<String> = storage.get_item(self.items.get(&ConfigKeys::Tracking).unwrap().key).unwrap();
+            let item = item_opt.unwrap();
 
-        if tracking_val_result.is_some() {
-           
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "tracking",
-                val: Some(storage_val_from_str(tracking_val_result.unwrap())),
-            });
-        } else {
+            let storage: web_sys::Storage = web_sys::window().unwrap().local_storage().unwrap().unwrap();
+            let storage_val : Option<String> = storage.get_item(item.key.as_str()).unwrap();
+
+            if storage_val.is_some() {
             
-            let tracking_default = self.items.get(&ConfigKeys::Tracking).unwrap().default;
-
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "tracking",
-                val: Some(tracking_default),
-            });
-        }
-
-        let persisting_prompt_val_result : Option<String> = storage.get_item(self.items.get(&ConfigKeys::PersistingPrompt).unwrap().key).unwrap();
-
-        if persisting_prompt_val_result.is_some() {
-           
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "prompt",
-                val: Some(storage_val_from_str(persisting_prompt_val_result.unwrap())),
-            });
-        } else {
-            
-            let persisting_prompt_default = self.items.get(&ConfigKeys::PersistingPrompt).unwrap().default;
-
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "prompt",
-                val: Some(persisting_prompt_default),
-            });
-        }
-
-        let toast_val_result : Option<String> = storage.get_item(self.items.get(&ConfigKeys::Toast).unwrap().key).unwrap();
-
-        if toast_val_result.is_some() {
-           
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "prompt",
-                val: Some(storage_val_from_str(toast_val_result.unwrap())),
-            });
-        } else {
-            
-            let toast_default = self.items.get(&ConfigKeys::Toast).unwrap().default;
-
-            self.items.insert(ConfigKeys::Tracking, ConfigItem {
-                default: true,
-                key: "prompt",
-                val: Some(toast_default),
-            });
+                self.items.get_mut(&item_key).unwrap().val = Some(storage_val_from_str(storage_val.unwrap()));
+            }
         }
     }
 
-    pub fn set_config_setting_value (self: &mut Self, config_key: ConfigKeys, val: bool) {
+    pub fn populate (&mut self) {
+
+        
+        self.read_value_into_item(&ConfigKeys::ShowPersistFeedback);
+        self.read_value_into_item(&ConfigKeys::AutoPersist);
+        // self.read_value_into_item(ConfigKeys::Toast);
+    }
+
+    pub fn set_config_setting_value (self: &mut Self, config_key: &ConfigKeys, val: bool) {
         
         let storage: web_sys::Storage = web_sys::window().unwrap().local_storage().unwrap().unwrap();
         let config_item = self.items.get(&config_key);
 
         if config_item.is_some() {
             
-            let result = storage.set_item(config_item.unwrap().key, storage_val_from_bool(val).as_str());
+            let result = storage.set_item(config_item.unwrap().key.as_str(), storage_val_from_bool(val).as_str());
 
             match result {
                 Ok(_) => {
-                    self.populate();
+                    self.read_value_into_item(&config_key);
                     ()
                 },
                 Err(_) => info!("Error saving config setting to local storage")
@@ -161,8 +119,7 @@ impl SettingsConfig {
     }
 
     pub fn get_config_setting_value (self: &Self, config_key: ConfigKeys) -> Option<bool> {
-        let val = self.items.get(&config_key).unwrap().val;
-
-        val
+        
+        self.items.get(&config_key).unwrap().val
     }
 }

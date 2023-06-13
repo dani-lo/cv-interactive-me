@@ -6,7 +6,7 @@ use log::info;
 // use wasm_timer::Delay;
 // use yew_hooks::use_timeout;
 
-use crate::util::timeout::do_that_thang;
+use crate::util::{timeout::do_that_thang, settings_config::{SettingsConfig, ConfigKeys}};
 
 async fn call_later()  {
     // wasm_timer::Delay::new(Duration::from_secs(3)).await.unwrap();
@@ -30,24 +30,30 @@ async fn run_timeout()  {
 pub struct StoreUI {
     pub msg: &'static str,
     pub busy: bool,
-    pub ban_tracking_feedback: bool,
+    pub settings_ui: bool,
+    pub settings: SettingsConfig,
 }
 
 impl Default for StoreUI {
     fn default() -> Self {
+        let mut settings  =SettingsConfig::new();
+
+        settings.populate();
+
         Self {
             msg: "",
             busy: false,
-            ban_tracking_feedback: false,
+            settings_ui: false,
+            settings, 
         }
     }
 }
 
 impl StoreUI {
 
-    pub fn ban_feedback_tmp (&mut self) {
-        self.ban_tracking_feedback = true;
-    }
+    // pub fn ban_feedback_tmp (&mut self) {
+    //     self.ban_tracking_feedback = true;
+    // }
 
     pub fn notify (&mut self, msg: &'static str) {
 
@@ -84,5 +90,13 @@ impl StoreUI {
         //     c_self.busy = false;
         //     info!("hey its HOK 2 but AFTER");
         // }, 3000);
+    }
+
+    pub fn set_config (&mut self, k: &ConfigKeys, val: bool) {
+       self.settings.set_config_setting_value(k, val);
+    }
+
+    pub fn toggle_settings_ui (&mut self) {
+        self.settings_ui = !self.settings_ui;
     }
 }
