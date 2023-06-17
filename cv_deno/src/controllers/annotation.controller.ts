@@ -22,19 +22,41 @@ const createAnnotationController = async ({
 
     try {
 
-        const reqBody  = await request.body({ type: 'form' }).value
-
         const annotationsCollection = Annotation.unwrap()
 
-        const { resource_id, resource_type, text, userId } = urlSearchParamsToBody<CreateAnnotationInput>(reqBody)
+        const contentType  = request.headers.get('content-type')
+        const isTxt = contentType?.indexOf('text')!= -1
+
+        const reqBody  = await request.body({type: isTxt ? 'text' : 'form'}).value
+
+        console.log('isTxt', isTxt)
+        console.log('reqBody')
+        console.log(reqBody)
+        
+
+        const objBody = isTxt ? JSON.parse(reqBody) : urlSearchParamsToBody<FormFieldsObject>(reqBody)
+
+        const { resource_id, resource_type, userId, text } = objBody
 
         const objUserID = new Bson.ObjectId(userId) 
+
+        console.log("user ID::", userId)
+        
+        console.log("resource_id::", resource_id)
+
+        console.log("resource_type::", resource_type)
+
+        console.log('text::', text)
+        
 
         const annotationExists = await annotationsCollection?.findOne({ 
             resource_id, 
             resource_type, 
             userId: objUserID 
         })
+
+        console.log('annotationExists?!', annotationExists)
+
 
         if (annotationExists) {
             response.status = 409
@@ -48,6 +70,7 @@ const createAnnotationController = async ({
         const createdAt = new Date()
         const updatedAt = createdAt
 
+        console.log('ADD IT!')
         try {
             const annotationId: Bson.ObjectId = await annotationsCollection.insertOne({
                 resource_id, 
@@ -121,20 +144,34 @@ const updateAnnotationController = async ({
         return
     }
 
+    console.log('#################### BEGIN updateAnnotationController #############################')
+
     try {
 
+        const anotationId = params.annotationId
         const annotationsCollection = Annotation.unwrap()
 
-        const anotationId = params.annotationId
+        const contentType  = request.headers.get('content-type')
+        const isTxt = contentType?.indexOf('text')!= -1
 
-        const reqBody  = await request.body({ type: 'form' }).value
-        const { text } = urlSearchParamsToBody<UpdateAnnotationInputBody>(reqBody)
+        const reqBody  = await request.body({type: isTxt ? 'text' : 'form'}).value
+
+        console.log('++++++++++++++++++++++++++ isTxt', isTxt)
+        console.log('reqBody')
+        console.log(reqBody)
+
+        const objBody = isTxt ? JSON.parse(reqBody) : urlSearchParamsToBody<FormFieldsObject>(reqBody)
+
+        const { resource_id, resource_type, userId, text } = objBody
 
         const updatedInfo = await annotationsCollection.updateOne(
             { _id: new Bson.ObjectId(anotationId) },
             { $set: { text, updatedAt: new Date() } },
             { ignoreUndefined: true }
         )
+        
+        console.log('+++++++++++++++++++++++ IN updateAnnotationController :: updatedInfo')
+        console.log(updatedInfo)
 
         if (!updatedInfo.matchedCount) {
             response.status = 404
@@ -144,13 +181,17 @@ const updateAnnotationController = async ({
             }
             return
         }
+        console.log('from PARAMS', params.annotationId)
+        console.log('from UPSERT', updatedInfo.upsertedId)
+        console.log('WE HAVE an udated anno? --- upserted')
 
-        const updatedTodo = await annotationsCollection.findOne({ _id: updatedInfo.upsertedId })
+        const updatedAnnotation = await annotationsCollection.findOne({ _id: new Bson.ObjectId(anotationId) })
+        console.log(updatedAnnotation)
 
         response.status = 200
         response.body = {
             status: 'success',
-            data: { todo: updatedTodo },
+            data: { annotation: updatedAnnotation },
         }
     } catch (error) {
         response.status = 500

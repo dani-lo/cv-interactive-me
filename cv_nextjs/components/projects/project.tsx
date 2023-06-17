@@ -5,7 +5,7 @@ import { AnnotationsComponent } from '../widget/annotations'
 import { 
     StyledJobContainer,
     StyledProjectStatusList
-} from '../../styles/styled'
+} from '../../styles/main.styled'
 
 import { Project } from '../../src/models/classes/Project'
 

@@ -10,17 +10,17 @@ const jobTypes = [
         "prefix": "TIME"
     },
     {
-        "uid": 4,
+        "uid": 3,
         "name": "rolling contract",
         "prefix": "TIME"
     },
     {
-        "uid": 3,
+        "uid": 4,
         "name": "remote",
         "prefix": "PLACE"
     },
     {
-        "uid": 4,
+        "uid": 5,
         "name": "office",
         "prefix": "PLACE"
     }

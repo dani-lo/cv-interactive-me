@@ -30,7 +30,6 @@ const createBookmarkController = async ({
 
         const { resource_id, resource_type, userId } = objBody
 
-console.log('USER ID:::: (in bookmarks ', userId)
         const objUserID = new Bson.ObjectId(userId) 
 
         const bookmarkExists = await bookmarksCollection.findOne({ 
@@ -65,11 +64,7 @@ console.log('USER ID:::: (in bookmarks ', userId)
             return
         }
 
-        console.log('SUCCESS creatin BOOKMARK')
-
         const bookmark = await bookmarksCollection.findOne({_id: bookmarkId})
-        console.log('here it is::::')
-        console.log(bookmark)
 
         response.status = 201
         response.body = {

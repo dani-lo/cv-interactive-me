@@ -61,44 +61,46 @@ pub fn ActionsModalComponent () -> Html {
         <div class="clibwasm-modal-wrap">
             <div></div>
             <div class="StyledModalWrap">
-                <h2>{ modal_title.type_name } { " - " } { modal_title.name }</h2>
-                <span 
-                    class="btn-close"
-                    //onclick={ move |_| c_set_modal_item.emit(Actionable { resource_id: Some(0), resource_type: Some(ModelTypes::Job) })}
-                    onclick={
-                        move |_| dispatcher.reduce_mut(|s| s.unset_modal_item())
-                    }
-                    >
-                        // <i class="fa fa-times" />
-                        {"CLOSE"}
-                </span>
-                <BookmarkComponent
-                    item={ bookmarkable_modal_item.clone() }
-                    // store={ store.clone() }
-                    type_name={ modal_title.type_name }
-                    dispatcher={ dispatch.clone() }
-                    bookmarks={ Some(state.bookmarks.clone()) }
-                    annotations={ Some(state.annotations.clone()) }
-                    filters={ Some(state.filters.clone()) }
-                />
-                <FilterComponent
-                    item={ filterable_modal_item.clone() } 
-                    // store={ store.clone() }
-                    type_name={ modal_title.type_name }
-                    dispatcher={ dispatch.clone() }
-                    bookmarks={ Some(state.bookmarks.clone()) }
-                    filters={ Some(state.filters.clone()) }
-                    annotations={ Some(state.annotations.clone()) }
-                />
-                <AnnotationComponent
-                    item={ annotatable_modal_item.clone() }  
-                    // store={ store.clone() }
-                    type_name={ modal_title.type_name }
-                    dispatcher={ dispatch.clone() }
-                    bookmarks={ Some(state.bookmarks.clone()) }
-                    annotations={ Some(state.annotations.clone()) }
-                    filters={ Some(state.filters.clone()) }
-                /> 
+                <div>
+                    <h2>{ modal_title.type_name } { " - " } { modal_title.name }</h2>
+                    <span 
+                        class="btn-close"
+                        //onclick={ move |_| c_set_modal_item.emit(Actionable { resource_id: Some(0), resource_type: Some(ModelTypes::Job) })}
+                        onclick={
+                            move |_| dispatcher.reduce_mut(|s| s.unset_modal_item())
+                        }
+                        >
+                            <i class="fa fa-times" />
+                            //{"CLOSE"}
+                    </span>
+                    <BookmarkComponent
+                        item={ bookmarkable_modal_item.clone() }
+                        // store={ store.clone() }
+                        type_name={ modal_title.type_name }
+                        dispatcher={ dispatch.clone() }
+                        bookmarks={ Some(state.bookmarks.clone()) }
+                        annotations={ Some(state.annotations.clone()) }
+                        filters={ Some(state.filters.clone()) }
+                    />
+                    <FilterComponent
+                        item={ filterable_modal_item.clone() } 
+                        // store={ store.clone() }
+                        type_name={ modal_title.type_name }
+                        dispatcher={ dispatch.clone() }
+                        bookmarks={ Some(state.bookmarks.clone()) }
+                        filters={ Some(state.filters.clone()) }
+                        annotations={ Some(state.annotations.clone()) }
+                    />
+                    <AnnotationComponent
+                        item={ annotatable_modal_item.clone() }  
+                        // store={ store.clone() }
+                        type_name={ modal_title.type_name }
+                        dispatcher={ dispatch.clone() }
+                        bookmarks={ Some(state.bookmarks.clone()) }
+                        annotations={ Some(state.annotations.clone()) }
+                        filters={ Some(state.filters.clone()) }
+                    /> 
+                </div>
             </div>
         </div>
     }

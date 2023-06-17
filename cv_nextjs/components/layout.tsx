@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from "react"
 
 import { AppDataProps } from "../src/types"
-import { AppSetting, AppSettingsParser } from "../src/helpers/settings/parser"
+import { AppSetting, AppSettingsParser } from "../src/settings/parser"
 
 import { ActionsList } from "./actions/actionsList"
 import { PendingActionsComponent } from "./actions/pendingAction"
@@ -12,7 +12,7 @@ import { PendingActionsComponent } from "./actions/pendingAction"
 import { AppMenu } from "./sidebar/menu"
 import { SettingsComponent } from "./widget/settings"
 
-import { StyledSidebar } from "../styles/styled"
+import { StyledSidebar } from "../styles/main.styled"
 
 type Props = {
     children: any,

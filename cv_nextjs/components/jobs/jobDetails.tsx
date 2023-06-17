@@ -10,7 +10,7 @@ import { Resource } from "../../src/types"
 import { 
     StyledActionButtonFoo,
     StyledJobDetail, 
-} from '../../styles/styled'
+} from '../../styles/main.styled'
 import { CompanyComponent } from '../widget/company'
 import { BtnPlus } from '../widget/buttons'
 

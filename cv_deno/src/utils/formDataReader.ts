@@ -21,9 +21,6 @@ export const urlSearchParamsToBody = <T extends FormFieldsObject>(reqParams: URL
     for(const [k, v] of reqParams) {
         bodyObj[k] = v
     }
-    console.log('==== urlSearchParamsToBody ====')
-    console.log(reqParams)
-    console.log(bodyObj)
     
     return formDataFieldsCast(bodyObj) as T
 }

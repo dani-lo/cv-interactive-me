@@ -1,11 +1,15 @@
-use serde::{ Deserialize, Serialize };
+use serde::{ 
+    Deserialize, Serialize 
+};
 
-use crate::{traits::
-    {
+use crate::
+{
+    traits::{
         can_annotate::HasAnnotationTrait, 
         can_filter::Filter
     }, 
-    appdata::stores::store_app_types::PendingStatus, util::filter_utils::some_resource_included_in_all_filters
+    appdata::stores::store_app_types::PendingStatus, 
+    util::filter_utils::some_resource_included_in_all_filters,
 };
 
 use super::{Model, ModelTypes, field_model::FieldModel, StaticAsset};
@@ -70,18 +74,5 @@ impl Model for CompanyModel {
 
         return true
 
-        // // we know we have filters and they are relevant - i.e company field flters
-        // // => skip display unless the company has a field included in those filters
-
-        // let is_any_field_filter_included = state_filters.iter().fold(true, |acc, filter| {
-                        
-        //    if acc == true &&  filter.resource_type == ModelTypes::Field &&  company_fields.iter().any(|t| t.uid == filter.resource_id) {
-        //          return false
-        //    }
-  
-        //    return acc
-        // });
-
-        // is_any_field_filter_included
-     }
+    }
 }

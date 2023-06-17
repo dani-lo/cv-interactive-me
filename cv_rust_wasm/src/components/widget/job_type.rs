@@ -1,3 +1,4 @@
+use log::info;
 use yew::{
     function_component, 
     html,
@@ -24,16 +25,15 @@ use crate::{
 pub struct JobTypeProps {
     pub job_jobtypes: Vec<JobtypeModel>,
     pub actionable: bool,
+    pub detail: bool,
 }
 
 
 #[function_component(JobTypeComponent)]
 pub fn job_type(JobTypeProps { 
             job_jobtypes, 
-            // set_modal_item,
-            actionable} : &JobTypeProps) -> Html {
-        // return html!{<p>{"lllllll"}</p>}
-        let (_store, dispatch) = use_store::<StoreApp>();
+            actionable,
+            detail } : &JobTypeProps) -> Html {
 
         let jobtype_place : Vec<JobtypeModel> = job_jobtypes
             .clone()
@@ -49,34 +49,128 @@ pub fn job_type(JobTypeProps {
             .cloned()
             .collect();
 
-        html!{  
-            <div>
-                <JobTypeTypeComponent 
-                    job_type_type={ jobtype_place }
-                    actionable={ actionable }
-                />
-                <JobTypeTypeComponent 
-                    job_type_type={ jobtype_time }
-                    actionable={ actionable }
-                />
-            </div>   
-    }
-}
+
+                    if *detail {
+                        html!{
+                            <>
+                                <ul>
+                                    <JobTypeTypeListComponent
+                                        job_type_type={ jobtype_place }
+                                        actionable={ actionable }
+                                        jobtype_pref={ "from: " }
+                                    />
+                                </ul>
+                                <ul>
+                                    <JobTypeTypeListComponent 
+                                        job_type_type={ jobtype_time }
+                                        actionable={ actionable }
+                                        jobtype_pref={ "type: " }
+                                    />
+                                </ul>
+                            </>
+                        }
+                    } else {
+                        html!{
+                            <>
+                                <ul>
+                                    <JobTypeTypeInlineComponent 
+                                        job_type_type={ jobtype_place }
+                                        actionable={ actionable }
+                                        jobtype_pref={ "from: " }
+                                    />
+                                </ul>
+                                <ul>
+                                    <JobTypeTypeInlineComponent 
+                                        job_type_type={ jobtype_time }
+                                        actionable={ actionable }
+                                        jobtype_pref={ "type: " }
+                                    />
+                                </ul>
+                            </>
+                        }
+                    }
+                }
+               
 
 #[derive( PartialEq, Properties)]
 pub struct JobTypeTypeProps {
     job_type_type: Vec<JobtypeModel>,
     actionable: bool,
+    jobtype_pref: &'static str,
 }
 
-#[function_component(JobTypeTypeComponent)]
-pub fn job_type(JobTypeTypeProps { 
+#[function_component(JobTypeTypeInlineComponent)]
+pub fn job_type_inline(JobTypeTypeProps { 
         job_type_type, 
-        actionable} : &JobTypeTypeProps) -> Html {
+        actionable,
+        jobtype_pref} : &JobTypeTypeProps) -> Html {
+
+    let (_store, dispatch) = use_store::<StoreApp>();
+
+    let mut out_count = 0;
+
+    html!{  
+        <li class="itemised">
+            <span style={ "padding-right: var(--gap-medium);" }>{ jobtype_pref }</span>
+            {
+                job_type_type.iter().map(|jt| {
+
+                    let c_jobtype = jt.clone();
+
+                    out_count = out_count + 1;
+                    
+                    html!{
+                        <>
+                        <span>
+                        {
+                            if *actionable {
+                                let disatcher = dispatch.clone();
+                                html!{
+                                    <span class="action-wrap">
+                                        <span  
+                                            class="html-icon" 
+                                            onclick={ move |_| set_state_modal_item(disatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)} 
+                                        >
+                                            {  	"\u{002B}" }
+                                        </span>
+                                        <span><strong>{ &jt.name }</strong></span>
+                                    </span>
+                                }
+                            } else { 
+                                html!{
+                                    <span><strong>{ &jt.name }</strong></span>
+                                }
+                            }
+                        }     
+                        </span>
+                        {
+                            if out_count < job_type_type.len() {
+                                html!{ <strong style="display:inline-block;margin: 0.5rem;">{ " + " }</strong> }
+                            } else {
+                                html!{ <span></span> }
+                            }
+                        }
+                        </>
+                    }
+                }).collect::<Html>()
+
+                
+            }
+        </li>
+    }
+}
+
+
+#[function_component(JobTypeTypeListComponent)]
+pub fn job_type_list(JobTypeTypeProps { 
+        job_type_type, 
+        actionable,
+        jobtype_pref} : &JobTypeTypeProps) -> Html {
 
     let (_store, dispatch) = use_store::<StoreApp>();
 
     html!{  
+
         <ul>
             {
                 job_type_type.iter().map(|jt| {
@@ -87,19 +181,23 @@ pub fn job_type(JobTypeTypeProps {
                         <li class="itemised">
                         {
                             if *actionable {
-                                let disatcher = dispatch.clone();
+                                
+                                let dispatcher = dispatch.clone();
+
                                 html!{
                                     <span class="action-wrap">
-                                        <i 
-                                            class="action fa fa-plus" 
-                                            onclick={ move |_| set_state_modal_item(disatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)} 
-                                        />
-                                        <span>{ "working from: " }{ &jt.name }</span>
+                                        <span  
+                                            class="html-icon" 
+                                            onclick={ move |_| set_state_modal_item(dispatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)} 
+                                        >
+                                            {  	"\u{002B}" }
+                                        </span>
+                                        <span><strong>{ &jt.name }</strong></span>
                                     </span>
                                 }
                             } else { 
                                 html!{
-                                    <span>{"type: "}{ &jt.name }</span>
+                                    <span><strong>{ &jt.name }</strong></span>
                                 }
                             }
                         }     

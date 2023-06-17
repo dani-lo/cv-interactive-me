@@ -15,14 +15,14 @@ const jobs = [
         ],
         "from": [4, 2017],
         "to": [12, 2023],
-        "jobType": [1, 3]
+        "jobType": [1, 4, 5]
       },
       {
         "uid": 16,
         "title":"December 2015 ­ - March 2017,   Admedo, London",
         "tech_str":"Angular 1.5, Gmaps, d3, Gulp, Mocha, Protractor, Karma, Sinon, Scss, Git",
         "tech": [28, 51, 24, 25, 26, 49, 52],
-        "position":"Frontned developer",
+        "position":"Frontend developer",
         "company": 2,
         "description":[
             "Working day to day in an Agile environment on enhancing the Admedo platform by liasing with the product owner and Backend team to build new features and maintain the existing ones",
@@ -32,7 +32,7 @@ const jobs = [
         ],
         "from": [12, 2015],
         "to": [3, 2017],
-        "jobType": [1, 4]
+        "jobType": [1, 5]
       },
       {
         "uid": 15,
@@ -48,7 +48,7 @@ const jobs = [
         ],
         "from": [9, 2015],
         "to": [10, 2015],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 14,
@@ -63,7 +63,7 @@ const jobs = [
         ],
         "from": [7, 2013],
         "to": [8, 2015],
-        "jobType": [2, 4]
+        "jobType": [3, 4, 5]
       },
       {
         "uid": 13,
@@ -77,7 +77,7 @@ const jobs = [
         ],
         "from": [5, 2013],
         "to": [6, 2013],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 12,
@@ -92,7 +92,7 @@ const jobs = [
         ],
         "from": [12, 2012],
         "to": [4, 2013],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid":11,
@@ -108,7 +108,7 @@ const jobs = [
         ],
         "from": [10, 2012],
         "to": [12, 2012],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 10,
@@ -123,7 +123,7 @@ const jobs = [
         ],
         "from": [7, 2012],
         "to": [9, 2012],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 9,
@@ -138,7 +138,7 @@ const jobs = [
         ],
         "from": [6, 2012],
         "to": [7, 2012],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 8,
@@ -154,7 +154,7 @@ const jobs = [
         ],
         "from": [4, 2012],
         "to": [5, 2012],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 7,
@@ -173,7 +173,7 @@ const jobs = [
         ],
         "from": [9, 2011],
         "to": [1, 2012],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 6,
@@ -187,7 +187,7 @@ const jobs = [
         ],
         "from": [8, 2011],
         "to": [9, 2011],
-        "jobType": [2, 4]
+        "jobType": [2, 4, 5]
       },
       {
         "uid": 5,
@@ -203,7 +203,7 @@ const jobs = [
         ],
         "from": [7, 2011],
         "to": [8, 2011],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 4,
@@ -222,7 +222,7 @@ const jobs = [
         ],
         "from": [7, 2010],
         "to": [7, 2011],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {"uid": 3,
         "uid": 0,
@@ -238,7 +238,7 @@ const jobs = [
         ],
         "from": [7, 2010],
         "to": [7, 2011],
-        "jobType": [2, 4]
+        "jobType": [2, 5]
       },
       {
         "uid": 2,
@@ -258,7 +258,7 @@ const jobs = [
         ],
         "from": [10, 2007],
         "to": [5, 2009],
-        "jobType": [1, 4]
+        "jobType": [1, 5]
       },
       {
         "uid": 1,
@@ -279,7 +279,7 @@ const jobs = [
         ],
         "from": [10, 2006],
         "to": [10, 2007],
-        "jobType": [1, 4]
+        "jobType": [1, 5]
       }
     ]
 

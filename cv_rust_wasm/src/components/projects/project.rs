@@ -8,8 +8,12 @@ use yew::{
 };
 
 use crate::{
-    models::
+    models::{
         project_model::ProjectModel, 
+    },
+    components::{
+        widget::rich_text_paragraph::RichTextParagraphComponent,
+    },
 };
 
 #[derive( PartialEq, Properties)]
@@ -60,19 +64,24 @@ pub fn project(ProjectProps {
                         { 
                             project.status.iter().map(|ps| {
                                 
-                                html! {     <li>{ ps }</li> }
+                                html! { <RichTextParagraphComponent text={ ps.clone() } /> }
                                 
                             }).collect::<Html>()
                         }
                         </ul>
-                        <p><strong><a href={ project.repo.clone() }>{ "Github Repo" }</a></strong></p>
                     </div>       
                     <div>
-                        <i 
-                            class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                            onclick={ move |_| project_detail.emit(c_uid) }
-                            id={ format!("job-selector-{}", c_uid   ) }
-                        />
+                        // <i 
+                        //     class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                        //     onclick={ move |_| project_detail.emit(c_uid) }
+                        //     id={ format!("job-selector-{}", c_uid   ) }
+                        // />
+                        <span  
+                            class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
+                            onclick={ move |_| project_detail.emit(c_uid) }  
+                        >
+                            {  	"\u{203A}" }
+                        </span>
                     </div>
                 </div>
             </div>        

@@ -3,7 +3,7 @@ import React, { RefAttributes } from 'react'
 import { Job } from "../../src/models/classes/Job"
 import { Resource } from "../../src/types"
 
-import { StyledJobContainer } from '../../styles/styled'
+import { StyledJobContainer } from '../../styles/main.styled'
 
 type JobProps = {
     showActions: (item: Resource) => void;

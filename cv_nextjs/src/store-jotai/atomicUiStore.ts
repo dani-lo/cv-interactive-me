@@ -1,6 +1,6 @@
 
 import { atom } from "jotai"
-import { AppSetting, AppSettingsParser } from "../helpers/settings/parser";
+import { AppSetting, AppSettingsParser } from "../settings/parser";
 
 export const uiBusy = atom<boolean>(false);
 export const uiMsg = atom<string | null>(null);
@@ -10,14 +10,14 @@ export const uiSettingsAtom = atom<AppSetting<any>[]>([])
 
 export const uiSettings = atom(
     () => {
-        
+
         return uiSettingsAtom
     },
     (_get, set, setting: AppSetting<any>) => {
-        const parser = new AppSettingsParser()
         
+        const parser = new AppSettingsParser()        
         parser.saveSetting(setting.key, setting.val)
-        console.log('SET THE ATOM::: parser.allSettings', parser.allSettings)
+
         set(uiSettingsAtom, parser.allSettings)
     }
 )

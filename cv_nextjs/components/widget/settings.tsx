@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { useAtom } from "jotai"
 
-import { AppSetting, settingLabel } from "../../src/helpers/settings/parser"
+import { AppSetting, settingLabel } from "../../src/settings/parser"
 
 import * as atoms  from "../../src/store-jotai/atomicUiStore"
 
-import { StyledSettingsListContainer } from "../../styles/styled"
+import { StyledSettingsListContainer } from "../../styles/main.styled"
 
 export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSettingsUI }: {
     disabled: boolean,
@@ -14,8 +14,8 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
     toggleSettingsUI: () => void,
 }) => {
     
-    const [, uiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
-    const [uisettings, setUisettings] = useAtom(atoms.uiSettings)
+    const [_uiOperationSuccess, setUiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
+    const [_uisettings, setUisettings] = useAtom(atoms.uiSettings)
 
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
@@ -31,7 +31,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
                     saveSetting={ (s: AppSetting<any>) => {
                         saveSetting(s) 
                         setUisettings(s)
-                        uiOperationSuccess(void 0)
+                        setUiOperationSuccess(void 0)
                     }}
                     key={ setting.key.toString() } 
                 />

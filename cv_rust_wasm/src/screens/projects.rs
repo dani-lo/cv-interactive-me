@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+use log::info;
 use yew::{
     prelude::*, 
 };
@@ -66,7 +67,7 @@ pub struct JobsProps {
 pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
@@ -76,7 +77,6 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
     let projects:UseStateHandle<Vec<ProjectModel>> = use_state(|| store_projects);
     
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
-    let c_user = user.clone();
 
     let nav_location = BrowserHistory::new().location();
     let query_st = nav_location.query_str();
@@ -102,6 +102,9 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
             let fetched_static_data_models_hashes : AppStaticDataHashes = get_static_data_hash().await;
             
             let loaded_user = get_user().await;
+
+            // info!("Fetched in Projects screen:::");
+            // info!("{:?}", fetched_projects);
 
             user.set(loaded_user.unwrap());
 
@@ -130,16 +133,19 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
         }, ());
     }
 
+    // info!("Projects FROM state in proj scren >>>>");
+    // info!("{:?}", projects);
+
     html! {
         <div class="page">  
             <ConfigSettingsListComponent />
             <ActionsModalComponent />
             <div class="StyledSidebar">
-            <span 
-                class="html-icon"
-                onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                    {  	"\u{2630}" }
-            </span> 
+                <span 
+                    class="html-icon"
+                    onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                        {  	"\u{2630}" }
+                </span> 
             <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
                 {

@@ -1,3 +1,15 @@
+.StyledGenericBlock {
+    margin: var(--gap-large) 0;
+}
+
+.StyledBaseList {
+    margin: var(--gap-large) 0;
+}
+
+.StyledBaseList li {
+    display: list-item;
+}
+
 .StyledJobContainer {   
     margin-top: var(--gap-large);
     /* border: 1px solid var(--border-col); */
@@ -32,7 +44,7 @@
 }
 
 .StyledJobContainer.selected {
-    /* background: var(--bg-grey); */
+    background: var(--bg-white);
     /* border-style: solid; */
     padding:  var(--gap-medium);
     border: 1px solid var(--border-col);
@@ -86,18 +98,31 @@
     top: 0.5rem;
 }
 
-.StyledSidebar ul li, .StyledSidebar h3, .StyledSidebar p, .StyledSidebar i, .StyledSidebar span {
-    color: var(--white)!important;
+.StyledSidebar ul li, 
+.StyledSidebar h3, 
+.StyledSidebar p, 
+.StyledSidebar i, 
+.StyledSidebar span {
+    color: var(--white);
 }
 
 .StyledSidebar h3 {
-    border-bottom: 1px dotted var(--border-col);
+    border-bottom: 1px dotted var(--border-c--ol);
     padding-bottom: var(--gap-small);
 }
 
 .StyledModalWrap {
-    border:1px dotted var(--border-col);
     height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: var(--z-4);
+    background: transparent;
+    top: 0;
+    left: 0;
+}
+
+.StyledModalWrap > div {
+    border:1px dotted var(--border-col);
     background: var(--white);
     width: 500px;
     margin: 5em auto;
@@ -105,7 +130,7 @@
     border-radius: 5px;
     padding: var(--gap-large) 2em 2em;
     position: relative;
-    z-index: var(z-3);
+    /* z-index: var(--z-4); */
 }
 
 .StyledModalWrap span.btn-close {
@@ -138,9 +163,10 @@
 }
 
 .StyledCompanyContainer {
-    border-left: 5px dotted var(--border-col);
+    border: 1px solid var(--border-col);
     margin: var(--gap-large) 0;
-    padding-left: var(--gap-large);
+    padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
+    background: var(--bg-white);
 }
 
 
@@ -154,12 +180,21 @@
     margin-top: var(--gap-large);
 }
 
+.StyledActionsList {
+    margin: var(--gap-large) 0;
+}
+
+.StyledSidebar .StyledActionsList {
+    margin: -8px 0 var(--gap-large) 0;
+}
+
 .StyledActionsList li {
     list-style: none;
     /* padding: var(--gap-micro) 0; */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0;
 }
 
 .StyledActionsList li.list-footer-meta-action {
@@ -168,7 +203,7 @@
 }
 
 .StyledActionsList li.list-footer-meta-action:hover {
-    opacity: 0.7;
+    color: var(--active-pink);
 }
 
 .StyledProjectStatusList {
@@ -201,8 +236,6 @@
     margin: auto;
     position: relative; 
 }
-   
-
 
 .StyledLoaderRipple > div div {
     position: absolute;
@@ -210,7 +243,6 @@
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-
 }
 
 .StyledLoaderRipple > div div:nth-child(2) {
@@ -241,7 +273,7 @@
     right: var(--gap-large);
     padding:  var(--gap-medium);
     background: var(--active-action);
-    background: var(--white);
+    background: var(--bg-white);
     border: 2px solid var(--border-col);
     text-align: center;
     top: -320px;
@@ -281,6 +313,7 @@
     left: 320px;
     transition: left 0.25s;
     padding: var(--gap-large);
+    padding-top: 2rem;
     background: var(--white);
     border-right: 1px dotted var(--border-col);
 }
@@ -295,10 +328,18 @@
     margin-bottom: var(--gap-medium);
 }
 
-StyledSettingsListContainer > div.disabled button {
+/* .StyledSettingsListContainer > div.disabled button {
     opacity: 0.6;
     pointer-events: none;
     cursor: default;
+} */
+
+.StyledSettingsListContainer > .html-icon {
+    transform: rotate(180deg);
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 11px;
 }
 
 @keyframes lds-ripple {

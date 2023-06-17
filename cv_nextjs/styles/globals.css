@@ -5,7 +5,7 @@
   --bg-dark: #555;
   --white : #fff;
   --active-action: gold;
-  --active-pink: #d4570b;
+  --active-pink: pink;
   --pending-action: grey;
   --text-main: #333;
   --text-dark: #000;
@@ -278,6 +278,7 @@ i.fa.action {
   line-height: 0.6rem;
   font-size: 0.8rem;
   border-radius: 0px;
+  color: var(--text-dark);
 }
 
 i.fa.action:hover {
@@ -294,3 +295,6 @@ i.fa.action:hover {
   z-index: var(--z-1);
   opacity: 0.4;
 }
+
+
+

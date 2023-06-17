@@ -20,24 +20,14 @@ const createUserController = async ({
 
         const usersCollection = User.unwrap()
 
-        // const reqBody  = await request.body({ type: 'form' }).value
-
-
-        console.log('CONTROLLER: createUserController')
-
         const contentType  = request.headers.get('content-type')
         const isTxt = contentType?.indexOf('text')!= -1
 
         const reqBody  = await request.body({type: isTxt ? 'text' : 'form'}).value
 
-        console.log(reqBody)
         const objBody = isTxt ? JSON.parse(reqBody) : urlSearchParamsToBody<FormFieldsObject>(reqBody)
 
         const { tok } = objBody
-        
-        // const { tok } = urlSearchParamsToBody<CreateUserInput>(reqBody)
-        
-        console.log('tok, tok, tok, tok', tok, tok, tok, tok)
         
         const userExists = await usersCollection.findOne({ 
             tok

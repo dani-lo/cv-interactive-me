@@ -18,24 +18,24 @@ services:
       - "6000:27017"
     expose:
     - 27017
-  deno:
-    build: .
-    image: cv_deno_image
-    container_name: cv_deno_container
-    ports:
-      - "8000:8000"
-    stdin_open: true
-    tty: true
-    depends_on:
-      - mongo
-    networks:
-      - cv_api_network
-    command: sh -c "/wait && deno run --allow-read --allow-env --allow-net main.ts"
-    environment:
-      - WAIT_HOSTS=mongo:27017
-      - WAIT_HOSTS_TIMEOUT=300
-      - WAIT_SLEEP_INTERVAL=30
-      - WAIT_HOST_CONNECT_TIMEOUT=30
+  # deno:
+  #   build: .
+  #   image: cv_deno_image
+  #   container_name: cv_deno_container
+  #   ports:
+  #     - "8000:8000"
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - mongo
+  #   networks:
+  #     - cv_api_network
+  #   command: sh -c "/wait && deno run --allow-read --allow-env --allow-net main.ts"
+  #   environment:
+  #     - WAIT_HOSTS=mongo:27017
+  #     - WAIT_HOSTS_TIMEOUT=300
+  #     - WAIT_SLEEP_INTERVAL=30
+  #     - WAIT_HOST_CONNECT_TIMEOUT=30
 volumes:
   mongo:
 networks:

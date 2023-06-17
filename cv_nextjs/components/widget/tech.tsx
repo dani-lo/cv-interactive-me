@@ -7,7 +7,7 @@ import { Tech } from "../../src/models/classes/Tech"
 
 import { techShowLimit } from '../../src/config'
 import { CvJobsContext } from "../../pages/_app"
-import { StyledActionsList } from "../../styles/styled"
+import { StyledActionsList } from "../../styles/main.styled"
 
 type TechProps = {
     showActions: (item: Resource) => void;

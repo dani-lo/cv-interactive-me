@@ -1,3 +1,4 @@
+use log::info;
 use yew::{
     function_component,
     html,
@@ -81,13 +82,14 @@ pub fn job_detail(JobDetailProps {
         html! {
             <div class={ c_name }>
                 <h2>
-                    <span class="action-wrap">
-                        <i 
-                            class="action fa fa-plus" 
-                            onclick={ move |_| { 
-                                set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
-                            }} 
-                        />
+                    <span 
+                        class="action-wrap"
+                        onclick={ move |_| { 
+                            set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
+                        }}>
+                        <span class="html-icon">
+                            {  	"\u{002B}" }
+                        </span>
                         <span>{ &job.period.formatted() }</span>
                     </span>
                 </h2>
@@ -117,10 +119,11 @@ pub fn job_detail(JobDetailProps {
                     }
                 }
                 
-                <h3> { "Job type:" }</h3>
+                // <h3> { "Job type:" }</h3>
                 <JobTypeComponent
                     job_jobtypes={ job.job_type.clone() }
                     actionable={ true }
+                    detail={ true }
                 />
                 <ul  class="StyledJobDescriptionList">
                     <JobsDescriptionListComponent 
@@ -167,26 +170,26 @@ pub struct CompanyProps {
 #[function_component(CompanyComponent)]
 pub fn company_component(CompanyProps { company, dispatch } : &CompanyProps) -> Html {
 
-    let c_company = company.clone();
     let company_id = company.uid.clone();
     let dispatcher = dispatch.clone();
     
     html! {
         <div class="StyledCompanyContainer">
             <h3 class="margin-top-medium margin-bottom-medium">
-                <span class="action-wrap">
-                    <i 
-                        class="action fa fa-plus" 
-                        onclick={move |_| { 
-                            set_state_modal_item(
-                                dispatcher.clone(),
-                                ModelTypes::Company, 
-                                company_id
-                            );
-                        }} 
-                    />
+                <span 
+                    class="action-wrap"
+                    onclick={move |_| { 
+                        set_state_modal_item(
+                            dispatcher.clone(),
+                            ModelTypes::Company, 
+                            company_id
+                        );
+                    }}>
+                    <span class="html-icon">
+                        {  	"\u{002B}" }
+                    </span>
+                    <span>{ company.name.clone() }</span>
                 </span>
-                <span>{ company.name.clone() }</span>
             </h3>
             <p>{ company.description.clone() }</p>
             <FieldsItemsComponent fields={ company.field.clone() } />
@@ -215,19 +218,20 @@ pub fn fields_items_component(FieldsProps { fields } : &FieldsProps) -> Html {
 
                         html!{
                             <li class="itemised">
-                                <span class="action-wrap">
-                                    <i 
-                                        class="action fa fa-plus" 
-                                        onclick={move |_| { 
-                                            set_state_modal_item(
-                                                dispatcher.clone(), 
-                                                ModelTypes::Field, 
-                                                field_id
-                                            );
-                                        }} 
-                                    />
+                                <span 
+                                    class="action-wrap"
+                                    onclick={move |_| { 
+                                        set_state_modal_item(
+                                            dispatcher.clone(), 
+                                            ModelTypes::Field, 
+                                            field_id
+                                        );
+                                    }}>
+                                    <span class="html-icon">
+                                        { "\u{002B}" }
+                                    </span>
+                                    <span>{ field.clone().name }</span>
                                 </span>
-                                <span>{ field.clone().name }</span>
                             </li>
                         }
                     }).collect::<Html>()

@@ -172,7 +172,7 @@ pub async fn get_static_data_hash () -> AppStaticDataHashes {
         |jobtype_data_item: JobtypeData| JobtypeModel { 
             uid: jobtype_data_item.uid, 
             name: jobtype_data_item.name,
-            prefix: if jobtype_data_item.prefix == "time" { JobtypePrefix::TIME } else { JobtypePrefix::PLACE },
+            prefix: if jobtype_data_item.prefix == "TIME" { JobtypePrefix::TIME } else { JobtypePrefix::PLACE },
         });
 
     let project_models : HashMap<usize, ProjectModel> = hash_model_vec_by_uid(

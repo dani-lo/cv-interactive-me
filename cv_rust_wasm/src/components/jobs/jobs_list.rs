@@ -67,7 +67,8 @@ pub fn job_list(JobListProps {
     ).collect::<Vec<&Filter>>();
 
     let has_filters = active_filters.len() > 0;
-    info!("HAS FILTERS ?????????? {}", has_filters);
+    
+    // info!("HAS FILTERS ?????????? {}", has_filters);
 
     jobs.iter().map(|job| {
         

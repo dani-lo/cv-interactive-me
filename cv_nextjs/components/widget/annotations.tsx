@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledJobAnnotations} from '../../styles/styled'
+import { StyledJobAnnotations} from '../../styles/main.styled'
 
 type AnnotationProps = {
     note: string;

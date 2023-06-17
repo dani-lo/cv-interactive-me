@@ -7,7 +7,7 @@ import { IBookmark } from '../../src/models/mixins/withBookmark'
 import { IFilter } from '../../src/models/mixins/withFilter'
 import { Resource } from '../../src/types'
 
-import { StyledActionInput } from '../../styles/styled'
+import { StyledActionInput } from '../../styles/main.styled'
 
 export const FilterActionInput = (props: { 
         item: Resource, 

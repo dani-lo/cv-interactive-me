@@ -91,16 +91,12 @@ pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &Settin
     let checked_state = use_state(|| val);
 
     let save_class = if (*checked_state) == val { "disabled" } else { "" };
-    // let lbl_txt = setting.labe.as_str();
     let next_checked_state = if val == true { false } else { true };
+
     let cloned_key = setting_key.clone();
 
-    info!("IN SETTING {}  val, checkedstate {} {}",&setting.label, val, *checked_state);
-    info!("IN SETTING ... HAS CHANGED ...? val == checkedstate {}", val == *checked_state);
-    info!(" >>> save_class {}", save_class);
-
     html!{
-        <div class={ save_class }>    
+        <div>    
             <input 
                 type="checkbox" 
                 checked={ *checked_state }

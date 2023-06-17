@@ -82,10 +82,54 @@ impl StoreApp {
         } else {
             self.filters.push(filter);
         }
-
     }
 
     pub fn add_annotation (
+        self: &mut Self,
+        annotation: Annotation) {
+    
+        let existing = self.annotations
+            .iter()
+            .find(|&x| actionables_ident(&annotation, x) && x.pending != PendingStatus::Fresh);
+        
+        info!("Store:: add note .....");
+        info!("Store annotations are these");
+        info!("{:?}", self.annotations);
+
+        if existing.is_some() {
+            
+            info!("Store:: existing is true, here it is! .....");
+            info!("{:?}", existing);
+
+            let existing_val = existing.unwrap();
+
+            let index: usize = self.annotations
+                    .iter()
+                    .position(|b: &Annotation| actionables_ident(&annotation, b))
+                    .unwrap();
+
+            if existing_val.pending == PendingStatus::Deleted {
+                
+                self.annotations[index].pending = PendingStatus::Void;
+            } else {
+
+                let curr_pending = self.annotations[index].pending.clone();
+
+                self.annotations[index].pending = if curr_pending == PendingStatus::Void { PendingStatus::VoidThenEdited } else { PendingStatus::Added }
+            }
+        } else {
+            info!("Store:: existing is false, just add .....");
+
+            self.annotations.push(annotation);
+        }
+
+        info!("here are the new annotatons after the addibng OP");
+        info!("{:?}", self.annotations);
+
+        info!("Store:: <<< DONE>>>");
+    }
+
+    pub fn edit_annotation (
         self: &mut Self,
         annotation: Annotation) {
     
@@ -122,8 +166,6 @@ impl StoreApp {
         info!("{:?}", self.annotations);
 
         info!("Store:: <<< DONE>>>");
-
-
     }
 
     pub fn remove_bookmark (

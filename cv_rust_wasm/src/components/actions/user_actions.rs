@@ -2,6 +2,8 @@ use log::info;
 use fixedstr::str256;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
+use yew::events::InputEvent;
+
 use yewdux::prelude::*;
 use yewdux::prelude::{Dispatch, use_store};
 
@@ -255,12 +257,15 @@ pub fn annotation_text (ActionProps {
 } : &ActionProps)  -> Html { 
     
     let (_state, dispatch) = use_store::<StoreApp>();
-
+    let existin_text: UseStateHandle<Option<String>> = use_state(|| None);
+    let c_existin_text = existin_text.clone();
+    let dbg_existin_text = existin_text.clone();
     let init_dispatch = dispatch.clone();
 
     let dependency = if item.is_some() {
         format!(
-            "{}-{}", 
+            "{:?}-{}-{}", 
+            existin_text,
             item.unwrap().resource_id.unwrap(), 
             item.unwrap().resource_type.unwrap()
         )
@@ -270,6 +275,9 @@ pub fn annotation_text (ActionProps {
 
     use_effect_with_deps(
         move |_| {
+
+            c_existin_text.set(None);
+
             init_dispatch.reduce_mut(|s: &mut StoreApp| {
                 s.fresh_note_reset();
             });
@@ -301,7 +309,7 @@ pub fn annotation_text (ActionProps {
             n.resource_id == res_id && 
             n.pending != PendingStatus::Fresh
         });
-    
+        
         let mut tgt_note = Annotation {
                 _id: None,
                 resource_id: c_resource_id.unwrap().clone(),
@@ -309,6 +317,7 @@ pub fn annotation_text (ActionProps {
                 pending: PendingStatus::Fresh,
                 text: "".to_string().clone(),
         };
+
         let added_note_exists = existing_annotation.is_some();
         let fresh_note_exists = existing_fresh_note.is_some();
 
@@ -318,55 +327,74 @@ pub fn annotation_text (ActionProps {
             tgt_note = existing_fresh_note.unwrap().clone();       
         }
 
+        let c_tgt_note = tgt_note.clone();
+
         let new_status = if tgt_note.pending == PendingStatus::Void { PendingStatus::VoidThenEdited } else { PendingStatus::Added };
-        let tgt_note_txt: str256 = str256::from(tgt_note.text);
+        let tgt_note_str256: str256 = str256::from(tgt_note.text);
         
+        if existin_text.is_none() {
+            existin_text.set(Some(tgt_note_str256.to_string()));
+        }
+
         let add_annotation: yew::Callback<Option<MouseEvent>> = dispatcher.reduce_mut_callback(move |s| {
+
+            info!("Add AnnotATION! >>> into YEWDUX");
+            // info!("This is the text:: {}", tgt_note_txt);
 
             let new_or_edited_note =  Annotation {
                     _id: None,
                     resource_id: c_resource_id.unwrap().clone(),
                     resource_type: c_resource_type.unwrap().clone(),
                     pending: new_status,
-                    text: String::from(tgt_note_txt.to_str()),
+                    text: String::from(tgt_note_str256.to_str()),
             };
+            
+            info!("added or edited ?????????? {:?}", new_or_edited_note);
+
+            existin_text.set(Some(String::from(tgt_note_str256.to_str())));
+
             s.add_annotation(new_or_edited_note);
         });
 
-        let onkeypress = Callback::from(move |e: KeyboardEvent| {
-            let input: HtmlInputElement = e.target_unchecked_into();
-            let value : String= input.value();
-                
-            if !value.is_empty() {
-                dispatch.reduce_mut(|s: &mut StoreApp| {
-                    s.note_text(
-                        String::from(value), 
-                        c_resource_id.unwrap(), c_resource_type.unwrap()
-                    );
-                });
-            }
-        });
+        let disabled_update = dbg_existin_text.is_some() && c_tgt_note.text == dbg_existin_text.as_ref().unwrap().clone();
+        let btn_cname = if disabled_update { "disabled" } else { "" }; 
 
         html! {
             <div class="action">
+                // <h2>{ if disabled_update { "DISABBBBBBB" } else {"---"} }</h2>
                 <p>{ "Add an" }<strong>{ " annotation " }</strong>{"for this  "}{ type_name }</p>
                 <div>
                     <textarea
                         class="new-note"
                         placeholder="Enter annotation (max 256 characters)"
-                        {onkeypress}
-                        value={ String::from(tgt_note_txt.to_str()) }
+    
+                        oninput={move |e: InputEvent| {
+                            let input: HtmlInputElement = e.target_unchecked_into();
+                            let value : String= input.value();
+
+                            let tgt_resource_type = c_tgt_note.resource_type.clone();
+
+                            dispatch.reduce_mut(|s: &mut StoreApp| {
+                                s.note_text(
+                                    String::from(value), 
+                                    c_resource_id.unwrap(),
+                                    tgt_resource_type,
+                                );
+                            });
+                        } }
+
+                        value={ String::from(tgt_note_str256.to_str()) }
                         rows={ 3 }
                         columns={50}
                         maxlength={ 256 }
-                    ></textarea>
-                    
+                    >
+                    </textarea>
                 </div>
                 {
                     if added_note_exists {
                         html!{
                             <button 
-                                // class={ btn_cname }
+                                class={ btn_cname }
                                 onclick={ move |_| add_annotation.emit(None) }
                             >{ "update" }</button>
                         }

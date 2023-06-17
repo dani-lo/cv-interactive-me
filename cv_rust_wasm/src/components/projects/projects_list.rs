@@ -43,20 +43,22 @@ pub struct UrlParams {
 pub fn job_list(ProjectListProps { 
         projects, 
         on_select_project_detail, 
-        // set_modal_item, 
-        // store,
         active_project_id }: &ProjectListProps) -> Html {
 
 
-    let (state, dispatch) = use_store::<StoreApp>();
+    let (state, _dispatch) = use_store::<StoreApp>();
     
+    let mut c_projects = projects.clone();
+
     // info!("{:?}", store);
     let notes: Vec<Annotation> = state.annotations.clone().to_vec();
     let bookmarks: Vec<Bookmark> = state.bookmarks.clone().to_vec();
     
     let has_project_bookmarks = bookmarks.iter().any(|b : &Bookmark| b.resource_type == ModelTypes::Project);
     
-    projects.iter().map(|project| {
+    c_projects.sort_by(|a, b| if a.uid > b.uid { std::cmp::Ordering::Greater } else { std::cmp::Ordering::Less });
+
+    c_projects.iter().map(|project| {
         
         notes.clone()
             .retain(|n: &Annotation| n.resource_id == project.uid && n.resource_type == ModelTypes::Job);

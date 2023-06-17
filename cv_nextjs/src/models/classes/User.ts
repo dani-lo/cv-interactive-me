@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios"
 import Error from "next/error"
 import { generateUserTok } from "../../helpers/userTok"
 import { Collectable } from "../../types"
-import { AppSettingsParser, SettingKeys } from "../../helpers/settings/parser"
+import { AppSettingsParser, SettingKeys } from "../../settings/parser"
 
 const cvTokKey = 'cv-app-tok'
 const banUserTrackingKey = 'ban-user-tracking'

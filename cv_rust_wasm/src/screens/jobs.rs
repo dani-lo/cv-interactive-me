@@ -63,7 +63,7 @@ pub struct JobsProps {
 pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     // let settings_list = use_state(|| false);
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });

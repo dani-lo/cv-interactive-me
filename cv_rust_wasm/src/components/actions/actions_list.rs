@@ -34,7 +34,7 @@ pub fn actions_list ()  -> Html {
     
     let (state, _dispatch) = use_store::<StoreApp>();
 
-    info!("{:?}", state);
+    // info!("{:?}", state);
 
     let mut annotations = state.annotations.clone();
     annotations.retain(|n| n.pending != PendingStatus::Fresh && n.pending != PendingStatus::VoidThenDeleted);
@@ -122,7 +122,11 @@ pub fn actions_list ()  -> Html {
                             
                        } else { 
                            html!{
-                            <p>{"You did not add any bookmarks yet. To add bookmarks please use action button ("}<i className="fa fa-plus" />{") within bookmarkable CV items"}</p>
+                            <p>
+                                {"You did not add any bookmarks yet. To add bookmarks please use action button ("}
+                                <i className="fa fa-plus" />
+                                {") within bookmarkable CV items"}
+                            </p>
                            }
                        }
                    }
@@ -186,39 +190,43 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                     f.resource_id.unwrap(),
                 );
                 html!{
-                    <li>
+                    <li class="action-wrap">
                         <span>
                             <strong>{ res_name.type_name }</strong>
                             {": "}
                             { res_name.name }
                         </span>
-                        <i class="action fa fa-times" onclick={ move |_| {
-                            dispatcher.reduce_mut(|s| {
-                                if action_type == ActionTypes::ANNOTATION {
-                                    s.remove_annotation(Annotation {
-                                        _id: None,
-                                        resource_id: resource_id,
-                                        resource_type: resource_type_type,
-                                        text: "".to_string(),
-                                        pending: PendingStatus::Unknown,
-                                    });
-                                } else if action_type == ActionTypes::BOOKMARK {
-                                    s.remove_bookmark(Bookmark {
-                                        _id: None,
-                                        resource_id: resource_id,
-                                        resource_type: resource_type_type,
-                                        pending: PendingStatus::Unknown,
-                                    });
-                                } else {
-                                    s.remove_filter(Filter {
-                                        _id: None,
-                                        resource_id: resource_id,
-                                        resource_type: resource_type_type,
-                                        pending: PendingStatus::Unknown,
-                                    })
-                                }
-                            })
-                        } } />
+                        <span  
+                            class="html-icon" 
+                            onclick={ move |_| {
+                                dispatcher.reduce_mut(|s| {
+                                    if action_type == ActionTypes::ANNOTATION {
+                                        s.remove_annotation(Annotation {
+                                            _id: None,
+                                            resource_id: resource_id,
+                                            resource_type: resource_type_type,
+                                            text: "".to_string(),
+                                            pending: PendingStatus::Unknown,
+                                        });
+                                    } else if action_type == ActionTypes::BOOKMARK {
+                                        s.remove_bookmark(Bookmark {
+                                            _id: None,
+                                            resource_id: resource_id,
+                                            resource_type: resource_type_type,
+                                            pending: PendingStatus::Unknown,
+                                        });
+                                    } else {
+                                        s.remove_filter(Filter {
+                                            _id: None,
+                                            resource_id: resource_id,
+                                            resource_type: resource_type_type,
+                                            pending: PendingStatus::Unknown,
+                                        })
+                                    }
+                                })
+                            }}>
+                            {  	"\u{00D7}" }
+                        </span>
                     </li>
                 }
             }).collect::<Html>()

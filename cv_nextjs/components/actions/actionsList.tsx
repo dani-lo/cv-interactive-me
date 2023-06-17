@@ -13,7 +13,7 @@ import { PendingStatus } from "../../src/store/appState"
 
 import { AppDataProps, Resource } from "../../src/types"
 
-import { StyledActionsList } from "../../styles/styled"
+import { StyledActionsList } from "../../styles/main.styled"
 
 export const ActionsList = (props: AppDataProps) => {
 

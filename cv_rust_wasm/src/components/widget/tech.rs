@@ -36,10 +36,16 @@ pub fn job_tech(TechProps {
     let (_state, dispatch) = use_store::<StoreApp>();
 
     let less_techs = 4;
+    let skip_truncation = job_techs.len() < 4;
 
     let show_tech_num:  UseStateHandle<&'static str>  = use_state(|| "less");
     
-    let show_techs = if *show_tech_num == "less" { &job_techs[..less_techs] } else { &job_techs };
+    let show_techs = if !skip_truncation && *show_tech_num == "less" { 
+        &job_techs[..less_techs] 
+    } else { 
+        &job_techs 
+    };
+
     let c_show_tech_num = show_tech_num.clone();
 
     html!{  
@@ -58,16 +64,14 @@ pub fn job_tech(TechProps {
                                 let dispatcher = dispatch.clone();
 
                                 html!{
-                                    <span class="action-wrap">
-                                        <i 
-                                            class="action fa fa-plus" 
-                                            onclick={
-                                                move |_| dispatcher.reduce_mut(|s| s.set_modal_item(
-                                                    ModelTypes::Tech,
-                                                    c_tech.uid
-                                                ))
-                                            }
-                                        />
+                                    <span class="action-wrap"
+                                        onclick={
+                                            move |_| dispatcher.reduce_mut(|s| s.set_modal_item(
+                                                ModelTypes::Tech,
+                                                c_tech.uid
+                                            ))
+                                    }>
+                                        <span class="html-icon">{ "\u{002B}" }</span> 
                                         <span>{ &jt.name }</span>
                                     </span>
                                 }

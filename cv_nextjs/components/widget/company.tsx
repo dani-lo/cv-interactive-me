@@ -1,4 +1,4 @@
-import { StyledCompanyContainer } from '../../styles/styled'
+import { StyledCompanyContainer } from '../../styles/main.styled'
 import { Company } from "../../src/models/classes/Company"
 import { Field } from '../../src/models/classes/Field'
 import { Resource, ResourceProps } from '../../src/types'

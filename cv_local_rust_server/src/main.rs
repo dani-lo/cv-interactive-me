@@ -3,6 +3,7 @@
 #[macro_use] extern crate rocket;
 
 mod models;
+mod routes;
 
 use std::{
     fs,
@@ -13,13 +14,23 @@ use rocket_cors::{AllowedOrigins, CorsOptions};
 use rocket::http::Method;
 use serde_json::from_str;
 
-use crate::models::{
-    CompanyData,
-    TechData,
-    JobData,
-    JobtypeData,
-    FieldData,
-    ProjectData,
+use crate::{
+    models::{
+        CompanyData,
+        TechData,
+        JobData,
+        JobtypeData,
+        FieldData,
+        ProjectData,
+    },
+    // routes::{
+    //     companies,
+    //     techs,
+    //     jobs,
+    //     jobtypes,
+    //     fields,
+    //     projects,
+    // }
 };
 
 #[get("/companies")]

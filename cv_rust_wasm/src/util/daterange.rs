@@ -27,7 +27,8 @@ impl DateRange {
          1, 
          1,  
          1, 
-         1).unwrap();
+         1
+      ).unwrap();
 
       let date_time_to = Utc.with_ymd_and_hms(
          self.to_month_year.1, 
@@ -35,7 +36,8 @@ impl DateRange {
          1, 
          1,  
          1, 
-         1).unwrap();
+         1
+      ).unwrap();
       
       format!("{} - {}", date_time_from.format("%b %Y"), date_time_to.format("%b %Y"))
    }

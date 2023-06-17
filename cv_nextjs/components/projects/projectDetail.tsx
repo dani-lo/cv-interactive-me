@@ -8,7 +8,7 @@ import { Resource } from "../../src/types"
 import { 
     StyledJobDetail, 
     StyledProjectStatusList 
-} from '../../styles/styled'
+} from '../../styles/main.styled'
 
 import { Project } from '../../src/models/classes/Project'
 import { ErrorBoundary } from '../../src/hoc/withError'

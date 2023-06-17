@@ -1,4 +1,4 @@
-import { generateUserTok } from "../userTok"
+import { generateUserTok } from "../helpers/userTok"
 
 export enum SettingKeys {
     ShowPersistFeedback = "show_persist_feedback",
@@ -12,6 +12,7 @@ enum SettingDependencyKey {
     ChangeValue = 'changevalue',
     Disable = 'disable',
 }
+
 export interface AppSetting<T extends (string | number | boolean)> {
     val: T | null,
     disabled: boolean,

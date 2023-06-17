@@ -8,6 +8,10 @@ use yew::{
 use yewdux::prelude::use_store;
 
 use crate::{
+    components::widget::{
+        base_list::BaseListComponent,
+        tech::TechComponent,
+    },
     models::ModelTypes, 
     traits::{ 
         can_annotate::Annotation, 
@@ -79,11 +83,6 @@ pub fn job_detail(ProjectDetailProps {
         let mut c_name = "StyledJobDetailContainer";
 
         if bookmarked { c_name = "bookmarked"; }
-        
-        // let select_project_for_actions = on_select_resource_for_actions(
-        //     ModelTypes::Project,
-        //     store.clone()
-        // );
 
         let c_project = project.clone();
 
@@ -91,13 +90,14 @@ pub fn job_detail(ProjectDetailProps {
             <div class={ c_name }>
                 <h2>
                     <span class="action-wrap">
-                        <i 
-                            class="action fa fa-plus" 
+                        <span  
+                            class="html-icon" 
                             onclick={ move |_| { 
-                                // select_project_for_actions.emit(c_project.uid);
                                 set_state_modal_item(dispatch.clone(), ModelTypes::Project, c_project.uid)
                             }} 
-                        />
+                        >
+                            {  	"\u{002B}" }
+                        </span>
                         <span>{ &project.name }</span>
                     </span>
                 </h2>
@@ -112,72 +112,24 @@ pub fn job_detail(ProjectDetailProps {
                         html!{ <></> }
                     }
                 }
-                // {
-                //     if project.company.is_some() {
-                //        html!{ 
-                //             <CompanyComponent
-                //                 set_modal_item  = { set_modal_item.clone() }
-                //                 company={ job.company.clone().unwrap() }
-                //                 store={ store.clone() }
-                //             />
-                //         }
-                //     } else {
-                //         html!{
-                //             <h3>{"Various agencies"}</h3>
-                //         }
-                //     }
-                // }
-                
-                // <h3> { "Job type:" }</h3>
-                // <JobTypeComponent
-                //     set_modal_item  = { set_modal_item.clone() }
-                //     job_jobtypes={ job.job_type.clone() }
-                //     actionable={ true }
-                // />
-                // <ul  class="StyledJobDescriptionList">
-                //     <JobsDescriptionListComponent 
-                //         description={ c_job.description } 
-                //     />
-                // </ul>
-                // <JobTechComponent
-                //     job_uid={ job.uid }
-                //     actionable={ true }
-                //     job_techs={ c_job.tech }
-                //     set_modal_item  = { set_modal_item.clone() }
-                // />
+                <BaseListComponent
+                    list_items={ project.description.clone() }
+                />
+                <p class="StyledGenericBlock">
+                    <a href={ project.repo.clone() } target="_blank">
+                        <strong>{ "Github Repo" }</strong>
+                    </a>
+                </p>
+                <TechComponent
+                    job_uid={ project.uid }
+                    actionable={ true }
+                    job_techs={ project.tech.clone() }
+                />
             </div>        
         }
     } else {
         html!{
-            <div></div>
+            <></>
         }
     }
-}
-
-// #[derive(Properties, PartialEq)]
-// pub struct JobDescriptionItemProps {
-//     description_item: String,
-// }
-
-
-// #[function_component(JobsDescriptionListItemComponent)]
-// pub fn job_detail(JobDescriptionItemProps { description_item }: &JobDescriptionItemProps) -> Html {
-
-//     html! {  <li>{ description_item }</li> }
-// }
-
-
-#[derive(Properties, PartialEq)]
-pub struct JobDescriptionListProps {
-    description: Vec<String>,
-}
-
-#[function_component(JobsDescriptionListComponent)]
-pub fn job_list(JobDescriptionListProps { description }: &JobDescriptionListProps) -> Html {
-
-    description.iter().map(|d: &String| {
-        html! {
-            <li>{ d }</li>
-        }
-    }).collect()
 }

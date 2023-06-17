@@ -8,8 +8,9 @@ pub fn hash_to_vec<U, T> (hash: HashMap<U, T>) -> Vec<T> where T : Clone {
 pub fn hash_model_vec_by_uid<T, I, F> (
         model_data: Vec<T>,
         transform: F) -> HashMap<usize, I>  
-        
-            where  T : StaticAsset, F: Fn(T) -> I  {
+    where  
+    T : StaticAsset, 
+    F: Fn(T) -> I  {
 
     let mut hash = HashMap::new();
 

@@ -133,8 +133,8 @@ pub fn pending_actions_component() -> Html {
     let ban_persist_tmp: UseStateHandle<bool> = use_state(|| false);
     let ban_persist_always: UseStateHandle<bool> = use_state(|| false);
 
-    let c_ban_persist_always = ban_persist_always.clone();
-    let c_ban_persist_tmp = ban_persist_tmp.clone();
+    // let c_ban_persist_always = ban_persist_always.clone();
+    // let c_ban_persist_tmp = ban_persist_tmp.clone();
 
     let flush_dispatcher = dispatch.clone();
     
@@ -187,7 +187,7 @@ pub fn pending_actions_component() -> Html {
                 <button
                     class="ok"
                     onclick={ move |_| apply_pending.emit(None) }
-                >{"Apply"}</button>
+                >{"Persist"}</button>
             </div>
             <p class="actionable" onclick={ move |_| on_click_show_hide_opts.emit(None) }>
                 {

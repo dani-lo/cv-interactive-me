@@ -8,9 +8,9 @@ import { AppState, AppStateAction } from "../../src/store/appState"
 import { pendingAppstateActions } from "../../src/helpers/pendingAppstateActions"
 import { CvJobsContext } from "../../pages/_app"
 import { persistAppstateActionsData } from "../../lib/api/actions-api"
-import { StyledPrompt } from "../../styles/styled";
+import { StyledPrompt } from "../../styles/main.styled";
 import { User } from "../../src/models/classes/User";
-import { AppSettingsParser, SettingKeys } from "../../src/helpers/settings/parser";
+import { AppSettingsParser, SettingKeys } from "../../src/settings/parser";
 
 export const PendingActionsComponent = () => {
     

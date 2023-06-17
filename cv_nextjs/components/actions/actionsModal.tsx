@@ -5,7 +5,7 @@ import * as ActionInputs from './actionInput'
 import * as narrowers from '../../src/helpers/typeNarrowers'
 import { Resource } from '../../src/types'
 
-import { StyledModalWrap } from '../../styles/styled'
+import { StyledModalWrap } from '../../styles/main.styled'
 
 type Props = { 
   item: Resource | null,

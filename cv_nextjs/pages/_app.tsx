@@ -14,9 +14,9 @@ import { reducer, initialState, AppStateAction, AppState } from '../src/store/ap
 import { CvContext } from '../src/types'
 
 import { getAppstateActionsData } from '../lib/api/actions-api'
-import { StyledLoaderRipple } from '../styles/styled'
+import { StyledLoaderRipple } from '../styles/main.styled'
 import { User } from '../src/models/classes/User'
-import { AppSetting, AppSettingsParser, SettingKeys } from '../src/helpers/settings/parser'
+import { AppSetting, AppSettingsParser, SettingKeys } from '../src/settings/parser'
 
 export const CvJobsContext = createContext<CvContext | null>(null)
 
