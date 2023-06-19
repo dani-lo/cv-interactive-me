@@ -36,11 +36,11 @@ body {
   /* padding: var(--gap-large) 0 var(--gap-large); */
   
    
-  /* font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+  font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
 
   font-weight: 300; 
   
@@ -73,7 +73,7 @@ h2 {
   text-transform: capitalize;
   padding: var(--gap-small) 0;
   color: cadetblue;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 h3 {
@@ -227,6 +227,8 @@ i.fa.action {
   color: var(--text-dark);
 }
 
+
+
 h2 i.fa.action {
   color: cadetblue;
 }
@@ -261,12 +263,21 @@ i.fa.action:hover {
 
 span.action-wrap {
   display: flex;
-  align-items: center;
+  align-items: self-start;
   cursor: pointer;
+}
+
+h2 span.action-wrap {
+  align-items: center;
 }
 
 span.action-wrap i {
   margin-right: var(--gap-medium);
+}
+
+
+span.action-wrap span {
+  font-weight: bold;
 }
 
 span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-icon {
@@ -361,16 +372,16 @@ h2 {
   /* font-family: 'Arvo', sans-serif; */
   
   /* font-size: 1.1rem; */
-  margin: 0;
+  /* margin: 0; */
   /* color: var(--text-main); */
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
 }
 
 h2.job-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: space-between; */
 }
 
 h3 {
@@ -444,12 +455,17 @@ button.danger {
   background: #aa2525;
 }
  
-textarea {
+textarea, input[type="text"] {
   border: 1px solid var(--border-col);
   line-height: 1.4rem;
   padding: var(--gap-small);
   font-size:0.9rem;
   width: 80%;
+}
+
+label.blocklabel {
+  display: block;
+  padding: 0;
 }
 
 span.resource-name {
@@ -499,3 +515,34 @@ i.bookmark {
   grid-template-columns: 400px 400px;
 }
 
+#notification-container {
+  transition: top 0.25s;
+  position: fixed;
+  z-index: 1111111111;
+  padding: 4px;
+  display: flex;
+  text-align: center;
+  top: -112px;
+  left: 28px;
+}
+
+#notification-container span {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  background: green;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+#notification-container.active {
+  top: 12px;
+}
+
+#notification-container.unactive {
+  top: -112px;
+}

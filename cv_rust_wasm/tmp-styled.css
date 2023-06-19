@@ -43,6 +43,11 @@
     cursor: pointer;    
 }
 
+.StyledJobContainer i.job-selector:hover {
+    color: var(--active-pink);
+}
+
+
 .StyledJobContainer.selected {
     background: var(--bg-white);
     /* border-style: solid; */
@@ -53,12 +58,9 @@
 }
 
 .StyledJobContainer.selected i.job-selector {
-    color: var(--text-dark);
+    color: cadetblue;
     cursor: default;
     pointer-events: none;
-}
-.StyledJobContainer i.job-selector::hover {
-    opacity: 0.7;
 }
 
 .StyledJobContainer p span {
@@ -207,7 +209,7 @@
 }
 
 .StyledProjectStatusList {
-    margin: var(--gap-large) 0;
+    margin: var(--gap-small) 0;
     padding-right: var(--gap-large);
 }
 

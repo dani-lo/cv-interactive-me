@@ -34,7 +34,7 @@ use crate::{
         jobs::JobsComponent,
         projects::ProjectsComponent,
     },
-    util::store_utils::state_pending_actions,
+    util::{store_utils::state_pending_actions, timeout::notify_user},
 };
 
 use routes::AppRoute;

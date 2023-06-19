@@ -27,7 +27,7 @@ use crate::{
     models::user_model::{
         UserModel, 
         get_user
-    },
+    }, util::timeout::notify_user,
 };
 
 use super::{
@@ -553,6 +553,8 @@ pub async fn persist_appstate_pending (
     hashed_response_resorces.insert(ActionTypes::ANNOTATION, vec_responses_collectable_annotations);
 
     info!("{:?}", hashed_response_resorces);
+
+    notify_user("I am all DONE");
 
     hashed_response_resorces
 }

@@ -16,6 +16,7 @@ use crate::{
     appdata::stores::{
         store_app::StoreApp
     },
+    util::timeout::notify_user,
 };
 
 #[derive(PartialEq, Properties)]
@@ -46,10 +47,9 @@ pub fn job_tech(TechProps {
         &job_techs 
     };
 
-    let c_show_tech_num = show_tech_num.clone();
-
     html!{  
         <div>
+        
             <ul class="StyledActionsList">
             {
                 show_techs.iter().map(|jt| {

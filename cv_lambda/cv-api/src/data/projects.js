@@ -10,7 +10,7 @@ const projects = [
         "repo": "https://github.com/dani-lo/foo",
         "status": ["_#Live_", "Continuously refactored to reuse the data for other projects"],
         "live_url": "",
-        "notes": "",
+        "notes": "Interactive CV reviewing app",
         "tech": [1,10,33]
     },
     {
@@ -23,7 +23,7 @@ const projects = [
         "repo": "https://github.com/dani-lo/terminator-winmanager-plugin",
         "status": ["_#Production_", "See README for installing"],
         "live_url": "",
-        "notes": "",
+        "notes": "Plugin for Terminator (cli)",
         "tech": [1,10,33]
     },
     {
@@ -33,7 +33,7 @@ const projects = [
         "repo": "https://github.com/dani-lo/foo",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
-        "notes": "",
+        "notes": "Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts",
         "tech": [11,20,33]
 
     },
@@ -44,7 +44,7 @@ const projects = [
         "repo": "https://github.com/dani-lo/foo",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
-        "notes": "",
+        "notes": "Outlier detection in datasets using classic outlier algorightms",
         "tech": [21,5,22]
 
     }

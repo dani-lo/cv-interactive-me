@@ -3,10 +3,10 @@ use wasm_bindgen::prelude::*;
 #[wasm_bindgen]
 extern "C" {
 
-    #[wasm_bindgen(js_namespace = WasmLinkJs)]
+    #[wasm_bindgen(js_namespace = wasm_bridge_app)]
     fn notify(s: &str);
 }
 
-pub fn do_that_thang() {
-    notify("ohh there! is my wasm thang!");
+pub fn notify_user(msg: &str) {
+    notify(msg);
 }

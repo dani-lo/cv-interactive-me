@@ -13,7 +13,6 @@ use crate::appdata::stores::{
     store_app::StoreApp,
 };
 
-use crate::models::ModelTypes;
 use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
@@ -368,7 +367,7 @@ pub fn annotation_text (ActionProps {
                         class="new-note"
                         placeholder="Enter annotation (max 256 characters)"
     
-                        oninput={move |e: InputEvent| {
+                        oninput={ move |e: InputEvent| {
                             let input: HtmlInputElement = e.target_unchecked_into();
                             let value : String= input.value();
 

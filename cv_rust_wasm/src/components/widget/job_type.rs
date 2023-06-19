@@ -126,13 +126,12 @@ pub fn job_type_inline(JobTypeTypeProps {
                             if *actionable {
                                 let disatcher = dispatch.clone();
                                 html!{
-                                    <span class="action-wrap">
-                                        <span  
-                                            class="html-icon" 
-                                            onclick={ move |_| set_state_modal_item(disatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)} 
-                                        >
-                                            {  	"\u{002B}" }
-                                        </span>
+                                    <span 
+                                        class="action-wrap"
+                                        onclick={ move |_| {
+                                            set_state_modal_item(disatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)
+                                        }}>
+                                        <span class="html-icon">{ "\u{002B}" }</span>
                                         <span><strong>{ &jt.name }</strong></span>
                                     </span>
                                 }
@@ -145,7 +144,7 @@ pub fn job_type_inline(JobTypeTypeProps {
                         </span>
                         {
                             if out_count < job_type_type.len() {
-                                html!{ <strong style="display:inline-block;margin: 0.5rem;">{ " + " }</strong> }
+                                html!{ <strong style="display:inline-block;margin: 0 0.5rem;">{ " + " }</strong> }
                             } else {
                                 html!{ <span></span> }
                             }
@@ -185,13 +184,16 @@ pub fn job_type_list(JobTypeTypeProps {
                                 let dispatcher = dispatch.clone();
 
                                 html!{
-                                    <span class="action-wrap">
+                                    <span 
+                                        class="action-wrap"
+                                        onclick={ move |_| set_state_modal_item(
+                                            dispatcher.clone(), 
+                                            ModelTypes::Jobtype, 
+                                            c_jobtype.uid
+                                        )}     
+                                    >
                                         <span  
-                                            class="html-icon" 
-                                            onclick={ move |_| set_state_modal_item(dispatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)} 
-                                        >
-                                            {  	"\u{002B}" }
-                                        </span>
+                                            class="html-icon">{ "\u{002B}" }</span>
                                         <span><strong>{ &jt.name }</strong></span>
                                     </span>
                                 }

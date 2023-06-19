@@ -58,6 +58,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
                     className={`${ selected ? 'job-selector selected' : 'job-selector' } fa fa-chevron-right`}
                     onClick={ handleSelect }
                 />
+                
             </div>
         </div>
     </StyledJobContainer>

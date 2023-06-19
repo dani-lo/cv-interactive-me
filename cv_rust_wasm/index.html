@@ -17,11 +17,96 @@
         <link data-trunk rel="css"   href="tmp-styled.css">
       </head>
     <body>
-      <!-- <div id="notification">
-        <div id="notification-bg"></div>
-      </div> -->
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
       <script>
+
+        function wasm_notification (msg) {
+          this.id = 'notification-container';
+          this.msg = msg;
+          this.active = false
+          this.unactive_class = 'unactive'
+          this.active_class = 'active'
+        }
+
+        wasm_notification.prototype.create_ui = function() {
+
+          this.destroy_ui();
+          
+          this.container = document.createElement('div');
+          this.container.id = this.id;
+
+
+          var txt = document.createElement('span');
+          txt.append(this.msg);
+
+          this.container.append(txt);
+
+          document.body.append(this.container)
+
+          return this
+        }
+
+        wasm_notification.prototype.show = function() {
+          
+          this.active = true;
+
+          this.container.setAttribute('class', this.active_class);
+
+          return this
+        }
+
+        wasm_notification.prototype.hide = function() {
+          
+          this.active = false;
+
+          this.container.setAttribute('class', this.unactive_class);
+
+          return this
+        }
+
+        wasm_notification.prototype.toggle = function() {
+          
+          this.active = !this.active;
+
+          if (this.active) {
+            this.hide();
+          } else {
+            this.show();
+          }
+
+          return this
+        }
+
+        wasm_notification.prototype.destroy_ui = function() {
+
+          console.log('this.container', this.container)
+          const tgt = document.getElementById(this.id);
+
+          if (tgt) {
+            tgt.remove();
+            console.log("DONE")
+          }
+          
+        }
+
+        window.wasm_bridge_app = {
+
+          notify: function (msg) {
+            console.log(msg)
+            var wasm_n = new wasm_notification(msg);
+
+            wasm_n.create_ui();
+
+            setTimeout(function () {
+              wasm_n.show();
+            }, 10);
+            
+
+            setTimeout(function () {
+              wasm_n.hide();
+            }, 4000);
+          }
+        }
 
         var listenerJobSelect = window.addEventListener("click", function (e) {
           
@@ -32,16 +117,6 @@
             window.history.pushState({}, '', "/jobs?uid=" + jobId);
           }
         })
-
-        window.WasmLinkJs = {
-          notify: function (msg) {
-            console.log(msg)
-          }
-        }
-        
-      </script>
-      <script>
-        
       </script>
     </body>
 </html>

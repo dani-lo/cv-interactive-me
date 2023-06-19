@@ -73,17 +73,17 @@ pub fn job(Props {
                     />
                 </div>
                 <div>
-                        // <i 
-                        //     class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                        //     onclick={ move |_| c_job_detail.emit(c_uid) }
-                        //     id={ format!("job-selector-{}", c_uid   ) }
-                        // />
-                        <span  
-                            class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
-                            onclick={ move |_| c_job_detail.emit(c_uid) }  
-                        >
-                            {  	"\u{203A}" }
-                        </span>
+                        <i 
+                            class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                            onclick={ move |_| c_job_detail.emit(c_uid) }
+                            id={ format!("job-selector-{}", c_uid   ) }
+                        />
+                        // <span  
+                        //     class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
+                        //     onclick={ move |_| c_job_detail.emit(c_uid) }  
+                        // >
+                        //     {  	"\u{203A}" }
+                        // </span>
                 </div>
             </div>
         </div>    

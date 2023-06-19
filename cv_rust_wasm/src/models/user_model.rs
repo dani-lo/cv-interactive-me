@@ -4,6 +4,7 @@ use log::info;
 use rand::{thread_rng, Rng};
 use rand::distributions::Alphanumeric;
 use serde::Deserialize;
+use wasm_bindgen::JsValue;
 
 
 use crate::api::actions_api_func::ActionItemResponse;
@@ -13,16 +14,16 @@ use crate::api::config::{
 };
 
 pub fn cv_tok_key () -> &'static str { 
-    "cv-app-tok"
+    "user_token"
 }
 
-pub fn cv_ban_feedback_key () -> &'static str { 
-    "ban-user-tracking"
-}
+// pub fn cv_ban_feedback_key () -> &'static str { 
+//     "ban-user-tracking"
+// }
 
-pub fn cv_ban_feedback_val () -> &'static str { 
-    "ban-user-tracking"
-}
+// pub fn cv_ban_feedback_val () -> &'static str { 
+//     "ban-user-tracking"
+// }
 
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub struct UserData <'a>{
@@ -56,11 +57,11 @@ impl UserModel {
         
         Self {
             _id: _id,
-            tok: if tok.is_some() { tok } else { Some(Self::init_tok(force_new_tok)) },
+            tok: if tok.is_some() { tok } else { Some(Self::new_tok(force_new_tok)) },
         }
     }
 
-    fn init_tok (force_new: bool) -> fstr<5> {
+    fn new_tok (force_new: bool) -> fstr<5> {
 
         
         let stored_tok : Option<String> = UserModel::retrieve_tok();
@@ -179,30 +180,39 @@ impl UserModel {
         }
     }
 
-    pub fn store_tok (rand_tok : &str) {
+    pub fn store_tok (new_tok : &String) -> Result<(), JsValue> {
 
         let storage_key = cv_tok_key();
         let storage: web_sys::Storage = web_sys::window().unwrap().local_storage().unwrap().unwrap();
 
-        let result = storage.set_item(storage_key, rand_tok);
+        let result = storage.set_item(storage_key, &new_tok);
+
+        result
+    }
+
+    pub fn save_tok (&mut self, new_tok : &String) {
+
+        let result = UserModel::store_tok(new_tok);
 
         match result {
-            Ok(_) => (),
+            Ok(_) => {
+                self.tok = Some(fstr::from(new_tok));
+            },
             Err(_) => info!("Error saving TOK to local storage")
         }
     }
 
-    pub fn store_ban_trackig_feeback () {
-        let storage_key = cv_ban_feedback_key();
-        let storage_val = cv_ban_feedback_val();
+    // pub fn store_ban_trackig_feeback () {
+    //     let storage_key = cv_ban_feedback_key();
+    //     let storage_val = cv_ban_feedback_val();
 
-        let storage: web_sys::Storage = web_sys::window().unwrap().local_storage().unwrap().unwrap();
+    //     let storage: web_sys::Storage = web_sys::window().unwrap().self,  ocal_storage().unwrap().unwrap();
 
-        let result = storage.set_item(storage_key, storage_val);
+    //     let result = storage.set_item(storage_key, storage_val);
 
-        match result {
-            Ok(_) => (),
-            Err(_) => info!("Error saving feedback setting to local storage")
-        }
-    }
+    //     match result {
+    //         Ok(_) => (),
+    //         Err(_) => info!("Error saving feedback setting to local storage")
+    //     }
+    // }
 }

@@ -59,7 +59,13 @@ pub fn project(ProjectProps {
                 }
                 </h2>
                 <div class="job-list-body">
-                    <div>
+                    <div>   
+
+                        <ul style="margin: var(--gap-large) 0 0;">
+                            <RichTextParagraphComponent
+                                text={ project.notes.clone() }
+                            />
+                        </ul>
                         <ul class="StyledProjectStatusList">
                         { 
                             project.status.iter().map(|ps| {
@@ -71,17 +77,17 @@ pub fn project(ProjectProps {
                         </ul>
                     </div>       
                     <div>
-                        // <i 
-                        //     class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                        //     onclick={ move |_| project_detail.emit(c_uid) }
-                        //     id={ format!("job-selector-{}", c_uid   ) }
-                        // />
-                        <span  
-                            class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
-                            onclick={ move |_| project_detail.emit(c_uid) }  
-                        >
-                            {  	"\u{203A}" }
-                        </span>
+                        <i 
+                            class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                            onclick={ move |_| project_detail.emit(c_uid) }
+                            id={ format!("job-selector-{}", c_uid   ) }
+                        />
+                        // <span  
+                        //     class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
+                        //     onclick={ move |_| project_detail.emit(c_uid) }  
+                        // >
+                        //     {  	"\u{203A}" }
+                        // </span>
                     </div>
                 </div>
             </div>        

@@ -16,13 +16,15 @@ use crate::{
         filterable, 
         annotateable 
     }, 
-    util::resource_name::resource_name,
-};
-
-use crate::components::actions::user_actions::{
-    BookmarkComponent,
-    FilterComponent,
-    AnnotationComponent,
+    util::{
+        timeout::notify_user,
+        resource_name::resource_name,
+    },
+    components::actions::user_actions::{
+        BookmarkComponent,
+        FilterComponent,
+        AnnotationComponent,
+    },
 };
 
 #[function_component]
@@ -67,11 +69,13 @@ pub fn ActionsModalComponent () -> Html {
                         class="btn-close"
                         //onclick={ move |_| c_set_modal_item.emit(Actionable { resource_id: Some(0), resource_type: Some(ModelTypes::Job) })}
                         onclick={
-                            move |_| dispatcher.reduce_mut(|s| s.unset_modal_item())
+                            move |_| {
+                                dispatcher.reduce_mut(|s| s.unset_modal_item())
+                            }
                         }
                         >
                             <i class="fa fa-times" />
-                            //{"CLOSE"}
+                            {"CLOSE"}
                     </span>
                     <BookmarkComponent
                         item={ bookmarkable_modal_item.clone() }

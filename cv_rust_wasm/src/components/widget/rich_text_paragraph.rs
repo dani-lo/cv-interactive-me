@@ -23,7 +23,7 @@ pub fn rich_text_paragraph (RichTextParagraphProps { text } : &RichTextParagraph
     }
 
     html!{
-        <li>
+        <li style="display:inline-block;">
         {
             parts_vec.iter().map(|str_part| {
                 if str_part.contains("#") {
