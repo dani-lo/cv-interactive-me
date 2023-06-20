@@ -144,8 +144,6 @@ const updateAnnotationController = async ({
         return
     }
 
-    console.log('#################### BEGIN updateAnnotationController #############################')
-
     try {
 
         const anotationId = params.annotationId
@@ -156,10 +154,6 @@ const updateAnnotationController = async ({
 
         const reqBody  = await request.body({type: isTxt ? 'text' : 'form'}).value
 
-        console.log('++++++++++++++++++++++++++ isTxt', isTxt)
-        console.log('reqBody')
-        console.log(reqBody)
-
         const objBody = isTxt ? JSON.parse(reqBody) : urlSearchParamsToBody<FormFieldsObject>(reqBody)
 
         const { resource_id, resource_type, userId, text } = objBody
@@ -169,9 +163,6 @@ const updateAnnotationController = async ({
             { $set: { text, updatedAt: new Date() } },
             { ignoreUndefined: true }
         )
-        
-        console.log('+++++++++++++++++++++++ IN updateAnnotationController :: updatedInfo')
-        console.log(updatedInfo)
 
         if (!updatedInfo.matchedCount) {
             response.status = 404
@@ -181,12 +172,8 @@ const updateAnnotationController = async ({
             }
             return
         }
-        console.log('from PARAMS', params.annotationId)
-        console.log('from UPSERT', updatedInfo.upsertedId)
-        console.log('WE HAVE an udated anno? --- upserted')
 
         const updatedAnnotation = await annotationsCollection.findOne({ _id: new Bson.ObjectId(anotationId) })
-        console.log(updatedAnnotation)
 
         response.status = 200
         response.body = {
