@@ -2,12 +2,10 @@ import React from 'react'
 
 import { AnnotationsComponent } from '../widget/annotations'
 
-import { 
-    StyledJobContainer,
-    StyledProjectStatusList
-} from '../../styles/main.styled'
+import { StyledJobContainer } from '../../styles/main.styled'
 
 import { Project } from '../../src/models/classes/Project'
+import { RichTextParagraphComponent } from '../widget/richTextParagraph'
 
 type Props = {
     project: Project;
@@ -44,14 +42,18 @@ export const ProjectComponentBase = ({
         { annotationText ? <AnnotationsComponent note={ annotationText } /> : null }
         <div className="job-list-body">
             <div>
-                <p>
-                    <a href={ project.repo }>Github Repo</a>
-                </p>
-                <StyledProjectStatusList>
+                <ul>
                 { 
-                    project.status.map((ps, i) => <li key={ i }>{ ps }</li>)
+                    project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
                 }
-                </StyledProjectStatusList>
+                </ul>
+                <p>
+                    <a 
+                        href={ project.repo } 
+                        target="_blank">
+                            Github Repo
+                    </a>
+                </p>
             </div>       
             <div>
                 <i 

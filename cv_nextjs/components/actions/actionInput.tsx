@@ -7,8 +7,6 @@ import { IBookmark } from '../../src/models/mixins/withBookmark'
 import { IFilter } from '../../src/models/mixins/withFilter'
 import { Resource } from '../../src/types'
 
-import { StyledActionInput } from '../../styles/main.styled'
-
 export const FilterActionInput = (props: { 
         item: Resource, 
         active: boolean }) => {
@@ -23,12 +21,12 @@ export const FilterActionInput = (props: {
 
     const active = props.active && !filterForResource(item, ctx.appstate)
 
-    return <StyledActionInput active={ active }>
+    return <div>
         <p>
             <strong>Filter by</strong> this item: this will filter out all jobs that do not include this item
         </p>
         <button onClick={ () => (item as IFilter).filter(ctx) }>add</button>
-    </StyledActionInput>
+    </div>
 }
 
 export const BookmarkActionInput = (props: { 
@@ -46,14 +44,14 @@ export const BookmarkActionInput = (props: {
 
     const active = props.active && !bookmarkForResource(item, ctx.appstate)
 
-    return <StyledActionInput active={ active }>
+    return <div>
         <p>
             
             <strong>Bookmark</strong> this item
             
         </p>
         <button onClick={ () => (item as IBookmark).bookmark(ctx) }>add</button>
-    </StyledActionInput>
+    </div>
 }
 
 export const AnnotateActionInput = (props: { 
@@ -74,7 +72,7 @@ export const AnnotateActionInput = (props: {
     const uiActive = props.active && !annotationForResource(item, ctx.appstate)
     const btnAddNoteActive = uiActive && note.length > 0
     
-    return <StyledActionInput active={ uiActive }>
+    return <div>
         <p>
             <strong>Annotate</strong> this item {`${ !uiActive ? ' (start typing to activate)' : ''  }`}
         </p>
@@ -90,5 +88,5 @@ export const AnnotateActionInput = (props: {
             add
             </button>
         </p>
-    </StyledActionInput>
+    </div>
 }

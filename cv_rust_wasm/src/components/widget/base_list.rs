@@ -19,15 +19,17 @@ pub struct BaselistProps {
 pub fn base_list(BaselistProps {  list_items} : &BaselistProps) -> Html {
 
     html!{
-        <ul class="StyledBaseList">
+        <ul>
         {
             html!{ 
                 list_items.iter().map(|item| {
 
                     html!{
-                        <RichTextParagraphComponent
-                            text={ item.clone() }
-                        />
+                        <li>
+                            <RichTextParagraphComponent
+                                text={ item.clone() }
+                            />
+                        </li>
                     }
                 }).collect::<Html>()
             }

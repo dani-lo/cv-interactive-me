@@ -8,7 +8,6 @@ import { TechListComponent } from '../widget/tech'
 import { Resource } from "../../src/types"
 
 import { 
-    StyledActionButtonFoo,
     StyledJobDetail, 
 } from '../../styles/main.styled'
 import { CompanyComponent } from '../widget/company'
@@ -30,13 +29,9 @@ export const JobDetailsComponentBase = ({
         companyBookmarked } : Props) => {
 
     return <StyledJobDetail>
-        <div>
         <h2> 
-            <span className="action-wrap">
-                <i 
-                    className="action fa fa-plus" 
-                    onClick={ () => showActions(job) } 
-                />
+            <span className="action-wrap" onClick={ () => showActions(job) } >
+                <i className="action fa fa-plus" />
                 <span>{ job.period.formatted }</span>
             </span>
             {
@@ -56,14 +51,14 @@ export const JobDetailsComponentBase = ({
                 />
              : null
         }    
-        <ul  className="margin-top-large margin-bottom-large">
+        <ul>
             {
                 job.description.map((task: string) => {
                     return <li key={ task.replace(/\s/g, '') }>{ task }</li>
                 })
             }
         </ul>
-        <div className="margin-top-large margin-bottom-large">
+        <div>
             <p> Job type:
                 {
                     job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
@@ -83,7 +78,6 @@ export const JobDetailsComponentBase = ({
             techs={ job.tech}
             showActions={ showActions }
         />
-    </div>
     </StyledJobDetail>
 }
 

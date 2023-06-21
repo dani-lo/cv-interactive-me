@@ -57,7 +57,6 @@ const ProjectsPage = (props: AppDataProps) => {
     const { filters} = ctx.appstate
     
     const handleOpenModal = (item: Resource | null) => {     
-        // console.log('handleOpen +++++++++++++++ ', actionItem)  
         if (item !== null) { 
             setActionItem(item) 
         }
@@ -67,9 +66,7 @@ const ProjectsPage = (props: AppDataProps) => {
         setActionItem(null);
     }
     
-    return <div className="page">  
-        
-            <ErrorBoundary>
+    return <div className="page page-grid">  
                 <div className="jobs-container">
                     {            
                         mapToComponents<Project>(projectModels, (project)  => {
@@ -98,14 +95,13 @@ const ProjectsPage = (props: AppDataProps) => {
                     }
                 </div> 
                 {
-                    selectedProject ? <ProjectDetailComponent 
+                    selectedProject ? <div><ProjectDetailComponent 
                         project={ selectedProject }
                         showActions = { handleOpenModal }
                         bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
                         annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
-                    /> : null
+                    /></div> : null
                 } 
-                </ErrorBoundary>
             <ActionsModal 
                 open={ !!actionItem }
                 item={ actionItem }

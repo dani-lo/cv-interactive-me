@@ -16,11 +16,10 @@ export const CompanyComponent = (props : {
     }
 
     return <StyledCompanyContainer>
-        <h3 className="margin-top-medium margin-bottom-medium">
+        <h3 onClick={ () => showActions(company) } >
             <span className="action-wrap">
                 <i 
                     className="action fa fa-plus" 
-                    onClick={ () => showActions(company) } 
                 />
                 <span>{ company.name }</span>
             </span>

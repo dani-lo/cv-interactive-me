@@ -72,58 +72,53 @@ const JobsPage = (props: AppDataProps) => {
 
     // console.log('JOBS:: props.jobs.length', props.jobs.length)
     
-    return <div className="page">  
-        
-        <ErrorBoundary>
-            {/* <Suspense fallback={ <Loading /> }> */}
-                <div className="jobs-container">
-                    {            
-                        mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
+    return <div className="page page-grid">  
+        <div className="jobs-container">
+            {            
+                mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
 
-                            if (filters && !job.display(filters) ) {
-                                return null
-                            }
-                            
-                            const annotation = annotationForResource(job, ctx.appstate)
-                            const annotationText = annotation ? (annotation.text || '') : null
-                            const selected = selectedJob?.uid == job.uid
-                            
-                            return  <JobComponent
-                                id={ `job-${ job.uid }` }
-                                key={ job.uid } 
-                                job={ job } 
-                                showActions = { handleOpen }
-                                bookmarked={ job[IBookmarkKeys.STATUS](ctx) }
-                                annotationText={ annotationText }
-                                selected={ selected }
-                                handleSelect= { () => {
-                                    setSelectedJob(job)
-                                    deepLinkSelected(job)
-                                }}
-                            />
-                        })
+                    if (filters && !job.display(filters) ) {
+                        return null
                     }
-                </div> 
-            {/* </Suspense>  */}
-            {
-                selectedJob ? <JobDetailComponent 
-                    job={ selectedJob }
-                    showActions = { handleOpen }
-                    bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
-                    companyBookmarked= { selectedJob.company !== null
-                        ? selectedJob.company[IBookmarkKeys.STATUS](ctx) 
-                        : false 
-                    }
-                    annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
-                /> : null
-            } 
-            </ErrorBoundary>
-            <ActionsModal 
-                open={ !!actionItem }
-                item={ actionItem }
-                handleClose={ handleClose }
-            />
-        </div>
+                    
+                    const annotation = annotationForResource(job, ctx.appstate)
+                    const annotationText = annotation ? (annotation.text || '') : null
+                    const selected = selectedJob?.uid == job.uid
+                    
+                    return  <JobComponent
+                        id={ `job-${ job.uid }` }
+                        key={ job.uid } 
+                        job={ job } 
+                        showActions = { handleOpen }
+                        bookmarked={ job[IBookmarkKeys.STATUS](ctx) }
+                        annotationText={ annotationText }
+                        selected={ selected }
+                        handleSelect= { () => {
+                            setSelectedJob(job)
+                            deepLinkSelected(job)
+                        }}
+                    />
+                })
+            }
+        </div> 
+        {
+            selectedJob ? <div><JobDetailComponent 
+                job={ selectedJob }
+                showActions = { handleOpen }
+                bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
+                companyBookmarked= { selectedJob.company !== null
+                    ? selectedJob.company[IBookmarkKeys.STATUS](ctx) 
+                    : false 
+                }
+                annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
+            /></div> : null
+        } 
+        <ActionsModal 
+            open={ !!actionItem }
+            item={ actionItem }
+            handleClose={ handleClose }
+        />
+    </div>
 }
 
 export default JobsPage

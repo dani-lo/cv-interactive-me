@@ -5,7 +5,7 @@ import * as atoms from '../src/store-jotai/atomicUiStore'
 
 import Layout from '../components/layout'
 
-import '../styles/globals.css'
+import '../styles/global.css'
 import type { AppProps } from 'next/app'
 
 import { reducer, initialState, AppStateAction, AppState } from '../src/store/appState'

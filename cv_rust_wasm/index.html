@@ -12,11 +12,44 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
         
-        <link data-trunk rel="css"   href="tailwind-output.css" />
+        <!-- <link data-trunk rel="css"   href="tailwind-output.css" /> -->
         <link data-trunk rel="css"   href="global.css">
-        <link data-trunk rel="css"   href="tmp-styled.css">
+        <link data-trunk rel="css"   href="styled.css">
       </head>
     <body>
+      <style>
+        #notification-container {
+          transition: top 0.25s;
+          position: fixed;
+          z-index: 11111;
+          padding: 4px;
+          display: flex;
+          text-align: center;
+          top: -112px;
+          left: 28px;
+        }
+        
+        #notification-container span {
+          display: block;
+          text-align: center;
+          width: 100%;
+          font-size: 0.9rem;
+          text-transform: lowercase;
+          background: green;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          font-weight: bold;
+          color: white;
+        }
+        
+        #notification-container.active {
+          top: 12px;
+        }
+        
+        #notification-container.unactive {
+          top: -112px;
+        }
+      </style>
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
       <script>
 

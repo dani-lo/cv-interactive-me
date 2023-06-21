@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledJobAnnotations} from '../../styles/main.styled'
+import { StyledAnnotation } from '../../styles/main.styled'
 
 type AnnotationProps = {
     note: string;
@@ -7,7 +7,7 @@ type AnnotationProps = {
 
 const AnnotationsComponentBase  = ({ note }: AnnotationProps) => {
     
-    return <StyledJobAnnotations>{ note }</StyledJobAnnotations>
+    return <StyledAnnotation>{ note }</StyledAnnotation>
 }
 
 export const AnnotationsComponent = React.memo<AnnotationProps>(

@@ -20,29 +20,6 @@ type TechListProps = {
     showActions: (item: Resource) => void,
 }
 
-const TechComponent = React.memo<TechProps>(
-
-    (props : TechProps) => {
-
-        const { showActions, filtered, tech } = props
-
-        return <li className={ `${ filtered? 'filtered' : '' }` }> 
-            <span className="action-wrap">
-                <i 
-                    className="action fa fa-plus" 
-                    aria-hidden="true"
-                    onClick={ () => showActions(tech) } 
-                />  
-                  
-                <span>{ tech.name }</span>
-            </span>
-        </li>
-    },
-    (p, c) => p.tech.uid == c.tech.uid && p.filtered == c.filtered
-)
-
-TechComponent.displayName = 'TechComponent'
-
 export const TechListComponent = (props: TechListProps) => {
 
     const [fulltech, setFulltech] = useState(false)
@@ -55,7 +32,7 @@ export const TechListComponent = (props: TechListProps) => {
     const limit = fulltech ? props.techs.length :  techShowLimit
     const filters = ctx.appstate.filters
 
-    return <StyledActionsList className="margin-top-large margin-bottom-large">
+    return <StyledActionsList>
         {   
             props.techs.slice(0, limit).map(tech => {
 
@@ -78,3 +55,27 @@ export const TechListComponent = (props: TechListProps) => {
         }
     </StyledActionsList>
 }
+
+const TechComponent = React.memo<TechProps>(
+
+    (props : TechProps) => {
+
+        const { showActions, filtered, tech } = props
+
+        return <li 
+                className={ `${ filtered? 'filtered' : '' }` } 
+                onClick={ () => showActions(tech) } > 
+            <span className="action-wrap">
+                <i 
+                    className="action fa fa-plus" 
+                    aria-hidden="true"
+                />  
+                  
+                <span>{ tech.name }</span>
+            </span>
+        </li>
+    },
+    (p, c) => p.tech.uid == c.tech.uid && p.filtered == c.filtered
+)
+
+TechComponent.displayName = 'TechComponent'

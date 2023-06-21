@@ -7,11 +7,10 @@ import { Resource } from "../../src/types"
 
 import { 
     StyledJobDetail, 
-    StyledProjectStatusList 
 } from '../../styles/main.styled'
 
 import { Project } from '../../src/models/classes/Project'
-import { ErrorBoundary } from '../../src/hoc/withError'
+import { RichTextParagraphComponent } from '../widget/richTextParagraph'
 
 type Props = {
     project: Project;
@@ -28,14 +27,9 @@ export const ProjectDetailsComponentBase = ({
 } : Props) => {
             
     return <StyledJobDetail>
-        <ErrorBoundary>
-        <div>
         <h2> 
-            <span className="action-wrap">
-                <i 
-                    className="action fa fa-plus" 
-                    onClick={ () => showActions( project ) } 
-                />
+            <span className="action-wrap" onClick={ () => showActions( project ) }>
+                <i className="action fa fa-plus" />
                 <span>{ project.name }</span>
             </span>
             {
@@ -43,25 +37,28 @@ export const ProjectDetailsComponentBase = ({
             }
         </h2>
         { annotationText ? <AnnotationsComponent note={ annotationText }/> : null }
-            <ul  className="margin-top-large margin-bottom-large">
+            <ul>
             {
                 project.description.map((task: string) => {
-                    return <li key={ task.replace(/\s/g, '') }>{ task }</li>
+                    return <li>
+                        <RichTextParagraphComponent 
+                            text={ task } 
+                            key={ task.replace(/\s/g, '') }
+                        />
+                    </li>
                 })
             }
             </ul>
-        <p><a href={ project.repo }>Github Repo</a></p>
-                <StyledProjectStatusList>
-                { 
-                    project.status.map((ps, i) => <li key={ i }>{ ps }</li>)
-                }
-                </StyledProjectStatusList>
+        <ul>
+        { 
+            project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
+        }
+        </ul>
+        <p><a href={ project.repo } target="_blank">Github Repo</a></p>
         <TechListComponent
             techs={ project.tech}
             showActions={ showActions }
         />
-    </div>
-    </ErrorBoundary>
     </StyledJobDetail>
 }
 

@@ -72,7 +72,7 @@ pub fn job_detail(JobDetailProps {
                 n.resource_id == job.uid && n.resource_type == ModelTypes::Job
             });
 
-        let mut c_name = "StyledJobDetailContainer";
+        let mut c_name = "StyledJobDetail";
 
         if bookmarked { c_name = "bookmarked"; }
 
@@ -125,7 +125,7 @@ pub fn job_detail(JobDetailProps {
                     actionable={ true }
                     detail={ true }
                 />
-                <ul  class="StyledJobDescriptionList">
+                <ul>
                     <JobsDescriptionListComponent 
                         description={ c_job.description } 
                         

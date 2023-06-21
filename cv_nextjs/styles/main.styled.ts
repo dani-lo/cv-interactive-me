@@ -1,32 +1,28 @@
 import styled, { css }  from "styled-components"
 import { Modal } from '@mui/material'
 
-export const StyledJobDetail = styled.div`
-
-    position: fixed;
-    top: 0;
-    left: 770px;
-    width: 450px;
-    height: 100%;
-    padding: var(--gap-large)  var(--gap-large)  var(--gap-large) 0;
-    overflow-y: scroll;
-
-    h2 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-`
-
 export const StyledJobContainer = styled.div<{ selected: boolean }>`    
 
     margin-top: var(--gap-large);
-    border: 1px dotted var(--border-col);
     padding:  var(--gap-medium);
-    background: var(--white);
+    width: 380px;
+    border: 1px solid var(--white);
+
+    ${ props => props.selected ? 
+        `
+        background: var(--bg-white);
+        padding:  var(--gap-medium);
+        border: 1px solid var(--border-col);
+        cursor: default;
+        pointer-events: none; 
+        `
+        : ''
+    }
     
-    ${ props => props.selected ? 'background: var(--active-action);border: 1px solid var(--bg-grey);' : ''}
-    
+    &:first-child {   
+        margin-top: 0;
+    }
+
     .job-list-body {
         display: flex;
         align-items: center;
@@ -37,23 +33,29 @@ export const StyledJobContainer = styled.div<{ selected: boolean }>`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px dotted var(--border-col);
-        padding: var(--gap-medium) 0;
+        border-bottom: 1px solid var(--border-col);
     }
 
     i.job-selector {
         font-size: 2rem;
+        color: var(--text-inactive);
+        cursor: pointer;  
+
+        &:hover {
+            color: var(--active-pink);
+        }
 
         ${ props => props.selected ?
-             'color: var(--text-dark);cursor: default;pointer-events: none' : 
-             'color: var(--text-inactive);cursor: pointer;'
+            `
+            color: var(--text-clear);
+            cursor: default;
+            pointer-events: none;
+             ` : 
+            `
+            color: var(--text-inactive);
+            cursor: pointer;
+            `
         }
-        
-
-        &:hover{
-            opacity: 0.7;
-        }
-        
     }
     
     p {
@@ -63,11 +65,27 @@ export const StyledJobContainer = styled.div<{ selected: boolean }>`
     }
     
     span.job-period {
+        font-size: 0.8rem;
         font-weight: normal;
         font-family: 'Manrope', sans-serif;
     }
 `
-export const StyledSidebarAction = styled.div``
+
+export const StyledJobDetail = styled.div`
+    
+    position: fixed;
+    width: 420px;
+    overflow-y: scroll;
+    height: 100%;
+    top: 0;
+    padding: var(--gap-large);
+
+    h2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+`
 
 export const StyledSidebar = styled.div`
 
@@ -75,30 +93,29 @@ export const StyledSidebar = styled.div`
     position: fixed;
     left: 0;
     top: 0;
-    background: var(--white);
+    background: var(--black);
     border-right: 1px dotted var(--border-col);
     height: 100%;
     padding: var(--gap-large);
     z-index: var(--z-2);
+
+    > .html-icon {
+        position: absolute;
+        left: 0.5rem;
+        top: 0.5rem;
+    }
+
+    li, h3, p, i, span {
+        color: var(--white);
+    }
+
+    h3 {
+        border-bottom: 1px dotted var(--border-c--ol);
+        padding-bottom: var(--gap-small);
+    }
 `
 
-export const StyledActionInput = styled.div<{ active: boolean}>`
-
-    button {
-        cursor:  ${props => props.active ? 'pointer' : 'default'};
-        pointer-events: ${props => props.active ? 'auto' : 'none'};
-    }
-    opacity: ${props => props.active ? 1 : 0.4};
-
-    textarea {
-        padding:  var(--gap-large);;
-        display: block;
-        width: 100%;
-        height: 5rem;
-    }
-`
-
-export const StyledJobAnnotations = styled.ul`
+export const StyledAnnotation = styled.p`
 
     padding: var(--gap-large);
     margin: var(--gap-large) var(--gap-medium) var(--gap-medium)auto;
@@ -107,37 +124,38 @@ export const StyledJobAnnotations = styled.ul`
 
 export const StyledCompanyContainer = styled.div`
 
-    padding: var(--gap-medium) var(--gap-large);
-    border: 1px dotted var(--border-col);
-    background: var(--white);
+    border: 1px solid var(--border-col);
+    margin: var(--gap-large) 0;
+    padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
+    background: var(--bg-white);
+
+    > h3 {
+        padding: var(--gap-medium) 0 var(--gap-small);
+        margin: var(--gap-large) 0 var(--gap-medium);
+    }
 `
 
 export const StyledActionsList = styled.ul`
 
+    margin: var(--gap-large) 0;
+
     li {
         list-style: none;
-        list-position: inside;
-        padding: var(--gap-micro) 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px dotted var(--border-col);
+        padding: 0;
 
         &.list-footer-meta-action {
+
             text-decoration: underline;
             cursor: pointer;
 
             &:hover {
-                opacity: 0.7;
+                color: var(--active-pink);
             }
         }
     }
-`
-
-export const StyledProjectStatusList = styled.ul`
-
-    margin: var(--gap-large) var(--gap-large) var(--gap-large) 0;
-}
 `
 
 export const StyledLoaderRipple = styled.div`
@@ -240,7 +258,7 @@ export const StyledPrompt = styled.div`
     right: var(--gap-large);
     padding:  var(--gap-medium);
     background: var(--active-action);
-    background: var(--white);
+    background: var(--bg-white);
     border: 2px solid var(--border-col);
     text-align: center;
     top: -320px;
@@ -262,7 +280,7 @@ export const StyledPrompt = styled.div`
   }
 
   .prompt button {
-    margin: 0  var(--gap-small);
+    margin: 0  var(--gap-small) 0 0;
   }
   
   .prompt p {
@@ -271,41 +289,88 @@ export const StyledPrompt = styled.div`
   }
 `
 
-export const StyledInputContainer = styled.div<{ disabled ?: boolean }>`
-    
-    ${ props => props.disabled ? 'opacity: 0.7;pointer-events: none;' : ''}
-`
-
 export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     
-    ${ props => props.disabled ? 'left: -320px;' : 'left: 320px;'}
+    ${ props => props.disabled ? 
+        'left: -320px;background:red;' : 
+        'left: 320px;background:black;'
+    }
 
     position: fixed;
     top: 0;
     width: 290px;
     height: 100%;
-
     z-index: var(--z-2);
-
+    left: -320px;
     transition: left 0.25s;
     padding: var(--gap-large);
+    padding-top: 2rem;
     background: var(--white);
     border-right: 1px dotted var(--border-col);
 
     > div {
         padding: var(--gap-medium) var(--gap-medium) var(--gap-large);
         border-bottom: 1px dotted var(--border-col);
-        margin-top: var(--gap-large);
+        margin-bottom: var(--gap-medium);
+    }
+
+    > .html-icon {
+        transform: rotate(180deg);
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+        top: 11px;
     }
 `
 
 export const StyledModalWrap = styled(Modal)`
-    border:none;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: var(--z-3)!important;
+    width: 100%;
+    position: fixed;
+    z-index: var(--z-4);
+    background: transparent;
+    top: 0;
+    left: 0;
+
+    > div {
+        border:1px dotted var(--border-col);
+        background: var(--white);
+        width: 500px;
+        margin: 5em auto;
+        height: fit-content;
+        border-radius: 5px;
+        padding: var(--gap-large) 2em 2em;
+        position: relative;
+    } 
+
+    .span.btn-close {
+        position: absolute;
+        right: 1em;
+        top: 0.5em;
+        cursor: pointer;
+    }
+    
+    .span.btn-close:hover i {
+        color: var(--active-action);
+    }
+    
+    .span.btn-close i {
+        font-size: 1em;
+    }
+    
+    .h2 {
+        text-transform: capitalize;
+    }
+    
+    ..action {
+        padding: var(--gap-medium) 0;
+        border-bottom: 1px dotted var(--border-col);
+    }
+    
+    ..action-unactive {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 
     > div.MuiBox-root {
         background: var(--white);
@@ -315,6 +380,8 @@ export const StyledModalWrap = styled(Modal)`
         border-radius: 5px;
         padding: 2em;
 
+        border: none!important;
+        
         &:focus-visible {
             border: none;
         }

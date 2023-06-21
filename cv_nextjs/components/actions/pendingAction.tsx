@@ -101,30 +101,6 @@ export const PendingActionsComponent = () => {
                 <p>
                     Your randomly assigned identifier is <strong>{ user.name }</strong>
                 </p>
-                {/* <div className="pending-actions-user-opts">
-                    <p><strong>Do not show this again</strong></p>
-                    <StyledInputContainer className="pending-actions-user-opt">
-                        <input type="checkbox" name="banPersistAlways" onChange={ (e) => setBanPersistAlways(e.target.checked) }/>
-                        <label>Ever</label>
-                    </StyledInputContainer>
-                    <StyledInputContainer disabled={ !!banPersistAlways } className="pending-actions-user-opt">
-                        <input type="checkbox" name="banPersistTemp" onChange={ (e) => setBanPersistTemp(e.target.checked) } />
-                        <label>For the duration of this session</label>
-                    </StyledInputContainer>
-                    <StyledInputContainer disabled={ !banPersistAlways && !banPersistTemp }>
-                        <button onClick={ () => {
-                            if (banPersistAlways) {
-
-                                user.banTracking()
-                                uiOperationSuccess(void 0)
-                            } else if (banPersistTemp) {
-
-                                setBanUserTrackingSession(true)
-                                uiOperationSuccess(void 0)
-                            }
-                        } }>Ok</button>
-                    </StyledInputContainer>
-                </div> */}
             </div> : null
         }
         

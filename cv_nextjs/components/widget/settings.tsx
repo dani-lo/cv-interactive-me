@@ -16,7 +16,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
     
     const [_uiOperationSuccess, setUiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
     const [_uisettings, setUisettings] = useAtom(atoms.uiSettings)
-
+console.log('disabled', disabled)
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
             className="html-icon" 

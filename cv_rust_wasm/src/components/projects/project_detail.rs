@@ -80,7 +80,7 @@ pub fn job_detail(ProjectDetailProps {
                 n.resource_id == project.uid && n.resource_type == ModelTypes::Project
             });
 
-        let mut c_name = "StyledJobDetailContainer";
+        let mut c_name = "StyledJobDetail";
 
         if bookmarked { c_name = "bookmarked"; }
 
@@ -115,7 +115,7 @@ pub fn job_detail(ProjectDetailProps {
                 <BaseListComponent
                     list_items={ project.description.clone() }
                 />
-                <p class="StyledGenericBlock">
+                <p>
                     <a href={ project.repo.clone() } target="_blank">
                         <strong>{ "Github Repo" }</strong>
                     </a>
