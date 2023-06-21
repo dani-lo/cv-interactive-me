@@ -23,7 +23,7 @@ pub fn rich_text_paragraph (RichTextParagraphProps { text } : &RichTextParagraph
     }
 
     html!{
-        <li style="display:inline-block;">
+        <span>
         {
             parts_vec.iter().map(|str_part| {
                 if str_part.contains("#") {
@@ -33,6 +33,6 @@ pub fn rich_text_paragraph (RichTextParagraphProps { text } : &RichTextParagraph
                 }
             }).collect::<Html>()
         }
-        </li>
+        </span>
     }
 }

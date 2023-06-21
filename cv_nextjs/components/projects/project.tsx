@@ -42,6 +42,9 @@ export const ProjectComponentBase = ({
         { annotationText ? <AnnotationsComponent note={ annotationText } /> : null }
         <div className="job-list-body">
             <div>
+                <h3>
+                    <RichTextParagraphComponent text={ project.notes } />
+                </h3>
                 <ul>
                 { 
                     project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)

@@ -114,4 +114,5 @@ export interface IProject {
     live_url: string;
     tech: number[];
     repo: string;
+    notes: string;
 }

@@ -33,7 +33,7 @@
         "repo": "https://github.com/dani-lo/shapes-trading",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
-        "notes": "Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts",
+        "notes": "Shape based _#pattern recognition_ and _#reporting_",
         "tech": [11,20,33]
 
     },
@@ -44,7 +44,7 @@
         "repo": "https://github.com/dani-lo/baoutliers",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
-        "notes": "Outlier detection in datasets using classic outlier algorightms",
+        "notes": "Outlier detection app",
         "tech": [21,5,22]
 
     },

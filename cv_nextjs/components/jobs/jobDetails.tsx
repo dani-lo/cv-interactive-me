@@ -1,17 +1,17 @@
-import React, { useContext } from 'react' 
+import React from 'react' 
 
 import { Job } from "../../src/models/classes/Job"
 
 import { AnnotationsComponent } from '../widget/annotations'
 import { TechListComponent } from '../widget/tech'
+import { CompanyComponent } from '../widget/company'
 
 import { Resource } from "../../src/types"
 
 import { 
     StyledJobDetail, 
 } from '../../styles/main.styled'
-import { CompanyComponent } from '../widget/company'
-import { BtnPlus } from '../widget/buttons'
+
 
 type Props = {
     job: Job;

@@ -19,6 +19,7 @@ export class Project extends canAnnotate(canBookmark(ConcreteMdel)) implements W
     status: string[]
     tech: Tech[]
     repo: string
+    notes:string
 
     constructor (
             doc: IProject,
@@ -33,6 +34,7 @@ export class Project extends canAnnotate(canBookmark(ConcreteMdel)) implements W
         this.description = doc.description
         this.status = doc.status
         this.liveUrl = doc.live_url
+        this.notes = doc.notes
         
         this.tech = [4, 11, 33].map(techUid => techModels.get(techUid)).filter(techModel => !!techModel) as Tech[]
     }

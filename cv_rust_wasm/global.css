@@ -81,7 +81,7 @@ h2 {
   color: var(--text-main);
   text-transform: capitalize;
   padding: var(--gap-small) 0;
-  margin: 0 0 var(--gap-medium);
+  margin: 0;
   color: var(--text-clear);
   font-weight: bold;
 }
@@ -121,8 +121,8 @@ a:hover {
 p {
   line-height: 1.4rem;
   font-size: 0.9rem;
-  padding: var(--gap-micro) 0;
-  margin: var(--gap-micro) 0;
+  padding: 0;
+  margin: var(--gap-small);
   color: var(--text-main);
 }
 
@@ -165,6 +165,11 @@ button.danger {
   background: #aa2525;
 }
 
+button.danger:hover {
+  opacity: 0.7;
+}
+
+
 label {
   line-height: 1.4rem;
   padding: 0 0 0 var(--gap-small);
@@ -189,6 +194,7 @@ textarea, input[type="text"] {
 ul {
   padding: 0;
   margin: 0;
+  margin: var(--gap-large) 0;
 }
 
 ul.nav {
@@ -218,7 +224,7 @@ ul.nav li.active a {
 }
 
 li {
-  line-height: 1.4rem;
+  line-height: 1.2rem;
   list-style: none;
   list-style-position: inside;
   color: var(--text-main);
@@ -226,24 +232,10 @@ li {
   align-items: center;
   padding: var(--gap-micro) 0;
   font-size:0.9rem;
-  margin: var(--gap-small) 0;
+  margin: 0;
 }
 
 li.itemised {
-  text-transform: capitalize;
-}
-
-span.resource-name {
-  display: inline-block;
-  font-weight: bold;
-  padding-left: var(--gap-small);
-}
-
-span.resource-name:first-letter {
-  text-transform:uppercase;
-}
-
-span > strong {
   text-transform: capitalize;
 }
 
@@ -273,6 +265,10 @@ i.fa.action:hover {
   color: var(--active-pink);
 }
 
+span.resource-name {
+  font-weight: bold;
+  text-transform: capitalize;
+}
 
 span.action-wrap {
   display: flex;
