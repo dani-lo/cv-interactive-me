@@ -75,7 +75,7 @@ font-weight: bold;
 }
 
 h2 {
-  font-family: 'Arvo', sans-serif;
+  /* font-family: 'Arvo', sans-serif; */
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 1.2rem;
   color: var(--text-main);

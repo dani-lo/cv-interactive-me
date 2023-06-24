@@ -1,5 +1,19 @@
 const projects = [
     {
+        "uid": 6,
+        "name": "Terminator tabs plugin",
+        "description": [
+            "Plugin for Terminator _#terminal emulator_ - adds functionality to launch named new tabs",
+            "For usage see _#README_ docs within repository"
+        ],
+        "repo": "https://github.com/dani-lo/terminator-named-tabs-plugin",
+        "status": ["_#Production_", "See README for installing"],
+        "live_url": "",
+        "notes": "Plugin for Terminator (cli)",
+        "tech": [1,10,33]
+    },
+    {
+        
         "uid": 1,
         "name": "Interactive me",
         "description": [
@@ -35,7 +49,7 @@ const projects = [
         "live_url": "",
         "notes": "Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts",
         "tech": [11,20,33]
-
+    
     },
     {
         "uid": 4,
@@ -46,7 +60,7 @@ const projects = [
         "live_url": "",
         "notes": "Outlier detection in datasets using classic outlier algorightms",
         "tech": [21,5,22]
-
+    
     },
     {
         "uid": 5,
@@ -58,6 +72,6 @@ const projects = [
         "notes": "A multi panels basic _#dashboard_ ",
         "tech": [21,5,22]
     }
-]
+    ]
 
 module.exports = projects;

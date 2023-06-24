@@ -1,16 +1,16 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #132940;
+  --border-col-dark: #0d252f;
   --bg-grey: #fafafa;
   --bg-white: #fff;
-  --white : #f3f3f3;
-  --black : #132940;
+  --white : #fafafa;
+  --black : #0d252f;
   --active-action: cadetblue;
   --text-clear: cadetblue;
   --active-pink: #df6fba;;
   --pending-action: grey;
   --text-main: #555;
-  --text-dark: #132940;
+  --text-dark: #0d252f;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -75,7 +75,7 @@ font-weight: bold;
 }
 
 h2 {
-  font-family: 'Arvo', sans-serif;
+  /* font-family: 'Arvo', sans-serif; */
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 1.2rem;
   color: var(--text-main);
@@ -84,6 +84,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
+  border-bottom: 1px solid var(--border-col);
 }
 
 h2 i.fa {
@@ -103,14 +104,14 @@ h3 {
   font-size: 1rem;
   margin: var(--gap-medium) 0;
   line-height: 1.5rem;
-  color: var(--text-main);
+  color: var(--text-clear);
   font-weight: bold;
   display: flex;
   align-items: center;
 }
 
 a {
-  color: var(--text-clear);
+  color: var(--text-dark);
   font-weight: bold;
 }
 
@@ -122,8 +123,13 @@ p {
   line-height: 1.4rem;
   font-size: 0.9rem;
   padding: 0;
-  margin: var(--gap-small);
+  margin: var(--gap-small) 0;
   color: var(--text-main);
+}
+
+hr {
+  border: none;
+  margin: var(--gap-medium);
 }
 
 strong {
@@ -131,7 +137,7 @@ strong {
 }
 
 button {
-
+  cursor: pointer;
   font-size: 0.9rem;
   color: var(--white);
   line-height: 1.4rem;
@@ -194,7 +200,6 @@ textarea, input[type="text"] {
 ul {
   padding: 0;
   margin: 0;
-  margin: var(--gap-large) 0;
 }
 
 ul.nav {
@@ -211,6 +216,10 @@ ul.nav li {
   margin-bottom: var(--gap-large);
   color: var(--text-clear);
   font-weight: bold;
+}
+
+ul.nav li a {
+  color: var(--white);
 }
 
 ul.nav li.active {
@@ -237,6 +246,7 @@ li {
 
 li.itemised {
   text-transform: capitalize;
+  margin: var(--gap-small) 0;
 }
 
 i.bookmark {
@@ -272,8 +282,13 @@ span.resource-name {
 
 span.action-wrap {
   display: flex;
-  align-items: self-start;
+  align-items: baseline;
   cursor: pointer;
+  line-height: 1rem;
+}
+
+span.action-wrap span {
+  line-height: 1rem;
 }
 
 span.action-wrap i {
@@ -290,24 +305,25 @@ span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-i
 }
 
 span.action-wrap > span.html-icon {
-  padding: 0.1rem 0.3rem;
-  background: var(--text-clear);
-  color: white;
-  font-size: 1rem;
-  line-height: 1rem;
-  border-radius: 2px;
-  font-family: Helvetica;
+  /* padding: 0.1rem 0.3rem; */
+  /* background: var(--black); */
+  /* color: white; */
+  /* font-size: 1rem;
+  line-height: 1rem; */
+  /* border-radius: 2px; */
+  margin-right: var(--gap-small);
 }
 
 span.html-icon {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1rem;
   display: inline-block;
-  margin-right: var(--gap-small);
+  /* margin-right: var(--gap-small); */
   color: var(--black);
+  font-family: Helvetica;
 }
 
 span.html-icon.job-selector {
@@ -346,4 +362,16 @@ span.html-icon:hover {
   left: 0;
   opacity: 0.5;
   z-index: var(--z-3);
+}
+
+.margin-b {
+  margin: 1.5rem 0;
+}
+
+.margin-m {
+  margin: 1rem 0;
+}
+
+.margin-s {
+  margin: 0.5rem 0;
 }

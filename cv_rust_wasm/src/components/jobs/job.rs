@@ -7,6 +7,8 @@ use yew::{
     html
 };
 
+use fixedstr::fstr;
+
 use crate::{
     components::widget::job_type::JobTypeComponent,
     models::job_model::JobModel, 
@@ -47,6 +49,9 @@ pub fn job(Props {
 
         let at_company_name = if job.company.is_none() { "Various Agencies".to_string() } else { format!("{}", &job.company.as_ref().unwrap().name) };
 
+        let desc = job.description[0].clone();
+        let desc_text:fstr<150> = fstr::make(&desc);
+
         html! {
             <div class={ c_name }>
             <h2>
@@ -66,6 +71,7 @@ pub fn job(Props {
             <div class="job-list-body">
                 <div>
                     <h3>{ at_company_name }</h3>
+                    <p>{ desc_text }{"..."}</p>
                     <JobTypeComponent
                         job_jobtypes = { job.job_type.clone() }
                         detail={ false }

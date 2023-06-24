@@ -81,18 +81,14 @@ pub fn job_detail(JobDetailProps {
 
         html! {
             <div class={ c_name }>
-                <h2>
-                    <span 
-                        class="action-wrap"
-                        onclick={ move |_| { 
-                            set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
-                        }}>
-                        <span class="html-icon">
-                            {  	"\u{002B}" }
-                        </span>
+                <h2 onclick={ move |_| { 
+                    set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
+                }}>
+                    <span class="action-wrap">
+                        <span class="html-icon">{ "\u{002B}" }</span>
                         <span>{ &job.period.formatted() }</span>
                     </span>
-                </h2>
+               </h2>
                 {
                     if job_note.is_some() {
                         html! {
@@ -118,13 +114,12 @@ pub fn job_detail(JobDetailProps {
                         }
                     }
                 }
-                
-                // <h3> { "Job type:" }</h3>
                 <JobTypeComponent
                     job_jobtypes={ job.job_type.clone() }
                     actionable={ true }
                     detail={ true }
                 />
+                <hr />
                 <ul>
                     <JobsDescriptionListComponent 
                         description={ c_job.description } 

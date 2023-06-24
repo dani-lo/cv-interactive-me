@@ -28,10 +28,10 @@ export class JobPeriod {
 
         const monthGetterOpts : [string, { [k: string] : string }] =  ['default', { month: 'short' }]
 
-        return `${ this.fromDate.toLocaleString(...monthGetterOpts) } ${ this.fromDate.getFullYear() } to ${ this.toDate.toLocaleString(...monthGetterOpts) } ${ this.toDate.getFullYear() }`
+        return `${ this.fromDate.toLocaleString(...monthGetterOpts) } ${ this.fromDate.getFullYear() } - ${ this.toDate.toLocaleString(...monthGetterOpts) } ${ this.toDate.getFullYear() }`
     }
 
     get raw () {
-        return `from ${ this.fromMonth } - ${ this.fromYear } to ${ this.toMonth } - ${ this.toYear } `
+        return `from ${ this.fromMonth } ${ this.fromYear } - ${ this.toMonth } ${ this.toYear } `
     }
 }

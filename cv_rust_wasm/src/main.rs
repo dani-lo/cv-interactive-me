@@ -189,15 +189,15 @@ pub fn pending_actions_component() -> Html {
                     onclick={ move |_| apply_pending.emit(None) }
                 >{"Persist"}</button>
             </div>
-            <p class="actionable" onclick={ move |_| on_click_show_hide_opts.emit(None) }>
+            <p onclick={ move |_| on_click_show_hide_opts.emit(None) }>
                 {
                     if *user_opts {
-                    html!{ <i class="fa fa-chevron-down" />}
+                        html!{ <i class="fa fa-chevron-down fw" />}
                     } else {
-                        html!{<i class="fa fa-chevron-right" />}
+                        html!{<i class="fa fa-chevron-right fw" />}
                     }
                 }
-                <span>{"Why am I seeing this?"}</span>
+                <a>{"Why am I seeing this?"}</a>
             </p>
             {
                 if *user_opts {

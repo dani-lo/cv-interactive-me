@@ -53,20 +53,19 @@ pub fn job_type(JobTypeProps {
                     if *detail {
                         html!{
                             <>
-                                <ul>
-                                    <JobTypeTypeListComponent
-                                        job_type_type={ jobtype_place }
-                                        actionable={ actionable }
-                                        jobtype_pref={ "from: " }
-                                    />
-                                </ul>
-                                <ul>
-                                    <JobTypeTypeListComponent 
-                                        job_type_type={ jobtype_time }
-                                        actionable={ actionable }
-                                        jobtype_pref={ "type: " }
-                                    />
-                                </ul>
+                              
+                                <JobTypeTypeListComponent
+                                    job_type_type={ jobtype_place }
+                                    actionable={ actionable }
+                                    jobtype_pref={ "from: " }
+                                />
+                            
+                                <JobTypeTypeListComponent 
+                                    job_type_type={ jobtype_time }
+                                    actionable={ actionable }
+                                    jobtype_pref={ "type: " }
+                                />
+                                
                             </>
                         }
                     } else {

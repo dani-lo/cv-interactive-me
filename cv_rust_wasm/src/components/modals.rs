@@ -46,18 +46,13 @@ pub fn ActionsModalComponent () -> Html {
     let filterable_modal_item: Option<Actionable> = if filterable(res_type) { Some(resource_modal_item) } else { None };
     let annotatable_modal_item: Option<Actionable> = if annotateable(res_type) { Some(resource_modal_item) } else { None };
 
-    // let static_models = store.static_models.borrow_mut().clone();
     let static_models = state.static_models.clone();
     
-    // let c_set_modal_item = set_modal_item.clone();
-    
-    // info!("{:?}", static_models);
     let modal_title = resource_name(
         &static_models.model_hashes, 
         resource_modal_item.resource_type.unwrap(), 
         resource_modal_item.resource_id.unwrap()
     );
-    
 
     html! {
         <div class="clibwasm-modal-wrap">
@@ -67,7 +62,6 @@ pub fn ActionsModalComponent () -> Html {
                     <h2>{ modal_title.type_name } { " - " } { modal_title.name }</h2>
                     <span 
                         class="btn-close"
-                        //onclick={ move |_| c_set_modal_item.emit(Actionable { resource_id: Some(0), resource_type: Some(ModelTypes::Job) })}
                         onclick={
                             move |_| {
                                 dispatcher.reduce_mut(|s| s.unset_modal_item())
@@ -75,11 +69,10 @@ pub fn ActionsModalComponent () -> Html {
                         }
                         >
                             <i class="fa fa-times" />
-                            {"CLOSE"}
+                            // {"CLOSE"}
                     </span>
                     <BookmarkComponent
                         item={ bookmarkable_modal_item.clone() }
-                        // store={ store.clone() }
                         type_name={ modal_title.type_name }
                         dispatcher={ dispatch.clone() }
                         bookmarks={ Some(state.bookmarks.clone()) }
@@ -88,7 +81,6 @@ pub fn ActionsModalComponent () -> Html {
                     />
                     <FilterComponent
                         item={ filterable_modal_item.clone() } 
-                        // store={ store.clone() }
                         type_name={ modal_title.type_name }
                         dispatcher={ dispatch.clone() }
                         bookmarks={ Some(state.bookmarks.clone()) }
@@ -97,7 +89,6 @@ pub fn ActionsModalComponent () -> Html {
                     />
                     <AnnotationComponent
                         item={ annotatable_modal_item.clone() }  
-                        // store={ store.clone() }
                         type_name={ modal_title.type_name }
                         dispatcher={ dispatch.clone() }
                         bookmarks={ Some(state.bookmarks.clone()) }

@@ -60,15 +60,15 @@ pub fn project(ProjectProps {
                 </h2>
                 <div class="job-list-body">
                     <div>   
-                        <p>
-                            <a href={ project.repo.clone() } target="_blank">
-                                <strong>{ "Github Repo" }</strong>
-                            </a>
-                        </p>
-                        <p>
+                        <p class="margin-s">
                             <RichTextParagraphComponent
                                 text={ project.notes.clone() }
                             />
+                        </p>
+                        <p class="margin-s">
+                            <a href={ project.repo.clone() } target="_blank">
+                                <strong>{ "Github Repo" }</strong>
+                            </a>
                         </p>
                         <ul>
                         { 

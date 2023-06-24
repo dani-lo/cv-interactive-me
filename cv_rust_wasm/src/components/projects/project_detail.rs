@@ -88,23 +88,19 @@ pub fn job_detail(ProjectDetailProps {
 
         html! {
             <div class={ c_name }>
-                <h2>
+                <h2 onclick={ move |_| { 
+                    set_state_modal_item(dispatch.clone(), ModelTypes::Project, c_project.uid)
+                }}>
                     <span class="action-wrap">
-                        <span  
-                            class="html-icon" 
-                            onclick={ move |_| { 
-                                set_state_modal_item(dispatch.clone(), ModelTypes::Project, c_project.uid)
-                            }} 
-                        >
-                            {  	"\u{002B}" }
-                        </span>
+                        <span class="html-icon">{ "\u{002B}" }</span>
                         <span>{ &project.name }</span>
                     </span>
+                    
                 </h2>
                 {
                     if project_note.is_some() {
                         html! {
-                            <div>
+                            <div class="margin-b">
                                 <p>{ project_note.unwrap().text }</p>
                             </div>
                         }
@@ -112,9 +108,11 @@ pub fn job_detail(ProjectDetailProps {
                         html!{ <></> }
                     }
                 }
-                <BaseListComponent
-                    list_items={ project.description.clone() }
-                />
+                <div class="margin-m">
+                    <BaseListComponent
+                        list_items={ project.description.clone() }
+                    />
+                </div>
                 <p>
                     <a href={ project.repo.clone() } target="_blank">
                         <strong>{ "Github Repo" }</strong>

@@ -33,7 +33,7 @@ export const StyledJobContainer = styled.div<{ selected: boolean }>`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid var(--border-col);
+        margin-bottom: var(--gap-small);
     }
 
     i.job-selector {

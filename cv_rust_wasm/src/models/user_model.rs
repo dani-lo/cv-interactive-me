@@ -73,8 +73,18 @@ impl UserModel {
                 .take(5)
                 .map(char::from)
                 .collect();
+ 
+            
+            let store_result = UserModel::store_tok(&rand_tok);
 
-            UserModel::store_tok(&rand_tok);
+            match store_result {
+                Ok(res) => {
+                    info!("{:?}", res);
+                }
+                Err(e) => {
+                    info!("{:?}", e);
+                },
+            }
             
             return fstr::make(&rand_tok);
 
