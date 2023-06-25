@@ -372,6 +372,6 @@ span.html-icon:hover {
   margin: 1rem 0;
 }
 
-.margin-s {
-  margin: 0.5rem 0;
+.no-margin {
+  margin: 0!important;
 }

@@ -109,7 +109,7 @@ pub fn job_type_inline(JobTypeTypeProps {
     let mut out_count = 0;
 
     html!{  
-        <li class="itemised">
+        <li class="itemised no-margin">
             <span style={ "padding-right: var(--gap-medium);" }>{ jobtype_pref }</span>
             {
                 job_type_type.iter().map(|jt| {
@@ -176,7 +176,7 @@ pub fn job_type_list(JobTypeTypeProps {
                     let c_jobtype = jt.clone();
 
                     html!{
-                        <li class="itemised">
+                        <li class="itemised no-margin">
                         {
                             if *actionable {
                                 

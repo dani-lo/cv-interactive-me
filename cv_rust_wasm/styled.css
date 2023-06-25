@@ -24,7 +24,7 @@
 }
 
 .StyledJobContainer i.job-selector {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--text-inactive);
     cursor: pointer;    
 }
@@ -167,16 +167,23 @@
 }
 
 .StyledCompanyContainer {
-    border: 1px solid var(--border-col);
+    /* border: 1px solid var(--border-col); */
     margin: var(--gap-large) 0;
-    padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
-    background: var(--bg-white);
+    /* padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
+    background: var(--bg-white); */
+    border: 2px solid var(--active-action);
+    padding: var(--gap-medium);
 }
+
+/* .StyledCompanyContainer p, .StyledCompanyContainer li, .StyledCompanyContainer h3 {
+    color: var(--white);
+} */
 
 
 .StyledCompanyContainer > h3 {
     padding: var(--gap-medium) 0 var(--gap-small);
-    margin: var(--gap-large) 0 var(--gap-medium);
+    /* margin: var(--gap-large) 0 var(--gap-medium); */
+    margin-top: 0;
 }
 
 .StyledActionsList {

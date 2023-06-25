@@ -55,18 +55,26 @@ pub fn job(Props {
         html! {
             <div class={ c_name }>
             <h2>
-                <span>{ &job.period.formatted()  }</span>
-            {
-                if *bookmarked {
-                    html!{
-                        <i class="fa fa-bookmark bookmark" />
-                    }
-                } else {
-                    html!{
-                        <span></span>
+                {
+                    if *bookmarked {
+                        html!{
+                            <span>
+                                <i class="fa fa-bookmark bookmark" style="margin-right: var(--gap-medium);" />
+                                { &job.period.formatted()  }
+                            </span>
+                            
+                        }
+                    } else {
+                        html!{
+                            <span>{ &job.period.formatted()  }</span>
+                        }
                     }
                 }
-            }
+                <i 
+                    class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                    onclick={ move |_| c_job_detail.emit(c_uid) }
+                    id={ format!("job-selector-{}", c_uid   ) }
+                />
             </h2>
             <div class="job-list-body">
                 <div>
@@ -78,19 +86,19 @@ pub fn job(Props {
                         actionable={ false }
                     />
                 </div>
-                <div>
-                        <i 
-                            class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                            onclick={ move |_| c_job_detail.emit(c_uid) }
-                            id={ format!("job-selector-{}", c_uid   ) }
-                        />
-                        // <span  
-                        //     class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
-                        //     onclick={ move |_| c_job_detail.emit(c_uid) }  
-                        // >
-                        //     {  	"\u{203A}" }
-                        // </span>
-                </div>
+                // <div>
+                //         <i 
+                //             class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                //             onclick={ move |_| c_job_detail.emit(c_uid) }
+                //             id={ format!("job-selector-{}", c_uid   ) }
+                //         />
+                //         // <span  
+                //         //     class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
+                //         //     onclick={ move |_| c_job_detail.emit(c_uid) }  
+                //         // >
+                //         //     {  	"\u{203A}" }
+                //         // </span>
+                // </div>
             </div>
         </div>    
     }
