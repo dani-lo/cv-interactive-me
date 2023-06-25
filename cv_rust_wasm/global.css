@@ -233,7 +233,7 @@ ul.nav li.active a {
 }
 
 li {
-  line-height: 1.2rem;
+  line-height: 1.4rem;
   list-style: none;
   list-style-position: inside;
   color: var(--text-main);

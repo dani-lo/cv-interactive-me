@@ -1,6 +1,7 @@
 use std::{
     collections::HashMap,
 };
+use std::env;
 
 use serde::Deserialize;
 
@@ -29,9 +30,9 @@ pub fn get_static_api_config () -> HashMap<CvStaticEndpoints, &'static str>  {
 
     let mut conf: HashMap<CvStaticEndpoints, &'static str> = HashMap::new();
 
-    let flag = true;
+    let release = env::var("INTERACTIVEME_RELEASE").is_ok();
 
-    if flag {
+    if release {
         conf.insert(CvStaticEndpoints::JOB, "http://localhost:8080/api/jobs");
         conf.insert(CvStaticEndpoints::COMPANY, "http://localhost:8080/api/companies");
         conf.insert(CvStaticEndpoints::TECH, "http://localhost:8080/api/techs");
