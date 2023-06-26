@@ -45,7 +45,10 @@
 .StyledJobContainer.selected h2,
 .StyledJobContainer.selected h3,
 .StyledJobContainer.selected p,
-.StyledJobContainer.selected li {
+.StyledJobContainer.selected li,
+.StyledJobContainer.selected a, 
+.StyledJobContainer.selected i {
+
     color: var(--white);
 }
 
@@ -102,7 +105,8 @@
 .StyledSidebar h3, 
 .StyledSidebar p, 
 .StyledSidebar i, 
-.StyledSidebar span {
+.StyledSidebar span,
+.StyledSidebar a {
     color: var(--white);
 }
 

@@ -10,7 +10,7 @@ use crate::{
       can_annotate::HasAnnotationTrait, 
       can_filter::Filter,
    },
-   util::{daterange::DateRange, filter_utils::{resource_is_included, some_resource_included_in_all_filters}}, appdata::stores::store_app_types::PendingStatus,
+   util::{daterange::DateRange, filter_utils::{resource_is_included, some_resource_included_in_all_filters}}, appdata::stores::store_app_types::{PendingStatus, AppStaticDataHashes},
 };
 
 use super::{
@@ -43,14 +43,14 @@ use super::{
 
  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
   pub struct  JobModel {
-    pub uid: usize,
-    pub description: Vec<String>,
-    pub title: String,
-    pub tech: Vec<TechModel>,
-    pub company: Option<CompanyModel>,
-    pub period: DateRange,
-    pub position: String,
-    pub job_type: Vec<JobtypeModel>,
+   pub uid: usize,
+   pub description: Vec<String>,
+   pub title: String,
+   pub tech: Vec<TechModel>,
+   pub company: Option<CompanyModel>,
+   pub period: DateRange,
+   pub position: String,
+   pub job_type: Vec<JobtypeModel>,
 }
 
 impl ImplicitClone for JobModel {}
@@ -113,28 +113,11 @@ impl Model for JobModel {
       }
 
       true
-
-      // // we know we have filters and they are relevant - i.e either job tech or job type flters, or both ..
-      // // => skip display unless the job has tech or jobtype or both included in those filters
-
-      // let foo = resource_is_included(filters_to_use, self);
-
-      // return filters_to_use.iter().fold(true, |acc, f| {
-
-      //    if acc == true {
-
-      //       let any_tech_filtered_included = f.resource_type == ModelTypes::Tech && job_techs.iter().any(|t| t.uid == f.resource_id);
-      //       let any_jobtype_filtered_included = f.resource_type == ModelTypes::Jobtype && job_types.iter().any(|j| j.uid == f.resource_id);
-
-      //       if (has_tech_filters && any_tech_filtered_included) || (has_jobtype_filters && any_jobtype_filtered_included) {
-      //          return false
-      //       }
-
-      //    }
-
-      //    return acc
-      // });
    }
+
+   fn get_parent_resource (&self, _: AppStaticDataHashes) -> Option<(usize, ModelTypes)> {
+      None
+  }
 }
 
 impl HasAnnotationTrait for JobModel{}

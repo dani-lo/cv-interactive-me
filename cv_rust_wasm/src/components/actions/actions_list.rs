@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, fmt::format};
 
 use log::info;
 use yew::{
@@ -16,7 +16,8 @@ use crate::{
     }, 
     util::{
         sort_group::collectionables_vector_to_grouped_hash, 
-        resource_name::resource_name,
+        resource_name::{resource_name, ResourceName},
+        parent_resource::parent_resource_or_self,
     },
     models::ModelTypes,
     traits::{
@@ -27,14 +28,41 @@ use crate::{
     },
 };
 
+#[derive( PartialEq, Properties)]
+pub struct ActionsListLinkProps {
+    pub item: Option<(usize, ModelTypes)>,
+    pub text: String,
+}
 
+
+#[function_component(ActionsListLinkComponent)]
+pub fn actions_list_link (ActionsListLinkProps { item, text } : &ActionsListLinkProps)  -> Html { 
+
+    if item.is_none() {
+        return html!{ 
+            <span>{ text }</span> 
+        };
+    } else {
+
+        let item_val = item.unwrap();
+
+        if item_val.1 == ModelTypes::Job {
+
+            return html!{ 
+                <a href={ format!("/jobs?uid={}", item_val.0) }>{ text }</a> 
+            }
+        } else {
+            return html!{ 
+                <a href={ format!("/projects?uid={}", item_val.0) }>{ text }</a> 
+            }
+        }
+    }
+}
 
 #[function_component(ActionsListComponent)]
 pub fn actions_list ()  -> Html { 
     
     let (state, _dispatch) = use_store::<StoreApp>();
-
-    // info!("{:?}", state);
 
     let mut annotations = state.annotations.clone();
     annotations.retain(|n| n.pending != PendingStatus::Fresh && n.pending != PendingStatus::VoidThenDeleted);
@@ -180,21 +208,33 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
             actionables_vec.unwrap().iter().map(|f: &Collectable| {
 
                 let action_type = f.action_type.unwrap();
+                
                 let resource_id = f.resource_id.unwrap();
                 let resource_type_type = f.resource_type.unwrap();
+
                 let dispatcher = dispatch.clone();
 
-                let res_name = resource_name(
+                let res_name: ResourceName = resource_name(
                     &static_models.model_hashes,
                     f.resource_type.unwrap(),
                     f.resource_id.unwrap(),
                 );
+
+                let parent  = parent_resource_or_self(
+                    &static_models.model_hashes,
+                    f.resource_id.unwrap(),
+                    f.resource_type.unwrap(),
+                );
+
                 html!{
                     <li class="action-wrap">
                         <span>
                             <strong>{ res_name.type_name }</strong>
                             {": "}
-                            { res_name.name }
+                            <ActionsListLinkComponent 
+                                item={ parent } 
+                                text={ res_name.name } 
+                            />
                         </span>
                         <span  
                             class="html-icon" 

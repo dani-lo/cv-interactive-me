@@ -1,6 +1,6 @@
 use serde::{ Deserialize, Serialize };
 
-use crate::traits::can_filter::{HasFilterTrait, Filter};
+use crate::{traits::can_filter::{HasFilterTrait, Filter}, appdata::stores::store_app_types::AppStaticDataHashes};
 
 use super::{Model, ModelTypes, StaticAsset};
 
@@ -39,7 +39,11 @@ impl Model for FieldModel {
         self.uid
     }
 
-    fn included_in_filters (&self, state_filters: &Vec<Filter>) -> bool {
+    fn included_in_filters (&self, _: &Vec<Filter>) -> bool {
         true
+    }
+
+    fn get_parent_resource (&self, _: AppStaticDataHashes) -> Option<(usize, ModelTypes)> {
+        None
     }
 }

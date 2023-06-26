@@ -8,11 +8,11 @@ use crate::
         can_annotate::HasAnnotationTrait, 
         can_filter::Filter
     }, 
-    appdata::stores::store_app_types::PendingStatus, 
+    appdata::stores::store_app_types::{PendingStatus, AppStaticDataHashes}, 
     util::filter_utils::some_resource_included_in_all_filters,
 };
 
-use super::{Model, ModelTypes, field_model::FieldModel, StaticAsset};
+use super::{Model, ModelTypes, field_model::FieldModel, StaticAsset, job_model::JobModel};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct CompanyData {
@@ -47,10 +47,12 @@ impl StaticAsset for CompanyModel {
 impl Model for CompanyModel {
     
     fn get_resource_type (&self) -> ModelTypes {
+
         ModelTypes::Company
     }
 
     fn get_resource_id (&self) -> usize {
+        
         self.uid
     }
 
@@ -74,5 +76,26 @@ impl Model for CompanyModel {
 
         return true
 
+    }
+
+    fn get_parent_resource (&self, model_hashes: AppStaticDataHashes) -> Option<(usize, ModelTypes)> {
+
+
+        let job_list: Vec<&JobModel> = model_hashes.jobs.values().collect();
+
+        let parent_job_opt = job_list.iter().find(|j| {
+            
+            let c = j.company.clone();
+
+            c.is_some() && c.unwrap().uid == self.uid
+        });
+
+        if parent_job_opt.is_none() {
+            return None
+        }
+
+        let parent_job = parent_job_opt.unwrap();
+
+        Some((parent_job.uid, ModelTypes::Job))
     }
 }

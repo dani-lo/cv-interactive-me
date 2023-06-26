@@ -53,7 +53,6 @@ pub fn get_static_api_config () -> HashMap<CvStaticEndpoints, &'static str>  {
 
 pub fn get_actions_api_config () -> HashMap<CvActionsEndpoints, &'static str>  {
 
-    // let URL_ACTIONS_BASE : String =  "http://localhost:8000";
     let mut conf: HashMap<CvActionsEndpoints, &'static str> = HashMap::new();
 
     conf.insert(CvActionsEndpoints::BOOKMARKS, "http://localhost:8000/api/bookmarks");

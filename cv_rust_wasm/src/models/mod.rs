@@ -2,7 +2,7 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{traits::can_filter::Filter};
+use crate::{traits::can_filter::Filter, appdata::stores::store_app_types::AppStaticDataHashes};
 
 pub mod job_model;
 pub mod company_model;
@@ -19,8 +19,8 @@ pub trait StaticAsset {
 pub trait Model {
     fn get_resource_type (&self) -> ModelTypes;
     fn get_resource_id (&self) -> usize;
+    fn get_parent_resource (&self, model_hashes: AppStaticDataHashes) -> Option<(usize, ModelTypes)>;
     fn included_in_filters (&self, state_filters: &Vec<Filter>) -> bool;
-    // fn get_parent_resource<T: Model> (&self, model_hashes: AppStaticDataHashes) -> Option<T>;
 }
 
 #[derive(Eq, Hash, PartialEq, Clone, Copy, Deserialize, Serialize)]

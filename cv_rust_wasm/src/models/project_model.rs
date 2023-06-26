@@ -7,7 +7,7 @@ use crate::{
         can_annotate::HasAnnotationTrait, 
         can_bookmark::HasBookmarkTrait, 
         can_filter::Filter
-    }, appdata::stores::store_app_types::PendingStatus, util::filter_utils::some_resource_included_in_all_filters, 
+    }, appdata::stores::store_app_types::{PendingStatus, AppStaticDataHashes}, util::filter_utils::some_resource_included_in_all_filters, 
 };
 
 use super::{Model, ModelTypes, StaticAsset, tech_model::TechModel};
@@ -107,23 +107,9 @@ impl Model for ProjectModel {
         }
 
         return true
-
-        // let is_tech_filterd = state_filters.iter().fold(false, |acc, filter| {
-  
-        //    if acc == false && 
-        //             filter.resource_type == ModelTypes::Tech && 
-        //             project_techs.iter().any(|t| t.uid == filter.resource_id) {
-
-        //         return true
-        //    }
-  
-        //    return acc
-        // });
-  
-        // is_tech_filterd
     }
 
-    // fn get_parent_resource<EmptyVoid> (&self, _model_hashes: AppStaticDataHashes) -> Option<&EmptyVoid>{
-    //     None
-    // }
+    fn get_parent_resource (&self, _: AppStaticDataHashes) -> Option<(usize, ModelTypes)> {
+        None
+    }
 }

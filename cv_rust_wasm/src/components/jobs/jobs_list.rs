@@ -1,3 +1,5 @@
+use std::any;
+
 use log::info;
 use yew::{
     Html, 
@@ -18,8 +20,9 @@ use crate::appdata::stores::{
     store_app::StoreApp,
 };
 use crate::components::jobs::job::JobComponent;
-use crate::models::Model;
+
 use crate::models::{
+    Model,
     ModelTypes,
     job_model::JobModel,
 };
@@ -70,13 +73,17 @@ pub fn job_list(JobListProps {
     
     // info!("HAS FILTERS ?????????? {}", has_filters);
 
-    jobs.iter().map(|job| {
-        
+    let mut anything_rendered = 0;
+
+    let jobs_list = jobs.iter().map(|job| {
+         
         if  has_filters && !job.included_in_filters(&state.filters) {
             // info!("JOB FILTERED OUT....{}", job.uid);
             return html!{
                 <></>
             }
+        } else {
+            anything_rendered = anything_rendered + 1
         }
 
         notes.clone()
@@ -97,7 +104,20 @@ pub fn job_list(JobListProps {
                 selected={ *active_job_id == job.uid }
             />
         }
-    }).collect()
+    }).collect::<Html>();
+
+    html!{
+
+        {
+            if anything_rendered == 0 {
+                html!{ 
+                    <p>{ "No Items can be displayed - all  are filtered out. Trying removing some filters" }</p>
+                }
+            } else {
+                jobs_list
+            }
+        }
+    }
 }
 
 

@@ -16,3 +16,4 @@ pub mod identity;
 pub mod timeout;
 pub mod filter_utils;
 pub mod settings_config;
+pub mod parent_resource;

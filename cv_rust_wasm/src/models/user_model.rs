@@ -211,18 +211,4 @@ impl UserModel {
             Err(_) => info!("Error saving TOK to local storage")
         }
     }
-
-    // pub fn store_ban_trackig_feeback () {
-    //     let storage_key = cv_ban_feedback_key();
-    //     let storage_val = cv_ban_feedback_val();
-
-    //     let storage: web_sys::Storage = web_sys::window().unwrap().self,  ocal_storage().unwrap().unwrap();
-
-    //     let result = storage.set_item(storage_key, storage_val);
-
-    //     match result {
-    //         Ok(_) => (),
-    //         Err(_) => info!("Error saving feedback setting to local storage")
-    //     }
-    // }
 }

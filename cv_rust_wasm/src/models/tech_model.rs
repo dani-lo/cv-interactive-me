@@ -4,7 +4,7 @@ use crate::{
     traits::can_filter::{
         HasFilterTrait, 
         Filter,
-    },
+    }, appdata::stores::store_app_types::AppStaticDataHashes,
 };
 
 use super::{Model, ModelTypes, StaticAsset};
@@ -48,10 +48,7 @@ impl Model for TechModel {
         true
     }
 
-    // fn get_parent_resource<JobModel> (&self, _model_hashes: AppStaticDataHashes) -> Option<JobModel>{
-    //     let jobs_hashes = _model_hashes.jobs;
-    //     let job = jobs_hashes.get(&self.uid);
-        
-    //     Some::<JobModel>(job.unwrap().to_owned())
-    // }
+    fn get_parent_resource (&self, _: AppStaticDataHashes) -> Option<(usize, ModelTypes)> {
+        None
+    }
 }

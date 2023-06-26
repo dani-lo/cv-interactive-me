@@ -16,9 +16,11 @@ use crate::appdata::stores::store_app_types::PendingStatus;
 use crate::appdata::stores::store_app::StoreApp;
 use crate::components::projects::project::ProjectComponent;
 use crate::models::{
+    Model,
     ModelTypes,
     project_model::ProjectModel,
 };
+use crate::traits::can_filter::Filter;
 use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
@@ -57,9 +59,27 @@ pub fn job_list(ProjectListProps {
     let has_project_bookmarks = bookmarks.iter().any(|b : &Bookmark| b.resource_type == ModelTypes::Project);
     
     c_projects.sort_by(|a, b| if a.uid > b.uid { std::cmp::Ordering::Greater } else { std::cmp::Ordering::Less });
+    
+    let active_filters = state.filters.iter().filter(|f| 
+        f.pending == PendingStatus::Void || 
+        f.pending == PendingStatus::VoidThenEdited || 
+        f.pending == PendingStatus::Added
+    ).collect::<Vec<&Filter>>();
 
-    c_projects.iter().map(|project| {
+    let has_filters = active_filters.len() > 0;
+    
+    let mut anything_rendered = 0;
+
+    let projs = c_projects.iter().map(|project| {
         
+        if  has_filters && !project.included_in_filters(&state.filters) {
+            return html!{
+                <></>
+            }
+        } else {
+            anything_rendered = anything_rendered + 1
+        }
+
         notes.clone()
             .retain(|n: &Annotation| n.resource_id == project.uid && n.resource_type == ModelTypes::Job);
         
@@ -77,7 +97,20 @@ pub fn job_list(ProjectListProps {
                 selected={ *active_project_id == project.uid }
             />
         }
-    }).collect()
+    }).collect::<Html>();
+
+    html!{
+
+        {
+            if anything_rendered == 0 {
+                html!{ 
+                    <p>{ "No Items can be displayed - all  are filtered out. Trying removing some filters" }</p>
+                }
+            } else {
+                projs
+            }
+        }
+    }
 }
 
 
