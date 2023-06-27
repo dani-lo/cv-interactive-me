@@ -3,6 +3,7 @@ use std::{
 };
 use std::env;
 
+use log::info;
 use serde::Deserialize;
 
 #[derive(Eq, Hash, PartialEq, Deserialize)]
@@ -31,8 +32,11 @@ pub fn get_static_api_config () -> HashMap<CvStaticEndpoints, &'static str>  {
     let mut conf: HashMap<CvStaticEndpoints, &'static str> = HashMap::new();
 
     let release = env::var("INTERACTIVEME_RELEASE").is_ok();
+    info!("is release? {}", release);
 
-    if release {
+
+
+    if !release {
         conf.insert(CvStaticEndpoints::JOB, "http://localhost:8080/api/jobs");
         conf.insert(CvStaticEndpoints::COMPANY, "http://localhost:8080/api/companies");
         conf.insert(CvStaticEndpoints::TECH, "http://localhost:8080/api/techs");

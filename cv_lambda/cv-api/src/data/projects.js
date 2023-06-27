@@ -66,12 +66,12 @@ const projects = [
         "uid": 5,
         "name": "React D3 Dashboard",
         "description": ["A multi panels basic _#dashboard_ based on a mock dataset", "Old Project, uses _#D3 v3.0_ and an early version of React"],
-        "repo": "github.com/dani-lo/react-d3-dashboard",
+        "repo": "https://github.com/dani-lo/react-d3-dashboard",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
         "notes": "A multi panels basic _#dashboard_ ",
         "tech": [21,5,22]
     }
-    ]
+]
 
 module.exports = projects;

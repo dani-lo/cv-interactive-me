@@ -120,6 +120,7 @@ pub fn job_detail(JobDetailProps {
                         
                     />
                 </ul>
+                <hr />
                 <JobTypeComponent
                     job_jobtypes={ job.job_type.clone() }
                     actionable={ true }
