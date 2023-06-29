@@ -1,5 +1,5 @@
 use std::rc::Rc;
-use log::info;
+use fixedstr::fstr;
 
 use crate::{
     appdata::stores::{
@@ -29,6 +29,7 @@ pub fn state_pending_actions (state: Rc<StoreApp>) -> Vec<Collectable> {
             resource_type: Some(a.resource_type),
             pending: Some(a.pending),
             action_type: Some(ActionTypes::FILTER),
+            action_txt: None,
         })
         .collect();
 
@@ -43,6 +44,7 @@ pub fn state_pending_actions (state: Rc<StoreApp>) -> Vec<Collectable> {
             resource_type: Some(a.resource_type),
             pending: Some(a.pending),
             action_type: Some(ActionTypes::BOOKMARK),
+            action_txt: None,
         }).collect();
 
     pending_bookmarks_collectables.retain(|b: &Collectable| b.pending.is_some()  && is_pending(b));     
@@ -56,6 +58,7 @@ pub fn state_pending_actions (state: Rc<StoreApp>) -> Vec<Collectable> {
             resource_type: Some(a.resource_type),
             pending: Some(a.pending),
             action_type: Some(ActionTypes::ANNOTATION),
+            action_txt: Some(fstr::make(a.text.as_str())),
         }).collect();
 
     pending_annotations_collectables.retain(|b: &Collectable| b.pending.is_some()  && is_pending(b));

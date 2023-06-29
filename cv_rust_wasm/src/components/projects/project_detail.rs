@@ -67,7 +67,7 @@ pub fn job_detail(ProjectDetailProps {
         let notes: Vec<Annotation> = state.annotations.clone().to_vec();
         let bookmarks: Vec<Bookmark> = state.bookmarks.clone().to_vec();
         
-        let project_note = resource_annotation(ModelTypes::Job, &project.uid, &notes);
+        let project_note = resource_annotation(ModelTypes::Project, &project.uid, &notes);
         
         let bookmarked =  bookmarks
             .iter()
@@ -82,7 +82,7 @@ pub fn job_detail(ProjectDetailProps {
 
         let mut c_name = "StyledJobDetail";
 
-        if bookmarked { c_name = "bookmarked"; }
+        if bookmarked { c_name = "StyledJobDetail bookmarked"; }
 
         let c_project = project.clone();
 
@@ -92,20 +92,15 @@ pub fn job_detail(ProjectDetailProps {
                     set_state_modal_item(dispatch.clone(), ModelTypes::Project, c_project.uid)
                 }}>
                     <span class="action-wrap">
-                        <span class="html-icon">{ "\u{002B}" }</span>
+                        <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                         <span>{ &project.name }</span>
                     </span>
                     
                 </h2>
-                <p class="margin-b">
-                    <a href={ project.repo.clone() } target="_blank">
-                        <strong>{ "Github Repo" }</strong>
-                    </a>
-                </p>
                 {
                     if project_note.is_some() {
                         html! {
-                            <div class="margin-b">
+                            <div class="StyledAnnotation">
                                 <p>{ project_note.unwrap().text }</p>
                             </div>
                         }
@@ -113,6 +108,11 @@ pub fn job_detail(ProjectDetailProps {
                         html!{ <></> }
                     }
                 }
+                <p class="margin-b">
+                    <a href={ project.repo.clone() } target="_blank">
+                        <strong>{ "Github Repo" }</strong>
+                    </a>
+                </p>
                 <div class="margin-m">
                     <BaseListComponent
                         list_items={ project.description.clone() }

@@ -18,7 +18,7 @@
 
 .StyledJobContainer i.job-selector {
     font-size: 1.5rem;
-    color: var(--text-inactive);
+    color: var(--text-main);
     cursor: pointer;    
 }
 
@@ -103,6 +103,11 @@
     color: var(--white);
 }
 
+.StyledSidebar i:hover, 
+.StyledSidebar a:hover {
+    opacity: 0.7;
+}
+
 .StyledSidebar h3 {
     border-bottom: 1px dotted var(--border-c--ol);
     padding-bottom: var(--gap-small);
@@ -159,8 +164,15 @@
 }
 
 .StyledAnnotation {
-    padding: var(--gap-large);
-    margin: var(--gap-large) var(--gap-medium) var(--gap-medium)auto;
+    padding: var(--gap-medium);
+    border: 2px solid var(--black);
+    margin-top: var(--gap-large);
+    border-radius: 2px;
+}
+
+.StyledAnnotation p {
+    font-style: italic;
+    font-weight: bold;
 }
 
 .StyledCompanyContainer {
@@ -169,7 +181,7 @@
     /* padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
     background: var(--bg-white); */
     border: 2px solid var(--active-action);
-    padding: var(--gap-medium);
+    padding: var(--gap-medium) var(--gap-medium) 0;
 }
 
 /* .StyledCompanyContainer p, .StyledCompanyContainer li, .StyledCompanyContainer h3 {
@@ -339,14 +351,15 @@
 }
 
 .StyledSettingsListContainer > .html-icon {
-    transform: rotate(180deg);
     display: inline-block;
     position: absolute;
     right: 5px;
     top: 11px;
-    font-size: 1rem;
 }
 
+.StyledAnnotation {
+
+}
 
 @keyframes lds-ripple {
     0% {

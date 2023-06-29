@@ -74,7 +74,7 @@ pub fn job_detail(JobDetailProps {
 
         let mut c_name = "StyledJobDetail";
 
-        if bookmarked { c_name = "bookmarked"; }
+        if bookmarked { c_name = "bookmarked StyledJobDetail"; }
 
         let c_job = job.clone();
         let dispatcher = dispatch.clone();
@@ -85,14 +85,14 @@ pub fn job_detail(JobDetailProps {
                     set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
                 }}>
                     <span class="action-wrap">
-                        <span class="html-icon">{ "\u{002B}" }</span>
+                        <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                         <span>{ &job.period.formatted() }</span>
                     </span>
                </h2>
                 {
                     if job_note.is_some() {
                         html! {
-                            <div>
+                            <div class="StyledAnnotation">
                                 <p>{ job_note.unwrap().text }</p>
                             </div>
                         }
@@ -183,7 +183,7 @@ pub fn company_component(CompanyProps { company, dispatch } : &CompanyProps) -> 
                         );
                     }}>
                     <span class="html-icon">
-                        {  	"\u{002B}" }
+                        <i class="fa fa-plus" aria-hidden="true" />
                     </span>
                     <span>{ company.name.clone() }</span>
                 </span>
@@ -225,7 +225,7 @@ pub fn fields_items_component(FieldsProps { fields } : &FieldsProps) -> Html {
                                         );
                                     }}>
                                     <span class="html-icon">
-                                        { "\u{002B}" }
+                                        <i class="fa fa-plus" aria-hidden="true" />
                                     </span>
                                     <span>{ field.clone().name }</span>
                                 </span>

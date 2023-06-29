@@ -49,8 +49,8 @@ pub fn job_tech(TechProps {
 
     html!{  
         <div>
-            <h3 class="margin-m">{ "Technical Resume" }</h3>
-            <ul class="StyledActionsList margin-s">
+            <h3 class="margin-b">{ "Technical Resume" }</h3>
+            <ul class="StyledActionsList margin-no">
             {
                 show_techs.iter().map(|jt| {
 
@@ -71,7 +71,7 @@ pub fn job_tech(TechProps {
                                                 c_tech.uid
                                             ))
                                     }>
-                                        <span class="html-icon">{ "\u{002B}" }</span> 
+                                        <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span> 
                                         <span>{ &jt.name }</span>
                                     </span>
                                 }

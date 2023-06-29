@@ -23,6 +23,7 @@ pub struct AnnotationData {
     pub _id: Option<String>, 
     pub resource_id: usize,
     pub resource_type: ModelTypes,
+    pub text: String,
 }
 
 impl Annotation {

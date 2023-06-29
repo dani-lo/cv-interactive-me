@@ -1,4 +1,3 @@
-use log::info;
 use yew::{
     Html, 
     function_component, 
@@ -12,8 +11,6 @@ use yew_router::history::{
 };
 
 use crate::routes::AppRoute;
-
-
 
 #[function_component(AppMenuComponent)]
 pub fn appmenu() -> Html {
@@ -29,8 +26,6 @@ pub fn appmenu() -> Html {
     };
 
     let nav_loc = use_location();
-
-    info!("{:?}", nav_loc);
 
     html!{
         <ul class="nav">

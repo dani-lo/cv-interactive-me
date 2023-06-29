@@ -93,6 +93,7 @@ pub struct Collectable {
     pub resource_id: Option<usize>,
     pub pending: Option<PendingStatus>,
     pub action_type: Option<ActionTypes>,
+    pub action_txt: Option<fstr<256>>,
 }
 
 impl Default for Collectable {
@@ -103,6 +104,7 @@ impl Default for Collectable {
             resource_type: None,
             pending: None,
             action_type: None,
+            action_txt: None,
         }
     }
 }

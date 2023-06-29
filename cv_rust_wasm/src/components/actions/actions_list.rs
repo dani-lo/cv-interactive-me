@@ -7,6 +7,8 @@ use yew::{
 use yew_router::prelude::use_navigator;
 use yewdux::prelude::use_store;
 
+use fixedstr::fstr;
+
 use crate::{
     routes::AppRoute,
     appdata::stores::{
@@ -82,6 +84,7 @@ pub fn actions_list ()  -> Html {
                 resource_type: Some(f.resource_type),
                 pending: Some(f.pending),
                 action_type: Some(ActionTypes::BOOKMARK),
+                action_txt: None,
             };
         })
         .collect::<Vec<Collectable>>();
@@ -96,6 +99,7 @@ pub fn actions_list ()  -> Html {
                 resource_type: Some(f.resource_type),
                 pending: Some(f.pending),
                 action_type: Some(ActionTypes::ANNOTATION),
+                action_txt: Some(fstr::make(f.text.as_str())),
             };
         })
         .collect::<Vec<Collectable>>();
@@ -110,13 +114,20 @@ pub fn actions_list ()  -> Html {
                 resource_type: Some(f.resource_type),
                 pending: Some(f.pending),
                 action_type: Some(ActionTypes::FILTER),
+                action_txt: None,
             };
         })
         .collect::<Vec<Collectable>>();
     
+    info!("++++++ actionable_annotations");
+    info!("{:?}", actionable_annotations);
+
     let ordered_bookmark_hashes = collectionables_vector_to_grouped_hash(actionable_bookmarks);
     let ordered_annotations_hashes = collectionables_vector_to_grouped_hash(actionable_annotations);
     let ordered_filter_hashes = collectionables_vector_to_grouped_hash(actionable_filters);
+
+    info!("++++++ ordered_annotations_hashes");
+    info!("{:?}", ordered_annotations_hashes);
 
     html! {
         <div>
@@ -272,7 +283,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                                     }
                                 })
                             }}>
-                            {  	"\u{00D7}" }
+                            <i class="fa fa-times" aria-hidden="true" />
                         </span>
                     </li>
                 }

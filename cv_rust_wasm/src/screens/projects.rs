@@ -147,7 +147,7 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
                 <span 
                     class="html-icon"
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                        {  	"\u{2630}" }
+                    <i class="fa fa-bars" aria-hidden="true" />
                 </span> 
             <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />

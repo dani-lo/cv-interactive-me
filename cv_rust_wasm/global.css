@@ -278,11 +278,6 @@ span.action-wrap {
   display: flex;
   align-items: baseline;
   cursor: pointer;
-  line-height: 1rem;
-}
-
-span.action-wrap span {
-  line-height: 1rem;
 }
 
 span.action-wrap i {
@@ -293,19 +288,15 @@ span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-i
   color: var(--active-pink);
 }
 
-span.action-wrap > span.html-icon {
-  margin-right: var(--gap-small);
-}
-
 span.html-icon {
   display: inline-block;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.25rem;
-  line-height: 1rem;
+  /* font-weight: bold; */
+  /* font-size: 1.25rem; */
+  /* line-height: 1rem; */
   display: inline-block;
-  color: var(--black);
-  font-family: Helvetica;
+  /* color: var(--black); */
+  /* font-family: Helvetica; */
 }
 
 span.html-icon.job-selector {
@@ -412,4 +403,7 @@ span.html-icon:hover {
 
 .margin-s {
   margin: var(--gap-small) 0!important;
+}
+.margin-no {
+  margin: 0!important;
 }

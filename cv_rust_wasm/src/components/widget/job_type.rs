@@ -130,7 +130,7 @@ pub fn job_type_inline(JobTypeTypeProps {
                                         onclick={ move |_| {
                                             set_state_modal_item(disatcher.clone(), ModelTypes::Jobtype, c_jobtype.uid)
                                         }}>
-                                        <span class="html-icon">{ "\u{002B}" }</span>
+                                        <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                                         <span><strong>{ &jt.name }</strong></span>
                                     </span>
                                 }
@@ -192,7 +192,7 @@ pub fn job_type_list(JobTypeTypeProps {
                                         )}     
                                     >
                                         <span  
-                                            class="html-icon">{ "\u{002B}" }</span>
+                                            class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                                         <span><strong>{ &jt.name }</strong></span>
                                     </span>
                                 }

@@ -419,7 +419,7 @@ impl StoreApp {
 
         let user_annotations_collectable_vec = user_actions_hash.get(&ActionTypes::ANNOTATION);
         let user_annotations: Vec<Annotation> = user_annotations_collectable_vec.unwrap().iter().map(|d| {
-            Annotation::from_collectable(d, "I am text")
+            Annotation::from_collectable(d, d.action_txt.unwrap().to_str())
         }).collect();
 
         self.annotations = user_annotations.clone();

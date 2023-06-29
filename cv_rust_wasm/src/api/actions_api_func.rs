@@ -1,8 +1,9 @@
 use std::collections::HashMap;
 use gloo_net::http::Request;
 use serde::Deserialize;
-use log::info;
+use fixedstr::fstr;
 
+use log::info;
 
 use crate::{ 
     appdata::stores::{store_app_types::{
@@ -454,6 +455,7 @@ pub async fn persist_appstate_pending (
                 resource_type: Some(f_data.resource_type),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::FILTER),
+                action_txt: None,
             };
 
             vec_responses_collectable_filters.push(c);
@@ -481,6 +483,7 @@ pub async fn persist_appstate_pending (
                 resource_type: Some(b_data.resource_type),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::BOOKMARK),
+                action_txt: None,
             };
 
             vec_responses_collectable_bookmarks.push(c);
@@ -515,6 +518,7 @@ pub async fn persist_appstate_pending (
                 resource_type: Some(a_data.resource_type),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::ANNOTATION),
+                action_txt: None,
             };
 
             vec_responses_collectable_annotations.push(c);
@@ -531,6 +535,7 @@ pub async fn persist_appstate_pending (
                 resource_type: Some(a_data.resource_type),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::ANNOTATION),
+                action_txt: Some(fstr::make(a_data.text.as_str())),
             };
 
             vec_responses_collectable_annotations.push(c);
@@ -569,6 +574,7 @@ pub async fn get_user_actions () -> HashMap<ActionTypes, Vec<Collectable>> {
                 resource_id: Some(d.resource_id),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::FILTER),
+                action_txt: None,
             }
         }).collect();
     }
@@ -587,7 +593,8 @@ pub async fn get_user_actions () -> HashMap<ActionTypes, Vec<Collectable>> {
                 resource_type: Some(d.resource_type),
                 resource_id: Some(d.resource_id),
                 pending: Some(PendingStatus::Void),
-                action_type: Some(ActionTypes::FILTER),
+                action_type: Some(ActionTypes::BOOKMARK),
+                action_txt: None,
             }
         }).collect();
     }
@@ -606,33 +613,12 @@ pub async fn get_user_actions () -> HashMap<ActionTypes, Vec<Collectable>> {
                 resource_type: Some(d.resource_type),
                 resource_id: Some(d.resource_id),
                 pending: Some(PendingStatus::Void),
-                action_type: Some(ActionTypes::FILTER),
+                action_type: Some(ActionTypes::ANNOTATION),
+                action_txt: Some(fstr::make(d.text.as_str())),
             }
         }).collect();
     }
     
-    // let bookmarks = bookmarks_data.unwrap().data.data;
-    // let collectable_bookmarks : Vec<Collectable> = bookmarks.iter().map(|d| {
-    //     Collectable {
-    //         _id: Collectable::maybe_string_id(d._id.clone()),
-    //         resource_type: Some(d.resource_type),
-    //         resource_id: Some(d.resource_id),
-    //         pending: None,
-    //         action_type: Some(ActionTypes::BOOKMARK),
-    //     }
-    // }).collect();
-
-    // let annotations = annotations_data.unwrap().data.data;
-    // let collectable_annotations : Vec<Collectable> = annotations.iter().map(|d| {
-    //     Collectable {
-    //         _id:  Collectable::maybe_string_id(d._id.clone()),
-    //         resource_type: Some(d.resource_type),
-    //         resource_id: Some(d.resource_id),
-    //         pending: None,
-    //         action_type: Some(ActionTypes::ANNOTATION),
-    //     }
-    // }).collect();
-
     let mut actions_hash = HashMap::new();
 
     actions_hash.insert(ActionTypes::BOOKMARK, collectable_bookmarks);//collectable_bookmarks);

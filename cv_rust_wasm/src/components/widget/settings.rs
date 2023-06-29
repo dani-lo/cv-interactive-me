@@ -71,9 +71,8 @@ pub fn config_settings() -> Html {
             <div class={ c_name }>
                 <span  
                     class="html-icon" 
-                    onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
-                    style={ "transform: rotate(180deg);display: inline-block;"}>
-                    {  	"\u{279c}" }
+                    onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                    <i class="fa fa-arrow-left" aria-hidden="true" />
                 </span> 
                 {
                     elements

@@ -1,3 +1,5 @@
+use log::info;
+
 use crate::{
     models::ModelTypes,
     traits::{
@@ -6,8 +8,6 @@ use crate::{
         can_filter::Filter
     }, appdata::stores::store_app_types::PendingStatus
 };
-
-use super::store_utils::is_pending;
 
 pub fn resource_annotation(
     resource_type: ModelTypes,
@@ -21,7 +21,7 @@ pub fn resource_annotation(
             n.resource_id == *resource_id &&
             n.pending != PendingStatus::Fresh
         );
-
+    
     if note.is_some() {
         Some(note.unwrap().clone())
     } else {
