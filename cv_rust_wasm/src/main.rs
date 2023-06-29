@@ -43,9 +43,10 @@ fn app() -> Html {
          
         match routes {
             AppRoute::HomeRoute => html! { <h1>{ "Home" }</h1> },
-            AppRoute::JobsRoute => html! { <JobsComponent route_id={ 0 } /> },
-            AppRoute::JobsDetailRoute { uid } => html! { <JobsComponent route_id={ uid } /> },            
-            AppRoute::ProjectsRoute => html! {<ProjectsComponent route_id={ 0 } /> },
+            AppRoute::JobsRoute => html! { <JobsComponent route_id={ None } /> },
+            AppRoute::JobsDetailRoute { uid } => html! { <JobsComponent route_id={ Some(uid) } /> },            
+            AppRoute::ProjectsRoute => html! {<ProjectsComponent route_id={ None } /> },
+            AppRoute::ProjectsDetailRoute { uid } => html! {<ProjectsComponent route_id={ Some(uid) } /> },
             AppRoute::PersonalRoute => html! { <h1>{ "This is Personal" }</h1> },
             AppRoute::NotFoundRoute => html! { <h1>{ "404" }</h1> },
         }

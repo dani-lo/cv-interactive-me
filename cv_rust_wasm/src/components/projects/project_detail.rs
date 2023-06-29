@@ -29,7 +29,7 @@ use crate::{
 
 #[derive( PartialEq, Properties)]
 pub struct ProjectDetailProps {
-    pub selected_project_uid:  UseStateHandle<Option<usize>>,
+    pub selected_project_uid:  Option<usize>,
     // pub set_modal_item: Callback<Actionable>,
     // pub store: UseReducerHandle<StoreState>,
 }
@@ -97,6 +97,11 @@ pub fn job_detail(ProjectDetailProps {
                     </span>
                     
                 </h2>
+                <p class="margin-b">
+                    <a href={ project.repo.clone() } target="_blank">
+                        <strong>{ "Github Repo" }</strong>
+                    </a>
+                </p>
                 {
                     if project_note.is_some() {
                         html! {
@@ -113,11 +118,6 @@ pub fn job_detail(ProjectDetailProps {
                         list_items={ project.description.clone() }
                     />
                 </div>
-                <p>
-                    <a href={ project.repo.clone() } target="_blank">
-                        <strong>{ "Github Repo" }</strong>
-                    </a>
-                </p>
                 <TechComponent
                     job_uid={ project.uid }
                     actionable={ true }

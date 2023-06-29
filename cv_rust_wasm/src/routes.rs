@@ -10,6 +10,8 @@ pub enum AppRoute {
     JobsDetailRoute{ uid: usize },
     #[at("/projects")]
     ProjectsRoute,
+    #[at("/projects/:uid")]
+    ProjectsDetailRoute{ uid: usize },
     #[at("/personal")]
     PersonalRoute,
     #[not_found]

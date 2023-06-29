@@ -28,7 +28,7 @@ use crate::{
 
 #[derive( PartialEq, Properties)]
 pub struct JobDetailProps {
-    pub selected_job_uid:  UseStateHandle<Option<usize>>,
+    pub selected_job_uid:  Option<usize>,
 }
 
 #[function_component(JobDetailComponent)]

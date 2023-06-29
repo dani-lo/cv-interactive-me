@@ -45,49 +45,40 @@ pub fn project(ProjectProps {
         html! {
             <div class={ c_name }>
                 <h2>
-                    <span>{ &project.name  }</span>
-                {
-                    if *bookmarked {
-                        html!{
-                            <i class="fa fa-bookmark bookmark" />
-                        }
-                    } else {
-                        html!{
-                            <span></span>
+                    {
+                        if *bookmarked {
+                            html!{
+                                <span>
+                                    <i class="fa fa-bookmark bookmark" style="margin-right: var(--gap-medium);" />
+                                    { &project.name  }
+                                </span>
+                                
+                            }
+                        } else {
+                            html!{
+                                <span>{ &project.name  }</span>
+                            }
                         }
                     }
-                }
+                    <i 
+                        class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                        onclick={ move |_| project_detail.emit(c_uid) }
+                        id={ format!("job-selector-{}", c_uid   ) }
+                    />
                 </h2>
-                <div class="job-list-body">
-                    <div>   
-                        <h3>
-                            <RichTextParagraphComponent
-                                text={ project.notes.clone() }
-                            />
-                        </h3>
-                        // <p class="margin-s">
-                        //     <a href={ project.repo.clone() } target="_blank">
-                        //         <strong>{ "Github Repo" }</strong>
-                        //     </a>
-                        // </p>
-                        <ul>
-                        { 
-                            project.status.iter().map(|ps| {
-                                
-                                html! { <li><RichTextParagraphComponent text={ ps.clone() } /></li> }
-                                
-                            }).collect::<Html>()
-                        }
-                        </ul>
-                    </div>       
-                    <div>
-                        <i 
-                            class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                            onclick={ move |_| project_detail.emit(c_uid) }
-                            id={ format!("job-selector-{}", c_uid   ) }
-                        />
-                    </div>
-                </div>
+                <h3>
+                    <RichTextParagraphComponent
+                        text={ project.notes.clone() }
+                    />
+                </h3>
+                <ul>
+                { 
+                    project.status.iter().map(|ps| {
+                        
+                        html! { <li><RichTextParagraphComponent text={ ps.clone() } /></li> }
+                    }).collect::<Html>()
+                }
+                </ul>  
             </div>        
         }
 }

@@ -49,8 +49,8 @@ pub fn job_tech(TechProps {
 
     html!{  
         <div>
-        
-            <ul class="StyledActionsList">
+            <h3 class="margin-m">{ "Technical Resume" }</h3>
+            <ul class="StyledActionsList margin-s">
             {
                 show_techs.iter().map(|jt| {
 

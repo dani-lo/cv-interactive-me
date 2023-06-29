@@ -17,7 +17,7 @@ use crate::{
         UserModel, 
         get_user
     },
-    util::store_utils::state_pending_actions,
+    util::{store_utils::state_pending_actions, timeout::notify_user},
 };
 
 pub struct EmptyVoid {}
@@ -47,8 +47,8 @@ pub fn pending_actions_component() -> Html {
     }, ());
 
     let user_opts: UseStateHandle<bool> = use_state(|| false);
-    let ban_persist_tmp: UseStateHandle<bool> = use_state(|| false);
-    let ban_persist_always: UseStateHandle<bool> = use_state(|| false);
+    // let ban_persist_tmp: UseStateHandle<bool> = use_state(|| false);
+    // let ban_persist_always: UseStateHandle<bool> = use_state(|| false);
 
     // let c_ban_persist_always = ban_persist_always.clone();
     // let c_ban_persist_tmp = ban_persist_tmp.clone();
@@ -60,6 +60,8 @@ pub fn pending_actions_component() -> Html {
 
     let discard_pending: Callback<Option<yew::UiEvent>> = Callback::from(move |_e| {
         flush_dispatcher.reduce_mut(|s| s.flush_pending());
+
+        notify_user("Your changes have ben discarded", true);
     });
 
     let apply_pending : Callback<Option<yew::UiEvent>> = Callback::from(move |_e| {
@@ -86,6 +88,8 @@ pub fn pending_actions_component() -> Html {
             ).await;
 
             apply_dispatcher.reduce_mut(|s| s.apply_processed_pending(persist_result));
+
+            notify_user("Your changes have ben persisted", true);
         });
     });
     
@@ -98,7 +102,7 @@ pub fn pending_actions_component() -> Html {
             <div class="prompt">
                 <p><strong>{"You have "} { all_pending_len } {"pending changes"}</strong></p>
                 <button 
-                    class="danger"
+                    class="err"
                     onclick={ move |_| discard_pending.emit(None) }
                 >{"Discard"}</button>
                 <button

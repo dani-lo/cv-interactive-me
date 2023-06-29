@@ -9,13 +9,6 @@
     margin-top: 0;
 }
 
-.StyledJobContainer .job-list-body {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-}
-
 .StyledJobContainer h2 {
     display: flex;
     align-items: flex-start;
@@ -119,7 +112,7 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: var(--z-4);
+    z-index: var(--z-3);
     background: transparent;
     top: 0;
     left: 0;
@@ -298,9 +291,11 @@
 }
 
 .StyledPrompt  p a {
-    /* text-align: left; */
     padding-left: var(--gap-small);
-    cursor: pointer;
+}
+
+.StyledPrompt  i {
+    width: 1rem;
 }
 
 .StyledPrompt  .prompt {
@@ -349,6 +344,7 @@
     position: absolute;
     right: 5px;
     top: 11px;
+    font-size: 1rem;
 }
 
 

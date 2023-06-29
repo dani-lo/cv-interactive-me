@@ -4,9 +4,11 @@ use log::info;
 use yew::{
     prelude::*, 
 };
+use yew_router::prelude::use_navigator;
 use yewdux::prelude::use_store;
 
 use crate::{
+    routes::AppRoute,
     appdata::stores::{
         store_app_types:: { 
             Collectable,
@@ -32,11 +34,15 @@ use crate::{
 pub struct ActionsListLinkProps {
     pub item: Option<(usize, ModelTypes)>,
     pub text: String,
+    pub on_click_browseable_resource: yew::Callback<Option<MouseEvent>>,
 }
 
 
 #[function_component(ActionsListLinkComponent)]
-pub fn actions_list_link (ActionsListLinkProps { item, text } : &ActionsListLinkProps)  -> Html { 
+pub fn actions_list_link (ActionsListLinkProps { 
+        item, 
+        text,
+        on_click_browseable_resource } : &ActionsListLinkProps)  -> Html { 
 
     if item.is_none() {
         return html!{ 
@@ -44,17 +50,10 @@ pub fn actions_list_link (ActionsListLinkProps { item, text } : &ActionsListLink
         };
     } else {
 
-        let item_val = item.unwrap();
+        let on_click = on_click_browseable_resource.clone();
 
-        if item_val.1 == ModelTypes::Job {
-
-            return html!{ 
-                <a href={ format!("/jobs?uid={}", item_val.0) }>{ text }</a> 
-            }
-        } else {
-            return html!{ 
-                <a href={ format!("/projects?uid={}", item_val.0) }>{ text }</a> 
-            }
+        return html!{ 
+            <a onclick={ move |_| on_click.emit(None) }>{ text }</a> 
         }
     }
 }
@@ -179,10 +178,6 @@ pub fn actions_list ()  -> Html {
     }
 }
 
-pub enum Msg {}
-
-pub struct ActionListActionables {}
-
 #[derive(Clone, PartialEq, Properties)]
 pub struct ActionListActionablesProps {
     ordered_actionable_hashes:HashMap<ModelTypes, Vec<Collectable>>,
@@ -194,7 +189,8 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
         ordered_actionable_hashes, 
         collectable_type, 
     } : &ActionListActionablesProps) -> Html {
-
+ 
+    let nav = use_navigator().unwrap();
     let (state, dispatch) = use_store::<StoreApp>();
 
     let static_models = state.static_models.clone();
@@ -208,11 +204,8 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
             actionables_vec.unwrap().iter().map(|f: &Collectable| {
 
                 let action_type = f.action_type.unwrap();
-                
                 let resource_id = f.resource_id.unwrap();
                 let resource_type_type = f.resource_type.unwrap();
-
-                let dispatcher = dispatch.clone();
 
                 let res_name: ResourceName = resource_name(
                     &static_models.model_hashes,
@@ -225,7 +218,19 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                     f.resource_id.unwrap(),
                     f.resource_type.unwrap(),
                 );
+                
+                let n = nav.clone();
+                let dispatcher = dispatch.clone();
 
+                let on_click_browseable_resource: yew::Callback<Option<MouseEvent>> = Callback::from(move |_| { 
+
+                    if resource_type_type == ModelTypes::Project {
+                        n.push(&AppRoute::ProjectsDetailRoute { uid: resource_id });
+                    } else {
+                        n.push(&AppRoute::JobsDetailRoute { uid: resource_id });
+                    }
+                });
+                
                 html!{
                     <li class="action-wrap">
                         <span>
@@ -234,12 +239,14 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                             <ActionsListLinkComponent 
                                 item={ parent } 
                                 text={ res_name.name } 
+                                on_click_browseable_resource={ on_click_browseable_resource }
                             />
                         </span>
                         <span  
                             class="html-icon" 
                             onclick={ move |_| {
                                 dispatcher.reduce_mut(|s| {
+
                                     if action_type == ActionTypes::ANNOTATION {
                                         s.remove_annotation(Annotation {
                                             _id: None,
@@ -272,7 +279,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
             }).collect::<Html>()
         }
     }).collect::<Html>();
-
+    
     
     html!{
         <ul class="StyledActionsList">

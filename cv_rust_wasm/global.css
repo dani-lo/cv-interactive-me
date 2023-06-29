@@ -7,7 +7,7 @@
   --black : #0d252f;
   --active-action: cadetblue;
   --text-clear: cadetblue;
-  --active-pink: #df6fba;;
+  --active-pink: #bdc9ce;
   --pending-action: grey;
   --text-main: #555;
   --text-dark: #0d252f;
@@ -38,10 +38,13 @@ body {
   
    
   font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Open Sans', sans-serif; */
+
+  /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
 
   font-weight: 300; 
   
@@ -112,7 +115,9 @@ h3 {
 
 a {
   color: var(--text-dark);
-  font-weight: bold;
+  /* font-weight: bold; */
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -163,17 +168,6 @@ button.disabled {
   pointer-events: none;
 }
 
-button.ok {
-  background: #206e20;
-}
-
-button.danger {
-  background: #aa2525;
-}
-
-button.danger:hover {
-  opacity: 0.7;
-}
 
 
 label {
@@ -295,22 +289,11 @@ span.action-wrap i {
   margin-right: var(--gap-medium);
 }
 
-
-span.action-wrap span {
-  font-weight: bold;
-}
-
 span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-icon {
   color: var(--active-pink);
 }
 
 span.action-wrap > span.html-icon {
-  /* padding: 0.1rem 0.3rem; */
-  /* background: var(--black); */
-  /* color: white; */
-  /* font-size: 1rem;
-  line-height: 1rem; */
-  /* border-radius: 2px; */
   margin-right: var(--gap-small);
 }
 
@@ -318,10 +301,9 @@ span.html-icon {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1rem;
   display: inline-block;
-  /* margin-right: var(--gap-small); */
   color: var(--black);
   font-family: Helvetica;
 }
@@ -374,4 +356,60 @@ span.html-icon:hover {
 
 .no-margin {
   margin: 0!important;
+}
+
+#notification-container {
+  transition: top 0.25s;
+  position: fixed;
+  z-index: 11111;
+  padding: 4px;
+  display: flex;
+  text-align: center;
+  top: -112px;
+  right: 13px;
+}
+
+#notification-container span {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  background: green;
+  border-radius: 2px;
+  font-weight: bold;
+  color: white;
+  padding: 0.75rem 1.5rem;
+}
+
+#notification-container.active {
+  top: 12px;
+}
+
+#notification-container.unactive {
+  top: -112px;
+}
+
+.err {
+  background: #aa2525;
+}
+
+.ok {
+  background: #206e20;
+}
+
+.warn {
+  background: rgb(173, 123, 6);
+}
+
+.margin-b {
+  margin: var(--gap-large) 0!important;
+}
+
+.margin-m {
+  margin: var(--gap-medium) 0!important;
+}
+
+.margin-s {
+  margin: var(--gap-small) 0!important;
 }

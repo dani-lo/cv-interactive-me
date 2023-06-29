@@ -1,15 +1,16 @@
 use std::collections::HashMap;
 
+use log::info;
 use yew::{
     prelude::*, 
 };
 
 use yewdux::prelude::*;
 
-use yew_router::history::{
+use yew_router::{history::{
     BrowserHistory, 
     History
-};
+}, prelude::{use_navigator, use_location}};
 
 use crate::{
     models::{
@@ -50,13 +51,13 @@ use crate::{
         make_model::make_jobs,
         url_query_params::get_query_params, 
     },
-    CV_APP_LOADED,
+    CV_APP_LOADED, routes::AppRoute,
 
 };
 
 #[derive(Properties, PartialEq)]
 pub struct JobsProps {
-    pub route_id: usize,
+    pub route_id: Option<usize>,
 }
 
 #[function_component(JobsComponent)]
@@ -65,15 +66,17 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
     let (state, dispatch) = use_store::<StoreApp>();
     let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
 
+    let nav = use_navigator().unwrap();
+
     // let settings_list = use_state(|| false);
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
 
-    let nav_location = BrowserHistory::new().location();
-    let query_st = nav_location.query_str();
-    let maybe_appquery = get_query_params(query_st);
+    // let nav_location = BrowserHistory::new().location();
+    // let query_st = nav_location.query_str();
+    // let maybe_appquery = get_query_params(query_st);
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
 
@@ -81,20 +84,19 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
         m_hashes.jobs.values().cloned().collect::<Vec<JobModel>>()
     });
 
-    let selected_job_uid: UseStateHandle<Option<usize>> = use_state(|| {
-        if maybe_appquery.is_some() { 
-            Some(maybe_appquery.unwrap().uid) 
-        } else { 
-            None 
-        }
-    });
+    // let selected_job_uid: UseStateHandle<Option<usize>> = use_state(|| {
+    //     if maybe_appquery.is_some() { 
+    //         Some(maybe_appquery.unwrap().uid) 
+    //     } else { 
+    //         None 
+    //     }
+    // });
 
-    let c_selected_job_uid = selected_job_uid.clone();
+    // let c_selected_job_uid = selected_job_uid.clone();
     
-    let on_select_job_detail = Callback::from( move |uid: usize| {
-        selected_job_uid.set(Some(uid));
-        // Location::set_href(&web_sys::Location { }, "foo.com");
-        // BrowserHistory::new().replace(AppRoute::JobsDetailRoute { uid: uid });
+    let on_select_job_detail = Callback::from( move |uid: usize| {  
+
+        nav.push(&AppRoute::JobsDetailRoute { uid });
     });
 
     unsafe {
@@ -156,7 +158,9 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                             }
                         } else {
                             html!{
-                                <ActionsListComponent />
+                                <ActionsListComponent 
+
+                                />
                             }
                         }
                     } 
@@ -175,7 +179,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                                     <JobsListComponent
                                         jobs={(*jobs).clone()} 
                                         on_select_job_detail={ on_select_job_detail }
-                                        active_job_id={ if c_selected_job_uid.is_some() { c_selected_job_uid.unwrap() } else { 0 }  }
+                                        active_job_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
                                     />
                                 }
                             }
@@ -184,7 +188,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                 </div>
                 <div>
                     <JobDetailComponent
-                        selected_job_uid={ c_selected_job_uid }
+                        selected_job_uid={ route_id }
                     />
                 </div>
             </div> 

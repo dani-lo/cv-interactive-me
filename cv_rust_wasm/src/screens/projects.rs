@@ -5,10 +5,10 @@ use yew::{
     prelude::*, 
 };
 
-use yew_router::history::{
+use yew_router::{history::{
     BrowserHistory, 
     History
-};
+}, prelude::use_navigator};
 use yewdux::prelude::use_store;
 
 use crate::{
@@ -55,12 +55,12 @@ use crate::{
         },
         widget::settings::ConfigSettingsListComponent,
     },
-    CV_APP_LOADED,
+    CV_APP_LOADED, routes::AppRoute,
 };
 
 #[derive(Properties, PartialEq)]
 pub struct JobsProps {
-    pub route_id: usize,
+    pub route_id: Option<usize>,
 }
 
 #[function_component(ProjectsComponent)]
@@ -72,24 +72,27 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
 
+    let nav = use_navigator().unwrap();
+
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
     let projects:UseStateHandle<Vec<ProjectModel>> = use_state(|| store_projects);
     
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
-    let nav_location = BrowserHistory::new().location();
-    let query_st = nav_location.query_str();
-    let maybe_appquery = get_query_params(query_st);
+    // let nav_location = BrowserHistory::new().location();
+    // let query_st = nav_location.query_str();
+    // let maybe_appquery = get_query_params(query_st);
 
-    let selected_project_uid: UseStateHandle<Option<usize>> = use_state(|| if maybe_appquery.is_some() { Some(maybe_appquery.unwrap().uid) } else { None });
-    let c_selected_project_uid = selected_project_uid.clone();
+    // let selected_project_uid: UseStateHandle<Option<usize>> = use_state(|| if maybe_appquery.is_some() { Some(maybe_appquery.unwrap().uid) } else { None });
+    // let c_selected_project_uid = selected_project_uid.clone();
 
     let default_models = StaticModels::default();
     let app_static_models_hashes : UseStateHandle<AppStaticDataHashes> = use_state(|| default_models.model_hashes);
 
     let on_select_project_detail = Callback::from( move |uid: usize| {
-        selected_project_uid.set(Some(uid));
+        // selected_project_uid.set(Some(uid));
+        nav.push(&AppRoute::ProjectsDetailRoute { uid });
     });
     
     unsafe {
@@ -177,7 +180,7 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
                                     <ProjectsListComponent
                                         projects={(*projects).clone()} 
                                         on_select_project_detail={ on_select_project_detail }
-                                        active_project_id={ if c_selected_project_uid.is_some() { c_selected_project_uid.unwrap() } else { 0 }  }
+                                        active_project_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
                                     />
                                 }
                             }
@@ -187,7 +190,7 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
                 </div>
                 <div>
                     <ProjectDetailComponent
-                        selected_project_uid={ c_selected_project_uid }
+                        selected_project_uid={ route_id }
                     />
                 </div>
             </div> 

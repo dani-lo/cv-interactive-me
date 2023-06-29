@@ -17,39 +17,6 @@
         <link data-trunk rel="css"   href="styled.css">
       </head>
     <body>
-      <style>
-        #notification-container {
-          transition: top 0.25s;
-          position: fixed;
-          z-index: 11111;
-          padding: 4px;
-          display: flex;
-          text-align: center;
-          top: -112px;
-          left: 28px;
-        }
-        
-        #notification-container span {
-          display: block;
-          text-align: center;
-          width: 100%;
-          font-size: 0.9rem;
-          text-transform: lowercase;
-          background: green;
-          padding: 0.5rem 1rem;
-          border-radius: 4px;
-          font-weight: bold;
-          color: white;
-        }
-        
-        #notification-container.active {
-          top: 12px;
-        }
-        
-        #notification-container.unactive {
-          top: -112px;
-        }
-      </style>
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
       <script>
 
@@ -61,7 +28,7 @@
           this.active_class = 'active'
         }
 
-        wasm_notification.prototype.create_ui = function() {
+        wasm_notification.prototype.create_ui = function(success) {
 
           this.destroy_ui();
           
@@ -70,6 +37,7 @@
 
 
           var txt = document.createElement('span');
+          txt.setAttribute('class', success ? 'ok' : 'err')
           txt.append(this.msg);
 
           this.container.append(txt);
@@ -124,11 +92,11 @@
 
         window.wasm_bridge_app = {
 
-          notify: function (msg) {
-            console.log(msg)
+          notify: function (msg, success) {
+
             var wasm_n = new wasm_notification(msg);
 
-            wasm_n.create_ui();
+            wasm_n.create_ui(success);
 
             setTimeout(function () {
               wasm_n.show();
@@ -138,17 +106,40 @@
             setTimeout(function () {
               wasm_n.hide();
             }, 4000);
+          },
+
+          scrollToActiveItem : function(itemId) {
+
           }
         }
 
+        // window.wasm_bridge_app = {
+
+        //   notify: function (msg) {
+        //     console.log(msg)
+        //     var wasm_n = new wasm_notification(msg);
+
+        //     wasm_n.create_ui();
+
+        //     setTimeout(function () {
+        //       wasm_n.show();
+        //     }, 10);
+            
+
+        //     setTimeout(function () {
+        //       wasm_n.hide();
+        //     }, 4000);
+        //   }
+        // }
+
         var listenerJobSelect = window.addEventListener("click", function (e) {
           
-          if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
+          // if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
 
-            var jobId = e.target.getAttribute("id").replace("job-selector-", "")
+          //   var jobId = e.target.getAttribute("id").replace("job-selector-", "")
 
-            window.history.pushState({}, '', "/jobs?uid=" + jobId);
-          }
+          //   window.history.pushState({}, '', "/jobs?uid=" + jobId);
+          // }
         })
       </script>
     </body>

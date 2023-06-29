@@ -439,8 +439,6 @@ pub async fn persist_appstate_pending (
     let mut vec_responses_collectable_filters = Vec::new();
     let mut vec_responses_collectable_annotations = Vec::new();
 
-    info!("IN PERSIST :: pending_annotations_collectables {:?}", pending_annotations_collectables);
-
     for pending_filter_collectable in pending_filters_collectables {
 
         let f = Filter::from_collectable(&pending_filter_collectable);
@@ -505,8 +503,6 @@ pub async fn persist_appstate_pending (
             a.text = existing.unwrap().text.clone();
         }
 
-        info!("This annotation has pending status {:?}", pending_annotation_collectable.pending.unwrap());
-
         if pending_annotation_collectable.pending.unwrap() == PendingStatus::Added {
 
             let res = create_annotation(a).await;
@@ -524,10 +520,8 @@ pub async fn persist_appstate_pending (
             vec_responses_collectable_annotations.push(c);
         } else if pending_annotation_collectable.pending.unwrap() == PendingStatus::VoidThenEdited {
 
-            info!("IN PERSIST ---- EDIT THIS ANNNNNNN");
-            info!("{:?}", a);
-
             let res = edit_annotation(a).await;
+            
             let a_data_res = res.unwrap().data;
             let a_data = a_data_res.get("annotation").unwrap();
 
@@ -539,8 +533,6 @@ pub async fn persist_appstate_pending (
                 action_type: Some(ActionTypes::ANNOTATION),
             };
 
-            info!("C:: {:?}", c);
-
             vec_responses_collectable_annotations.push(c);
 
         } else if pending_annotation_collectable.pending.unwrap() == PendingStatus::VoidThenDeleted {
@@ -551,10 +543,6 @@ pub async fn persist_appstate_pending (
     hashed_response_resorces.insert(ActionTypes::FILTER, vec_responses_collectable_filters);
     hashed_response_resorces.insert(ActionTypes::BOOKMARK, vec_responses_collectable_bookmarks);
     hashed_response_resorces.insert(ActionTypes::ANNOTATION, vec_responses_collectable_annotations);
-
-    info!("{:?}", hashed_response_resorces);
-
-    notify_user("I am all DONE");
 
     hashed_response_resorces
 }

@@ -54,52 +54,35 @@ pub fn job(Props {
 
         html! {
             <div class={ c_name }>
-            <h2>
-                {
-                    if *bookmarked {
-                        html!{
-                            <span>
-                                <i class="fa fa-bookmark bookmark" style="margin-right: var(--gap-medium);" />
-                                { &job.period.formatted()  }
-                            </span>
-                            
-                        }
-                    } else {
-                        html!{
-                            <span>{ &job.period.formatted()  }</span>
+                <h2>
+                    {
+                        if *bookmarked {
+                            html!{
+                                <span>
+                                    <i class="fa fa-bookmark bookmark" style="margin-right: var(--gap-medium);" />
+                                    { &job.period.formatted()  }
+                                </span>
+                                
+                            }
+                        } else {
+                            html!{
+                                <span>{ &job.period.formatted()  }</span>
+                            }
                         }
                     }
-                }
-                <i 
-                    class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                    onclick={ move |_| c_job_detail.emit(c_uid) }
-                    id={ format!("job-selector-{}", c_uid   ) }
-                />
-            </h2>
-            <div class="job-list-body">
-                <div>
-                    <h3>{ at_company_name }</h3>
-                    <p>{ desc_text }{"..."}</p>
-                    <JobTypeComponent
-                        job_jobtypes = { job.job_type.clone() }
-                        detail={ false }
-                        actionable={ false }
+                    <i 
+                        class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
+                        onclick={ move |_| c_job_detail.emit(c_uid) }
+                        id={ format!("job-selector-{}", c_uid   ) }
                     />
-                </div>
-                // <div>
-                //         <i 
-                //             class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                //             onclick={ move |_| c_job_detail.emit(c_uid) }
-                //             id={ format!("job-selector-{}", c_uid   ) }
-                //         />
-                //         // <span  
-                //         //     class={if *selected { "job-selector selected html-icon"} else { "job-selector html-icon" }}
-                //         //     onclick={ move |_| c_job_detail.emit(c_uid) }  
-                //         // >
-                //         //     {  	"\u{203A}" }
-                //         // </span>
-                // </div>
-            </div>
-        </div>    
+                </h2>
+                <h3>{ at_company_name }</h3>
+                <p>{ desc_text }{"..."}</p>
+                <JobTypeComponent
+                    job_jobtypes = { job.job_type.clone() }
+                    detail={ false }
+                    actionable={ false }
+                />
+            </div>    
     }
 }

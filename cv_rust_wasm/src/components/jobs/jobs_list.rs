@@ -42,10 +42,10 @@ pub struct JobListProps {
 }
 
 
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct UrlParams {
-    pub id: i32,
-}
+// #[derive(Serialize, Deserialize, Clone, Debug)]
+// pub struct UrlParams {
+//     pub id: i32,
+// }
 
 #[function_component(JobsListComponent)]
 pub fn job_list(JobListProps { 
@@ -57,7 +57,6 @@ pub fn job_list(JobListProps {
 
     let (state, _dispatch) = use_store::<StoreApp>();
     
-    // info!("{:?}", store);
     let notes: Vec<Annotation> = state.annotations.clone().to_vec();
     let bookmarks: Vec<Bookmark> = state.bookmarks.clone().to_vec();
     
@@ -71,8 +70,6 @@ pub fn job_list(JobListProps {
 
     let has_filters = active_filters.len() > 0;
     
-    // info!("HAS FILTERS ?????????? {}", has_filters);
-
     let mut anything_rendered = 0;
 
     let jobs_list = jobs.iter().map(|job| {
