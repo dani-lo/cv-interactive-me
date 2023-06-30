@@ -1,8 +1,6 @@
-use log::info;
 use yew::{
     function_component,
     html,
-    UseStateHandle,
     Html,
     Properties,
 };
@@ -93,7 +91,7 @@ pub fn job_detail(JobDetailProps {
                     if job_note.is_some() {
                         html! {
                             <div class="StyledAnnotation">
-                                <p>{ job_note.unwrap().text }</p>
+                                <p>{ "\"" }{ job_note.unwrap().text }{ "\"" }</p>
                             </div>
                         }
                     } else {

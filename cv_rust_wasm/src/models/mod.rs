@@ -23,7 +23,7 @@ pub trait Model {
     fn included_in_filters (&self, state_filters: &Vec<Filter>) -> bool;
 }
 
-#[derive(Eq, Hash, PartialEq, Clone, Copy, Deserialize, Serialize)]
+#[derive(Eq, Hash, PartialEq, Clone, Copy, Deserialize, Serialize, PartialOrd, Ord)]
 pub enum ModelTypes {
     Job,
     Company,

@@ -101,7 +101,7 @@ pub fn job_detail(ProjectDetailProps {
                     if project_note.is_some() {
                         html! {
                             <div class="StyledAnnotation">
-                                <p>{ project_note.unwrap().text }</p>
+                                <p>{ "\"" }{ project_note.unwrap().text }{ "\"" }</p>
                             </div>
                         }
                     } else {

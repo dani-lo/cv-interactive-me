@@ -42,7 +42,7 @@
 .StyledJobContainer.selected a, 
 .StyledJobContainer.selected i {
 
-    color: var(--white);
+    color: white;
 }
 
 
@@ -164,10 +164,7 @@
 }
 
 .StyledAnnotation {
-    padding: var(--gap-medium);
-    border: 2px solid var(--black);
     margin-top: var(--gap-large);
-    border-radius: 2px;
 }
 
 .StyledAnnotation p {
@@ -186,7 +183,9 @@
 
 /* .StyledCompanyContainer p, .StyledCompanyContainer li, .StyledCompanyContainer h3 {
     color: var(--white);
-} */
+} 
+
+*/
 
 
 .StyledCompanyContainer > h3 {
@@ -357,7 +356,8 @@
     top: 11px;
 }
 
-.StyledAnnotation {
+.StyledAnn
+otation {
 
 }
 

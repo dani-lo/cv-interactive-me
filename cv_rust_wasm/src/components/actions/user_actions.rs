@@ -337,18 +337,15 @@ pub fn annotation_text (ActionProps {
 
         let add_annotation: yew::Callback<Option<MouseEvent>> = dispatcher.reduce_mut_callback(move |s| {
 
-            info!("Add AnnotATION! >>> into YEWDUX");
-            // info!("This is the text:: {}", tgt_note_txt);
-
+            let txt = String::from(tgt_note_str256.to_str());
+            
             let new_or_edited_note =  Annotation {
                     _id: None,
                     resource_id: c_resource_id.unwrap().clone(),
                     resource_type: c_resource_type.unwrap().clone(),
                     pending: new_status,
-                    text: String::from(tgt_note_str256.to_str()),
+                    text: txt,
             };
-            
-            info!("added or edited ?????????? {:?}", new_or_edited_note);
 
             existin_text.set(Some(String::from(tgt_note_str256.to_str())));
 

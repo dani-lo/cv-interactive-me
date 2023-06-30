@@ -1,6 +1,6 @@
-use std::{collections::HashMap, fmt::format};
+use std::{collections::HashMap};
+use itertools::Itertools;
 
-use log::info;
 use yew::{
     prelude::*, 
 };
@@ -31,34 +31,6 @@ use crate::{
         ActionTypes
     },
 };
-
-#[derive( PartialEq, Properties)]
-pub struct ActionsListLinkProps {
-    pub item: Option<(usize, ModelTypes)>,
-    pub text: String,
-    pub on_click_browseable_resource: yew::Callback<Option<MouseEvent>>,
-}
-
-
-#[function_component(ActionsListLinkComponent)]
-pub fn actions_list_link (ActionsListLinkProps { 
-        item, 
-        text,
-        on_click_browseable_resource } : &ActionsListLinkProps)  -> Html { 
-
-    if item.is_none() {
-        return html!{ 
-            <span>{ text }</span> 
-        };
-    } else {
-
-        let on_click = on_click_browseable_resource.clone();
-
-        return html!{ 
-            <a onclick={ move |_| on_click.emit(None) }>{ text }</a> 
-        }
-    }
-}
 
 #[function_component(ActionsListComponent)]
 pub fn actions_list ()  -> Html { 
@@ -119,15 +91,9 @@ pub fn actions_list ()  -> Html {
         })
         .collect::<Vec<Collectable>>();
     
-    info!("++++++ actionable_annotations");
-    info!("{:?}", actionable_annotations);
-
     let ordered_bookmark_hashes = collectionables_vector_to_grouped_hash(actionable_bookmarks);
     let ordered_annotations_hashes = collectionables_vector_to_grouped_hash(actionable_annotations);
     let ordered_filter_hashes = collectionables_vector_to_grouped_hash(actionable_filters);
-
-    info!("++++++ ordered_annotations_hashes");
-    info!("{:?}", ordered_annotations_hashes);
 
     html! {
         <div>
@@ -206,7 +172,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
 
     let static_models = state.static_models.clone();
 
-    let list_tems = ordered_actionable_hashes.keys().into_iter().map(|key: &ModelTypes| {
+    let list_tems = ordered_actionable_hashes.keys().sorted().into_iter().map(|key: &ModelTypes| {
 
         let actionables_vec: Option<&Vec<Collectable>> = ordered_actionable_hashes.get(&key);
 
@@ -298,5 +264,34 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
             list_tems
         }
         </ul>
+    }
+}
+
+
+#[derive( PartialEq, Properties)]
+pub struct ActionsListLinkProps {
+    pub item: Option<(usize, ModelTypes)>,
+    pub text: String,
+    pub on_click_browseable_resource: yew::Callback<Option<MouseEvent>>,
+}
+
+
+#[function_component(ActionsListLinkComponent)]
+pub fn actions_list_link (ActionsListLinkProps { 
+        item, 
+        text,
+        on_click_browseable_resource } : &ActionsListLinkProps)  -> Html { 
+
+    if item.is_none() {
+        return html!{ 
+            <span>{ text }</span> 
+        };
+    } else {
+
+        let on_click = on_click_browseable_resource.clone();
+
+        return html!{ 
+            <a onclick={ move |_| on_click.emit(None) }>{ text }</a> 
+        }
     }
 }
