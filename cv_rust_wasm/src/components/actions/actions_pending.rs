@@ -26,7 +26,9 @@ pub struct EmptyVoid {}
 pub fn pending_actions_component() -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (yew_routerui_state, ui_dispatch) = use_store::<StoreUI>();
+
+    let settings_ui_dipatcher = ui_dispatch.clone();
     
     let c_state = (*state).clone();
 
@@ -47,11 +49,6 @@ pub fn pending_actions_component() -> Html {
     }, ());
 
     let user_opts: UseStateHandle<bool> = use_state(|| false);
-    // let ban_persist_tmp: UseStateHandle<bool> = use_state(|| false);
-    // let ban_persist_always: UseStateHandle<bool> = use_state(|| false);
-
-    // let c_ban_persist_always = ban_persist_always.clone();
-    // let c_ban_persist_tmp = ban_persist_tmp.clone();
 
     let flush_dispatcher = dispatch.clone();
     
@@ -100,15 +97,23 @@ pub fn pending_actions_component() -> Html {
     html!{
         <div class={ if all_pending_len > 0 { "StyledPrompt active" } else { "StyledPrompt" } }>
             <div class="prompt">
-                <p><strong>{"You have "} { all_pending_len } {"pending changes"}</strong></p>
+                <p>
+                    <strong>
+                        {"You have "} { all_pending_len } {"pending changes"}
+                    </strong>
+                </p>
                 <button 
                     class="err"
                     onclick={ move |_| discard_pending.emit(None) }
-                >{"Discard"}</button>
+                >
+                    {"Discard"}
+                </button>
                 <button
                     class="ok"
                     onclick={ move |_| apply_pending.emit(None) }
-                >{"Persist"}</button>
+                >
+                    {"Persist"}
+                </button>
             </div>
             <p onclick={ move |_| on_click_show_hide_opts.emit(None) }>
                 {
@@ -127,16 +132,30 @@ pub fn pending_actions_component() -> Html {
                         <div class="pending-actions-user-info">
                             <p>
                                 {"This app tracks users by assigning a "}
-                                <strong>{"random identifier"}</strong>
-                                { " stored in session. 
-                                If you would like to persist your actions (i.e filters, bookmrks, annotations) you can do so: after
-                                persisting, your browser in future will automatically show your saved actions." }
+                                <strong>
+                                    {"random identifier"}
+                                </strong>
+                                    { " stored in session. 
+                                    If you would like to persist your actions (i.e filters, bookmrks, annotations) you can do so: after
+                                    persisting, your browser in future will automatically show your saved actions." }
                                 <br />
                                 {"You can also use the thus stored random identifier to access your actions from a different broswer, i.e "}
-                                <strong>{"sharing"}</strong> 
-                                {"your filters etc with colleagues"}
+                                    <strong>
+                                        {"sharing"}
+                                    </strong> 
+                                {"your filters, notes and bookmarks with colleagues"}
+                                </p>
+                                <p>
+                                    { "You can fine tune how this app persists your dataur active to, and you active token,  by editing the app settings." }
                                 </p>
                         </div>
+                        <button 
+                            style="display: flex;"
+                            class="margin-b"
+                            onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
+                        >
+                            { "Edit settings" }
+                        </button>
                     </div>
                     }
                 } else {

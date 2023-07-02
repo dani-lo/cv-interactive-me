@@ -68,31 +68,16 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     let nav = use_navigator().unwrap();
 
-    // let settings_list = use_state(|| false);
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
-
-    // let nav_location = BrowserHistory::new().location();
-    // let query_st = nav_location.query_str();
-    // let maybe_appquery = get_query_params(query_st);
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
 
     let jobs:UseStateHandle<Vec<JobModel>> = use_state(||  {
         m_hashes.jobs.values().cloned().collect::<Vec<JobModel>>()
     });
-
-    // let selected_job_uid: UseStateHandle<Option<usize>> = use_state(|| {
-    //     if maybe_appquery.is_some() { 
-    //         Some(maybe_appquery.unwrap().uid) 
-    //     } else { 
-    //         None 
-    //     }
-    // });
-
-    // let c_selected_job_uid = selected_job_uid.clone();
     
     let on_select_job_detail = Callback::from( move |uid: usize| {  
 
@@ -158,9 +143,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                             }
                         } else {
                             html!{
-                                <ActionsListComponent 
-
-                                />
+                                <ActionsListComponent />
                             }
                         }
                     } 
