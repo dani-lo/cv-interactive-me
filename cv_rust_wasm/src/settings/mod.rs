@@ -100,11 +100,9 @@ impl SettingsConfig {
     }
 
     pub fn populate (&mut self) {
-
-        
+ 
         self.read_value_into_item(&ConfigKeys::ShowPersistFeedback);
         self.read_value_into_item(&ConfigKeys::AutoPersist);
-        // self.read_value_into_item(ConfigKeys::Toast);
     }
 
     pub fn set_config_setting_value (self: &mut Self, config_key: &ConfigKeys, val: bool) {

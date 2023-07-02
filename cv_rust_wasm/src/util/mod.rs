@@ -15,5 +15,4 @@ pub mod store_utils;
 pub mod identity;
 pub mod wasm_bridge;
 pub mod filter_utils;
-pub mod settings_config;
 pub mod parent_resource;

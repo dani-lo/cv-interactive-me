@@ -1,9 +1,9 @@
 use yewdux::store::Store;
 use serde::{Serialize, Deserialize};
 
-use crate::util::{
-    wasm_bridge::notify_user, 
-    settings_config::{
+use crate::{
+    util::wasm_bridge::notify_user,
+    settings::{
         SettingsConfig, 
         ConfigKeys,
     },
@@ -34,31 +34,11 @@ impl Default for StoreUI {
 
 impl StoreUI {
 
-    // pub fn notify (&mut self, msg: &'static str) {
-
-    //     notify_user(msg);
-
-    //     self.busy = true;
-    //     self.msg = msg;
-    // }
-
     pub fn set_config (&mut self, k: &ConfigKeys, val: bool) {
        self.settings.set_config_setting_value(k, val);
+
+       notify_user("Your settings change has ben saved", true);
     }
-
-    // pub fn toggle_config (&mut self, k: ConfigKeys) {
-
-    //     let val_opt = self.settings.get_config_setting_value(&k);
-
-    //     if val_opt.is_some() {
-            
-    //         let val = val_opt.unwrap();
-
-    //         self.settings.set_config_setting_value(&k, !val);
-    //     } 
-
-        
-    //  }
 
     pub fn toggle_settings_ui (&mut self) {
         self.settings_ui = !self.settings_ui;

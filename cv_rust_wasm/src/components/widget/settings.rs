@@ -15,7 +15,7 @@ use crate::{
         store_ui::StoreUI, 
         store_app_types::Collectable, store_app::StoreApp,
     },
-    util::settings_config::{
+    settings::{
         ConfigKeys, 
         ConfigItem,
     },

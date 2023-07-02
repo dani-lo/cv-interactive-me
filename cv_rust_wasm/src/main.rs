@@ -13,6 +13,7 @@ mod libstyled;
 mod routes;
 mod traits;
 mod screens;
+mod settings;
 
 use crate::{
     appdata::stores::{

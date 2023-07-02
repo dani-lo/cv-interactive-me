@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use log::info;
 use wasm_bindgen_futures::spawn_local;
 use yew::{
     prelude::*, 
@@ -17,7 +18,11 @@ use crate::{
         UserModel, 
         get_user
     },
-    util::{store_utils::state_pending_actions, wasm_bridge::notify_user},
+    util::{
+        store_utils::state_pending_actions, 
+        wasm_bridge::notify_user,
+    },
+    settings::ConfigKeys,
 };
 
 pub struct EmptyVoid {}
@@ -26,11 +31,7 @@ pub struct EmptyVoid {}
 pub fn pending_actions_component() -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (yew_routerui_state, ui_dispatch) = use_store::<StoreUI>();
-
-    let settings_ui_dipatcher = ui_dispatch.clone();
-    
-    let c_state = (*state).clone();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let user = use_state(|| UserModel { _id: None, tok: None });
     let c_user = user.clone();
@@ -50,6 +51,14 @@ pub fn pending_actions_component() -> Html {
 
     let user_opts: UseStateHandle<bool> = use_state(|| false);
 
+    let show_persist_feedbak_opt = ui_state.settings.get_config_setting_value(&ConfigKeys::ShowPersistFeedback);
+    let auto_persist_opt = ui_state.settings.get_config_setting_value(&ConfigKeys::AutoPersist);
+    
+    let show_persist_feedbak = show_persist_feedbak_opt.unwrap();
+    let auto_persist = auto_persist_opt.unwrap();
+
+    let settings_ui_dipatcher = ui_dispatch.clone();
+    let c_state = (*state).clone();
     let flush_dispatcher = dispatch.clone();
     
     let all_pending = state_pending_actions(state);
@@ -60,6 +69,8 @@ pub fn pending_actions_component() -> Html {
 
         notify_user("Your changes have ben discarded", true);
     });
+    
+    let panel_classname = if (show_persist_feedbak || auto_persist) && all_pending_len > 0  { "StyledPrompt active" } else { "StyledPrompt" };
 
     let apply_pending : Callback<Option<yew::UiEvent>> = Callback::from(move |_e| {
 
@@ -94,8 +105,12 @@ pub fn pending_actions_component() -> Html {
     
     let on_click_show_hide_opts : yew::Callback<std::option::Option<EmptyVoid>>= Callback::from(move |_: Option<EmptyVoid>| c_user_opts.set(!*c_user_opts));
 
+    if auto_persist && all_pending_len > 0 {
+        apply_pending.emit(None);
+    }
+
     html!{
-        <div class={ if all_pending_len > 0 { "StyledPrompt active" } else { "StyledPrompt" } }>
+        <div class={ panel_classname }>
             <div class="prompt">
                 <p>
                     <strong>

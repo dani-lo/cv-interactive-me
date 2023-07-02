@@ -21,6 +21,7 @@
       <script>
 
         function wasm_notification (msg) {
+
           this.id = 'notification-container';
           this.msg = msg;
           this.active = false
@@ -35,6 +36,7 @@
           this.container = document.createElement('div');
           this.container.id = this.id;
 
+          // <i class="fa fa-thumbs-up" aria-hidden="true" style="display: block;position: fixed;top: 20px;right: 20px;font-size: 66px;color: green;"></i>
 
           var txt = document.createElement('span');
           txt.setAttribute('class', success ? 'ok' : 'err')

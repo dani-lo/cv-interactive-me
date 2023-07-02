@@ -181,13 +181,6 @@
     padding: var(--gap-medium) var(--gap-medium) 0;
 }
 
-/* .StyledCompanyContainer p, .StyledCompanyContainer li, .StyledCompanyContainer h3 {
-    color: var(--white);
-} 
-
-*/
-
-
 .StyledCompanyContainer > h3 {
     padding: var(--gap-medium) 0 var(--gap-small);
     /* margin: var(--gap-large) 0 var(--gap-medium); */
@@ -289,7 +282,7 @@
     background: var(--bg-white);
     border: 2px solid var(--border-col);
     text-align: center;
-    top: -320px;
+    top: -390px;
     transition: top 0.5s;
     padding: var(--gap-large);
 }
