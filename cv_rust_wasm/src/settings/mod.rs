@@ -126,6 +126,18 @@ impl SettingsConfig {
 
     pub fn get_config_setting_value (self: &Self, config_key: &ConfigKeys) -> Option<bool> {
         
-        self.items.get(config_key).unwrap().val
+        let setting_opt = self.items.get(config_key);
+
+        if setting_opt.is_none() {
+            return None;
+        }
+
+        let setting = setting_opt.unwrap();
+
+        if setting.val.is_none() {
+            return Some(setting.default);
+        }
+
+        setting.val
     }
 }
