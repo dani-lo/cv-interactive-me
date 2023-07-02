@@ -349,9 +349,15 @@
     top: 11px;
 }
 
-.StyledAnn
-otation {
+.StyledInlineWarning {
+    border: 1px solid var(--warn);
+    padding: var(--gap-large);
+    background: white;
+}
 
+.StyledInlineWarning p {
+    font-weight: bold;
+    color: var(--warn);
 }
 
 @keyframes lds-ripple {

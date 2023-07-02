@@ -16,6 +16,9 @@
   --gap-small: 0.25rem;
   --gap-medium: 0.5rem;
   --gap-large:1rem;
+  --err: #aa2525;
+  --ok: #206e20;
+  --warn: rgb(191, 115, 33);
   --z-1: 1;
   --z-2: 10;
   --z-3: 100;
@@ -387,15 +390,15 @@ span.html-icon:hover {
 }
 
 .err {
-  background: #aa2525;
+  background: var(--err);
 }
 
 .ok {
-  background: #206e20;
+  background: var(--ok);
 }
 
 .warn {
-  background: rgb(173, 123, 6);
+  background: var(--warn);
 }
 
 .margin-b {
@@ -412,3 +415,5 @@ span.html-icon:hover {
 .margin-no {
   margin: 0!important;
 }
+
+

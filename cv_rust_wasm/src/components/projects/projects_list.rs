@@ -117,7 +117,10 @@ pub fn job_list(ProjectListProps {
         {
             if anything_rendered == 0 {
                 html!{ 
-                    <p>{ "No Items can be displayed - all  are filtered out. Trying removing some filters" }</p>
+                    <div class="StyledInlineWarning">
+                        <p>{ "No Projects found - it looks like all  might be filtered out!" }</p>
+                        <p>{ "Try removing some filters"}</p>
+                    </div>
                 }
             } else {
                 projs
