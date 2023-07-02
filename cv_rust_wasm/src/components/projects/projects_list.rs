@@ -1,9 +1,11 @@
+use std::{collections::HashMap, cmp::Ordering};
+
 use yew::{
     Html, 
     Properties, 
     Callback, 
     function_component, 
-    html,
+    html, use_effect_with_deps,
 };
 
 use serde::{
@@ -25,6 +27,7 @@ use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
 };
+use crate::util::wasm_bridge::scroll_to_slot;
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectListProps {
@@ -47,19 +50,15 @@ pub fn job_list(ProjectListProps {
         on_select_project_detail, 
         active_project_id }: &ProjectListProps) -> Html {
 
-
     let (state, _dispatch) = use_store::<StoreApp>();
     
-    let mut c_projects = projects.clone();
+    let selected_id = *active_project_id;
 
-    // info!("{:?}", store);
     let notes: Vec<Annotation> = state.annotations.clone().to_vec();
     let bookmarks: Vec<Bookmark> = state.bookmarks.clone().to_vec();
     
     let has_project_bookmarks = bookmarks.iter().any(|b : &Bookmark| b.resource_type == ModelTypes::Project);
-    
-    c_projects.sort_by(|a, b| if a.uid > b.uid { std::cmp::Ordering::Greater } else { std::cmp::Ordering::Less });
-    
+
     let active_filters = state.filters.iter().filter(|f| 
         f.pending == PendingStatus::Void || 
         f.pending == PendingStatus::VoidThenEdited || 
@@ -70,7 +69,21 @@ pub fn job_list(ProjectListProps {
     
     let mut anything_rendered = 0;
 
-    let projs = c_projects.iter().map(|project| {
+    use_effect_with_deps(move|_| {
+        if selected_id > 0 {
+            scroll_to_slot(selected_id);
+        }
+    }, ());
+
+    let mut sorted_projects = projects.clone();
+    
+    sorted_projects.sort_by(|a, b| {
+        if a < b { Ordering::Greater } 
+        else if a > b { Ordering::Less } 
+        else { Ordering::Equal }
+    });
+
+    let projs = sorted_projects.iter().map(|project| {
         
         if  has_filters && !project.included_in_filters(&state.filters) {
             return html!{

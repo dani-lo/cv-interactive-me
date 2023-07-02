@@ -28,7 +28,7 @@ impl StaticAsset for CompanyData {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct CompanyModel {
     pub uid: usize,
     pub name: String,

@@ -1,7 +1,7 @@
 use chrono::prelude::*;
 use serde::{Serialize, Deserialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct DateRange {
    from_month_year: (u32, i32),
    to_month_year: (u32, i32),

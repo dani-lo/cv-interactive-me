@@ -16,7 +16,6 @@ use crate::{
     appdata::stores::{
         store_app::StoreApp
     },
-    util::timeout::notify_user,
 };
 
 #[derive(PartialEq, Properties)]

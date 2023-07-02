@@ -28,7 +28,7 @@ use crate::{
     models::user_model::{
         UserModel, 
         get_user
-    }, util::timeout::notify_user,
+    }, util::wasm_bridge::notify_user,
 };
 
 use super::{

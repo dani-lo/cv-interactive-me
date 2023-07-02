@@ -281,8 +281,13 @@ span.action-wrap {
 }
 
 span.action-wrap i {
-  margin-right: var(--gap-medium);
+  margin-right: var(--gap-small);
 }
+
+h2 span.action-wrap i {
+  margin-right: var(--gap-micro);
+}
+
 
 span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-icon {
   color: var(--active-pink);

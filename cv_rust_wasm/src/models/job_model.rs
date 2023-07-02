@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, cmp::Ordering};
 use log::info;
 use serde::{ Deserialize, Serialize };
 use yew::html::ImplicitClone;
@@ -41,7 +41,7 @@ use super::{
    }
 }
 
- #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+ #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
   pub struct  JobModel {
    pub uid: usize,
    pub description: Vec<String>,
@@ -122,6 +122,25 @@ impl Model for JobModel {
 
 impl HasAnnotationTrait for JobModel{}
 impl HasBookmarkTrait for JobModel{}
+
+impl Ord for JobModel {
+   
+   fn cmp(&self, other:&Self) -> Ordering {
+
+      let fist_uidr = self.uid;
+      let second_uid = other.uid;
+   
+      if fist_uidr > second_uid {
+         return Ordering::Greater;
+      }
+      if fist_uidr < second_uid {
+         return Ordering::Less;
+      }
+      
+      Ordering::Equal
+   }
+}
+
 
 impl JobModel {
     

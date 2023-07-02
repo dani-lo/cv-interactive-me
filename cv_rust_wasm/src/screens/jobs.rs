@@ -136,7 +136,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
             || ()
         }, ());
     }
-
+    
     html! {
         <div class="page">  
             <ConfigSettingsListComponent />

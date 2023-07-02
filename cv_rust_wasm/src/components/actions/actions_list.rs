@@ -22,6 +22,7 @@ use crate::{
         sort_group::collectionables_vector_to_grouped_hash, 
         resource_name::{resource_name, ResourceName},
         parent_resource::parent_resource_or_self,
+        wasm_bridge::scroll_to_slot,
     },
     models::ModelTypes,
     traits::{
@@ -206,6 +207,8 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                     } else {
                         n.push(&AppRoute::JobsDetailRoute { uid: resource_id });
                     }
+
+                    scroll_to_slot(resource_id);
                 });
                 
                 html!{

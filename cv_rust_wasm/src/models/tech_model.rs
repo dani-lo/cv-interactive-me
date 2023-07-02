@@ -21,7 +21,7 @@ impl StaticAsset for TechData {
     }
 }
  
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct TechModel {
     pub uid: usize,
     pub name: String,

@@ -17,7 +17,7 @@ use crate::{
         annotateable 
     }, 
     util::{
-        timeout::notify_user,
+        wasm_bridge::notify_user,
         resource_name::resource_name,
     },
     components::actions::user_actions::{

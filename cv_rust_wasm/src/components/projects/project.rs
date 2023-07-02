@@ -43,7 +43,7 @@ pub fn project(ProjectProps {
         let c_uid = c_project.uid.clone();
 
         html! {
-            <div class={ c_name }>
+            <div class={ c_name } id={ format!("slot-{}", c_uid) }>
                 <h2>
                     {
                         if *bookmarked {
@@ -63,7 +63,6 @@ pub fn project(ProjectProps {
                     <i 
                         class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
                         onclick={ move |_| project_detail.emit(c_uid) }
-                        id={ format!("job-selector-{}", c_uid   ) }
                     />
                 </h2>
                 <h3>

@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, cmp::Ordering};
 
 use serde::{ Deserialize, Serialize };
 
@@ -7,7 +7,12 @@ use crate::{
         can_annotate::HasAnnotationTrait, 
         can_bookmark::HasBookmarkTrait, 
         can_filter::Filter
-    }, appdata::stores::store_app_types::{PendingStatus, AppStaticDataHashes}, util::filter_utils::some_resource_included_in_all_filters, 
+    }, 
+    appdata::stores::store_app_types::{
+        PendingStatus, 
+        AppStaticDataHashes
+    }, 
+    util::filter_utils::some_resource_included_in_all_filters, 
 };
 
 use super::{Model, ModelTypes, StaticAsset, tech_model::TechModel};
@@ -30,7 +35,7 @@ impl StaticAsset for ProjectData {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct ProjectModel {
     pub uid: usize,
     pub name: String,
@@ -50,6 +55,25 @@ impl StaticAsset for ProjectModel {
         self.uid.clone()
     }
 }
+
+impl Ord for ProjectModel {
+ 
+    fn cmp(&self, other:&Self) -> Ordering {
+
+        let fist_uidr = self.uid;
+        let second_uid = other.uid;
+        
+        if fist_uidr > second_uid {
+            return Ordering::Greater;
+        }
+        if fist_uidr < second_uid {
+            return Ordering::Less;
+        }
+        
+        Ordering::Equal
+    }
+    
+ }
 
 impl ProjectModel {
     pub fn make (

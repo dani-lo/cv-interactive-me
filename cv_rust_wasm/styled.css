@@ -47,7 +47,7 @@
 
 
 .StyledJobContainer.selected i.job-selector {
-    color: var(--text-clear);
+    color: var(--text-inactive);;
     cursor: default;
     pointer-events: none;
 }

@@ -1,24 +1,20 @@
-use std::any;
+use std::cmp::Ordering;
 
-use log::info;
 use yew::{
     Html, 
     Properties, 
     Callback, 
     function_component, 
-    html, 
+    html, use_effect_with_deps, 
 };
 
-use serde::{
-    Deserialize, 
-    Serialize
-};
 use yewdux::prelude::use_store;
 
 use crate::appdata::stores::{
     store_app_types::PendingStatus,
     store_app::StoreApp,
 };
+
 use crate::components::jobs::job::JobComponent;
 
 use crate::models::{
@@ -26,34 +22,34 @@ use crate::models::{
     ModelTypes,
     job_model::JobModel,
 };
-use crate::traits::can_filter::Filter;
+
 use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
+    can_filter::Filter,
 };
+use crate::util::wasm_bridge::scroll_to_slot;
 
 #[derive(Properties, PartialEq)]
 pub struct JobListProps {
    pub jobs: Vec<JobModel>,
    pub on_select_job_detail:  Callback<usize>,
-//    pub set_modal_item: Callback<Actionable>,
-//    pub store: UseReducerHandle<StoreState>,
    pub active_job_id: usize,
 }
-
-
-// #[derive(Serialize, Deserialize, Clone, Debug)]
-// pub struct UrlParams {
-//     pub id: i32,
-// }
 
 #[function_component(JobsListComponent)]
 pub fn job_list(JobListProps { 
         jobs, 
         on_select_job_detail, 
-        // set_modal_item, 
-        // store,
         active_job_id }: &JobListProps) -> Html {
+    
+    let selected_id = *active_job_id;
+
+    use_effect_with_deps(move|_| {
+        if selected_id > 0 {
+            scroll_to_slot(selected_id);
+        }
+    }, ());
 
     let (state, _dispatch) = use_store::<StoreApp>();
     
@@ -72,10 +68,18 @@ pub fn job_list(JobListProps {
     
     let mut anything_rendered = 0;
 
-    let jobs_list = jobs.iter().map(|job| {
+    let mut c_jobs = jobs.clone();
+    
+    c_jobs.sort_by(|a, b| {
+        if a < b { Ordering::Greater } 
+        else if a > b { Ordering::Less } 
+        else { Ordering::Equal }
+    });
+
+    let jobs_list = c_jobs.iter().map(|job| {
          
         if  has_filters && !job.included_in_filters(&state.filters) {
-            // info!("JOB FILTERED OUT....{}", job.uid);
+
             return html!{
                 <></>
             }

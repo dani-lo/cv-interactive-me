@@ -13,7 +13,7 @@ pub mod custom_errors;
 pub mod mod_type;
 pub mod store_utils;
 pub mod identity;
-pub mod timeout;
+pub mod wasm_bridge;
 pub mod filter_utils;
 pub mod settings_config;
 pub mod parent_resource;

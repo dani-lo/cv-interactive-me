@@ -53,7 +53,7 @@ pub fn job(Props {
         let desc_text:fstr<150> = fstr::make(&desc);
 
         html! {
-            <div class={ c_name }>
+            <div class={ c_name } id={ format!("slot-{}", c_uid) }>
                 <h2>
                     {
                         if *bookmarked {
@@ -73,7 +73,6 @@ pub fn job(Props {
                     <i 
                         class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
                         onclick={ move |_| c_job_detail.emit(c_uid) }
-                        id={ format!("job-selector-{}", c_uid   ) }
                     />
                 </h2>
                 <h3>{ at_company_name }</h3>

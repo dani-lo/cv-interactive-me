@@ -17,7 +17,7 @@ use crate::{
         UserModel, 
         get_user
     },
-    util::{store_utils::state_pending_actions, timeout::notify_user},
+    util::{store_utils::state_pending_actions, wasm_bridge::notify_user},
 };
 
 pub struct EmptyVoid {}

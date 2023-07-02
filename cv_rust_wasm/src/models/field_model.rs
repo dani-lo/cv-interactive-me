@@ -16,7 +16,7 @@ impl StaticAsset for FieldData {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct FieldModel {
     pub uid: usize,
     pub name: String,

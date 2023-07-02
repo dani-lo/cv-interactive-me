@@ -108,39 +108,40 @@
             }, 4000);
           },
 
-          scrollToActiveItem : function(itemId) {
+          show_active_slot : function (slotId) {
 
+            setTimeout(function () {
+              wasm_notification.scrollToActiveItem('slot-' + slotId);
+            }, 10);
+
+            
           }
         }
 
-        // window.wasm_bridge_app = {
-
-        //   notify: function (msg) {
-        //     console.log(msg)
-        //     var wasm_n = new wasm_notification(msg);
-
-        //     wasm_n.create_ui();
-
-        //     setTimeout(function () {
-        //       wasm_n.show();
-        //     }, 10);
+        wasm_notification.scrollToActiveItem = function(slotId) {
             
-
-        //     setTimeout(function () {
-        //       wasm_n.hide();
-        //     }, 4000);
-        //   }
-        // }
-
-        var listenerJobSelect = window.addEventListener("click", function (e) {
+          var elem =  document.getElementById(slotId);
           
-          // if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
+          elem.scrollIntoView({
+            block: "start", 
+            inline: "nearest"
+          });
+        }
 
-          //   var jobId = e.target.getAttribute("id").replace("job-selector-", "")
+        // var listenerJobSelect = window.addEventListener("click", function (e) {
+          
+        //   if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
 
-          //   window.history.pushState({}, '', "/jobs?uid=" + jobId);
-          // }
-        })
+        //     var jobId = e.target.getAttribute("id").replace("job-selector-", "")
+
+        //     // window.history.pushState({}, '', "/jobs?uid=" + jobId);
+        //   }
+        // })
+
+        window.addEventListener('locationchange', function () {
+            console.log('location changed!');
+        });
+
       </script>
     </body>
 </html>

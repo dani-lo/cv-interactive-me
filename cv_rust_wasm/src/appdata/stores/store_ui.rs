@@ -2,7 +2,7 @@ use yewdux::store::Store;
 use serde::{Serialize, Deserialize};
 
 use crate::util::{
-    timeout::notify_user, 
+    wasm_bridge::notify_user, 
     settings_config::{
         SettingsConfig, 
         ConfigKeys,

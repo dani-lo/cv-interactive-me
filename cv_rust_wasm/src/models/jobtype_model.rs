@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 use serde::{ Deserialize, Serialize };
 
 use crate::{traits::can_filter::{HasFilterTrait, Filter}, appdata::stores::store_app_types::AppStaticDataHashes};
@@ -11,7 +13,7 @@ pub struct JobtypeData {
     pub prefix: String,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub enum JobtypePrefix {
     TIME,
     PLACE
@@ -23,7 +25,7 @@ impl StaticAsset for JobtypeData {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
 pub struct JobtypeModel {
     pub uid: usize,
     pub name: String,
