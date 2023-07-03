@@ -3,12 +3,27 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   output: 'standalone',
+  compiler: {
+    styledComponents: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/jobs/:path*',
+        destination: '/jobs',
+      },
+      {
+        source: '/projects/:path*',
+        destination: '/projects',
+      }
+    ]
+  },
   // async redirects() {
   //   return [
   //     {
-  //       source: '/jobs/:uid',
-  //       destination: '/jobs',
-  //       permanent: false,
+  //       source: '/jobs',
+  //       destination: '/jobs/all',
+  //       permanent: true,
   //     },
   //   ]
   // },

@@ -36,6 +36,8 @@ export const BookmarkActionInput = (props: {
 
     const { item } = props
 
+    console.log(item)
+
     const ctx = useContext(CvJobsContext)
 
     if (!ctx) {

@@ -61,7 +61,7 @@ export const PendingActionsComponent = () => {
         <div className="prompt">
             <p><strong>You have { pendingActions.length } pending changes</strong></p>
             <button 
-                className="danger"
+                className="err"
                 onClick={() => {
                     ctx.dispatch({ type: AppStateAction.FLUSH_PENDING, payload: null }) 
                     setShowOptions(false)

@@ -1,60 +1,48 @@
 import styled, { css }  from "styled-components"
 import { Modal } from '@mui/material'
 
-export const StyledJobContainer = styled.div<{ selected: boolean }>`    
+export const StyledJobContainer = styled.div`    
 
     margin-top: var(--gap-large);
     padding:  var(--gap-medium);
     width: 380px;
     border: 1px solid var(--white);
 
-    ${ props => props.selected ? 
-        `
-        background: var(--bg-white);
+    &.selected {
+        background: var(--active-action);
         padding:  var(--gap-medium);
-        border: 1px solid var(--border-col);
         cursor: default;
         pointer-events: none; 
-        `
-        : ''
+
+        i.job-selector {
+            color: var(--text-inactive);
+            cursor: default;
+            pointer-events: none;
+        }
+
+        h2, h3, p, li, a {
+            color: white;
+        }
     }
     
     &:first-child {   
         margin-top: 0;
     }
-
-    .job-list-body {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
     
     h2 {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         margin-bottom: var(--gap-small);
     }
 
     i.job-selector {
-        font-size: 2rem;
-        color: var(--text-inactive);
-        cursor: pointer;  
+        font-size: 1.5rem;
+        color: var(--text-main);
+        cursor: pointer;     
 
         &:hover {
             color: var(--active-pink);
-        }
-
-        ${ props => props.selected ?
-            `
-            color: var(--text-clear);
-            cursor: default;
-            pointer-events: none;
-             ` : 
-            `
-            color: var(--text-inactive);
-            cursor: pointer;
-            `
         }
     }
     
@@ -105,33 +93,29 @@ export const StyledSidebar = styled.div`
         top: 0.5rem;
     }
 
-    li, h3, p, i, span {
-        color: var(--white);
+    ul li, h3, p, i.fa, span, a {
+        color: white;
+    }
+
+    i:hover, 
+    a:hover {
+        opacity: 0.7;
     }
 
     h3 {
-        border-bottom: 1px dotted var(--border-c--ol);
         padding-bottom: var(--gap-small);
     }
 `
 
-export const StyledAnnotation = styled.p`
-
-    padding: var(--gap-large);
-    margin: var(--gap-large) var(--gap-medium) var(--gap-medium)auto;
-
-`
-
 export const StyledCompanyContainer = styled.div`
 
-    border: 1px solid var(--border-col);
     margin: var(--gap-large) 0;
-    padding: 0 var(--gap-large) var(--gap-medium) var(--gap-large);
-    background: var(--bg-white);
+    border: 2px solid var(--active-action);
+    padding: var(--gap-medium) var(--gap-medium) 0;
 
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);
-        margin: var(--gap-large) 0 var(--gap-medium);
+        margin-top: 0;
     }
 `
 
@@ -261,32 +245,31 @@ export const StyledPrompt = styled.div`
     background: var(--bg-white);
     border: 2px solid var(--border-col);
     text-align: center;
-    top: -320px;
+    top: -390px;
     transition: top 0.5s;
     padding: var(--gap-large);
   
-  &.active {
-    top: var(--gap-large);
-  }
-  
-  p {
-    text-align: left;
-  }
-
-  .prompt {
-    display: flex;
-    align-items: center;
+    &.active {
+        top: var(--gap-large);
+    }
     
-  }
+    p {
+        text-align: left;
+    }
 
-  .prompt button {
-    margin: 0  var(--gap-small) 0 0;
-  }
-  
-  .prompt p {
-    display: inline-block;
-    margin: 0 var(--gap-large) 0 0;;
-  }
+    .prompt {
+        display: flex;
+        align-items: center;
+        
+        button {
+            margin: 0  var(--gap-small) 0 0;
+        }
+
+        p {
+            display: inline-block;
+            margin: 0 var(--gap-large) 0 0;;
+        }
+    }
 `
 
 export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
@@ -315,7 +298,6 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     }
 
     > .html-icon {
-        transform: rotate(180deg);
         display: inline-block;
         position: absolute;
         right: 5px;
@@ -323,25 +305,26 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     }
 `
 
+export const StyledInlineWarning = styled.div`
+
+    border: 1px solid var(--warn);
+    padding: var(--gap-large);
+    background: white;
+
+    p {
+        font-weight: bold;
+        color: var(--warn);
+    }
+`
+
 export const StyledModalWrap = styled(Modal)`
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: var(--z-4);
+    z-index: var(--z-3);
     background: transparent;
     top: 0;
     left: 0;
-
-    > div {
-        border:1px dotted var(--border-col);
-        background: var(--white);
-        width: 500px;
-        margin: 5em auto;
-        height: fit-content;
-        border-radius: 5px;
-        padding: var(--gap-large) 2em 2em;
-        position: relative;
-    } 
 
     .span.btn-close {
         position: absolute;
@@ -385,5 +368,15 @@ export const StyledModalWrap = styled(Modal)`
         &:focus-visible {
             border: none;
         }
+    }
+`
+
+export const StyledAnnotation = styled.div`
+
+    margin-top: var(--gap-large);
+
+    p {
+        font-style: italic;
+        font-weight: bold;
     }
 `

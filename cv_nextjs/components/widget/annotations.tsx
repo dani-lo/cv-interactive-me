@@ -7,7 +7,9 @@ type AnnotationProps = {
 
 const AnnotationsComponentBase  = ({ note }: AnnotationProps) => {
     
-    return <StyledAnnotation>{ note }</StyledAnnotation>
+    return <StyledAnnotation>
+        <p>{ note }</p>
+    </StyledAnnotation>
 }
 
 export const AnnotationsComponent = React.memo<AnnotationProps>(

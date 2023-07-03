@@ -63,6 +63,8 @@ export default function App({
     dispatch
   }
 
+  console.log(process.env.NODE_ENV)
+
   return  <CvJobsContext.Provider value={ appstateData }>
     <Layout pageProps={ pageProps}>
       { 

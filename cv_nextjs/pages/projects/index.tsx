@@ -23,11 +23,13 @@ import { IBookmarkKeys } from '../../src/models/mixins/withBookmark'
 import { ErrorBoundary } from '../../src/hoc/withError'
 import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
 import { ProjectDetailComponent } from '../../components/projects/projectDetail'
+import { useRouter } from 'next/router'
 
 export const getStaticProps = getAppStaticProps
 
 const ProjectsPage = (props: AppDataProps) => {
     
+    const router = useRouter()
     const [selectedProject, setSelecteProject] = useState<Project | null | undefined>(null)
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
@@ -37,14 +39,16 @@ const ProjectsPage = (props: AppDataProps) => {
 
     useEffect(() => {
 
-        const linkedProjectID = Number(`${ document.location.search }`.replace(/\?[a-z]*=/, ''))
-        const linkedProject = linkedProjectID && !isNaN(linkedProjectID) ? projectModels.get(linkedProjectID) : null
+        const path = router.asPath
+        const maybeUid = parseInt(path.replace('/projects/', ''))
+
+        const linkedProject = !isNaN(maybeUid) ? projectModels.get(maybeUid) : null
 
         if (linkedProject) {
                         
             setSelecteProject(linkedProject)
 
-            const tgt = document.getElementById(`project-${ linkedProjectID }`)
+            const tgt = document.getElementById(`project-${ maybeUid }`)
 
             tgt?.scrollIntoView()
         }

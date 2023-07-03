@@ -1,7 +1,9 @@
 import { AppProps } from "next/app"
 import { useRouter } from 'next/router'
 
-import { useContext, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
+
+import StyledComponentsRegistry from '../lib/registry'
 
 import { AppDataProps } from "../src/types"
 import { AppSetting, AppSettingsParser } from "../src/settings/parser"
@@ -13,6 +15,7 @@ import { AppMenu } from "./sidebar/menu"
 import { SettingsComponent } from "./widget/settings"
 
 import { StyledSidebar } from "../styles/main.styled"
+import { useFrontendClassname } from "../src/hooks/useFrontendClassname"
 
 type Props = {
     children: any,
@@ -24,6 +27,7 @@ const Layout = ({
     pageProps
 }: Props) => {
 
+    const feCname = useFrontendClassname()
     const router = useRouter()
 
     const [showsettings, setShowsettings] = useState(false)
@@ -37,10 +41,11 @@ const Layout = ({
 
     let settingsDisabled = !showsettings || settingsparser === null
 
-    return <>
+    return <div className={feCname}>
         {
             router.pathname !== '/' ? 
-            <>
+            <StyledComponentsRegistry>
+
                 <SettingsComponent
                     disabled = { settingsDisabled }
                     settings={ settingsparser?.allSettings || [] }
@@ -63,13 +68,13 @@ const Layout = ({
                         { ...pageProps }
                     />
                 </StyledSidebar>
-            </> :
+            </StyledComponentsRegistry> :
             null
         }
         {
             children
         }
-    </>
+    </div>
 }
 
 export default Layout

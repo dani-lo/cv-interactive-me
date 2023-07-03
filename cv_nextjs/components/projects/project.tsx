@@ -32,39 +32,35 @@ export const ProjectComponentBase = ({
     handleSelect 
 } : Props) => {
 
-    return <StyledJobContainer id={ id } selected={ selected }>
+    return <StyledJobContainer id={ id } className={ selected ? "selected" : "" }>
         <h2> 
-            <span>{ project.name }</span>
+            <span>
             {
                 bookmarked ? <i className="fa fa-bookmark bookmark" /> : null
             }
+            { project.name }
+            </span>
+            <i 
+                className={ "job-selector fa fa-chevron-right" }
+                onClick={ handleSelect }
+            />
         </h2>
         { annotationText ? <AnnotationsComponent note={ annotationText } /> : null }
-        <div className="job-list-body">
-            <div>
-                <h3>
-                    <RichTextParagraphComponent text={ project.notes } />
-                </h3>
-                <ul>
-                { 
-                    project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
-                }
-                </ul>
-                <p>
-                    <a 
-                        href={ project.repo } 
-                        target="_blank">
-                            Github Repo
-                    </a>
-                </p>
-            </div>       
-            <div>
-                <i 
-                    className={`${ selected ? 'job-selector selected' : 'job-selector' } fa fa-chevron-right`}
-                    onClick={ handleSelect }
-                />
-            </div>
-        </div>
+        <h3>
+            <RichTextParagraphComponent text={ project.notes } />
+        </h3>
+        <ul>
+        { 
+            project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
+        }
+        </ul>
+        <p>
+            <a 
+                href={ project.repo } 
+                target="_blank">
+                    Github Repo
+            </a>
+        </p>
     </StyledJobContainer>
 }
 

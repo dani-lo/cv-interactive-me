@@ -22,6 +22,7 @@ import {
     Resource 
 } from '../../src/types'
 import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
+import { useRouter } from 'next/router'
 
 export const getStaticProps = getAppStaticProps
 
@@ -29,21 +30,34 @@ function Loading() {
     return <h2>🌀 Loading...</h2>;
 }
 
+// // pages/blog/[slug].js
+// export async function getStaticPaths() {
+//     return {
+//       paths: [],
+//       fallback: true,
+//     }
+//   }
+  
+
 const JobsPage = (props: AppDataProps) => {
         
     const { jobModels } = transformData(props)
 
     const [selectedJob, setSelectedJob] = useState<Job | null | undefined>(null)
 
+    const router = useRouter()
+    console.log(router)
     useEffect(() => {
+        
+        const path = router.asPath
+        const maybeUid = parseInt(path.replace('/jobs/', ''))
 
-        const linkedJobID = Number(`${ document.location.search }`.replace(/\?[a-z]*=/, ''))
-        const linkedJob = linkedJobID && !isNaN(linkedJobID) ? jobModels.get(linkedJobID) : null
+        const linkedJob = !isNaN(maybeUid) ? jobModels.get(maybeUid) : null
 
         if (linkedJob) {
             setSelectedJob(linkedJob)
             
-            const tgt = document.getElementById(`job-${ linkedJobID }`)
+            const tgt = document.getElementById(`job-${ maybeUid }`)
 
             tgt?.scrollIntoView()
         }
@@ -94,8 +108,9 @@ const JobsPage = (props: AppDataProps) => {
                         annotationText={ annotationText }
                         selected={ selected }
                         handleSelect= { () => {
-                            setSelectedJob(job)
+                            //router.push(`/jobs/${ job.uid }`)
                             deepLinkSelected(job)
+                            setSelectedJob(job)
                         }}
                     />
                 })

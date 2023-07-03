@@ -1,21 +1,24 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #132940;
+  --border-col-dark: #0d252f;
   --bg-grey: #fafafa;
   --bg-white: #fff;
-  --white : #f3f3f3;
-  --black : #132940;
+  --white : #f5f5f5;
+  --black : #0d252f;
   --active-action: cadetblue;
   --text-clear: cadetblue;
-  --active-pink: #df6fba;;
+  --active-pink: #bdc9ce;
   --pending-action: grey;
   --text-main: #555;
-  --text-dark: #132940;
+  --text-dark: #0d252f;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
   --gap-medium: 0.5rem;
   --gap-large:1rem;
+  --err: #aa2525;
+  --ok: #206e20;
+  --warn: rgb(191, 115, 33);
   --z-1: 1;
   --z-2: 10;
   --z-3: 100;
@@ -38,10 +41,13 @@ body {
   
    
   font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Open Sans', sans-serif; */
+
+  /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
 
   font-weight: 300; 
   
@@ -84,6 +90,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
+  border-bottom: 1px solid var(--border-col);
 }
 
 h2 i.fa {
@@ -103,15 +110,17 @@ h3 {
   font-size: 1rem;
   margin: var(--gap-medium) 0;
   line-height: 1.5rem;
-  color: var(--text-main);
+  color: var(--text-clear);
   font-weight: bold;
   display: flex;
   align-items: center;
 }
 
 a {
-  color: var(--text-clear);
-  font-weight: bold;
+  color: var(--text-dark);
+  /* font-weight: bold; */
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 a:hover {
@@ -122,8 +131,13 @@ p {
   line-height: 1.4rem;
   font-size: 0.9rem;
   padding: 0;
-  margin: var(--gap-small);
+  margin: var(--gap-small) 0;
   color: var(--text-main);
+}
+
+hr {
+  border: none;
+  margin: var(--gap-medium);
 }
 
 strong {
@@ -131,7 +145,7 @@ strong {
 }
 
 button {
-
+  cursor: pointer;
   font-size: 0.9rem;
   color: var(--white);
   line-height: 1.4rem;
@@ -157,17 +171,6 @@ button.disabled {
   pointer-events: none;
 }
 
-button.ok {
-  background: #206e20;
-}
-
-button.danger {
-  background: #aa2525;
-}
-
-button.danger:hover {
-  opacity: 0.7;
-}
 
 
 label {
@@ -194,7 +197,6 @@ textarea, input[type="text"] {
 ul {
   padding: 0;
   margin: 0;
-  margin: var(--gap-large) 0;
 }
 
 ul.nav {
@@ -206,25 +208,31 @@ ul.nav li {
   text-transform: lowercase;
   list-style: none;
   padding: var(--gap-medium);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: var(--gap-large);
+  margin: var(--gap-small) var(--gap-small) var(--gap-large);
   color: var(--text-clear);
   font-weight: bold;
 }
 
-ul.nav li.active {
-  text-decoration: none;
-  color: var(--text-inactive);
+ul.nav li a {
+  color: var(--white);
 }
 
+ul.nav li.active {
+  text-decoration: none;
+  pointer-events: none;
+  background: var(--bg-grey);
+  
+}
 ul.nav li.active a {
   text-decoration: none;
   pointer-events: none;
+  color: var(--text-dark);
 }
 
 li {
-  line-height: 1.2rem;
+  line-height: 1.4rem;
   list-style: none;
   list-style-position: inside;
   color: var(--text-main);
@@ -237,6 +245,7 @@ li {
 
 li.itemised {
   text-transform: capitalize;
+  margin: var(--gap-small) 0;
 }
 
 i.bookmark {
@@ -272,42 +281,32 @@ span.resource-name {
 
 span.action-wrap {
   display: flex;
-  align-items: self-start;
+  align-items: baseline;
   cursor: pointer;
 }
 
 span.action-wrap i {
-  margin-right: var(--gap-medium);
+  margin-right: var(--gap-small);
 }
 
-
-span.action-wrap span {
-  font-weight: bold;
+h2 span.action-wrap i {
+  margin-right: var(--gap-micro);
 }
+
 
 span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-icon {
   color: var(--active-pink);
 }
 
-span.action-wrap > span.html-icon {
-  padding: 0.1rem 0.3rem;
-  background: var(--text-clear);
-  color: white;
-  font-size: 1rem;
-  line-height: 1rem;
-  border-radius: 2px;
-  font-family: Helvetica;
-}
-
 span.html-icon {
   display: inline-block;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.25rem;
-  line-height: 1.5rem;
+  /* font-weight: bold; */
+  /* font-size: 1.25rem; */
+  /* line-height: 1rem; */
   display: inline-block;
-  margin-right: var(--gap-small);
-  color: var(--black);
+  /* color: var(--black); */
+  /* font-family: Helvetica; */
 }
 
 span.html-icon.job-selector {
@@ -346,4 +345,80 @@ span.html-icon:hover {
   left: 0;
   opacity: 0.5;
   z-index: var(--z-3);
+}
+
+.margin-b {
+  margin: 1.5rem 0;
+}
+
+.margin-m {
+  margin: 1rem 0;
+}
+
+.no-margin {
+  margin: 0!important;
+}
+
+#notification-container {
+  transition: top 0.25s;
+  position: fixed;
+  z-index: 11111;
+  padding: 4px;
+  display: flex;
+  text-align: center;
+  top: -112px;
+  right: 13px;
+}
+
+#notification-container span {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+  background: green;
+  border-radius: 2px;
+  font-weight: bold;
+  color: white;
+  padding: 0.75rem 1.5rem;
+}
+
+#notification-container.active {
+  top: 12px;
+}
+
+#notification-container.unactive {
+  top: -112px;
+}
+
+.err {
+  background: var(--err);
+}
+
+.ok {
+  background: var(--ok);
+}
+
+.warn {
+  background: var(--warn);
+}
+
+.margin-b {
+  margin: var(--gap-large) 0!important;
+}
+
+.margin-m {
+  margin: var(--gap-medium) 0!important;
+}
+
+.margin-s {
+  margin: var(--gap-small) 0!important;
+}
+.margin-no {
+  margin: 0!important;
+}
+
+
+.no-pre-render {
+  display: none;
 }

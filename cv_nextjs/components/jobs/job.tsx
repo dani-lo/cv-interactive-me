@@ -25,42 +25,37 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     selected,
 } : JobProps) => {
     
-    return <StyledJobContainer id={ id } selected={ selected }>
-         <h2> 
-            { job.period.formatted }
-            {
-                bookmarked ? <i className="fa fa-bookmark bookmark" /> : null
-            }
-        </h2>
-        
-        <div className="job-list-body">
-            <div>
-                <h3> 
-                    { job.position }{ job.company ? ` @ ${  job.company.name  }` : '' }
-                </h3>
-                <p> Job type:
-                    {
-                        job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
-                            return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
-                        })
-                    } 
-                </p>
-                <p> Working From: 
-                    {
-                        job.jobType.filter(jt => jt.prefix == "PLACE").map((jobTypeItem, i) => {
-                            return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
-                        })
-                    } 
-                </p>
-            </div>
-            <div>
-                <i 
-                    className={`${ selected ? 'job-selector selected' : 'job-selector' } fa fa-chevron-right`}
-                    onClick={ handleSelect }
-                />
+    return <StyledJobContainer id={ id } className={ selected ? "selected" : "" }>
+         <h2 > 
+            <span>
+                {
+                    bookmarked ? <i className="fa fa-bookmark bookmark" /> : null
+                }
                 
-            </div>
-        </div>
+                { job.period.formatted }
+            </span>
+            <i 
+                className={ "job-selector fa fa-chevron-right" }
+                onClick={ handleSelect }
+            />
+        </h2>
+        <h3> 
+            { job.position }{ job.company ? ` @ ${  job.company.name  }` : '' }
+        </h3>
+        <p> Job type:
+            {
+                job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
+                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
+                })
+            } 
+        </p>
+        <p> Working From: 
+            {
+                job.jobType.filter(jt => jt.prefix == "PLACE").map((jobTypeItem, i) => {
+                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
+                })
+            } 
+        </p>
     </StyledJobContainer>
 }
 
