@@ -16,7 +16,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
     
     const [_uiOperationSuccess, setUiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
     const [_uisettings, setUisettings] = useAtom(atoms.uiSettings)
-console.log('disabled', disabled)
+
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
             className="html-icon" 
@@ -31,7 +31,10 @@ console.log('disabled', disabled)
                     saveSetting={ (s: AppSetting<any>) => {
                         saveSetting(s) 
                         setUisettings(s)
-                        setUiOperationSuccess(void 0)
+                        setUiOperationSuccess({
+                            outcome: 'success',
+                            msg: 'Your changes were saved'
+                        })
                     }}
                     key={ setting.key.toString() } 
                 />

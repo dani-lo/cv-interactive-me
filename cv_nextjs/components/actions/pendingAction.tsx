@@ -17,15 +17,10 @@ export const PendingActionsComponent = () => {
     const ctx = useContext(CvJobsContext)
 
     const [, setBusy] = useAtom(atoms.uiBusy)
-    const [, setMsg] = useAtom(atoms.uiMsg)
-    // const [banUserTrackingSession, setBanUserTrackingSession] = useAtom(atoms.banUserTrackingSession)
+    const [, setUiOpStatus] = useAtom(atoms.uiOpStatus)
     const [, uiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
-    // const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom)
 
     const [user, ] = useState<User>(new User())
-
-    // const [banPersistAlways, setBanPersistAlways] = useState(false)
-    // const [banPersistTemp, setBanPersistTemp] = useState(false)
     const [showOptions, setShowOptions] = useState(false)
 
     useEffect(() => {
@@ -36,7 +31,7 @@ export const PendingActionsComponent = () => {
             })()
             
         } catch (e) {
-            //
+            console.log(e)
         }
         
     }, [user.name])
@@ -71,11 +66,17 @@ export const PendingActionsComponent = () => {
                 className="ok"
                 onClick={ () => {        
                     setBusy(true)
-                    setMsg('Persisting your changes, please wait')
+                    setUiOpStatus({
+                        outcome: 'warning',
+                        msg: 'Persisting your changes, please wait',
+                    })
                 
                     persistAppstateActionsData(appState).then((result: AppState) => {
                         
-                        uiOperationSuccess(void 0)
+                        uiOperationSuccess({
+                            outcome: 'success',
+                            msg: 'Changes Persisted',
+                        })
 
                         ctx.dispatch({ type: AppStateAction.REFRESH_PENDING, payload: result })
                     })

@@ -345,12 +345,12 @@ export const StyledModalWrap = styled(Modal)`
         text-transform: capitalize;
     }
     
-    ..action {
+    .action {
         padding: var(--gap-medium) 0;
         border-bottom: 1px dotted var(--border-col);
     }
     
-    ..action-unactive {
+    .action-unactive {
         opacity: 0.5;
         pointer-events: none;
     }
@@ -362,11 +362,11 @@ export const StyledModalWrap = styled(Modal)`
         height: fit-content;
         border-radius: 5px;
         padding: 2em;
-
-        border: none!important;
+        border: none;
         
         &:focus-visible {
             border: none;
+            outline: none;
         }
     }
 `
@@ -379,4 +379,16 @@ export const StyledAnnotation = styled.div`
         font-style: italic;
         font-weight: bold;
     }
+`
+
+export const StyledNotification = styled.p`
+    position: fixed;
+    display: inline-block;
+    left: 2rem;
+    top: 2rem;
+    z-index: var(--z-4);
+    color: white;
+    font-weight: bold;
+    padding: var(--gap-medium) var(--gap-large);
+    border: 2px solid white;
 `

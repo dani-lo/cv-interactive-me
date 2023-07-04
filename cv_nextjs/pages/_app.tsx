@@ -9,14 +9,12 @@ import '../styles/global.css'
 import type { AppProps } from 'next/app'
 
 import { reducer, initialState, AppStateAction, AppState } from '../src/store/appState'
-// import { uiAtom } from '../src/store-jotai/ui-store'
 
 import { CvContext } from '../src/types'
 
 import { getAppstateActionsData } from '../lib/api/actions-api'
-import { StyledLoaderRipple } from '../styles/main.styled'
-import { User } from '../src/models/classes/User'
-import { AppSetting, AppSettingsParser, SettingKeys } from '../src/settings/parser'
+import { StyledNotification } from '../styles/main.styled'
+import { AppSettingsParser, SettingKeys } from '../src/settings/parser'
 
 export const CvJobsContext = createContext<CvContext | null>(null)
 
@@ -26,8 +24,7 @@ export default function App({
   pageProps }: AppProps & { pageProps: AppProps}) {
 
     const [uiBusy, ] = useAtom(atoms.uiBusy)
-    const [uiMsg, ] = useAtom(atoms.uiMsg)
-
+    const [uiOpStatus, ] = useAtom(atoms.uiOpStatus)
     const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
 
     const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
@@ -38,8 +35,6 @@ export default function App({
     }, [])
 
     useEffect(() => {
-
-      console.log('RUN APP.tsx Action Data fetch EFFECT')
  
       getAppstateActionsData()
         .then(function(userAppstateData) {
@@ -63,18 +58,12 @@ export default function App({
     dispatch
   }
 
-  console.log(process.env.NODE_ENV)
-
   return  <CvJobsContext.Provider value={ appstateData }>
-    <Layout pageProps={ pageProps}>
+    <Layout pageProps={ pageProps }>
       { 
-        uiBusy ? <StyledLoaderRipple>
-          <div className="bg"></div>
-          {
-            uiMsg ? <p><span>{ uiMsg }</span></p> : null
-          }
-          </StyledLoaderRipple> : 
-          null
+         uiOpStatus !== null ?
+            <StyledNotification className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</StyledNotification> :
+            null
         }
         <Component {...pageProps} />
       </Layout>

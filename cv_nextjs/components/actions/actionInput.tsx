@@ -21,7 +21,7 @@ export const FilterActionInput = (props: {
 
     const active = props.active && !filterForResource(item, ctx.appstate)
 
-    return <div>
+    return <div className={ `action${ active ? '' : ' action-unactive' }` }>
         <p>
             <strong>Filter by</strong> this item: this will filter out all jobs that do not include this item
         </p>
@@ -46,7 +46,7 @@ export const BookmarkActionInput = (props: {
 
     const active = props.active && !bookmarkForResource(item, ctx.appstate)
 
-    return <div>
+    return <div className={ `action${ active ? '' : ' action-unactive' }` }>
         <p>
             
             <strong>Bookmark</strong> this item
@@ -74,7 +74,7 @@ export const AnnotateActionInput = (props: {
     const uiActive = props.active && !annotationForResource(item, ctx.appstate)
     const btnAddNoteActive = uiActive && note.length > 0
     
-    return <div>
+    return <div className={ `action${ uiActive ? '' : ' action-unactive' }` }>
         <p>
             <strong>Annotate</strong> this item {`${ !uiActive ? ' (start typing to activate)' : ''  }`}
         </p>

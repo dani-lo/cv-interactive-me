@@ -13,11 +13,13 @@ export const useFrontendClassname = () => {
         }, 1300)
 
        return () => {
-        // @ts-ignore
-        if (showUI !== null) {
+
             // @ts-ignore
-            clearTimeout(showUI)
-        }
+            if (showUI !== null) {
+            
+                // @ts-ignore
+                clearTimeout(showUI)
+            }
        }
     }, [])
 
