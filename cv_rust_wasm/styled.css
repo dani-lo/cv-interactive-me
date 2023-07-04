@@ -16,6 +16,10 @@
     margin-bottom: var(--gap-small);
 }
 
+.StyledJobContainer h2 i.bookmark {
+    margin-right: var(--gap-medium);
+}
+
 .StyledJobContainer i.job-selector {
     font-size: 1.5rem;
     color: var(--text-main);
@@ -355,7 +359,7 @@
     margin: 5em auto;
     height: fit-content;
     border-radius: 5px;
-    padding: var(--gap-large) 2em 2em;
+    padding: 1.5rem 2rem var(--gap-medium);
     position: relative;
 }
 

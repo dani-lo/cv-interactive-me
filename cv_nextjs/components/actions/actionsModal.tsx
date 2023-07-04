@@ -29,18 +29,20 @@ export const ActionsModal = (props: Props) => {
     >
       <Box>
         <h2>{ item?.toString() }</h2>
-        <ActionInputs.FilterActionInput 
-          item={ item } 
-          active={ narrowers.itemCanFilter(item) } 
-        /> 
-        <ActionInputs.BookmarkActionInput 
-          item={ item } 
-          active={ narrowers.itemCanBookmark(item) }
-        /> 
-        <ActionInputs.AnnotateActionInput 
-          item={ item } 
-          active={ narrowers.itemCanAnnotate(item) } 
-        /> 
+        <div className="margin-m">
+          <ActionInputs.FilterActionInput 
+            item={ item } 
+            active={ narrowers.itemCanFilter(item) } 
+          /> 
+          <ActionInputs.BookmarkActionInput 
+            item={ item } 
+            active={ narrowers.itemCanBookmark(item) }
+          /> 
+          <ActionInputs.AnnotateActionInput 
+            item={ item } 
+            active={ narrowers.itemCanAnnotate(item) } 
+          /> 
+        </div>
       </Box>
     </StyledModalWrap>   
 }

@@ -14,14 +14,14 @@ export const StyledJobContainer = styled.div`
         cursor: default;
         pointer-events: none; 
 
+        h2, h3, p, li, a, i {
+            color: white;
+        }
+
         i.job-selector {
             color: var(--text-inactive);
             cursor: default;
             pointer-events: none;
-        }
-
-        h2, h3, p, li, a {
-            color: white;
         }
     }
     
@@ -34,6 +34,10 @@ export const StyledJobContainer = styled.div`
         align-items: flex-start;
         justify-content: space-between;
         margin-bottom: var(--gap-small);
+    }
+
+    h2 i.bookmark {
+        margin-right: var(--gap-medium);
     }
 
     i.job-selector {
@@ -103,7 +107,8 @@ export const StyledSidebar = styled.div`
     }
 
     h3 {
-        padding-bottom: var(--gap-small);
+        padding-bottom: 0;
+        margin-top: 2rem;
     }
 `
 
@@ -121,7 +126,7 @@ export const StyledCompanyContainer = styled.div`
 
 export const StyledActionsList = styled.ul`
 
-    margin: var(--gap-large) 0;
+    margin: var(--gap-small) 0 var(--gap-large) 0;
 
     li {
         list-style: none;
@@ -275,8 +280,8 @@ export const StyledPrompt = styled.div`
 export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     
     ${ props => props.disabled ? 
-        'left: -320px;background:red;' : 
-        'left: 320px;background:black;'
+        'left: -320px;' : 
+        'left: 320px;'
     }
 
     position: fixed;
@@ -284,7 +289,6 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     width: 290px;
     height: 100%;
     z-index: var(--z-2);
-    left: -320px;
     transition: left 0.25s;
     padding: var(--gap-large);
     padding-top: 2rem;
@@ -361,7 +365,7 @@ export const StyledModalWrap = styled(Modal)`
         margin: 5em auto;
         height: fit-content;
         border-radius: 5px;
-        padding: 2em;
+        padding: 1.5rem 2rem var(--gap-medium);
         border: none;
         
         &:focus-visible {

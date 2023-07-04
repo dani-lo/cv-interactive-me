@@ -20,9 +20,8 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
             className="html-icon" 
-            onClick={ toggleSettingsUI } 
-            style={{ transform: 'rotate(180deg)'}}>
-                &#10140;
+            onClick={ toggleSettingsUI }>
+                <i aria-hidden="true" className="fa fa-arrow-left" />
         </span> 
         {
             settings.map(setting => {
@@ -80,7 +79,6 @@ const SettingComponent = ({ setting, saveSetting } : {
                     />
                 </>
         }
-        
         <p>{ setting.desc }</p>
         <button 
             className={ (unchanged || !inputValid) ? 'disabled' : '' }

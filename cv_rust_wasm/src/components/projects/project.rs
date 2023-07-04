@@ -49,7 +49,7 @@ pub fn project(ProjectProps {
                         if *bookmarked {
                             html!{
                                 <span>
-                                    <i class="fa fa-bookmark bookmark" style="margin-right: var(--gap-medium);" />
+                                    <i class="fa fa-bookmark bookmark" />
                                     { &project.name  }
                                 </span>
                                 

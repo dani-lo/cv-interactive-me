@@ -40,7 +40,7 @@ const Layout = ({
     }, [])
 
     let settingsDisabled = !showsettings || settingsparser === null
-
+        
     return <div className={feCname}>
         {
             router.pathname !== '/' ? 
@@ -60,7 +60,7 @@ const Layout = ({
                     <span 
                         className="html-icon"
                         onClick={ () => setShowsettings(!showsettings) }>
-                            &#9776;
+                            <i aria-hidden="true" className="fa fa-bars" />
                     </span> 
                     <h1 className="app-logo">CURRICULUM VITAE</h1>
                     <AppMenu />
