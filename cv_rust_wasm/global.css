@@ -83,7 +83,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px solid var(--border-col);
+  border-bottom: 1px dashed var(--black);
 }
 
 h2 i.fa {
