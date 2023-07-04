@@ -78,8 +78,8 @@ pub fn job_list(ProjectListProps {
     let mut sorted_projects = projects.clone();
     
     sorted_projects.sort_by(|a, b| {
-        if a < b { Ordering::Greater } 
-        else if a > b { Ordering::Less } 
+        if a < b { Ordering::Less } 
+        else if a > b { Ordering::Greater } 
         else { Ordering::Equal }
     });
 

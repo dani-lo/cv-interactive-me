@@ -170,7 +170,7 @@ pub fn company_component(CompanyProps { company, dispatch } : &CompanyProps) -> 
     
     html! {
         <div class="StyledCompanyContainer">
-            <h3 class="margin-top-medium margin-bottom-medium">
+            <h3>
                 <span 
                     class="action-wrap"
                     onclick={move |_| { 

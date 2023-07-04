@@ -98,60 +98,58 @@ pub fn actions_list ()  -> Html {
 
     html! {
         <div>
-            <div>
-                <h3>{ "Filters" }</h3>
-                    {
-                        if filters.len() > 0 { 
-                            html!{
-                                <ActionListActionablesComponent
-                                    ordered_actionable_hashes = { ordered_filter_hashes }
-                                    collectable_type = { "filter" }
-                                />
-                            }
-                             
-                        } else { 
-                            html!{
-                                <p>{"You did not add any filters yet. To add filters please use the plus action button ("}<i className="fa fa-plus" />{") within filterable CV items"}</p>
-                            }
+            <h3>{ "Filters" }</h3>
+                {
+                    if filters.len() > 0 { 
+                        html!{
+                            <ActionListActionablesComponent
+                                ordered_actionable_hashes = { ordered_filter_hashes }
+                                collectable_type = { "filter" }
+                            />
+                        }
+                            
+                    } else { 
+                        html!{
+                            <p>{"You did not add any filters yet. To add filters please use the plus action button ("}<i className="fa fa-plus" />{") within filterable CV items"}</p>
                         }
                     }
-                    <h3>{ "Bookmarks" }</h3>
-                    {
-                        if bookmarks.len() > 0 { 
-                           html!{
-                               <ActionListActionablesComponent
-                                   ordered_actionable_hashes = { ordered_bookmark_hashes }
-                                   collectable_type = { "bookmark" }
-                               />
-                           }
-                            
-                       } else { 
-                           html!{
-                            <p>
-                                {"You did not add any bookmarks yet. To add bookmarks please use action button ("}
-                                <i className="fa fa-plus" />
-                                {") within bookmarkable CV items"}
-                            </p>
-                           }
-                       }
-                   }
-                   <h3>{ "Annotations" }</h3>
-                   {
-                    if annotations.len() > 0 { 
-                       html!{
-                           <ActionListActionablesComponent
-                               ordered_actionable_hashes = { ordered_annotations_hashes }
-                               collectable_type = { "annotation" }
-                           />
-                       }
+                }
+                <h3>{ "Bookmarks" }</h3>
+                {
+                    if bookmarks.len() > 0 { 
+                        html!{
+                            <ActionListActionablesComponent
+                                ordered_actionable_hashes = { ordered_bookmark_hashes }
+                                collectable_type = { "bookmark" }
+                            />
+                        }
                         
-                   } else { 
-                       html!{
-                        <p>{"You did not add any notes yet. To add notes please use the action button ("}<i className="fa fa-plus" />{") within annotateable CV items"}</p>
-                       }
-                   }
-               }
-                </div>
+                    } else { 
+                        html!{
+                        <p>
+                            {"You did not add any bookmarks yet. To add bookmarks please use action button ("}
+                            <i className="fa fa-plus" />
+                            {") within bookmarkable CV items"}
+                        </p>
+                        }
+                    }
+                }
+                <h3>{ "Annotations" }</h3>
+                {
+                if annotations.len() > 0 { 
+                    html!{
+                        <ActionListActionablesComponent
+                            ordered_actionable_hashes = { ordered_annotations_hashes }
+                            collectable_type = { "annotation" }
+                        />
+                    }
+                    
+                } else { 
+                    html!{
+                    <p>{"You did not add any notes yet. To add notes please use the action button ("}<i className="fa fa-plus" />{") within annotateable CV items"}</p>
+                    }
+                }
+            }
         </div>       
     }
 }

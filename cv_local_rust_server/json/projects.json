@@ -1,6 +1,6 @@
 [
     {
-        "uid": 6,
+        "uid": 1,
         "name": "Terminator tabs plugin",
         "description": [
             "Plugin for Terminator _#terminal emulator_ - adds functionality to launch named new tabs",
@@ -14,7 +14,7 @@
     },
     {
         
-        "uid": 1,
+        "uid": 2,
         "name": "Interactive me",
         "description": [
             "Interactive CV review app: allows CV reviewers to take _#notes_, apply _#filters_ and set _#bookmarks_ on several parts of a candidate cv data.",
@@ -28,7 +28,7 @@
         "tech": [1,10,33]
     },
     {
-        "uid": 2,
+        "uid": 3,
         "name": "Terminator layout plugin",
         "description": [
             "Plugin for Terminator _#terminal emulator_ - allows to save Terminator's window position and layout (width, height) to the layout settings, so these can be replicated upon launch.",
@@ -41,7 +41,7 @@
         "tech": [1,10,33]
     },
     {
-        "uid": 3,
+        "uid": 4,
         "name": "Shapes Trading",
         "description": ["Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts", "A lockdown fun project", "Please refer to _#shape-trading-md.html_ (in repo root) for detailed instructions of how this app works, including in depth discussion of the matching parameters and user interface"],
         "repo": "https://github.com/dani-lo/shapes-trading",
@@ -52,7 +52,7 @@
     
     },
     {
-        "uid": 4,
+        "uid": 5,
         "name": "Outliers",
         "description": ["A small Python app to detect _#outlier datapoints_ within large datasets", "Built in Python with Flask, employing classic algorithms for _#outliers detection_"],
         "repo": "https://github.com/dani-lo/baoutliers",
@@ -63,7 +63,7 @@
     
     },
     {
-        "uid": 5,
+        "uid": 6,
         "name": "React D3 Dashboard",
         "description": ["A multi panels basic _#dashboard_ based on a mock dataset", "Old Project, uses _#D3 v3.0_ and an early version of React"],
         "repo": "https://github.com/dani-lo/react-d3-dashboard",

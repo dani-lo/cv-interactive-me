@@ -115,6 +115,7 @@
 
 .StyledSidebar h3 {
     padding-bottom: var(--gap-small);
+    margin: var(--gap-large) 0 var(--gap-medium);
 }
 
 
@@ -125,16 +126,11 @@
 }
 
 .StyledCompanyContainer > h3 {
-    padding: var(--gap-medium) 0 var(--gap-small);
-    margin-top: 0;
-}
-
-.StyledActionsList {
-    margin: var(--gap-large) 0;
+    padding: var(--gap-small) 0;
 }
 
 .StyledSidebar .StyledActionsList {
-    margin: -8px 0 var(--gap-large) 0;
+    margin:  var(--gap-large) 0 var(--gap-medium);
 }
 
 .StyledActionsList li {

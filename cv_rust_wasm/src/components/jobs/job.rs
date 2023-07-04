@@ -50,7 +50,7 @@ pub fn job(Props {
         let at_company_name = if job.company.is_none() { "Various Agencies".to_string() } else { format!("{}", &job.company.as_ref().unwrap().name) };
 
         let desc = job.description[0].clone();
-        let desc_text:fstr<150> = fstr::make(&desc);
+        let desc_text:fstr<80> = fstr::make(&desc);
 
         html! {
             <div class={ c_name } id={ format!("slot-{}", c_uid) }>
