@@ -52,7 +52,7 @@ pub fn job_type(JobTypeProps {
 
                     if *detail {
                         html!{
-                            <>
+                            <div class="margin-m">
                               
                                 <JobTypeTypeListComponent
                                     job_type_type={ jobtype_place }
@@ -66,11 +66,11 @@ pub fn job_type(JobTypeProps {
                                     jobtype_pref={ "type: " }
                                 />
                                 
-                            </>
+                            </div>
                         }
                     } else {
                         html!{
-                            <>
+                            <div class="margin-m">
                                 <ul>
                                     <JobTypeTypeInlineComponent 
                                         job_type_type={ jobtype_place }
@@ -85,7 +85,7 @@ pub fn job_type(JobTypeProps {
                                         jobtype_pref={ "type: " }
                                     />
                                 </ul>
-                            </>
+                            </div>
                         }
                     }
                 }

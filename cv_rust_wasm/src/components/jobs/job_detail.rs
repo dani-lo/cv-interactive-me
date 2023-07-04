@@ -112,20 +112,18 @@ pub fn job_detail(JobDetailProps {
                         }
                     }
                 }
+                <JobTypeComponent
+                    job_jobtypes={ job.job_type.clone() }
+                    actionable={ true }
+                    detail={ true }
+                />  
                 <ul>
                     <JobsDescriptionListComponent 
                         description={ c_job.description } 
                         
                     />
                 </ul>
-                <hr />
-                <JobTypeComponent
-                    job_jobtypes={ job.job_type.clone() }
-                    actionable={ true }
-                    detail={ true }
-                />
-                <hr />
-                
+                              
                 <TechComponent
                     job_uid={ job.uid }
                     actionable={ true }
