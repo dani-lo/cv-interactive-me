@@ -3,6 +3,11 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
+
+
+
+
+
     margin-top: var(--gap-large);
     padding:  var(--gap-medium);
     width: 380px;
@@ -16,6 +21,7 @@ export const StyledJobContainer = styled.div`
 
         h2, h3, p, li, a, i {
             color: white;
+            border-color: var(--white);
         }
 
         i.job-selector {
@@ -28,12 +34,13 @@ export const StyledJobContainer = styled.div`
     &:first-child {   
         margin-top: 0;
     }
-    
+
     h2 {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        margin-bottom: var(--gap-small);
+        margin-bottom: var(--gap-large);
+        padding-bottom: var(--gap-medium);
     }
 
     h2 i.bookmark {
@@ -41,7 +48,7 @@ export const StyledJobContainer = styled.div`
     }
 
     i.job-selector {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: var(--text-main);
         cursor: pointer;     
 
@@ -97,6 +104,10 @@ export const StyledSidebar = styled.div`
         top: 0.5rem;
     }
 
+    > div {
+        padding: var(--gap-large) 0 var(--gap-small);
+    }
+
     ul li, h3, p, i.fa, span, a {
         color: white;
     }
@@ -104,11 +115,6 @@ export const StyledSidebar = styled.div`
     i:hover, 
     a:hover {
         opacity: 0.7;
-    }
-
-    h3 {
-        padding-bottom: 0;
-        margin-top: 2rem;
     }
 `
 
@@ -125,8 +131,6 @@ export const StyledCompanyContainer = styled.div`
 `
 
 export const StyledActionsList = styled.ul`
-
-    margin: var(--gap-small) 0 var(--gap-large) 0;
 
     li {
         list-style: none;

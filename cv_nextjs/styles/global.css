@@ -67,18 +67,18 @@ body {
 }
 
 h1 {
-  font-family: 'Arvo', sans-serif;
-  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Arvo', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   text-align: center;
   color: var(--text-dark);
   font-size: 2rem;
   text-transform: uppercase;
   line-height: 2.5rem;
-  margin-top: var(--gap-small);
   margin-bottom: var(--gap-large);
+  margin-top: var(--gap-small);
   color: var(--text-clear);
-  font-weight: normal;
+  font-weight: bold;
 }
 
 h2 {
@@ -91,7 +91,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px solid var(--border-col);
+  border-bottom: 1px dashed var(--black);
 }
 
 h2 i.fa {
@@ -418,7 +418,6 @@ span.html-icon:hover {
 .margin-no {
   margin: 0!important;
 }
-
 
 .no-pre-render {
   display: none;

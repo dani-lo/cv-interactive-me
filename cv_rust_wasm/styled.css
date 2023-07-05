@@ -22,7 +22,7 @@
 }
 
 .StyledJobContainer i.job-selector {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--text-main);
     cursor: pointer;    
 }
@@ -46,8 +46,8 @@
 .StyledJobContainer.selected li,
 .StyledJobContainer.selected a, 
 .StyledJobContainer.selected i {
-
     color: white;
+    border-color: var(--white);
 }
 
 
@@ -100,6 +100,10 @@
     top: 0.5rem;
 }
 
+.StyledSidebar > div {
+    padding: var(--gap-large) 0 var(--gap-small);
+}
+
 .StyledSidebar ul li, 
 .StyledSidebar h3, 
 .StyledSidebar p, 
@@ -130,16 +134,16 @@
     padding: var(--gap-small) 0;
 }
 
-.StyledSidebar .StyledActionsList {
+/* .StyledSidebar .StyledActionsList {
     margin:  var(--gap-large) 0 var(--gap-medium);
-}
+} */
 
 .StyledActionsList li {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
+    /* padding: 0; */
 }
 
 .StyledActionsList li.list-footer-meta-action {

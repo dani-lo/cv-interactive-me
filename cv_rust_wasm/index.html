@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Cv Jobs Yew</title>
+        <title>Interactive Me (rust wasm)</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         
         <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Manrope:wght@300&family=Noto+Sans:wght@200;400&family=Roboto:wght@300&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap" rel="stylesheet" />  
-       
 
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" /> 
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" /> 
         
-        <!-- <link data-trunk rel="css"   href="tailwind-output.css" /> -->
-        <link data-trunk rel="css"   href="global.css">
-        <link data-trunk rel="css"   href="styled.css">
+        <link data-trunk rel="css"   href="global.css" />
+        <link data-trunk rel="css"   href="styled.css" />
       </head>
     <body>
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
@@ -35,8 +33,6 @@
           
           this.container = document.createElement('div');
           this.container.id = this.id;
-
-          // <i class="fa fa-thumbs-up" aria-hidden="true" style="display: block;position: fixed;top: 20px;right: 20px;font-size: 66px;color: green;"></i>
 
           var txt = document.createElement('span');
           txt.setAttribute('class', success ? 'ok' : 'err')
@@ -82,7 +78,6 @@
 
         wasm_notification.prototype.destroy_ui = function() {
 
-          console.log('this.container', this.container)
           const tgt = document.getElementById(this.id);
 
           if (tgt) {
@@ -129,21 +124,6 @@
             inline: "nearest"
           });
         }
-
-        // var listenerJobSelect = window.addEventListener("click", function (e) {
-          
-        //   if (e.target && e.target.getAttribute && e.target.getAttribute("id") && e.target.getAttribute("id").indexOf("job-selector") !== -1) {
-
-        //     var jobId = e.target.getAttribute("id").replace("job-selector-", "")
-
-        //     // window.history.pushState({}, '', "/jobs?uid=" + jobId);
-        //   }
-        // })
-
-        window.addEventListener('locationchange', function () {
-            console.log('location changed!');
-        });
-
       </script>
     </body>
 </html>

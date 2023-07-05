@@ -32,7 +32,7 @@ export const TechListComponent = (props: TechListProps) => {
     const limit = fulltech ? props.techs.length :  techShowLimit
     const filters = ctx.appstate.filters
 
-    return <StyledActionsList>
+    return <ul>
         {   
             props.techs.slice(0, limit).map(tech => {
 
@@ -53,7 +53,7 @@ export const TechListComponent = (props: TechListProps) => {
                         <li className="list-footer-meta-action" onClick={ () => setFulltech(false)}>show less</li> :
                         null
         }
-    </StyledActionsList>
+    </ul>
 }
 
 const TechComponent = React.memo<TechProps>(

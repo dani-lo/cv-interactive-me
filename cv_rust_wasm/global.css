@@ -193,7 +193,6 @@ ul {
 
 ul.nav {
   text-align: center;
-  margin-bottom: var(--gap-large);
 }
 
 ul.nav li {
@@ -201,23 +200,27 @@ ul.nav li {
   text-transform: lowercase;
   list-style: none;
   padding: var(--gap-medium);
-  margin: var(--gap-large) var(--gap-small);
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
+  margin: var(--gap-small) var(--gap-small) var(--gap-large);
   color: var(--text-clear);
   font-weight: bold;
+}
+
+ul.nav li a {
+  color: var(--white);
 }
 
 ul.nav li.active {
   text-decoration: none;
   pointer-events: none;
   background: var(--bg-grey);
+  
 }
-
 ul.nav li.active a {
   text-decoration: none;
   pointer-events: none;
-  color: var(--text-main);
+  color: var(--text-dark);
 }
 
 li {

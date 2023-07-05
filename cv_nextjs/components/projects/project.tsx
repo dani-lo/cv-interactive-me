@@ -54,13 +54,6 @@ export const ProjectComponentBase = ({
             project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
         }
         </ul>
-        <p>
-            <a 
-                href={ project.repo } 
-                target="_blank">
-                    Github Repo
-            </a>
-        </p>
     </StyledJobContainer>
 }
 
