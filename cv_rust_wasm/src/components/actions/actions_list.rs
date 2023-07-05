@@ -216,7 +216,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                 });
                 
                 html!{
-                    <li class="action-wrap">
+                    <li class="itemised action-wrap">
                         <span>
                             <strong>{ res_name.type_name }</strong>
                             {": "}

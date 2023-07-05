@@ -311,6 +311,7 @@ pub async fn create_annotation (annotation: Annotation) -> Option<ActionItemResp
         return None;
     }
 
+    info!("create_annotation :: {:?}", annotation);
 
     let conf = get_actions_api_config();
     let annotations_url = conf.get(&CvActionsEndpoints::ANNOTATIONS).unwrap();
@@ -324,6 +325,8 @@ pub async fn create_annotation (annotation: Annotation) -> Option<ActionItemResp
     );
 
     let body =  wasm_bindgen::JsValue::from_str(&body_str);
+
+    info!("body:: {:?}", body);
 
     let jobs_request = Request::post(annotations_url)
         .body(body)
@@ -429,9 +432,10 @@ pub async fn persist_appstate_pending (
     pending_annotations_collectables : Vec<Collectable>,
     pending_bookmarks_collectables : Vec<Collectable>,
     pending_filters_collectables : Vec<Collectable>,
-    state: StoreApp,
-
 ) -> HashMap<ActionTypes, Vec<Collectable>> { 
+
+    // info!("PERSIST APPSTATE::::");
+    // info!("pending_annotations_collectables {:?}", pending_annotations_collectables);
 
     let mut vec_responses_deleted = Vec::new();
     let mut hashed_response_resorces : HashMap<ActionTypes, Vec<Collectable>> = HashMap::new();
@@ -461,7 +465,7 @@ pub async fn persist_appstate_pending (
             vec_responses_collectable_filters.push(c);
         } else if pending_filter_collectable.pending.unwrap() == PendingStatus::VoidThenDeleted {
 
-            info!("IN PERSIST :: delete this filter :: {:?}", f._id);
+            // info!("IN PERSIST :: delete this filter :: {:?}", f._id);
 
             vec_responses_deleted.push(delete_filter(f).await);
             
@@ -494,21 +498,27 @@ pub async fn persist_appstate_pending (
 
     for pending_annotation_collectable in pending_annotations_collectables {
 
-        let mut a = Annotation::from_collectable(&pending_annotation_collectable, "");
-        let existing = state.annotations
-            .iter()
-            .find(|n| {
-                n.resource_id == pending_annotation_collectable.resource_id.unwrap() && 
-                n.resource_type == pending_annotation_collectable.resource_type.unwrap()
-            });
+        let a = Annotation::from_collectable(&pending_annotation_collectable);
 
-        if existing.is_some() {
-            a.text = existing.unwrap().text.clone();
-        }
+        // let existing = state.annotations
+        //     .iter()
+        //     .find(|n| {
+        //         n.resource_id == pending_annotation_collectable.resource_id.unwrap() && 
+        //         n.resource_type == pending_annotation_collectable.resource_type.unwrap()
+        //     });
+
+        // if existing.is_some() {
+        //     a.text = existing.unwrap().text.clone();
+        // }
 
         if pending_annotation_collectable.pending.unwrap() == PendingStatus::Added {
+            
+            // info!("in da loop:::::::");
 
+            // info!("{:?}", a);
+            
             let res = create_annotation(a).await;
+
             let a_data_res = res.unwrap().data;
             let a_data = a_data_res.get("annotation").unwrap();
 
@@ -518,7 +528,7 @@ pub async fn persist_appstate_pending (
                 resource_type: Some(a_data.resource_type),
                 pending: Some(PendingStatus::Void),
                 action_type: Some(ActionTypes::ANNOTATION),
-                action_txt: None,
+                action_txt: Some(fstr::make(a_data.text.as_str())),
             };
 
             vec_responses_collectable_annotations.push(c);
@@ -548,6 +558,9 @@ pub async fn persist_appstate_pending (
     hashed_response_resorces.insert(ActionTypes::FILTER, vec_responses_collectable_filters);
     hashed_response_resorces.insert(ActionTypes::BOOKMARK, vec_responses_collectable_bookmarks);
     hashed_response_resorces.insert(ActionTypes::ANNOTATION, vec_responses_collectable_annotations);
+
+    // info!("PERSIST APPSTATE NOw RETURNIN::: :::: hashed_response_resorces");
+    // info!("{:?}", hashed_response_resorces);
 
     hashed_response_resorces
 }

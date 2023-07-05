@@ -38,15 +38,16 @@ impl Annotation {
         }
     }
 
-    pub fn from_collectable (a: &Collectable, txt: &str) -> Self {
+    pub fn from_collectable (a: &Collectable) -> Self {
         
         let fixed_str_id: Option<fixedstr::fstr<24>> = Collectable::maybe_id(a._id);
-
+        let txt = a.action_txt.unwrap().to_string();
+        
         Self {
             _id: if fixed_str_id.is_some() { Some(fixed_str_id.unwrap().to_string()) } else { None },
             resource_id: a.resource_id.unwrap(),
             resource_type: a.resource_type.unwrap(),
-            text: txt.to_owned(),
+            text:  txt.to_owned(),
             pending: a.pending.unwrap(),
         }
     }

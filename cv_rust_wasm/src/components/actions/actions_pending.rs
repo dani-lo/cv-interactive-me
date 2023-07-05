@@ -58,7 +58,6 @@ pub fn pending_actions_component() -> Html {
     let auto_persist = auto_persist_opt.unwrap();
 
     let settings_ui_dipatcher = ui_dispatch.clone();
-    let c_state = (*state).clone();
     let flush_dispatcher = dispatch.clone();
     
     let all_pending = state_pending_actions(state);
@@ -84,16 +83,16 @@ pub fn pending_actions_component() -> Html {
 
         let apply_dispatcher = dispatch.clone();
         
-        let c_c_state = c_state.clone();
-
         spawn_local(async move {
 
             let persist_result: HashMap<ActionTypes, Vec<Collectable>> = persist_appstate_pending(
                 c_pending_annotations_collectables, 
                 c_pending_bookmarks_collectables, 
-                c_pending_filters_collectables,
-                c_c_state
+                c_pending_filters_collectables
             ).await;
+
+            info!("::::: persist_result");
+            info!("{:?}", persist_result);
 
             apply_dispatcher.reduce_mut(|s| s.apply_processed_pending(persist_result));
 

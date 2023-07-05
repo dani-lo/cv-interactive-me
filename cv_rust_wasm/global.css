@@ -224,20 +224,20 @@ ul.nav li.active a {
 }
 
 li {
+  font-size:0.9rem;
   line-height: 1.4rem;
   list-style: none;
   list-style-position: inside;
   color: var(--text-main);
   display: flex;
   align-items: center;
-  padding: var(--gap-micro) 0;
-  font-size:0.9rem;
-  margin: 0;
+  padding: var(--gap-small) 0;
+  margin: var(--gap-micro) 0;
 }
 
 li.itemised {
   text-transform: capitalize;
-  margin: var(--gap-small) 0;
+  padding: 0;
 }
 
 i.bookmark {

@@ -31,6 +31,10 @@ pub struct StoreApp {
 
 impl StoreApp {
 
+    fn clear_fresh (&mut self) {
+        self.annotations.retain(|a| a.pending != PendingStatus::Fresh);
+    }
+
     pub fn add_bookmark (
         self: &mut Self,
         bookmark: Bookmark) {
@@ -282,6 +286,8 @@ impl StoreApp {
 
     pub fn flush_pending (self: &mut Self) {
 
+        self.clear_fresh();
+
         let new_filters = self.filters
             .clone()
             .iter()
@@ -325,81 +331,100 @@ impl StoreApp {
     }
 
     pub fn apply_processed_pending (
-        self: &mut Self,
-        user_actions_hash: HashMap<ActionTypes, Vec<Collectable>>) {
+            self: &mut Self,
+            user_actions_hash: HashMap<ActionTypes, Vec<Collectable>>) {
 
-            let new_filters: Vec<Filter> = self.filters
-                .clone()
-                .iter()
-                .map(|d| {
+        self.clear_fresh();
+        
+        let new_filters: Vec<Filter> = self.filters
+            .clone()
+            .iter()
+            .map(|d| {
 
-                    let processed = user_actions_hash
-                        .get(&ActionTypes::FILTER)
-                        .unwrap()
-                        .iter()
-                        .find(|x| 
-                            d.resource_type == x.resource_type.unwrap() &&
-                            d.resource_id == x.resource_id.unwrap()
-                        );
+                let processed = user_actions_hash
+                    .get(&ActionTypes::FILTER)
+                    .unwrap()
+                    .iter()
+                    .find(|x| 
+                        d.resource_type == x.resource_type.unwrap() &&
+                        d.resource_id == x.resource_id.unwrap()
+                    );
 
-                    Filter {
-                        _id: d._id.clone(),
+                Filter {
+                    _id: d._id.clone(),
+                    resource_id: d.resource_id,
+                    resource_type: d.resource_type,
+                    pending: if processed.is_some() { PendingStatus::Void } else { d.pending }
+                }
+            })
+            .filter(|d| d.pending == PendingStatus::Void)
+            .collect();
+
+        let new_bookmarks: Vec<Bookmark> = self.bookmarks
+            .clone()
+            .iter()
+            .map(|d| {
+
+                let processed = user_actions_hash
+                    .get(&ActionTypes::BOOKMARK)
+                    .unwrap()
+                    .iter()
+                    .find(|x| 
+                        d.resource_type == x.resource_type.unwrap() &&
+                        d.resource_id == x.resource_id.unwrap()
+                    );
+
+                Bookmark {
+                    _id: d._id.clone(),
+                    resource_id: d.resource_id,
+                    resource_type: d.resource_type,
+                    pending: if processed.is_some() { PendingStatus::Void } else { d.pending }
+                }
+            })
+            .filter(|d| d.pending == PendingStatus::Void)
+            .collect();
+        
+        let new_annotations: Vec<Annotation> = self.annotations
+            .clone()
+            .iter()
+            .map(|d| {
+
+                info!("IN MAP ---- {:?}", d);
+                let processed_opt = user_actions_hash
+                    .get(&ActionTypes::ANNOTATION)
+                    .unwrap()
+                    .iter()
+                    .find(|x| 
+                        d.resource_type == x.resource_type.unwrap() &&
+                        d.resource_id == x.resource_id.unwrap()
+                    );
+                
+                if processed_opt.is_some() {
+
+                    let processed = processed_opt.unwrap();
+
+                    return Annotation {
+                        _id: Some(processed._id.unwrap().to_string()),
                         resource_id: d.resource_id,
                         resource_type: d.resource_type,
-                        pending: if processed.is_some() { PendingStatus::Void } else { d.pending }
-                    }
-                })
-                .filter(|d| d.pending == PendingStatus::Void)
-                .collect();
-
-            let new_bookmarks: Vec<Bookmark> = self.bookmarks
-                .clone()
-                .iter()
-                .map(|d| {
-
-                    let processed = user_actions_hash
-                        .get(&ActionTypes::BOOKMARK)
-                        .unwrap()
-                        .iter()
-                        .find(|x| 
-                            d.resource_type == x.resource_type.unwrap() &&
-                            d.resource_id == x.resource_id.unwrap()
-                        );
-
-                    Bookmark {
-                        _id: d._id.clone(),
-                        resource_id: d.resource_id,
-                        resource_type: d.resource_type,
-                        pending: if processed.is_some() { PendingStatus::Void } else { d.pending }
-                    }
-                })
-                .filter(|d| d.pending == PendingStatus::Void)
-                .collect();
-            
-            let new_annotations: Vec<Annotation> = self.annotations
-                .clone()
-                .iter()
-                .map(|d| {
-
-                    let processed = user_actions_hash
-                        .get(&ActionTypes::ANNOTATION)
-                        .unwrap()
-                        .iter()
-                        .find(|x| 
-                            d.resource_type == x.resource_type.unwrap() &&
-                            d.resource_id == x.resource_id.unwrap()
-                        );
-
+                        pending: PendingStatus::Void,
+                        text: processed.action_txt.unwrap().to_string().clone(),
+                    };
+                } else {
                     Annotation {
                         _id: d._id.clone(),
                         resource_id: d.resource_id,
                         resource_type: d.resource_type,
-                        pending: if processed.is_some() { PendingStatus::Void } else { d.pending },
+                        pending: d.pending,
                         text: d.text.clone(),
                     }
-                })
-                .filter(|d| d.pending == PendingStatus::Void)
-                .collect();
+                }
+                
+            })
+            .filter(|d| d.pending == PendingStatus::Void)
+            .collect();
+        
+        info!("+++ new_annotations {:?}", new_annotations);
 
         self.filters = new_filters;
         self.annotations = new_annotations;
@@ -419,7 +444,7 @@ impl StoreApp {
 
         let user_annotations_collectable_vec = user_actions_hash.get(&ActionTypes::ANNOTATION);
         let user_annotations: Vec<Annotation> = user_annotations_collectable_vec.unwrap().iter().map(|d| {
-            Annotation::from_collectable(d, d.action_txt.unwrap().to_str())
+            Annotation::from_collectable(d)
         }).collect();
 
         self.annotations = user_annotations.clone();
