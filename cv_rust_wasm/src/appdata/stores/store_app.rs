@@ -275,6 +275,7 @@ impl StoreApp {
             self: &mut Self) {
 
         self.modal_item.reset();
+        self.clear_fresh();
     }
 
     pub fn set_static_models(
