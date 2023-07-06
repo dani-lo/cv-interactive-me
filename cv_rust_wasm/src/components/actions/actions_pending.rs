@@ -165,7 +165,6 @@ pub fn pending_actions_component() -> Html {
                         </div>
                         <button 
                             style="display: flex;"
-                            class="margin-b"
                             onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
                         >
                             { "Edit settings" }

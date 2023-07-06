@@ -108,12 +108,12 @@ pub fn job_detail(ProjectDetailProps {
                         html!{ <></> }
                     }
                 }
-                <p class="margin-b">
+                <p>
                     <a href={ project.repo.clone() } target="_blank">
                         <strong>{ "Github Repo" }</strong>
                     </a>
                 </p>
-                <div class="margin-m">
+                <div>
                     <BaseListComponent
                         list_items={ project.description.clone() }
                     />

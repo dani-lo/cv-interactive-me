@@ -40,14 +40,14 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
             />
         </h2>
         <h3> 
-            { job.position }{ job.company ? ` @ ${  job.company.name  }` : '' }
+        { job.position }{ job.company ? `, ${  job.company.name  }` : '' }
         </h3>
         <p> Job type:
             {
                 job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
                     return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
                 })
-            } 
+            } q
         </p>
         <p> Working From: 
             {

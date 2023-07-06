@@ -44,9 +44,14 @@ const CompanyFieldComponent = (props : { field: Field }) => {
         throw new Error("You must pass a Field resource to the CompanyComponent")
     }
 
-    return <li>
-        { 
-            field.name 
-        }
+    return <li className="itemised">
+        <span className="action-wrap evident">
+            <i 
+                className="action fa fa-plus" 
+                aria-hidden="true"
+            />  
+                
+            <span>{ field.name  }</span>
+        </span>
     </li>
 }

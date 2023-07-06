@@ -63,7 +63,7 @@ const TechComponent = React.memo<TechProps>(
         const { showActions, filtered, tech } = props
 
         return <li 
-                className={ `${ filtered? 'filtered' : '' }` } 
+                className={ `itemised ${ filtered? 'filtered' : '' }` } 
                 onClick={ () => showActions(tech) } > 
             <span className="action-wrap">
                 <i 

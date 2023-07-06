@@ -21,7 +21,7 @@ use crate::{
     },
     models::{
         user_model::UserModel,
-    }, traits::ActionTypes
+    }, traits::ActionTypes, util::wasm_bridge::notify_user
 };
 
 #[function_component(ConfigSettingsListComponent)]
@@ -32,6 +32,9 @@ pub fn config_settings() -> Html {
     let settings_ui_dipatcher = dispatch.clone();
 
     let settings_items = &ui_state.settings.items;
+
+    info!("ConfigSettingsListComponent :: settings_items ----------------- {:?}", settings_items);
+
     let mut s_keys : Vec<ConfigKeys>= Vec::new();
 
     for (k, v) in settings_items {
@@ -77,9 +80,7 @@ pub fn config_settings() -> Html {
                 {
                     elements
                 }
-                <TokSettingComponent 
-                    dispatch={ dispatch.clone() }
-                />
+                <TokSettingComponent />
             </div>
         </>
     }
@@ -98,12 +99,15 @@ pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &Settin
     let dispatcher = dispatch.clone();
     
     let val_opt: Option<bool> = setting.val;
-    
+
+    let mut val_as_some = val_opt;
+
     if val_opt.is_none() {
-        return html!{<></>};
+
+        val_as_some = Some(setting.default);
     }
 
-    let val = val_opt.unwrap();
+    let val = val_as_some.unwrap();
     let checked_state = use_state(|| val);
 
     let save_class = if (*checked_state) == val { "disabled" } else { "" };
@@ -133,13 +137,14 @@ pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &Settin
     }
 }
 
-#[derive(PartialEq, Properties)]
-pub struct TokSettingProps {
-    dispatch: Dispatch<StoreUI>,
-}
+// #[derive(PartialEq, Properties)]
+// pub struct TokSettingProps {
+//     dispatch: Dispatch<StoreUI>,
+// }
 
 #[function_component(TokSettingComponent)]
-pub fn tok_setting_component(TokSettingProps { dispatch } : &TokSettingProps) -> Html { 
+pub fn tok_setting_component() -> Html { 
+// pub fn tok_setting_component(TokSettingProps { dispatch } : &TokSettingProps) -> Html { 
 
     let (_appstore_state, appstore_dispatch) = use_store::<StoreApp>();//dispatcher.reduce_mut(|s| s.init_user_actions(fetched_user_actions));
 
@@ -166,15 +171,14 @@ pub fn tok_setting_component(TokSettingProps { dispatch } : &TokSettingProps) ->
                     let fetched_user_actions : HashMap<ActionTypes, Vec<Collectable>> = get_user_actions().await;
         
                     dispatcher.reduce_mut(|s| s.init_user_actions(fetched_user_actions));
+
+                    notify_user("user token changed", true);
                 })
             },
             Err(e) => {
                 info!("Error saving user tok to storage");
             },
         }
-
-        
-       
     });
 
     html!{

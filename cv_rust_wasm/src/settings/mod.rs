@@ -68,13 +68,13 @@ impl SettingsConfig {
             label: "Show Persist Feedback".to_string(),
         });
 
-        items.insert(ConfigKeys::UserTok, ConfigItem {
-            default: true,
-            key: "_".to_string(),
-            val: None,
-            desc: "Lorem ipso dolor sit amet etiam non sei mica bugiarda quando ti conviene pero foo is a bar is a bar is a foo, usually".to_string(),
-            label: "".to_string(),
-        });
+        // items.insert(ConfigKeys::UserTok, ConfigItem {
+        //     default: true,
+        //     key: "_".to_string(),
+        //     val: None,
+        //     desc: "Lorem ipso dolor sit amet etiam non sei mica bugiarda quando ti conviene pero foo is a bar is a bar is a foo, usually".to_string(),
+        //     label: "".to_string(),
+        // });
 
         Self {
             items

@@ -52,8 +52,7 @@ pub fn job_type(JobTypeProps {
 
                     if *detail {
                         html!{
-                            <div class="margin-m">
-                              
+                            <>
                                 <JobTypeTypeListComponent
                                     job_type_type={ jobtype_place }
                                     actionable={ actionable }
@@ -65,27 +64,26 @@ pub fn job_type(JobTypeProps {
                                     actionable={ actionable }
                                     jobtype_pref={ "type: " }
                                 />
-                                
-                            </div>
+                            </>
                         }
                     } else {
                         html!{
-                            <div class="margin-m">
-                                <ul>
-                                    <JobTypeTypeInlineComponent 
-                                        job_type_type={ jobtype_place }
-                                        actionable={ actionable }
-                                        jobtype_pref={ "from: " }
-                                    />
-                                </ul>
-                                <ul>
-                                    <JobTypeTypeInlineComponent 
-                                        job_type_type={ jobtype_time }
-                                        actionable={ actionable }
-                                        jobtype_pref={ "type: " }
-                                    />
-                                </ul>
-                            </div>
+                            <>
+                            <ul>
+                                <JobTypeTypeInlineComponent 
+                                    job_type_type={ jobtype_place }
+                                    actionable={ actionable }
+                                    jobtype_pref={ "from: " }
+                                />
+                            </ul>
+                            <ul>
+                                <JobTypeTypeInlineComponent 
+                                    job_type_type={ jobtype_time }
+                                    actionable={ actionable }
+                                    jobtype_pref={ "type: " }
+                                />
+                            </ul>
+                            </>
                         }
                     }
                 }

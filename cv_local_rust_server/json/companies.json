@@ -18,42 +18,42 @@
         "name": "VCCP",
         "location": "London", 
         "description": "A large London based digital agency",
-        "field": [1]
+        "field": [2]
     },
     {
         "uid": 4,
         "name": "ATP",
         "location": "London",
         "description": "A software platform led company that helps improve the return on media investment significantly by identifying and targeting audiences and continuously optimising marketing campaigns using bespoke algorithms and software tools",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 5,
         "name": "Hangar 7",
         "location": "London",
         "description": "leader in the planning, creation, production and distribution of powerful Content that changes consumer opinion, stimulates consumer interaction and drives retail footfall and sales",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 6,
         "name": "Grand Union",
         "location": "London",
         "description": "A digital agency based in Central London specialising in UX and frontend development.",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 7,
         "description": "A digital agency based in Central London specialising in UX and frontend development.",
         "location": "London",
         "name": "Fullsix",
-        "field": [1]
+        "field": [2]
     },
     {
         "uid": 8,
         "name": "Grouptree",
         "location": "London",
         "description": "A privately owned software development company based in central London specialising in the development of object oriented software solutions designed to manage digital assets",
-        "field": [1]
+        "field": [2]
     },
     {
         "uid": 9,
@@ -67,21 +67,21 @@
         "name": "Capablue",
         "location": "London",
         "description": "One of the UK’s leading Video on Demand (VoD) and Connected TV solutions provider",
-        "field": [1]
+        "field": [2]
     },
     {
         "uid": 11,
         "name": "The App Business",
         "location": "London",
         "description": "The App Business is a team of specialists dedicated to creating effective app strategy and ideas, and to developing high quality apps and web services",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 12,
         "name": "Profero",
         "location": "London",
         "description": "Profero is a young and vibrant digital agency based in Camden. They cover a broad range of services from advertising, design and branding / communication to data analytics, social media, online presence",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 13,
@@ -95,20 +95,20 @@
         "name": "Various Agencies",
         "location": "London",
         "description": "Short term front end and php development contracts",
-        "field": [1]
+        "field": [2]
     },
     {
         "uid": 15,
         "name": "Dr Foster",
         "location": "London",
         "description": "The UK's leading independent supplier of health and social care information, whose work encompasses research, analysis, product development, social marketing campaigns, management information tools and industryguiding publications",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 16,
         "name": "Filmnight",
         "location": "London",
         "description": "An ecommerce company specializing in online Dvds / Soundtrack sales, trailers, and technologies for delivery of mobile content.",
-        "field": [1]
+        "field": [3]
     }
 ]

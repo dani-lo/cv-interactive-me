@@ -102,6 +102,12 @@ export const PendingActionsComponent = () => {
                 <p>
                     Your randomly assigned identifier is <strong>{ user.name }</strong>
                 </p>
+                <button 
+                            style={{ display: 'flex'}}
+                            // onClick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
+                        >
+                            { "Edit settings" }
+                        </button>
             </div> : null
         }
         

@@ -46,7 +46,7 @@ const JobsPage = (props: AppDataProps) => {
     const [selectedJob, setSelectedJob] = useState<Job | null | undefined>(null)
 
     const router = useRouter()
-    console.log(router)
+
     useEffect(() => {
         
         const path = router.asPath

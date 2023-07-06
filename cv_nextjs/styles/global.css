@@ -172,14 +172,13 @@ button.disabled {
   pointer-events: none;
 }
 
-
-
 label {
   line-height: 1.4rem;
   padding: 0 0 0 var(--gap-small);
   margin: 0;
   font-weight: bold;
   text-transform: capitalize;
+  font-size: 0.9em;
 }
 
 label.blocklabel {
@@ -246,7 +245,7 @@ li {
 
 li.itemised {
   text-transform: capitalize;
-  margin: var(--gap-small) 0;
+  margin: 0;
 }
 
 i.bookmark {
@@ -286,6 +285,10 @@ span.action-wrap {
   cursor: pointer;
 }
 
+span.action-wrap.evident {
+  font-weight: bold;
+}
+
 span.action-wrap i {
   margin-right: var(--gap-small);
 }
@@ -302,12 +305,7 @@ span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-i
 span.html-icon {
   display: inline-block;
   cursor: pointer;
-  /* font-weight: bold; */
-  /* font-size: 1.25rem; */
-  /* line-height: 1rem; */
   display: inline-block;
-  /* color: var(--black); */
-  /* font-family: Helvetica; */
 }
 
 span.html-icon.job-selector {

@@ -27,6 +27,9 @@ export const JobDetailsComponentBase = ({
         bookmarked, 
         annotationText, 
         companyBookmarked } : Props) => {
+    
+    const job_job_types = job.jobType.filter(jt => jt.prefix == "TIME")
+    const job_job_locations = job.jobType.filter(jt => jt.prefix == "PLACE")
 
     return <StyledJobDetail>
         <h2> 
@@ -53,27 +56,49 @@ export const JobDetailsComponentBase = ({
         }    
         <ul>
             {
+                job_job_types.map((jobTypeItem, i) => {
+                    return <li 
+                        className="itemised" 
+                        key={ jobTypeItem.uid }> 
+                            <span className="action-wrap evident">
+                                <i 
+                                    className="action fa fa-plus" 
+                                    aria-hidden="true"
+                                />  
+                                    
+                                <span>{ jobTypeItem.name }</span>
+                            </span>                                
+                    </li>
+                })
+            } 
+        </ul>
+        <ul> 
+            {
+                job_job_locations.map((jobTypeItem, i) => {
+                    return <li 
+                        className="itemised" 
+                        key={ jobTypeItem.uid }> 
+                            <span className="action-wrap evident">
+                                <i 
+                                    className="action fa fa-plus" 
+                                    aria-hidden="true"
+                                />  
+                                    
+                                <span>{ jobTypeItem.name }</span>
+                            </span>
+                            
+                    </li>
+                })
+            } 
+        </ul>
+ 
+        <ul>
+            {
                 job.description.map((task: string) => {
                     return <li key={ task.replace(/\s/g, '') }>{ task }</li>
                 })
             }
         </ul>
-        <div>
-            <p> Job type:
-                {
-                    job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
-                        return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
-                    })
-                } 
-            </p>
-            <p> Working From: 
-            {
-                job.jobType.filter(jt => jt.prefix == "PLACE").map((jobTypeItem, i) => {
-                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
-                })
-            } 
-        </p>
-        </div>
         <TechListComponent
             techs={ job.tech}
             showActions={ showActions }

@@ -1,3 +1,4 @@
+use log::info;
 use yewdux::store::Store;
 use serde::{Serialize, Deserialize};
 
@@ -18,11 +19,15 @@ pub struct StoreUI {
 }
 
 impl Default for StoreUI {
+
     fn default() -> Self {
+
         let mut settings = SettingsConfig::new();
 
         settings.populate();
 
+        info!("StoreUI::Default -------- {:?}", settings);
+        
         Self {
             msg: "",
             busy: false,

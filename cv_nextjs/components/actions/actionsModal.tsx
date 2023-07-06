@@ -29,7 +29,7 @@ export const ActionsModal = (props: Props) => {
     >
       <Box>
         <h2>{ item?.toString() }</h2>
-        <div className="margin-m">
+        <div>
           <ActionInputs.FilterActionInput 
             item={ item } 
             active={ narrowers.itemCanFilter(item) } 

@@ -12,6 +12,7 @@ use crate::api::config::{
     CvActionsEndpoints,
     get_actions_api_config,
 };
+use crate::util::wasm_bridge::notify_user;
 
 pub fn cv_tok_key () -> &'static str { 
     "user_token"
@@ -125,10 +126,10 @@ impl UserModel {
         let user_get_request = Request::get(&user_query_url)
             .send()
             .await;
-
-        // info!("{:?}",` user_request);
-
+        
         match user_get_request {
+
+            
             Ok(res) => {
 
                 if res.status() == 404 {
@@ -148,9 +149,11 @@ impl UserModel {
                     
                     match user_post_request {
                             Ok(post_res) => {
-                
+
                                 if post_res.status() != 200 {
                                     info!("Error loading user, operation aborted");
+
+                                    notify_user("Error loading user", false);
                                     return None;
                                 }
                 

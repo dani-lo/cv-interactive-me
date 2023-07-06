@@ -163,14 +163,13 @@ button.disabled {
   pointer-events: none;
 }
 
-
-
 label {
   line-height: 1.4rem;
   padding: 0 0 0 var(--gap-small);
   margin: 0;
   font-weight: bold;
   text-transform: capitalize;
+  font-size: 0.9em;
 }
 
 label.blocklabel {
@@ -362,7 +361,6 @@ span.html-icon:hover {
   width: 100%;
   font-size: 0.9rem;
   text-transform: lowercase;
-  background: green;
   border-radius: 2px;
   font-weight: bold;
   color: white;

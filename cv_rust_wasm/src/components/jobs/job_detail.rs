@@ -98,6 +98,7 @@ pub fn job_detail(JobDetailProps {
                         html!{ <></> }
                     }
                 }
+                <h3>{ job.position }</h3>
                 {
                     if job.company.is_some() {
                        html!{ 
