@@ -39,15 +39,20 @@ const memoTransformData = () => {
         projectModels: new Map(),
     }
 
-    return ({
-        jobs, 
-        tech, 
-        companies, 
-        fields, 
-        jobTypes,
-        projects
-    }: AppDataProps) => {
+    return (props: AppDataProps | null) => {
         
+        if (props == null) {
+            return memo
+        }
+
+        const {
+            jobs, 
+            tech, 
+            companies, 
+            fields, 
+            jobTypes,
+            projects
+        } = props
 
         memo.techModels = !!memo.techModels.size ? memo.techModels : mappedResource<ITech, Tech>(tech, (doc: ITech) => new Tech(doc))
         memo.companyModels = !!memo.companyModels.size ? memo.companyModels : mappedResource<ICompany, Company>(companies, (doc: ICompany) => new Company(doc, fields))

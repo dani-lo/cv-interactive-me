@@ -9,8 +9,9 @@ import { Tech } from './Tech'
 import { Filter } from '../../types'
 import { AppStatePending, PendingStatus } from '../../store/appState'
 import { allFiltersForDisplay } from '../../helpers/allFiltersForDisplay'
+import { canLink } from '../mixins/withLink'
 
-export class Project extends canAnnotate(canBookmark(ConcreteMdel)) implements WithUid {
+export class Project extends canAnnotate(canBookmark(canLink(ConcreteMdel))) implements WithUid {
 
     uid: number 
     description: string[]

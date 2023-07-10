@@ -82,9 +82,6 @@ const JobsPage = (props: AppDataProps) => {
     const handleClose = () => {
         setActionItem(null);
     }
-
-
-    // console.log('JOBS:: props.jobs.length', props.jobs.length)
     
     return <div className="page page-grid">  
         <div className="jobs-container">
@@ -103,7 +100,6 @@ const JobsPage = (props: AppDataProps) => {
                         id={ `job-${ job.uid }` }
                         key={ job.uid } 
                         job={ job } 
-                        showActions = { handleOpen }
                         bookmarked={ job[IBookmarkKeys.STATUS](ctx) }
                         annotationText={ annotationText }
                         selected={ selected }
@@ -117,16 +113,18 @@ const JobsPage = (props: AppDataProps) => {
             }
         </div> 
         {
-            selectedJob ? <div><JobDetailComponent 
-                job={ selectedJob }
-                showActions = { handleOpen }
-                bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
-                companyBookmarked= { selectedJob.company !== null
-                    ? selectedJob.company[IBookmarkKeys.STATUS](ctx) 
-                    : false 
-                }
-                annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
-            /></div> : null
+            selectedJob ? <div>
+                <JobDetailComponent 
+                    job={ selectedJob }
+                    showActions = { handleOpen }
+                    bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
+                    companyBookmarked= { selectedJob.company !== null
+                        ? selectedJob.company[IBookmarkKeys.STATUS](ctx) 
+                        : false 
+                    }
+                    annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
+                />
+            </div> : null
         } 
         <ActionsModal 
             open={ !!actionItem }

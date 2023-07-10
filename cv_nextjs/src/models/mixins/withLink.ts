@@ -1,24 +1,16 @@
-// import { Model } from '../model'
-// import { AppAction, Constructor, WithUid } from '../../types'
+import { ConcreteMdel, Model } from '../model'
+import { AppAction, Constructor, WithUid } from '../../types'
 
-// export interface ILink {
-//   getSearchString: () => string;
-// }
+export interface ILink {
+  getSearchString: () => string;
+}
 
-// export function canLink<T extends Constructor<Model>>(constructor: T = Model as any) {
+export function canLink<T extends Constructor<ConcreteMdel>>(constructor: T = Model as any) {
 
-//   return class extends constructor implements ILink {
+  return class extends constructor implements ILink {
 
-//     getSearchString () {
-//       return `?${ this.resource_type }=${ this.id }`
-//     }
-
-//     toString() {
-//       return ''
-//     }
-
-//     display(filters: AppAction[]): boolean {
-//       return true
-//     }
-//   }
-// }
+    getSearchString () {
+      return `/${ this.resource_type }s/${ this.id }`.toLowerCase()
+    }
+  }
+}

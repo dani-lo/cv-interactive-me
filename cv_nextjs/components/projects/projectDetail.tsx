@@ -37,6 +37,7 @@ export const ProjectDetailsComponentBase = ({
             }
         </h2>
         { annotationText ? <AnnotationsComponent note={ annotationText }/> : null }
+            <p className="proj-repo"><a href={ project.repo } target="_blank">Github Repo</a></p>
             <ul>
             {
                 project.description.map((task: string) => {
@@ -54,7 +55,7 @@ export const ProjectDetailsComponentBase = ({
             project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
         }
         </ul>
-        <p><a href={ project.repo } target="_blank">Github Repo</a></p>
+        
         <TechListComponent
             techs={ project.tech}
             showActions={ showActions }

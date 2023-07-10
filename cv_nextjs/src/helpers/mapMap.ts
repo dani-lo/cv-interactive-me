@@ -1,8 +1,6 @@
 export const mapToComponents = <T>(
         map: Map<any, T>, 
-        transform: (v: T, i: number) => JSX.Element | null
-        
-        )  => {
+        transform: (v: T, i: number) => JSX.Element | null)  => {
 
     const components = []
 

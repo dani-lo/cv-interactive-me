@@ -14,6 +14,7 @@ import { PendingStatus } from "../../src/store/appState"
 import { AppDataProps, Resource } from "../../src/types"
 
 import { StyledActionsList } from "../../styles/main.styled"
+import { ActionLink } from "./actionLink"
 
 export const ActionsList = (props: AppDataProps) => {
 
@@ -43,7 +44,8 @@ export const ActionsList = (props: AppDataProps) => {
 
                             return <li key={ `${appFilter.resource_type}-${appFilter.resource_id}` } className="action-wrap">
                                     <span>
-                                        <strong className="capital">{ appFilter.resource_type }</strong>: { resource?.toString() }
+                                        <strong className="capital">{ appFilter.resource_type }</strong>: 
+                                        <ActionLink resource={ resource } />
                                     </span>
                                     <i className="action fa fa-times" onClick={ () => resource[IFilterKeys.UNDO_ACTION](ctx) } />
                                 </li>
@@ -68,7 +70,8 @@ export const ActionsList = (props: AppDataProps) => {
                         
                         return <li key={ `${appBookmark.resource_type}-${appBookmark.resource_id}`} className="action-wrap">
                                 <span>
-                                    <strong className="capital">{ appBookmark.resource_type }</strong>: { resource?.toString() }
+                                    <strong className="capital">{ appBookmark.resource_type }</strong>: 
+                                    <ActionLink resource={ resource } />
                                 </span>
                                 <i className="action fa fa-times" onClick={ () => resource[IBookmarkKeys.UNDO_ACTION](ctx) } />
                             </li>
@@ -92,7 +95,8 @@ export const ActionsList = (props: AppDataProps) => {
                         
                         return <li key={ `${appNote.resource_type}-${appNote.resource_id}`} className="action-wrap">
                             <span>
-                                <strong className="capital">{ appNote.resource_type }</strong>: { resource?.toString() }
+                                <strong className="capital">{ appNote.resource_type }</strong>: 
+                                <ActionLink resource={ resource } />
                             </span>
                             <i className="action fa fa-times" onClick={ () => resource[IAnnotateKeys.UNDO_ACTION](ctx) } />    
                         </li>

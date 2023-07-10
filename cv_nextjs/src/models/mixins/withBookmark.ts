@@ -10,8 +10,6 @@ export enum IBookmarkKeys {
   STATUS =  'bookmarked'
 }
 
-
-
 export interface IBookmark {
   [IBookmarkKeys.DO_ACTION]: (ctx: CvContext) => void;
   [IBookmarkKeys.UNDO_ACTION]: (ctx: CvContext) => void;

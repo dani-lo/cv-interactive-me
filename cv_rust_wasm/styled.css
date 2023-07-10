@@ -13,7 +13,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: var(--gap-large);
+    margin-bottom: var(--gap-small);
     padding-bottom: var(--gap-medium);
 }
 
@@ -127,7 +127,7 @@
 .StyledCompanyContainer {
     margin: var(--gap-large) 0;
     border: 2px solid var(--active-action);
-    padding: var(--gap-medium) var(--gap-medium) 0;
+    padding: var(--gap-medium);
 }
 
 .StyledCompanyContainer > h3 {

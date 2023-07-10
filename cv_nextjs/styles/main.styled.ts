@@ -3,11 +3,6 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-
-
-
-
-
     margin-top: var(--gap-large);
     padding:  var(--gap-medium);
     width: 380px;
@@ -39,7 +34,7 @@ export const StyledJobContainer = styled.div`
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        margin-bottom: var(--gap-large);
+        margin-bottom: var(--gap-small);
         padding-bottom: var(--gap-medium);
     }
 
@@ -122,7 +117,7 @@ export const StyledCompanyContainer = styled.div`
 
     margin: var(--gap-large) 0;
     border: 2px solid var(--active-action);
-    padding: var(--gap-medium) var(--gap-medium) 0;
+    padding: var(--gap-medium);
 
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);

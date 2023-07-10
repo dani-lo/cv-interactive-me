@@ -34,5 +34,4 @@ export class ConcreteMdel extends Model {
     getParentResource () {
         return null
     }
-
 }

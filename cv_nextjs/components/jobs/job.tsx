@@ -6,7 +6,6 @@ import { Resource } from "../../src/types"
 import { StyledJobContainer } from '../../styles/main.styled'
 
 type JobProps = {
-    showActions: (item: Resource) => void;
     bookmarked: boolean;
     annotationText: string | null;
     selected: boolean;
@@ -18,7 +17,6 @@ type JobProps = {
 export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes<any>> = ({ 
     job, 
     id,
-    showActions, 
     handleSelect,
     bookmarked, 
     annotationText, 
@@ -47,7 +45,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
                 job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {
                     return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < job.jobType.length - 1 ? ', ' : '' }` }</span>
                 })
-            } q
+            }
         </p>
         <p> Working From: 
             {
