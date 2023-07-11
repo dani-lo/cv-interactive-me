@@ -321,7 +321,5 @@ const removeBookmark = (state: AppState, payload: AppStatePayload) : AppState =>
 
     }
     
-    // console.log('state')
-    // console.log(state)
     return state
 }

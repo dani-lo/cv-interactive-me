@@ -41,10 +41,9 @@ export const ProjectDetailsComponentBase = ({
             <ul>
             {
                 project.description.map((task: string) => {
-                    return <li>
+                    return <li key={ task.replace(/\s/g, '') }>
                         <RichTextParagraphComponent 
                             text={ task } 
-                            key={ task.replace(/\s/g, '') }
                         />
                     </li>
                 })
@@ -52,7 +51,7 @@ export const ProjectDetailsComponentBase = ({
             </ul>
         <ul>
         { 
-            project.status.map((ps, i) => <li><RichTextParagraphComponent text={ ps } key={ i } /></li>)
+            project.status.map((ps, i) => <li key={ i }><RichTextParagraphComponent text={ ps } /></li>)
         }
         </ul>
         

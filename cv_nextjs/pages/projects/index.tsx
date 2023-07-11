@@ -30,36 +30,10 @@ export const getStaticProps = getAppStaticProps
 const ProjectsPage = (props: AppDataProps) => {
     
     const router = useRouter()
-    const [selectedProject, setSelecteProject] = useState<Project | null | undefined>(null)
+    const [selectedProjectId, setSelectedProjectId] = useAtom(atoms.uiSelectedProjectAtom)
+
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
-    const ctx = useContext(CvJobsContext)
-
-    const { projectModels } = transformData(props)
-
-    useEffect(() => {
-
-        const path = router.asPath
-        const maybeUid = parseInt(path.replace('/projects/', ''))
-
-        const linkedProject = !isNaN(maybeUid) ? projectModels.get(maybeUid) : null
-
-        if (linkedProject) {
-                        
-            setSelecteProject(linkedProject)
-
-            const tgt = document.getElementById(`project-${ maybeUid }`)
-
-            tgt?.scrollIntoView()
-        }
-    }, [projectModels])
-
-    if (ctx === null) {
-        return null
-    }
-
-    const { filters} = ctx.appstate
-    
     const handleOpenModal = (item: Resource | null) => {     
         if (item !== null) { 
             setActionItem(item) 
@@ -68,6 +42,29 @@ const ProjectsPage = (props: AppDataProps) => {
 
     const handleCloseModal = () => {
         setActionItem(null);
+    }
+
+    const { projectModels } = transformData(props)
+
+    const selectedProject = selectedProjectId !== null ? projectModels.get(selectedProjectId) : null
+
+    const ctx = useContext(CvJobsContext)
+    if (ctx === null) {
+        return null
+    }
+
+    const { filters} = ctx.appstate
+
+    const path = router.asPath
+    const maybeUid = parseInt(path.replace('/projects/', ''))
+
+    if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
+                    
+        setSelectedProjectId(maybeUid)
+
+        const tgt = document.getElementById(`project-${ maybeUid }`)
+
+        tgt?.scrollIntoView()
     }
     
     return <div className="page page-grid">  
@@ -81,17 +78,17 @@ const ProjectsPage = (props: AppDataProps) => {
                             
                             const annotation = annotationForResource(project, ctx.appstate)
                             const annotationText = annotation ? (annotation.text || '') : null
-                            const selected = selectedProject?.id == project.id
+                            const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
                             
                             return  <ProjectComponent
-                                key={ project.uid } 
+                                key={ project.name } 
                                 id={ `project-${ project.uid }` }
                                 project={ project } 
                                 selected={ selected }
                                 bookmarked={ project[IBookmarkKeys.STATUS](ctx) }
                                 annotationText={ annotationText }
                                 handleSelect={() => {
-                                    setSelecteProject(project)
+                                    setSelectedProjectId(project.uid)
                                     deepLinkSelected(project)
                                 }}
                             />
@@ -99,12 +96,14 @@ const ProjectsPage = (props: AppDataProps) => {
                     }
                 </div> 
                 {
-                    selectedProject ? <div><ProjectDetailComponent 
-                        project={ selectedProject }
-                        showActions = { handleOpenModal }
-                        bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
-                        annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
-                    /></div> : null
+                    selectedProject !== null && selectedProject !== undefined ? <div>
+                        <ProjectDetailComponent 
+                            project={ selectedProject }
+                            showActions = { handleOpenModal }
+                            bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
+                            annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
+                        />
+                    </div> : null
                 } 
             <ActionsModal 
                 open={ !!actionItem }

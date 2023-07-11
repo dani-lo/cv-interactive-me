@@ -2,6 +2,8 @@ import React, { Suspense, useContext, useEffect, useState } from 'react'
 
 import { CvJobsContext } from '../_app'
 
+import * as atoms  from "../../src/store-jotai/atomicUiStore"
+
 import { getAppStaticProps } from '../../lib/api/getAppStaticProps'
 
 import { JobComponent } from '../../components/jobs/job'
@@ -23,55 +25,22 @@ import {
 } from '../../src/types'
 import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
 import { useRouter } from 'next/router'
+import { useAtom } from 'jotai'
 
 export const getStaticProps = getAppStaticProps
-
-function Loading() {
-    return <h2>🌀 Loading...</h2>;
-}
-
-// // pages/blog/[slug].js
-// export async function getStaticPaths() {
-//     return {
-//       paths: [],
-//       fallback: true,
-//     }
-//   }
-  
 
 const JobsPage = (props: AppDataProps) => {
         
     const { jobModels } = transformData(props)
 
-    const [selectedJob, setSelectedJob] = useState<Job | null | undefined>(null)
+    const [selectedJobId, setSelectedJobId] = useAtom(atoms.uiSelectedJobAtom)
+    const selectedJob = selectedJobId !== null ? jobModels.get(selectedJobId) : null
 
     const router = useRouter()
-
-    useEffect(() => {
-        
-        const path = router.asPath
-        const maybeUid = parseInt(path.replace('/jobs/', ''))
-
-        const linkedJob = !isNaN(maybeUid) ? jobModels.get(maybeUid) : null
-
-        if (linkedJob) {
-            setSelectedJob(linkedJob)
-            
-            const tgt = document.getElementById(`job-${ maybeUid }`)
-
-            tgt?.scrollIntoView()
-        }
-    }, [jobModels])
-    
-    const ctx = useContext(CvJobsContext)
+    const path = router.asPath
+    const maybeUid = parseInt(path.replace('/jobs/', ''))
 
     const [actionItem, setActionItem] = useState<Resource | null>(null)
-    
-    if (ctx === null) {
-        return null
-    }
-    
-    const { filters} = ctx.appstate
     
     const handleOpen = (item: Resource | null) => {       
         if (item !== null) { 
@@ -82,6 +51,25 @@ const JobsPage = (props: AppDataProps) => {
     const handleClose = () => {
         setActionItem(null);
     }
+    
+    if (!isNaN(maybeUid) && selectedJobId !== maybeUid) {
+
+        setSelectedJobId(maybeUid)
+        
+        const tgt = document.getElementById(`job-${ maybeUid }`)
+
+        tgt?.scrollIntoView()
+    }
+    
+    const ctx = useContext(CvJobsContext)
+
+    if (ctx === null) {
+        return null
+    }
+
+    const { filters} = ctx.appstate
+    
+    
     
     return <div className="page page-grid">  
         <div className="jobs-container">
@@ -94,7 +82,7 @@ const JobsPage = (props: AppDataProps) => {
                     
                     const annotation = annotationForResource(job, ctx.appstate)
                     const annotationText = annotation ? (annotation.text || '') : null
-                    const selected = selectedJob?.uid == job.uid
+                    const selected = selectedJob !== null && selectedJob !== undefined && selectedJob.uid == job.uid
                     
                     return  <JobComponent
                         id={ `job-${ job.uid }` }
@@ -104,16 +92,15 @@ const JobsPage = (props: AppDataProps) => {
                         annotationText={ annotationText }
                         selected={ selected }
                         handleSelect= { () => {
-                            //router.push(`/jobs/${ job.uid }`)
                             deepLinkSelected(job)
-                            setSelectedJob(job)
+                            setSelectedJobId(job.uid)
                         }}
                     />
                 })
             }
         </div> 
         {
-            selectedJob ? <div>
+            selectedJob !== null && selectedJob !== undefined ? <div>
                 <JobDetailComponent 
                     job={ selectedJob }
                     showActions = { handleOpen }
