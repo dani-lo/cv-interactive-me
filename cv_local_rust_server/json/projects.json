@@ -7,10 +7,14 @@
             "For usage see _#README_ docs within repository"
         ],
         "repo": "https://github.com/dani-lo/terminator-named-tabs-plugin",
-        "status": ["_#Production_", "See README for installing"],
+        "status": ["_#Production_", "Not tested", "Ongoing development"], 
         "live_url": "",
         "notes": "Plugin for Terminator (cli)",
-        "tech": [1,10,33]
+        "tech": [
+            57,
+            58,
+            52
+        ]
     },
     {
         
@@ -22,44 +26,80 @@
             "_#Frontend_: implemented both in Nextjs and Web Assembly (Rust) as separate projects, providing same functionality"
         ],
         "repo": "https://github.com/dani-lo/cv-interactive-me",
-        "status": ["_#Live_", "Continuously refactored to reuse the data for other projects"],
+        "status": ["_#Live_", "Ongoing development"],
         "live_url": "",
         "notes": "Interactive CV reviewing app",
-        "tech": [1,10,33]
+        "tech": [
+            58,
+            36,
+            29,
+            59,
+            42,
+            52,
+            60,
+            62,
+            32,
+            61,
+            63,
+            37,
+            64,
+            38,
+            44,
+            53,
+            4,
+            5
+        ]
     },
     {
         "uid": 3,
         "name": "Terminator layout plugin",
         "description": [
-            "Plugin for Terminator _#terminal emulator_ - allows to save Terminator's window position and layout (width, height) to the layout settings, so these can be replicated upon launch.",
+            "Plugin for Terminator _#terminal emulator_: allows to save Terminator's window position and layout (width, height) to the layout settings",
             "For usage see _#README_ docs within repository"
         ],
         "repo": "https://github.com/dani-lo/terminator-winmanager-plugin",
-        "status": ["_#Production_", "See README for installing"],
+        "status": ["_#Production_", "Not tested", "Ongoing development"],
         "live_url": "",
         "notes": "Plugin for Terminator (cli)",
-        "tech": [1,10,33]
+        "tech": [
+            57,
+            58,
+            52
+        ]
     },
     {
         "uid": 4,
         "name": "Shapes Trading",
         "description": ["Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts", "A lockdown fun project", "Please refer to _#shape-trading-md.html_ (in repo root) for detailed instructions of how this app works, including in depth discussion of the matching parameters and user interface"],
         "repo": "https://github.com/dani-lo/shapes-trading",
-        "status": ["_#Finished_", "Not available on public URL but can be run locally"],
+        "status": ["_#Finished_", "Not available on public URL, can be run locally"],
         "live_url": "",
-        "notes": "Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts",
-        "tech": [11,20,33]
-    
+        "notes": "Shape based _#pattern recognition_ of financial instruments",
+        "tech": [
+            57,
+            55,
+            38,
+            29,
+            24,
+            53,
+            4,
+            5
+        ]
     },
     {
         "uid": 5,
         "name": "Outliers",
-        "description": ["A small Python app to detect _#outlier datapoints_ within large datasets", "Built in Python with Flask, employing classic algorithms for _#outliers detection_"],
+        "description": ["A small  app written in Python to detect _#outlier datapoints_ within large datasets", "Built in Python with Flask, employing classic algorithms for _#outliers detection_"],
         "repo": "https://github.com/dani-lo/baoutliers",
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
         "notes": "Outlier detection in datasets using classic outlier algorightms",
-        "tech": [21,5,22]
+        "tech": [
+            57,
+            65,
+            4,
+            5
+        ]
     
     },
     {
@@ -70,6 +110,12 @@
         "status": ["_#Finished_", "Not available on public URL but can be run locally"],
         "live_url": "",
         "notes": "A multi panels basic _#dashboard_ ",
-        "tech": [21,5,22]
+        "tech": [
+            29,
+            39,
+            24 ,
+            4,
+            5
+        ]
     }
 ]

@@ -7,7 +7,6 @@ import { StyledJobContainer } from '../../styles/main.styled'
 
 type JobProps = {
     bookmarked: boolean;
-    annotationText: string | null;
     selected: boolean;
     handleSelect: () => void;
     job: Job;
@@ -19,7 +18,6 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     id,
     handleSelect,
     bookmarked, 
-    annotationText, 
     selected,
 } : JobProps) => {
     

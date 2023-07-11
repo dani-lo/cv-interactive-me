@@ -227,4 +227,45 @@
 {
   "name": "HTML5",
   "uid": 56
-}]
+},
+{
+  "name": "Python",
+  "uid": 57
+},
+{
+  "name": "Terminator",
+  "uid": 58
+},
+{
+  "name": "Nextjs",
+  "uid": 58
+},
+{
+  "name": "Jotai",
+  "uid": 59
+},
+{
+  "name": "Github actions",
+  "uid": 60
+},
+{
+  "name": "Deno",
+  "uid": 61
+},
+{
+  "name": "Nginx",
+  "uid": 62
+},
+{
+  "name": "rocket",
+  "uid": 63
+},
+{
+  "name": "Yewdux",
+  "uid": 64
+},
+{
+  "name": "Flask",
+  "uid": 65
+}
+]
