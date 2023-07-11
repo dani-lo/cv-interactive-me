@@ -7,6 +7,7 @@ import { StyledJobContainer } from '../../styles/main.styled'
 
 type JobProps = {
     bookmarked: boolean;
+    annotationText: string | null;
     selected: boolean;
     handleSelect: () => void;
     job: Job;

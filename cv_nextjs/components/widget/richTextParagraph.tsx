@@ -12,7 +12,7 @@ export const RichTextParagraphComponent = ({ text }: RichTextParagraphProps)  =>
                 if (str_part.includes("#")) {
                     return <strong key={ i }>{ str_part.replace("#", "") }</strong>
                 } else {
-                    return <span key={ i }>str_part</span>
+                    return <span key={ i }>{ str_part }</span>
                 }
             })
         }
