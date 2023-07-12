@@ -89,6 +89,8 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
         
         let loading_futures_spawn = async move {
 
+            info!("LOAD SPAWN!!!!!!");
+
             let fetched_jobs: Vec<JobData> = load_jobs().await;
             let fetched_static_data_models_hashes : AppStaticDataHashes = get_static_data_hash().await;
             let fetched_user_actions : HashMap<ActionTypes, Vec<Collectable>> = get_user_actions().await;
@@ -96,6 +98,8 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
             let loaded_user = get_user().await;
 
             user.set(loaded_user.unwrap());
+
+            info!("{:?}", user);
 
             let made_jobs: Vec<JobModel> = make_jobs(
                 fetched_jobs, 
@@ -110,6 +114,8 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
             dispatcher.reduce_mut(|s| s.init_user_actions(fetched_user_actions));
 
             CV_APP_LOADED = Some(true);
+
+            info!("CV_APP_LOADED {:?}", CV_APP_LOADED);
         };
 
         use_effect_with_deps(move |_| {
@@ -123,7 +129,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
     }
     
     html! {
-        <div class="page">  
+        <>  
             <ConfigSettingsListComponent />
             <ActionsModalComponent />
             <div class="StyledSidebar">
@@ -149,32 +155,30 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                     } 
                 }  
             </div>
-            <div class="page-grid">
-                <div>
-                    { 
-                        unsafe {
-                            if CV_APP_LOADED.unwrap() == false {
-                                html!{
-                                    <h3>{ "Loading data please wait ......." }</h3>
-                                }
-                            } else {
-                                html!{
-                                    <JobsListComponent
-                                        jobs={(*jobs).clone()} 
-                                        on_select_job_detail={ on_select_job_detail }
-                                        active_job_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
-                                    />
-                                }
+            <div class="page">
+                { 
+                    unsafe {
+                        if CV_APP_LOADED.unwrap() == false {
+                            html!{
+                                <h3>{ "Loading data please wait ......." }</h3>
+                            }
+                        } else {
+                            html!{
+                                <JobsListComponent
+                                    jobs={(*jobs).clone()} 
+                                    on_select_job_detail={ on_select_job_detail }
+                                    active_job_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
+                                />
                             }
                         }
                     }
-                </div>
+                }
                 <div>
                     <JobDetailComponent
                         selected_job_uid={ route_id }
                     />
                 </div>
             </div> 
-        </div>       
+        </>       
     }
 }

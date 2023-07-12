@@ -39,7 +39,7 @@
       "title":"September 2015 ­ - October 2015,     VCCP, London ",
       "tech_str":"Backbone, Grunt, Bootstrap, html5, Responsive, Sass, Git",
       "tech": [19, 23,50, 49, 52],
-      "position":"UI developer",
+      "position":"Frontend developer",
       "company": 3,
       "description":[
           "Worked on VCCP campaign for O2 to promote rugby world campaigns #WearTheRose and Make Them Giant, aimed at supporting the National rugby team",
@@ -55,7 +55,7 @@
       "title":"July 2013 ­ - August 2015,   ATP, London ",
       "tech_str":"Backbone, RequireJS, Underscore, d3, Moment, Svg, Grunt, Less, Bower, Git",
       "tech": [19, 18, 24, 23, 49, 52],
-      "position":"UI developer",
+      "position":"Frontend developer",
       "company": 4,
       "description":[
           "Development of ATP's flagship online data mining tools, Attributer and Trader, by building on the single page app paradigm and interfacing with a complex backend via a set of RESTful apis to output various sets of data in charted and tabular formats. ",
@@ -70,7 +70,7 @@
       "title":"May 2013 ­ - June 2013, Hangar 7, London",
       "tech_str":"Jquery, Git, HTML5, Code Igniter",
       "tech": [6, 52, 56, 12],
-      "position":"UI developer ",
+      "position":"Frontend developer ",
       "company": 5,
       "description":[
           "Worked on Hangar 7 online game suite for children 'Tottenham Turfies' redeveloping Ajax routines and UI flows, bringing the project to delivery"
@@ -84,7 +84,7 @@
       "title":"December 2012 ­- April 2013,  Grand Union, London",
       "tech_str":"Backbone, RequireJS, Mustache, Coffeescript, Sinatra (backend mockups), HAML, Vagrant",
       "tech": [19, 18, 21, 22, 20],
-      "position":"Javascript developer",
+      "position":"Frontend developer",
       "company": 6,
       "description":[
           "Redevelopment of the entire user interface for one of the UK top range supermarkets website (flagship site), Waitrose, with focus on groundbreaking interactive elements to enhance customers online shopping experience. ",
@@ -243,7 +243,7 @@
     {
       "uid": 2,
       "title":"Oct 2007 -­ May 2009 ,  DR Foster Intelligence, London",
-      "tech_str":"UI Development, Classic ASP, Flex, AS3, Css, HTML",
+      "tech_str":"UI Development, Classic ASP (jscript), Sourcesafe, Flex, AS3, Css, HTML",
       "tech": [1,39,  7, 8, 4, 5],
       "position":"Frontend Developer",
       "company": 15,
@@ -262,17 +262,25 @@
     {
       "uid": 1,
       "title":"Oct 2006 ­- Oct 2007,    Filmnight (Saffron Digital), London",
-      "tech_str":"Classic ASP (vb script), Mysql, html, Css, Javascript, Perl, xml, Acionscript",
+      "tech_str":"Classic ASP (vb script), Mysql, html, Css, Javascript, Perl, xml, Acionscript, ISS, svn",
       "tech": [
-        
+        1,
+        2,
+        4,
+        5,
+        39,
+        3,
+        67,
+        68,
+        69,
+        10
       ],
       "position":"Fullstack Developer",
       "company":16,
       "description":[
-          "Adding new functionalities to white label sites and new components to the in-house xml Cms",
-          "Competition entries validation scripts and database work (mySql)",
-          "Basic Perl automation tasks",
-          "Weekly updates of main and white label sites (filmnight.com, mirrorfilmstore.co.uk, empirefilmstore.com) through xml based proprietary cms",
+          "Working on new functionalities for white label sites and new components for the in-house xml Cms",
+          "Basic Perl automation and rss feeds work",
+          "Weekly content updates of main and white label sites (filmnight.com, mirrorfilmstore.co.uk, empirefilmstore.com) through xml based proprietary cms",
           "Acionscript (2.0) work for filmnight trailers player",
           "Development and maintenance of Ajax based applications for tracking web sites traffic (Trailer Tracker and Competitions Reporter)"
       ],

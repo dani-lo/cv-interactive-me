@@ -24,6 +24,7 @@ use crate::{
         projects::ProjectsComponent,
     },
     components::actions::actions_pending::PendingActionsComponent,
+    components::widget::topbar::TopbarComponent,
 };
 
 use routes::AppRoute;
@@ -55,6 +56,7 @@ fn app() -> Html {
 
     html! {
         <div>
+            <TopbarComponent />
             <PendingActionsComponent />
             { 
                 if ui_busy {

@@ -107,6 +107,8 @@ pub fn job_list(JobListProps {
         }
     }).collect::<Html>();
 
+    let container_cname = if *active_job_id == 0 { "jobs-container" } else { "jobs-container with-selected" };
+
     html!{
 
         {
@@ -118,7 +120,13 @@ pub fn job_list(JobListProps {
                     </div>
                 }
             } else {
-                jobs_list
+                html!{
+                    <div class={ container_cname }>
+                    {
+                        html!{ jobs_list }
+                    }
+                    </div>
+                }
             }
         }
     }

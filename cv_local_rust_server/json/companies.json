@@ -53,7 +53,7 @@
         "name": "Grouptree",
         "location": "London",
         "description": "A privately owned software development company based in central London specialising in the development of object oriented software solutions designed to manage digital assets",
-        "field": [5]
+        "field": [4]
     },
     {
         "uid": 9,
@@ -74,7 +74,7 @@
         "name": "The App Business",
         "location": "London",
         "description": "The App Business is a team of specialists dedicated to creating effective app strategy and ideas, and to developing high quality apps and web services",
-        "field": [5]
+        "field": [4]
     },
     {
         "uid": 12,
@@ -102,7 +102,7 @@
         "name": "Dr Foster",
         "location": "London",
         "description": "The UK's leading independent supplier of health and social care information, whose work encompasses research, analysis, product development, social marketing campaigns, management information tools and industryguiding publications",
-        "field": [5]
+        "field": [4]
     },
     {
         "uid": 16,

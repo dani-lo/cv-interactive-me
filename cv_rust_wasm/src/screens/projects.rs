@@ -136,11 +136,8 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
         }, ());
     }
 
-    // info!("Projects FROM state in proj scren >>>>");
-    // info!("{:?}", projects);
-
     html! {
-        <div class="page">  
+        <>  
             <ConfigSettingsListComponent />
             <ActionsModalComponent />
             <div class="StyledSidebar">
@@ -149,7 +146,7 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
                     <i class="fa fa-bars" aria-hidden="true" />
                 </span> 
-            <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
+                <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
                 {
                     unsafe {
@@ -166,34 +163,31 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
                     
                 }  
             </div>
-            <div class="page-grid">
-                <div>
-                    
-                    {
-                        unsafe {
-                            if CV_APP_LOADED.unwrap() == false {
-                                html!{
-                                    <h3>{ "Loading data please wait ......." }</h3>
-                                }
-                            } else {
-                                html!{
-                                    <ProjectsListComponent
-                                        projects={(*projects).clone()} 
-                                        on_select_project_detail={ on_select_project_detail }
-                                        active_project_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
-                                    />
-                                }
+            <div class="page">
+                {
+                    unsafe {
+                        if CV_APP_LOADED.unwrap() == false {
+                            html!{
+                                <h3>{ "Loading data please wait ......." }</h3>
+                            }
+                        } else {
+                            html!{
+                                <ProjectsListComponent
+                                    projects={(*projects).clone()} 
+                                    on_select_project_detail={ on_select_project_detail }
+                                    active_project_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
+                                />
                             }
                         }
-                    } 
-                    
-                </div>
+                    }
+                }    
+
                 <div>
                     <ProjectDetailComponent
                         selected_project_uid={ route_id }
                     />
                 </div>
-            </div> 
-        </div>       
+            </div>
+        </>       
     }
 }

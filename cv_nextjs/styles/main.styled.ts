@@ -79,6 +79,7 @@ export const StyledJobDetail = styled.div`
     padding: var(--gap-large);
     left: 740px;
     background: var(--white);
+    
     h2 {
         display: flex;
         align-items: center;

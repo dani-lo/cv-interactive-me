@@ -19,7 +19,6 @@ export const TopBarComponent = () => {
                 onClick={() => {
 
                     setClearSelections()
-                    //router.back()
                 }}
                 >
                 <i 

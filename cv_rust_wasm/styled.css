@@ -72,8 +72,10 @@
     width: 420px;
     overflow-y: scroll;
     height: 100%;
-    top: 0;
+    top: 12px;
     padding: var(--gap-large);
+    left: 740px;
+    background: var(--white);
 }
 
 .StyledJobDetail h2 {
@@ -401,4 +403,29 @@
 .StyledAnnotation p {
     font-style: italic;
     font-weight: bold;
+}
+
+/***
+    StyledMobileBar
+***/
+
+.StyledMobileBar {
+    background: var(--black);
+    padding: var(--gap-medium);
+    z-index: var(--z-3);
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.StyledMobileBar p, .StyledMobileBar i, .StyledMobileBar a {
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .StyledMobileBar {
+        display: flex;
+        justify-content: space-between;
+    }
 }

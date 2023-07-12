@@ -1,6 +1,6 @@
 [{
  
-  "name": "Classic ASP",
+  "name": "Classic ASP (VBscript)",
   "uid": 1
 },{
  
@@ -16,7 +16,7 @@
   "uid": 4
 },{
  
-  "name": "Xhtml",
+  "name": "html",
   "uid": 5
 },{
  
@@ -267,5 +267,30 @@
 {
   "name": "Flask",
   "uid": 65
+},
+{
+ 
+  "name": "Classic ASP (Jscript)",
+  "uid": 66
+},
+{
+ 
+  "name": "xml",
+  "uid": 67
+},
+{
+ 
+  "name": "actionscript",
+  "uid": 68
+},
+{
+ 
+  "name": "iss",
+  "uid": 69
+},{
+ 
+  "name": "Sourcesafe",
+  "uid": 70
 }
+
 ]
