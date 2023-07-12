@@ -6,6 +6,8 @@ import * as atoms from '../src/store-jotai/atomicUiStore'
 import Layout from '../components/layout'
 
 import '../styles/global.css'
+import '../styles/mob.css'
+
 import type { AppProps } from 'next/app'
 
 import { reducer, initialState, AppStateAction, AppState } from '../src/store/appState'
@@ -59,7 +61,8 @@ export default function App({
   }
 
   return  <CvJobsContext.Provider value={ appstateData }>
-    <Layout pageProps={ pageProps }>
+    <Layout pageProps={ pageProps }>yl
+      
       { 
          uiOpStatus !== null ?
             <StyledNotification className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</StyledNotification> :

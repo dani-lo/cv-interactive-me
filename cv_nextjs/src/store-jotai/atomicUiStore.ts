@@ -70,6 +70,14 @@ export const resourceUrlToAtom = atom(
     }
 )
 
+export const clearSelections = atom(
+    null,
+    (_get, set) => {
+        set(uiSelectedJobAtom, null)
+        set(uiSelectedProjectAtom, null)
+    }
+)
+
 export const outcomeClassName = (outcome: UiOpStatusOutcome) => {
 
     switch (outcome) {

@@ -59,7 +59,8 @@ const JobsPage = (props: AppDataProps) => {
         const tgt = document.getElementById(`job-${ maybeUid }`)
 
         tgt?.scrollIntoView()
-    }
+
+    } 
     
     const ctx = useContext(CvJobsContext)
 
@@ -69,10 +70,16 @@ const JobsPage = (props: AppDataProps) => {
 
     const { filters} = ctx.appstate
     
+    const containerClassName = `jobs-container${ selectedJob !== null ? ' with-selected' : ''  }`
     
+    console.log('JOB PAGE')
+    console.log('selectedJob::', selectedJob)
+    console.log('maybeUid', maybeUid)
+    console.log('selectedJobId', selectedJobId)
     
-    return <div className="page page-grid">  
-        <div className="jobs-container">
+
+    return <div className="page">  
+        <div className={ containerClassName }>
             {            
                 mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
 
@@ -100,7 +107,7 @@ const JobsPage = (props: AppDataProps) => {
             }
         </div> 
         {
-            selectedJob !== null && selectedJob !== undefined ? <div>
+            selectedJob !== null && selectedJob !== undefined ? 
                 <JobDetailComponent 
                     job={ selectedJob }
                     showActions = { handleOpen }
@@ -110,8 +117,7 @@ const JobsPage = (props: AppDataProps) => {
                         : false 
                     }
                     annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
-                />
-            </div> : null
+                /> : null
         } 
         <ActionsModal 
             open={ !!actionItem }

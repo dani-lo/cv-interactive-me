@@ -262,18 +262,18 @@
     {
       "uid": 1,
       "title":"Oct 2006 ­- Oct 2007,    Filmnight (Saffron Digital), London",
-      "tech_str":"Classic ASP, Mysql, Xhtml, Css, Javascript, Regex",
-      "tech": [1,2,5,4, 39, 3, 40, 10],
+      "tech_str":"Classic ASP (vb script), Mysql, html, Css, Javascript, Perl, xml, Acionscript",
+      "tech": [
+        
+      ],
       "position":"Fullstack Developer",
       "company":16,
       "description":[
-          "Classic ASP with VBscript server side scripting: adding new functionalities to web sites and new components to the xml Cms",
-          "Competition entries validation scripts, database work (mySql)",
-          "Basic Perl automation related tasks",
+          "Adding new functionalities to white label sites and new components to the in-house xml Cms",
+          "Competition entries validation scripts and database work (mySql)",
+          "Basic Perl automation tasks",
           "Weekly updates of main and white label sites (filmnight.com, mirrorfilmstore.co.uk, empirefilmstore.com) through xml based proprietary cms",
-          "Css and html coding for new white label sites to be included within filmnight xml based cms",
-          "Acionscript (2.0) work to add new functionalities (usually for tracking purposes) to filmnight trailers player",
-          "MySql work: basic queries, join queries over multiple tables, exposure to multiserver replicated database systems",
+          "Acionscript (2.0) work for filmnight trailers player",
           "Development and maintenance of Ajax based applications for tracking web sites traffic (Trailer Tracker and Competitions Reporter)"
       ],
       "from": [10, 2006],

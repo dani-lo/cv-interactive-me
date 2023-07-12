@@ -1,0 +1,15 @@
+@media only screen and (max-width: 768px) {
+   .page {
+        margin-left: var(--gap-medium);
+        position: relative;
+        top: 0;
+   }
+
+   .jobs-container {
+    padding-top: var(--gap-large);
+   }
+   
+   .jobs-container.with-selected {
+       display: none;
+    }
+}

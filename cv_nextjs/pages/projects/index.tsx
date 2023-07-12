@@ -67,7 +67,7 @@ const ProjectsPage = (props: AppDataProps) => {
         tgt?.scrollIntoView()
     }
     
-    return <div className="page page-grid">  
+    return <div className="page">  
                 <div className="jobs-container">
                     {            
                         mapToComponents<Project>(projectModels, (project)  => {

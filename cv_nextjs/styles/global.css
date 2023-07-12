@@ -63,11 +63,6 @@ body {
   margin-top: var(--gap-large);
 }
 
-.page-grid {
-  display: grid;
-  grid-template-columns: 400px 400px;
-}
-
 h1 {
   /* font-family: 'Arvo', sans-serif; */
   font-family: 'Montserrat', sans-serif;

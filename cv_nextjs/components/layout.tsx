@@ -16,6 +16,7 @@ import { SettingsComponent } from "./widget/settings"
 
 import { StyledSidebar } from "../styles/main.styled"
 import { useFrontendClassname } from "../src/hooks/useFrontendClassname"
+import { TopBarComponent } from "./sidebar/topbar"
 
 type Props = {
     children: any,
@@ -45,7 +46,7 @@ const Layout = ({
         {
             router.pathname !== '/' ? 
             <StyledComponentsRegistry>
-
+                <TopBarComponent />
                 <SettingsComponent
                     disabled = { settingsDisabled }
                     settings={ settingsparser?.allSettings || [] }

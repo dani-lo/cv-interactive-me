@@ -63,6 +63,10 @@ export const StyledJobContainer = styled.div`
         font-weight: normal;
         font-family: 'Manrope', sans-serif;
     }
+
+    @media only screen and (max-width: 768px) {
+        width: auto;
+    }
 `
 
 export const StyledJobDetail = styled.div`
@@ -71,13 +75,21 @@ export const StyledJobDetail = styled.div`
     width: 420px;
     overflow-y: scroll;
     height: 100%;
-    top: 0;
+    top: 12px;
     padding: var(--gap-large);
-
+    left: 740px;
+    background: var(--white);
     h2 {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    @media only screen and (max-width: 768px) {
+        left: 0;
+        position: relative;
+        height: 100%;
+        width: auto;
     }
 `
 
@@ -110,6 +122,10 @@ export const StyledSidebar = styled.div`
     i:hover, 
     a:hover {
         opacity: 0.7;
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: none;
     }
 `
 
@@ -393,5 +409,26 @@ export const StyledNotification = styled.p`
     color: white;
     font-weight: bold;
     padding: var(--gap-medium) var(--gap-large);
-    border: 2px solid white;
+    border: 2px solid var(--white);
+`
+
+export const StyledMobileBar = styled.div`
+    background: var(--black);
+    padding: var(--gap-medium);
+    z-index: var(--z-3);
+
+    display: none;
+    position: fixed;
+
+    top: 0;
+    width: 100%;
+
+    p, i, a {
+        color: white;
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+    }
 `
