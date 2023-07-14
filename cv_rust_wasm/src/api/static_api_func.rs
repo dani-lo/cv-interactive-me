@@ -13,7 +13,7 @@ use crate::{
     }, 
     appdata::stores::store_app_types::AppStaticDataHashes,
     util::{
-        make_model::make_job,
+        make_model::{make_job, make_project},
         hash_vec_utils::hash_model_vec_by_uid, 
         resource_for_resource::{
             company_fields,
@@ -177,16 +177,8 @@ pub async fn get_static_data_hash () -> AppStaticDataHashes {
 
     let project_models : HashMap<usize, ProjectModel> = hash_model_vec_by_uid(
         fetched_projects,
-        |project_data_item: ProjectData| ProjectModel { 
-            tech: project_techs(&project_data_item, &tech_models),
-            uid: project_data_item.uid, 
-            name: project_data_item.name,
-            description: project_data_item.description,
-            status: project_data_item.status,
-            live_url: project_data_item.live_url,
-            repo: project_data_item.repo,
-            notes: project_data_item.notes,
-        });
+        |project_data_item: ProjectData| make_project(project_data_item, &tech_models)
+    );
     
     let job_models: HashMap<usize, JobModel> = hash_model_vec_by_uid(
         fetched_jobs,

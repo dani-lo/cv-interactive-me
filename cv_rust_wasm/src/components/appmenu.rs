@@ -35,7 +35,7 @@ pub fn appmenu() -> Html {
             <li class={ link_cname(nav_location.path(), "projects") }>
                 <Link<AppRoute> to={AppRoute::ProjectsRoute }>{ "PROJECTS" }</Link<AppRoute>>
             </li>
-            <li class={ link_cname(nav_location.path(), "about") }>
+            <li class={ link_cname(nav_location.path(), "personal") }>
                 <Link<AppRoute> to={AppRoute::PersonalRoute }>{ "PERSONAL" }</Link<AppRoute>>
             </li>
         </ul>

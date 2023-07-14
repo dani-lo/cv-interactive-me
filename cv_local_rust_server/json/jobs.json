@@ -2,8 +2,8 @@
   {
     "uid": 17,
       "title":"April 2017 - Ongoing,   BrightAnalytics, London",
-      "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components",
-      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 54, 55],
+      "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
+      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 54, 55, 71],
       "position":"Lead Frontend developer",
       "company": 1,
       "description":[
@@ -228,7 +228,17 @@
       "uid": 3,
       "title":"July 2010 - July 2011 ,Various agencies, London ",
       "tech_str":"Fullstack developer",
-      "tech": [2, 9, 39,4, 5, 11, 12, 14, 10],
+      "tech": [
+        2, 
+        9, 
+        39,
+        4, 
+        5, 
+        11, 
+        12,
+        14, 
+        10
+      ],
       "position":"Freelancing on short term contracts",
       "description":[
         "Short term front end and php development contract at maynardmalone.com. Involved Php, css, xhtml, javascript and javascript/flash integration work on their 'Kallo' account 'Just Bouillon' website: ",
@@ -244,15 +254,21 @@
       "uid": 2,
       "title":"Oct 2007 -­ May 2009 ,  DR Foster Intelligence, London",
       "tech_str":"UI Development, Classic ASP (jscript), Sourcesafe, Flex, AS3, Css, HTML",
-      "tech": [1,39,  7, 8, 4, 5],
+      "tech": [
+        66,
+        39,  
+        7, 
+        8, 
+        4, 
+        5],
       "position":"Frontend Developer",
       "company": 15,
       "description":[
-          "Acting as team leader within th UI Development team for all css, xhtml and javascript work across the company in general and specifically within the Product Development Department",
-          "In charge of classicASP legacy related work across the Tools (Dr Foster main Intelligence product) Client side .NET interfacing tasks",
-          "Allowing the clientside driven section of the UI Development team to effectively communicate and share work with the (.NET C# based) Business Development team",
+          "Acting as team leader within the UI Development team for all css, xhtml and javascript work across the company in general and specifically within the Product Development Department",
+          "In charge of classic ASP legacy work and bug fixes across the Tools (Dr Foster main Intelligence product), which were continuously ported to .NET C#",
+          "Enuring the UI Development team effective communication with the (.NET C# based) Business Development team",
           "In charge of updates and development of Dr Foster public website: ",
-          "Support on all webrelated tasks for the Marketing and Marketing Services team ",
+          "Support on all web-related tasks for the Marketing and Marketing Services team",
           "Research and Development on new Data Presentation technologies, in particular Adobe Flex Builder based dashboards "
       ],
       "from": [10, 2007],
@@ -271,7 +287,7 @@
         39,
         3,
         67,
-        68,
+        68, 
         69,
         10
       ],

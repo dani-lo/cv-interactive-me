@@ -17,7 +17,7 @@
         display: none;
     }
 
-    .StyledJobContainer {
+    .StyledJobContainer, .StyledAboutContainer {
         width: auto;
     }
     

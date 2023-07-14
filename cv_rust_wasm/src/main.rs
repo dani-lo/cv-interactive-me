@@ -22,6 +22,7 @@ use crate::{
     screens::{
         jobs::JobsComponent,
         projects::ProjectsComponent,
+        personal::PersonalComponent,
     },
     components::actions::actions_pending::PendingActionsComponent,
     components::widget::topbar::TopbarComponent,
@@ -49,7 +50,7 @@ fn app() -> Html {
             AppRoute::JobsDetailRoute { uid } => html! { <JobsComponent route_id={ Some(uid) } /> },            
             AppRoute::ProjectsRoute => html! {<ProjectsComponent route_id={ None } /> },
             AppRoute::ProjectsDetailRoute { uid } => html! {<ProjectsComponent route_id={ Some(uid) } /> },
-            AppRoute::PersonalRoute => html! { <h1>{ "This is Personal" }</h1> },
+            AppRoute::PersonalRoute => html! { <PersonalComponent /> },
             AppRoute::NotFoundRoute => html! { <h1>{ "404" }</h1> },
         }
     }

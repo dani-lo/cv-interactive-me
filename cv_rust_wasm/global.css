@@ -239,6 +239,7 @@ li {
 li.itemised {
   text-transform: capitalize;
   padding: 0;
+  display: list-item;
 }
 
 i.bookmark {
@@ -275,6 +276,7 @@ span.action-wrap {
   display: flex;
   align-items: baseline;
   cursor: pointer;
+  ;
 }
 
 span.action-wrap i {
@@ -404,4 +406,6 @@ span.html-icon:hover {
   margin: 0!important;
 }
 
-
+.jobs-container {
+  padding-bottom: 2rem;
+}

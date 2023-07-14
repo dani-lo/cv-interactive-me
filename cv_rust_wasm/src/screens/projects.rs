@@ -46,9 +46,7 @@ use crate::{
     components::{
         appmenu::AppMenuComponent,
         modals::ActionsModalComponent,
-        actions::{
-            actions_list::ActionsListComponent,
-        },
+        actions::actions_list::ActionsListComponent,
         projects::{
             projects_list::ProjectsListComponent,
             project_detail::ProjectDetailComponent,
@@ -59,12 +57,12 @@ use crate::{
 };
 
 #[derive(Properties, PartialEq)]
-pub struct JobsProps {
+pub struct ProjectsProps {
     pub route_id: Option<usize>,
 }
 
 #[function_component(ProjectsComponent)]
-pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
+pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
     let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
@@ -105,9 +103,6 @@ pub fn jobs(JobsProps { route_id} : &JobsProps) -> Html {
             let fetched_static_data_models_hashes : AppStaticDataHashes = get_static_data_hash().await;
             
             let loaded_user = get_user().await;
-
-            // info!("Fetched in Projects screen:::");
-            // info!("{:?}", fetched_projects);
 
             user.set(loaded_user.unwrap());
 

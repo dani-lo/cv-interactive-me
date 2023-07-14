@@ -1,3 +1,10 @@
+.StyledAboutContainer {
+    margin-top: var(--gap-large);
+    padding:  var(--gap-medium);
+    width: 500px;
+    border: 1px solid var(--white);
+}
+
 .StyledJobContainer {   
     margin-top: var(--gap-large);
     padding:  var(--gap-medium);
@@ -13,8 +20,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: var(--gap-small);
-    padding-bottom: var(--gap-medium);
+    /* margin-bottom: var(--gap-small);
+    padding-bottom: var(--gap-medium); */
 }
 
 .StyledJobContainer h2 i.bookmark {
@@ -69,12 +76,12 @@
 
 .StyledJobDetail {
     position: fixed;
-    width: 420px;
+    width: 400px;
     overflow-y: scroll;
     height: 100%;
     top: 12px;
     padding: var(--gap-large);
-    left: 740px;
+    left: 750px;
     background: var(--white);
 }
 

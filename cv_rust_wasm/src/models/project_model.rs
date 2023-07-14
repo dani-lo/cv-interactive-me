@@ -12,12 +12,12 @@ use crate::{
         PendingStatus, 
         AppStaticDataHashes
     }, 
-    util::filter_utils::some_resource_included_in_all_filters, 
+    util::{filter_utils::some_resource_included_in_all_filters, daterange::DateRange}, 
 };
 
 use super::{Model, ModelTypes, StaticAsset, tech_model::TechModel};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ProjectData {
     pub uid: usize,
     pub name: String,
@@ -27,6 +27,9 @@ pub struct ProjectData {
     pub repo: String,
     pub notes: String,
     pub tech: Vec<usize>,
+    pub from: (u32, i32),
+    pub to: (u32, i32),
+
 }
 
 impl StaticAsset for ProjectData {
@@ -45,6 +48,7 @@ pub struct ProjectModel {
     pub repo: String,
     pub notes: String,
     pub tech: Vec<TechModel>,
+    pub period: DateRange,
 } 
 
 impl HasAnnotationTrait for ProjectModel {}
@@ -96,6 +100,7 @@ impl ProjectModel {
             status: project_data.status.clone(),
             live_url: project_data.live_url.clone(),
             notes: project_data.notes.clone(),
+            period: DateRange::new(project_data.from, project_data.to),
         }
        
      }

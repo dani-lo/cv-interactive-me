@@ -16,3 +16,4 @@ pub mod identity;
 pub mod wasm_bridge;
 pub mod filter_utils;
 pub mod parent_resource;
+pub mod weight_techs;

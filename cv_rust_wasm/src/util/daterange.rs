@@ -41,4 +41,26 @@ impl DateRange {
       
       format!("{} - {}", date_time_from.format("%b %Y"), date_time_to.format("%b %Y"))
    }
+
+   pub fn months_duration (&self) -> i32 {
+      
+      let from_month = i32::try_from(self.from_month_year.0).unwrap();
+      let to_month = i32::try_from(self.to_month_year.0).unwrap();
+      let from_year = i32::try_from(self.from_month_year.1).unwrap();
+      let to_year = i32::try_from(self.to_month_year.1).unwrap();
+
+      let years_diff = to_year - from_year;
+
+      if years_diff == 0 {
+
+         return to_month - from_month + 1
+      } else {
+
+         let full_years = years_diff - 1;
+         let full_years_months = if full_years > 0 { full_years * 12 } else { 0 } ;
+
+         return ((12 - from_month) + 1) + full_years_months + to_month;
+      }
+
+   }
 }

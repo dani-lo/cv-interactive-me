@@ -42,7 +42,14 @@ pub fn make_projects(
       t: &HashMap<usize, TechModel>) -> Vec<ProjectModel> {
 
    d.iter().map(|p_data| ProjectModel::make(
-      p_data.clone(), 
+      &p_data.clone(), 
       &t, 
    )).collect()
+}
+
+pub fn make_project (p_data: ProjectData, t: &HashMap<usize, TechModel>) -> ProjectModel {
+   ProjectModel::make(
+      &p_data.clone(), 
+      &t, 
+   )
 }

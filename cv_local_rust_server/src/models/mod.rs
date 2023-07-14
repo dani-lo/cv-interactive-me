@@ -54,4 +54,6 @@ pub struct ProjectData {
     pub repo: String,
     pub notes: String,
     pub tech: Vec<usize>,
+    pub from: (u32, i32),
+    pub to: (u32, i32),
 }
