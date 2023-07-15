@@ -133,7 +133,7 @@ export const StyledSidebar = styled.div`
 export const StyledCompanyContainer = styled.div`
 
     margin: var(--gap-large) 0;
-    border: 2px solid var(--active-action);
+    border: 2px solid var(--black);
     padding: var(--gap-medium);
 
     > h3 {

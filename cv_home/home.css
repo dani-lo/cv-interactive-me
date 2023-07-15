@@ -1,0 +1,26 @@
+.logo {
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+    background: var(--black);
+    padding: 3rem;
+}
+
+.menu {
+    margin-top: 2rem;
+}
+
+.menu li {
+    /* display: inline; */
+    margin: 0.5rem;
+    font-weight: bold;
+    margin: var(--gap-small) 0;
+}
+
+.menu li a {
+   color: white;
+}
+
+h1 {
+    text-align: left;
+}
