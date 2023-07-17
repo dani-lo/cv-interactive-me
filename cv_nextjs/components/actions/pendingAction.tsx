@@ -16,6 +16,7 @@ export const PendingActionsComponent = () => {
     
     const ctx = useContext(CvJobsContext)
 
+    const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [, setBusy] = useAtom(atoms.uiBusy)
     const [, setUiOpStatus] = useAtom(atoms.uiOpStatus)
     const [, uiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
@@ -103,11 +104,12 @@ export const PendingActionsComponent = () => {
                     Your randomly assigned identifier is <strong>{ user.name }</strong>
                 </p>
                 <button 
-                            style={{ display: 'flex'}}
-                            // onClick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
-                        >
-                            { "Edit settings" }
-                        </button>
+                    style={{ display: 'flex', marginTop: 'var(--gap-large)' }}
+                    onClick={ () => setShowsettings(true) }
+                    className={ showsettings ? 'disabled' : '' }
+                >
+                    { "Edit settings" }
+                </button>
             </div> : null
         }
         

@@ -2,7 +2,9 @@ import { AppProps } from "next/app"
 import { useRouter } from 'next/router'
 
 import {  useEffect, useState } from "react"
+import { useAtom } from "jotai";
 
+import * as atoms  from "../src/store-jotai/atomicUiStore"
 import StyledComponentsRegistry from '../lib/registry'
 
 import { AppDataProps } from "../src/types"
@@ -31,7 +33,7 @@ const Layout = ({
     const feCname = useFrontendClassname()
     const router = useRouter()
 
-    const [showsettings, setShowsettings] = useState(false)
+    const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [settingsparser, setSettingsparser] = useState<AppSettingsParser | null>(null)
 
     useEffect(() => {

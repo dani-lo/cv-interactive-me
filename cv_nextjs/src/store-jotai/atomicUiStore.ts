@@ -18,6 +18,7 @@ export const uiToken = atom<string | null>(null)
 export const uiSettingsAtom = atom<AppSetting<any>[]>([])
 export const uiSelectedJobAtom = atom<number | null>(null)
 export const uiSelectedProjectAtom = atom<number | null>(null)
+export const uiShowSettingsAtom = atom<boolean>(false)
 
 export const uiSettings = atom(
     () => {

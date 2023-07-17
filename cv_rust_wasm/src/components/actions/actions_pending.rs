@@ -164,7 +164,7 @@ pub fn pending_actions_component() -> Html {
                                 </p>
                         </div>
                         <button 
-                            style="display: flex;"
+                            style="display: flex;margin-top: var(--gap-large);"
                             onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
                         >
                             { "Edit settings" }
