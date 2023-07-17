@@ -16,6 +16,7 @@
   --gap-small: 0.25rem;
   --gap-medium: 0.5rem;
   --gap-large:1rem;
+  --gap-huge:1.5rem;
   --err: #aa2525;
   --ok: #206e20;
   --warn: rgb(191, 115, 33);

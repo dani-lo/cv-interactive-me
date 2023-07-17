@@ -132,7 +132,7 @@
 
 
 .StyledCompanyContainer {
-    margin: var(--gap-large) 0;
+    margin: var(--gap-huge) 0 var(--gap-large) 0;
     border: 1px solid var(--active-action);
     padding: 0 var(--gap-medium) var(--gap-medium);
 }

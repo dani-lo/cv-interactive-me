@@ -20,7 +20,7 @@ export const AppMenu = () => {
       <Link href="/projects">PROJECTS</Link>
     </li>
     <li className={ cname(router.pathname.indexOf('personal') !== -1) }>
-      <Link href="/personal">ABOUT</Link>
+      <Link href="/personal">PERSONAL</Link>
     </li>
   </ul>
 }

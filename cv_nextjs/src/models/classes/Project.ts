@@ -10,6 +10,7 @@ import { Filter } from '../../types'
 import { AppStatePending, PendingStatus } from '../../store/appState'
 import { allFiltersForDisplay } from '../../helpers/allFiltersForDisplay'
 import { canLink } from '../mixins/withLink'
+import { JobPeriod } from './Period'
 
 export class Project extends canAnnotate(canBookmark(canLink(ConcreteMdel))) implements WithUid {
 
@@ -21,6 +22,7 @@ export class Project extends canAnnotate(canBookmark(canLink(ConcreteMdel))) imp
     tech: Tech[]
     repo: string
     notes:string
+    period: JobPeriod
 
     constructor (
             doc: IProject,
@@ -36,6 +38,8 @@ export class Project extends canAnnotate(canBookmark(canLink(ConcreteMdel))) imp
         this.status = doc.status
         this.liveUrl = doc.live_url
         this.notes = doc.notes
+        
+        this.period = new JobPeriod(doc.from, doc.to)
         
         this.tech = [4, 11, 33].map(techUid => techModels.get(techUid)).filter(techModel => !!techModel) as Tech[]
     }

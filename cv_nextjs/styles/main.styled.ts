@@ -130,7 +130,7 @@ export const StyledSidebar = styled.div`
 
 export const StyledCompanyContainer = styled.div`
 
-    margin: var(--gap-large) 0;
+    margin: var(--gap-huge) 0 var(--gap-large) 0;
     border: 1px solid var(--active-action);
     padding: 0 var(--gap-medium) var(--gap-medium);
 
@@ -430,4 +430,11 @@ export const StyledMobileBar = styled.div`
         display: flex;
         justify-content: space-between;
     }
+`
+
+export const StyledAboutContainer = styled.div`
+    margin-top: var(--gap-large);
+    padding:  var(--gap-medium);
+    width: 500px;
+    border: 1px solid var(--white);
 `

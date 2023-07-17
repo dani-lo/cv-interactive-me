@@ -115,4 +115,6 @@ export interface IProject {
     tech: number[];
     repo: string;
     notes: string;
+    from: [JobMonth, JobYear];
+    to: [JobMonth, JobYear];
 }

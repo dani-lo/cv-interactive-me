@@ -71,12 +71,6 @@ const JobsPage = (props: AppDataProps) => {
     const { filters} = ctx.appstate
     
     const containerClassName = `jobs-container${ selectedJob !== null ? ' with-selected' : ''  }`
-    
-    console.log('JOB PAGE')
-    console.log('selectedJob::', selectedJob)
-    console.log('maybeUid', maybeUid)
-    console.log('selectedJobId', selectedJobId)
-    
 
     return <div className="page">  
         <div className={ containerClassName }>

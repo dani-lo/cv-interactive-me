@@ -6,8 +6,6 @@ use yew::{
     prelude::*, 
 };
 
-use rand::{thread_rng, Rng};
-
 use yew_router::{history::{
     BrowserHistory, 
     History
@@ -68,18 +66,11 @@ use crate::{
 #[function_component(PersonalComponent)]
 pub fn personal() -> Html {
 
-
-    let mut rng = rand::thread_rng();
-
-    info!("Integer: {}", rng.gen_range(1..5));
-
     let (state, dispatch) = use_store::<StoreApp>();
     let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
-
-    let nav = use_navigator().unwrap();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
