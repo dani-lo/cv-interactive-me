@@ -74,7 +74,7 @@ pub fn project(ProjectProps {
                 { 
                     project.status.iter().map(|ps| {
                         
-                        html! { <li><RichTextParagraphComponent text={ ps.clone() } /></li> }
+                        html! { <li class="itemised"><RichTextParagraphComponent text={ ps.clone() } /></li> }
                     }).collect::<Html>()
                 }
                 </ul>  

@@ -32,20 +32,18 @@ export const StyledJobContainer = styled.div`
 
     h2 {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
-        margin-bottom: var(--gap-small);
-        padding-bottom: var(--gap-medium);
     }
-
+    
     h2 i.bookmark {
         margin-right: var(--gap-medium);
     }
 
     i.job-selector {
-        font-size: 1.25rem;
-        color: var(--text-main);
-        cursor: pointer;     
+        font-size: 1rem;
+        color: var(--active-action);
+        cursor: pointer;    
 
         &:hover {
             color: var(--active-pink);
@@ -133,8 +131,8 @@ export const StyledSidebar = styled.div`
 export const StyledCompanyContainer = styled.div`
 
     margin: var(--gap-large) 0;
-    border: 2px solid var(--black);
-    padding: var(--gap-medium);
+    border: 1px solid var(--active-action);
+    padding: 0 var(--gap-medium) var(--gap-medium);
 
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);

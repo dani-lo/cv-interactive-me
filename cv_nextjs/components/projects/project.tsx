@@ -51,7 +51,7 @@ export const ProjectComponentBase = ({
         </h3>
         <ul>
         { 
-            project.status.map((ps, i) => <li key={ i }><RichTextParagraphComponent text={ ps } /></li>)
+            project.status.map((ps, i) => <li className="itemised" key={ i }><RichTextParagraphComponent text={ ps } /></li>)
         }
         </ul>
     </StyledJobContainer>

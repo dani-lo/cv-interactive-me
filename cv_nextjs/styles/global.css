@@ -38,22 +38,12 @@ body {
 body {
   font-size: 100%;
   /* padding: var(--gap-large) 0 var(--gap-large); */
-  
-   
   /* font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
-
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   font-family: 'Open Sans', sans-serif;
-
   /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
-
-  /* font-family: "PT Sans", Calibri, Tahoma, sans-serif; */
-
-  font-weight: 300; 
-  
-  
   font-weight: 300; 
   background: var(--white);
 }
@@ -63,18 +53,22 @@ body {
   margin-top: var(--gap-large);
 }
 
+.page-grid {
+  display: grid;
+  grid-template-columns: 400px 400px;
+}
+
 h1 {
   /* font-family: 'Arvo', sans-serif; */
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   text-align: center;
-  color: var(--text-dark);
   font-size: 2rem;
   text-transform: uppercase;
   line-height: 2.5rem;
   margin-bottom: var(--gap-large);
   margin-top: var(--gap-small);
-  color: var(--text-clear);
+  color: white;
   font-weight: bold;
 }
 
@@ -82,19 +76,17 @@ h2 {
   /* font-family: 'Arvo', sans-serif; */
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 1.2rem;
-  color: var(--text-main);
   text-transform: capitalize;
   padding: var(--gap-small) 0;
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px dashed var(--black);
+  border-bottom: 1px dotted var(--black);
 }
 
 h2 i.fa {
   font-size: 0.8rem;
   padding-right: var(--gap-small);
-  color: var(--text-main);
 }
 
 h2 span.action-wrap {
@@ -113,7 +105,6 @@ h3 {
 
 a {
   color: var(--text-dark);
-  /* font-weight: bold; */
   cursor: pointer;
   text-decoration: underline;
 }
@@ -231,20 +222,21 @@ ul.nav li.active a {
 }
 
 li {
+  font-size:0.9rem;
   line-height: 1.4rem;
   list-style: none;
   list-style-position: inside;
   color: var(--text-main);
   display: flex;
   align-items: center;
-  padding: var(--gap-micro) 0;
-  font-size:0.9rem;
-  margin: 0;
+  padding: var(--gap-small) 0;
+  margin: var(--gap-micro) 0;
 }
 
 li.itemised {
   text-transform: capitalize;
-  margin: 0;
+  padding: 0;
+  display: list-item;
 }
 
 i.bookmark {
@@ -264,7 +256,6 @@ i.fa.action {
   cursor: pointer;
   padding: var(--gap-medium)0;
   line-height: 0.6rem;
-  /* font-size: 0.8rem; */
   border-radius: 0px;
   color: var(--text-dark);
 }
@@ -282,10 +273,7 @@ span.action-wrap {
   display: flex;
   align-items: baseline;
   cursor: pointer;
-}
-
-span.action-wrap.evident {
-  font-weight: bold;
+  ;
 }
 
 span.action-wrap i {
@@ -374,7 +362,6 @@ span.html-icon:hover {
   width: 100%;
   font-size: 0.9rem;
   text-transform: lowercase;
-  background: green;
   border-radius: 2px;
   font-weight: bold;
   color: white;
@@ -416,6 +403,6 @@ span.html-icon:hover {
   margin: 0!important;
 }
 
-.no-pre-render {
-  display: none;
+.jobs-container {
+  padding-bottom: 2rem;
 }

@@ -63,13 +63,12 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   text-align: center;
-  color: var(--text-dark);
   font-size: 2rem;
   text-transform: uppercase;
   line-height: 2.5rem;
   margin-bottom: var(--gap-large);
   margin-top: var(--gap-small);
-  color: var(--text-clear);
+  color: white;
   font-weight: bold;
 }
 
@@ -77,19 +76,17 @@ h2 {
   /* font-family: 'Arvo', sans-serif; */
   /* font-family: 'Montserrat', sans-serif; */
   font-size: 1.2rem;
-  color: var(--text-main);
   text-transform: capitalize;
   padding: var(--gap-small) 0;
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px dashed var(--black);
+  border-bottom: 1px dotted var(--black);
 }
 
 h2 i.fa {
   font-size: 0.8rem;
   padding-right: var(--gap-small);
-  color: var(--text-main);
 }
 
 h2 span.action-wrap {
