@@ -1,6 +1,6 @@
 @media only screen and (max-width: 768px) {
     .page {
-        margin-left: var(--gap-medium);
+        margin-left: 0;
         position: relative;
         top: 0;
    }
