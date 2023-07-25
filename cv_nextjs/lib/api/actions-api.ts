@@ -277,10 +277,8 @@ export const deleteUserAnnotation = async (
 }
 
 export const getAppstateActionsData = async () => {
-    console.log('NOW ---- -getAppstateActionsData!!!!!')
-    const user = await getUser()
 
-    console.log('we have the user:::::;', user)
+    const user = await getUser()
 
     try {
 
@@ -306,7 +304,7 @@ export const getAppstateActionsData = async () => {
 export const persistAppstateActionsData = async (appstate: AppState) : Promise<AppState> => {
     
     const user = await getUser()
-    console.log('user in persister', user)
+
     const pendingFilters = appstate[AppstateKeys.FILTERS].filter(f => f.pending !== null)
     const pendingFiltersPromises = pendingFilters?.length ? pendingFilters.map(pf => {
         
@@ -345,7 +343,7 @@ export const persistAppstateActionsData = async (appstate: AppState) : Promise<A
         const freshFilters = filtersApiResponses.filter(f => typeof f !== 'boolean') as (Filter & Collectable & AppStatePending)[]
         const freshBookmarks = bookmarksApiResponses.filter(b => typeof b !== 'boolean') as (Bookmark & Collectable & AppStatePending)[]
         const freshNotes = annotationsApiResponses.filter(a => typeof a !== 'boolean') as (Annotation & Collectable & AppStatePending)[]
-        console.log(filtersApiResponses)
+
         return {
             [AppstateKeys.FILTERS]: freshFilters.map(f => ({ ...f, pending: null })),
             [AppstateKeys.BOOKMARKS]: freshBookmarks.map(b => ({ ...b, pending: null })),

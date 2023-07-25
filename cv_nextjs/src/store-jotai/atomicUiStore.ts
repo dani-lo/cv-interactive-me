@@ -1,9 +1,6 @@
 
 import { atom } from "jotai"
 import { AppSetting, AppSettingsParser } from "../settings/parser";
-import { Resource } from "../types";
-import { Job } from "../models/classes/Job";
-import { Project } from "../models/classes/Project";
 
 type UiOpStatusOutcome =  'success' | 'error' | 'warning'
 
@@ -19,6 +16,7 @@ export const uiSettingsAtom = atom<AppSetting<any>[]>([])
 export const uiSelectedJobAtom = atom<number | null>(null)
 export const uiSelectedProjectAtom = atom<number | null>(null)
 export const uiShowSettingsAtom = atom<boolean>(false)
+export const uiShowActionsAtom = atom<boolean>(false)
 
 export const uiSettings = atom(
     () => {
@@ -76,6 +74,8 @@ export const clearSelections = atom(
     (_get, set) => {
         set(uiSelectedJobAtom, null)
         set(uiSelectedProjectAtom, null)
+        set(uiShowSettingsAtom, false)
+        set(uiShowActionsAtom, false)
     }
 )
 

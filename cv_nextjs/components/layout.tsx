@@ -34,6 +34,8 @@ const Layout = ({
     const router = useRouter()
 
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
+    const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
+
     const [settingsparser, setSettingsparser] = useState<AppSettingsParser | null>(null)
 
     useEffect(() => {
@@ -59,11 +61,11 @@ const Layout = ({
                     settingsDisabled ? null : <div className="generic-ui-overlay-bg"></div>
                 }
                 <PendingActionsComponent />
-                <StyledSidebar>
+                <StyledSidebar disabled={ !showactions }>
                     <span 
                         className="html-icon"
                         onClick={ () => setShowsettings(!showsettings) }>
-                            <i aria-hidden="true" className="fa fa-bars" />
+                            <i aria-hidden="true" className="fa fa-cog" />
                     </span> 
                     <h1 className="app-logo">CURRICULUM VITAE</h1>
                     <AppMenu />

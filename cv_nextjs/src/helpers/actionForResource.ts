@@ -1,11 +1,14 @@
 import { AppState, AppstateKeys } from "../store/appState"
 import { Annotation, Bookmark, Filter, Resource } from "../types"
+import { NullableT, toNullableT } from "./nullable"
 
-export const annotationForResource = (item: Resource, appstate: AppState) : Annotation | null => {
+export const annotationForResource = (item: Resource, appstate: AppState) : NullableT<Annotation> => {
     
-    return appstate[AppstateKeys.ANNOTATIONS].find((note) => {
+    const note = appstate[AppstateKeys.ANNOTATIONS].find((note) => {
         return note.resource_id == item.uid && note.resource_type == item.resource_type
-    }) || null
+    })
+    
+    return  toNullableT(note)
 }
 
 export const filterForResource = (item: Resource, appstate: AppState) : Filter | null => {

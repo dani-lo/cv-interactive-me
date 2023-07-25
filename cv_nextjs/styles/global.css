@@ -157,12 +157,6 @@ button:hover {
   background-color: var(--active-pink);
 }
 
-button.disabled {
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
-}
-
 label {
   line-height: 1.4rem;
   padding: 0 0 0 var(--gap-small);
@@ -389,19 +383,10 @@ span.html-icon:hover {
   background: var(--warn);
 }
 
-.margin-b {
-  margin: var(--gap-large) 0!important;
-}
-
-.margin-m {
-  margin: var(--gap-medium) 0!important;
-}
-
-.margin-s {
-  margin: var(--gap-small) 0!important;
-}
-.margin-no {
-  margin: 0!important;
+.disabled {
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
 }
 
 .jobs-container {

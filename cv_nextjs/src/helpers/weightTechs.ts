@@ -1,7 +1,9 @@
 import { Job } from "../models/classes/Job"
 import { Project } from "../models/classes/Project"
 
-export const techsWithMonthsDuration = (items: (Job | Project)[]) : Map<number, number> => {
+export const techsWithMonthsDuration = (
+        items: (Job | Project)[]
+    ) : Map<number, number> => {
 
     const weights = new Map()
 
@@ -23,12 +25,15 @@ export const techsWithMonthsDuration = (items: (Job | Project)[]) : Map<number, 
     return weights
 }
 
-export const techWeight = (techId: number, techWeights: Map<number, number>, maxTechWeight: number) : number => {
+export const techWeight = (
+        techId: number, 
+        techWeights: Map<number, number>, 
+        maxTechWeight: number
+    ) : number => {
 
     let thisWeight = techWeights.get(techId)
 
     if (!thisWeight) {
-        
         return 0
     }
 

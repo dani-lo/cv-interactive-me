@@ -3,7 +3,7 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-    margin-top: var(--gap-large);
+    margin-top: var(--gap-medium);
     padding:  var(--gap-medium);
     width: 380px;
     border: 1px solid var(--white);
@@ -92,7 +92,22 @@ export const StyledJobDetail = styled.div`
     }
 `
 
-export const StyledSidebar = styled.div`
+export const StyledSidebar = styled.div<{ disabled : boolean }>`
+
+    @media only screen and (max-width: 768px) {
+        
+        width: 100%;
+        top: 35px;
+
+        ${ props => props.disabled ? 
+            'left: -768px;' : 
+            'left: 0;'
+        }
+
+        i {
+            display: none;
+        }
+    }
 
     width: 320px;
     position: fixed;
@@ -103,6 +118,7 @@ export const StyledSidebar = styled.div`
     height: 100%;
     padding: var(--gap-large);
     z-index: var(--z-2);
+    transition: left 0.25s;
 
     > .html-icon {
         position: absolute;
@@ -121,10 +137,6 @@ export const StyledSidebar = styled.div`
     i:hover, 
     a:hover {
         opacity: 0.7;
-    }
-
-    @media only screen and (max-width: 768px) {
-        display: none;
     }
 `
 
@@ -161,104 +173,12 @@ export const StyledActionsList = styled.ul`
     }
 `
 
-export const StyledLoaderRipple = styled.div`
-
-    display: inline-block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-4);
-    width: 100%;
-    top: 0;
-    height: 100%;
-
-    >div.bg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: var(--bg-dark);
-        opacity: 0.4;
-    }
-
-    > div {
-        width: 80px;
-        margin: auto;
-        position: relative;
-
-        div {
-            position: absolute;
-            border: 4px solid #fff;
-            opacity: 1;
-            border-radius: 50%;
-            animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-
-        }
-      
-        div:nth-child(2) {
-            animation-delay: -0.5s;
-        }
-      
-        @keyframes lds-ripple {
-            0% {
-            top: 36px;
-            left: 36px;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            margin-top:100px
-            }
-            4.9% {
-            top: 36px;
-            left: 36px;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            margin-top:100px
-            }
-            5% {
-            top: 36px;
-            left: 36px;
-            width: 0;
-            height: 0;
-            opacity: 1;
-            margin-top:100px
-            }
-            100% {
-            top: 0px;
-            left: 0px;
-            width: 72px;
-            height: 72px;
-            opacity: 0;
-            margin-top:100px
-            }
-        }
-    }
-    
-    p{
-        position: absolute;
-        top: 200px;
-        z-index: var(--z-4);
-        text-align: center;
-        width: 100%;
-
-        span {
-            display: inline-block;
-            margin: auto;
-            background: var(--active-pink);
-            padding: 1rem;
-            font-weight: bold;
-            color: white;
-        }
-    }
-  
-`
-
 export const StyledPrompt = styled.div`
 
     width: 450px;
     z-index: var(--z-4);
     position: fixed;
-    right: var(--gap-large);
+    right: var(--gap-large);a
     padding:  var(--gap-medium);
     background: var(--active-action);
     background: var(--bg-white);
@@ -296,6 +216,20 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     ${ props => props.disabled ? 
         'left: -320px;' : 
         'left: 320px;'
+    }
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin-top: var(--gap-large);
+
+        ${ props => props.disabled ? 
+            'left: -768px;' : 
+            'left: 0;'
+        }
+
+        i {
+            display: none;
+        }
     }
 
     position: fixed;
@@ -429,6 +363,10 @@ export const StyledMobileBar = styled.div`
     @media only screen and (max-width: 768px) {
         display: flex;
         justify-content: space-between;
+
+        > div > span:first-child {
+            margin-right: var(--gap-large);
+        }
     }
 `
 

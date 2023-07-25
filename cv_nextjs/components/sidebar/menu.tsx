@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useAtom } from 'jotai'
+
+import * as atoms from '../../src/store-jotai/atomicUiStore'
 
 const cname = (isActive: boolean) => {
   if (isActive) {
@@ -12,15 +15,17 @@ export const AppMenu = () => {
 
   const router = useRouter()
 
+  const [_clearSelections, setClearSelections] = useAtom(atoms.clearSelections)
+
   return <ul className="nav">
     <li className={ cname(router.pathname.indexOf('jobs') !== -1) }>
-      <Link href="/jobs">WORK</Link>
+      <Link href="/jobs" onClick={() => setClearSelections() }>WORK</Link>
     </li>
     <li className={ cname(router.pathname.indexOf('projects') !== -1) }>
-      <Link href="/projects">PROJECTS</Link>
+      <Link href="/projects" onClick={() => setClearSelections() }>PROJECTS</Link>
     </li>
     <li className={ cname(router.pathname.indexOf('personal') !== -1) }>
-      <Link href="/personal">PERSONAL</Link>
+      <Link href="/personal" onClick={() => setClearSelections() }>PERSONAL</Link>
     </li>
   </ul>
 }
