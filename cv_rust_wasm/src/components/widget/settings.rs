@@ -33,8 +33,6 @@ pub fn config_settings() -> Html {
 
     let settings_items = &ui_state.settings.items;
 
-    info!("ConfigSettingsListComponent :: settings_items ----------------- {:?}", settings_items);
-
     let mut s_keys : Vec<ConfigKeys>= Vec::new();
 
     for (k, v) in settings_items {
@@ -55,7 +53,7 @@ pub fn config_settings() -> Html {
         }
     }).collect::<Html>();
 
-    let c_name = if ui_state.settings_ui { "StyledSettingsListContainer" } else { "StyledSettingsListContainer disabled" };
+    let c_name = if ui_state.settings_ui { "StyledSettingsListContainer" } else { "StyledSettingsListContainer unactive" };
 
     html!{  
         <>
@@ -75,7 +73,7 @@ pub fn config_settings() -> Html {
                 <span  
                     class="html-icon" 
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                    <i class="fa fa-arrow-left" aria-hidden="true" />
+                    <i class="fa fa-times" aria-hidden="true" />
                 </span> 
                 {
                     elements
@@ -136,11 +134,6 @@ pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &Settin
         </div>
     }
 }
-
-// #[derive(PartialEq, Properties)]
-// pub struct TokSettingProps {
-//     dispatch: Dispatch<StoreUI>,
-// }
 
 #[function_component(TokSettingComponent)]
 pub fn tok_setting_component() -> Html { 

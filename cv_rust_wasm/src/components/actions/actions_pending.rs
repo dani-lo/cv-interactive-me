@@ -91,9 +91,6 @@ pub fn pending_actions_component() -> Html {
                 c_pending_filters_collectables
             ).await;
 
-            info!("::::: persist_result");
-            info!("{:?}", persist_result);
-
             apply_dispatcher.reduce_mut(|s| s.apply_processed_pending(persist_result));
 
             notify_user("Your changes have ben persisted", true);
@@ -113,7 +110,7 @@ pub fn pending_actions_component() -> Html {
             <div class="prompt">
                 <p>
                     <strong>
-                        {"You have "} { all_pending_len } {"pending changes"}
+                        {"You have "} { all_pending_len } { if all_pending_len == 1 { " pending change" } else { " pending changes" }}
                     </strong>
                 </p>
                 <button 

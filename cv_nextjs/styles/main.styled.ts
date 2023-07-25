@@ -92,22 +92,24 @@ export const StyledJobDetail = styled.div`
     }
 `
 
-export const StyledSidebar = styled.div<{ disabled : boolean }>`
+export const StyledSidebar = styled.div`
 
     @media only screen and (max-width: 768px) {
         
         width: 100%;
         top: 35px;
+        left: -768px;
 
-        ${ props => props.disabled ? 
-            'left: -768px;' : 
-            'left: 0;'
-        }
-
-        i {
+        i.fa-cog {
             display: none;
         }
+
+        &.active {
+            left: 0;
+        }
     }
+
+    
 
     width: 320px;
     position: fixed;
@@ -137,6 +139,11 @@ export const StyledSidebar = styled.div<{ disabled : boolean }>`
     i:hover, 
     a:hover {
         opacity: 0.7;
+    }
+
+    h3 {
+        padding-bottom: var(--gap-small);
+        margin: var(--gap-large) 0 var(--gap-medium);
     }
 `
 
@@ -174,11 +181,10 @@ export const StyledActionsList = styled.ul`
 `
 
 export const StyledPrompt = styled.div`
-
     width: 450px;
     z-index: var(--z-4);
     position: fixed;
-    right: var(--gap-large);a
+    right: var(--gap-large);
     padding:  var(--gap-medium);
     background: var(--active-action);
     background: var(--bg-white);
@@ -349,10 +355,10 @@ export const StyledMobileBar = styled.div`
     background: var(--black);
     padding: var(--gap-medium);
     z-index: var(--z-3);
-
+    justify-content: space-between;
+    align-items: center;
     display: none;
     position: fixed;
-
     top: 0;
     width: 100%;
 
@@ -360,13 +366,13 @@ export const StyledMobileBar = styled.div`
         color: white;
     }
 
+    > div > span:first-child {
+        margin-right: var(--gap-large);
+    }
+
     @media only screen and (max-width: 768px) {
         display: flex;
-        justify-content: space-between;
-
-        > div > span:first-child {
-            margin-right: var(--gap-large);
-        }
+        
     }
 `
 

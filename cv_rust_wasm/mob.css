@@ -1,20 +1,16 @@
 @media only screen and (max-width: 768px) {
     .page {
-         margin-left: var(--gap-medium);
-         position: relative;
-         top: 0;
-    }
- 
-    .jobs-container {
-        padding-top: var(--gap-large);
-    }
-    
-    .jobs-container.with-selected {
-        display: none;
-    }
+        margin-left: var(--gap-medium);
+        position: relative;
+        top: 0;
+   }
 
-    .StyledSidebar {
-        display: none;
+   .jobs-container {
+        padding-top: 3rem;
+   }
+   
+   .jobs-container.with-selected {
+       display: none;
     }
 
     .StyledJobContainer, .StyledAboutContainer {
@@ -26,6 +22,7 @@
         position: relative;
         height: 100%;
         width: auto;
+        padding-top: 3rem;
     }
 
     .StyledModalWrap > div {
@@ -34,4 +31,57 @@
         top: 0;
         margin: 0;
     }
- }
+
+    .StyledMobileBar {
+        display: flex;
+    }
+
+    .StyledSidebar {
+        width: 100%;
+        top: 35px;
+        left: -768px;
+    }
+
+    .StyledSidebar i.fa-cog {
+        display: none;
+    }
+
+    .StyledSidebar i.fa-times {
+        display: inline-block;
+    }
+
+    .StyledSidebar.active {
+        left: 0;
+    }
+
+    .StyledSettingsListContainer {
+        width: 100%;
+        padding-top: 2rem;
+        left: 0;
+    }
+    .StyledSettingsListContainer.unactive {
+        left: -768px;
+    }
+
+    .StyledSettingsListContainer span.html-icon {
+        right: var(--gap-large);
+    }
+
+    .StyledSettingsListContainer span.html-icon i.fa-times {
+        font-size:1.25rem;
+    }
+
+    .StyledPrompt {
+        width: 100%;
+        left: 0;
+        top: -500px;
+    }
+
+    .StyledPrompt.active {
+        top: 0;
+    }
+
+    .StyledNotification {
+        border: none;
+    }
+}

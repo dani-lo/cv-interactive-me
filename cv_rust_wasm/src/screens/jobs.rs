@@ -44,7 +44,10 @@ use crate::{
             jobs_list::JobsListComponent,
             job_detail::JobDetailComponent,
         },
-        widget::settings::ConfigSettingsListComponent,
+        widget::{
+            settings::ConfigSettingsListComponent,
+            topbar::TopbarComponent,
+        },
     },
     traits::ActionTypes, 
     util::{
@@ -64,14 +67,16 @@ pub struct JobsProps {
 pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let nav = use_navigator().unwrap();
+    let nav_back = nav.clone();
 
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
+    let sidebar_ui_dispatcher = ui_dispatch.clone();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
 
@@ -84,12 +89,21 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
         nav.push(&AppRoute::JobsDetailRoute { uid });
     });
 
+    let on_back = Callback::from( move |_uid: usize| {  
+
+        nav_back.push(&AppRoute::JobsRoute {});
+    });
+
+    let nav_location = BrowserHistory::new().location();
+    let query_st = nav_location.path();
+    let pos = query_st.rfind("/").unwrap();
+
+    let show_back_btn = pos > 0 || ui_state.settings_ui || ui_state.sidebar_ui; 
+
     unsafe {
         let jobs:UseStateHandle<Vec<JobModel>> = jobs.clone();
         
         let loading_futures_spawn = async move {
-
-            info!("LOAD SPAWN!!!!!!");
 
             let fetched_jobs: Vec<JobData> = load_jobs().await;
             let fetched_static_data_models_hashes : AppStaticDataHashes = get_static_data_hash().await;
@@ -98,8 +112,6 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
             let loaded_user = get_user().await;
 
             user.set(loaded_user.unwrap());
-
-            info!("{:?}", user);
 
             let made_jobs: Vec<JobModel> = make_jobs(
                 fetched_jobs, 
@@ -114,8 +126,6 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
             dispatcher.reduce_mut(|s| s.init_user_actions(fetched_user_actions));
 
             CV_APP_LOADED = Some(true);
-
-            info!("CV_APP_LOADED {:?}", CV_APP_LOADED);
         };
 
         use_effect_with_deps(move |_| {
@@ -132,11 +142,15 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
         <>  
             <ConfigSettingsListComponent />
             <ActionsModalComponent />
-            <div class="StyledSidebar">
+            <TopbarComponent 
+                on_back={ on_back } 
+                show_back_btn={ show_back_btn }
+            />
+            <div class={ if ui_state.sidebar_ui { "StyledSidebar active" } else { "StyledSidebar" } }>
                 <span 
                     class="html-icon"
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                    <i class="fa fa-bars" aria-hidden="true" />
+                    <i class="fa fa-cog" aria-hidden="true" />
                 </span> 
                 <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
@@ -173,11 +187,9 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                         }
                     }
                 }
-                <div>
-                    <JobDetailComponent
-                        selected_job_uid={ route_id }
-                    />
-                </div>
+                <JobDetailComponent
+                    selected_job_uid={ route_id }
+                />
             </div> 
         </>       
     }

@@ -35,8 +35,6 @@ static mut CV_APP_LOADED: Option<bool> = Some(false);
 #[function_component(App)]
 fn app() -> Html {
     
-    // info!("{:?}", std::env::args());
-
     let (ui_state, _ui_dispatch) = use_store::<StoreUI>();
 
     let ui_busy = ui_state.busy;
@@ -57,7 +55,6 @@ fn app() -> Html {
 
     html! {
         <div>
-            <TopbarComponent />
             <PendingActionsComponent />
             { 
                 if ui_busy {

@@ -33,8 +33,6 @@ use crate::util::wasm_bridge::scroll_to_slot;
 pub struct ProjectListProps {
    pub projects: Vec<ProjectModel>,
    pub on_select_project_detail:  Callback<usize>,
-//    pub set_modal_item: Callback<Actionable>,
-//    pub store: UseReducerHandle<StoreState>,
    pub active_project_id: usize,
 }
 
@@ -83,7 +81,7 @@ pub fn job_list(ProjectListProps {
         else { Ordering::Equal }
     });
 
-    let projs = sorted_projects.iter().map(|project| {
+    let projects_list = sorted_projects.iter().map(|project| {
         
         if  has_filters && !project.included_in_filters(&state.filters) {
             return html!{
@@ -112,6 +110,8 @@ pub fn job_list(ProjectListProps {
         }
     }).collect::<Html>();
 
+    let container_cname = if *active_project_id == 0 { "jobs-container" } else { "jobs-container with-selected" };
+
     html!{
 
         {
@@ -123,7 +123,13 @@ pub fn job_list(ProjectListProps {
                     </div>
                 }
             } else {
-                projs
+                html!{
+                    <div class={ container_cname }>
+                    {
+                        html!{ projects_list }
+                    }
+                    </div>
+                }
             }
         }
     }

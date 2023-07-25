@@ -47,8 +47,6 @@ pub fn tech_weight (tech_id: usize, tech_weights: &HashMap<usize, i32>, max_tech
     let this_weight = tech_weights.get(&tech_id);
 
     if this_weight.is_none() {
-
-        info!("MISSING: {}", tech_id);
         
         return 0
     }

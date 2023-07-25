@@ -157,12 +157,6 @@ button:hover {
   background-color: var(--active-pink);
 }
 
-button.disabled {
-  opacity: 0.7;
-  cursor: default;
-  pointer-events: none;
-}
-
 label {
   line-height: 1.4rem;
   padding: 0 0 0 var(--gap-small);
@@ -334,47 +328,10 @@ span.html-icon:hover {
   z-index: var(--z-3);
 }
 
-.margin-b {
-  margin: 1.5rem 0;
-}
-
-.margin-m {
-  margin: 1rem 0;
-}
-
-.no-margin {
-  margin: 0!important;
-}
-
-#notification-container {
-  transition: top 0.25s;
-  position: fixed;
-  z-index: 11111;
-  padding: 4px;
-  display: flex;
-  text-align: center;
-  top: -112px;
-  right: 13px;
-}
-
-#notification-container span {
-  display: block;
-  text-align: center;
-  width: 100%;
-  font-size: 0.9rem;
-  text-transform: lowercase;
-  border-radius: 2px;
-  font-weight: bold;
-  color: white;
-  padding: 0.75rem 1.5rem;
-}
-
-#notification-container.active {
-  top: 12px;
-}
-
-#notification-container.unactive {
-  top: -112px;
+.disabled {
+  opacity: 0.7;
+  cursor: default;
+  pointer-events: none;
 }
 
 .err {

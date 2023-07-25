@@ -434,9 +434,6 @@ pub async fn persist_appstate_pending (
     pending_filters_collectables : Vec<Collectable>,
 ) -> HashMap<ActionTypes, Vec<Collectable>> { 
 
-    // info!("PERSIST APPSTATE::::");
-    // info!("pending_annotations_collectables {:?}", pending_annotations_collectables);
-
     let mut vec_responses_deleted = Vec::new();
     let mut hashed_response_resorces : HashMap<ActionTypes, Vec<Collectable>> = HashMap::new();
 
@@ -464,8 +461,6 @@ pub async fn persist_appstate_pending (
 
             vec_responses_collectable_filters.push(c);
         } else if pending_filter_collectable.pending.unwrap() == PendingStatus::VoidThenDeleted {
-
-            // info!("IN PERSIST :: delete this filter :: {:?}", f._id);
 
             vec_responses_deleted.push(delete_filter(f).await);
             
@@ -500,22 +495,7 @@ pub async fn persist_appstate_pending (
 
         let a = Annotation::from_collectable(&pending_annotation_collectable);
 
-        // let existing = state.annotations
-        //     .iter()
-        //     .find(|n| {
-        //         n.resource_id == pending_annotation_collectable.resource_id.unwrap() && 
-        //         n.resource_type == pending_annotation_collectable.resource_type.unwrap()
-        //     });
-
-        // if existing.is_some() {
-        //     a.text = existing.unwrap().text.clone();
-        // }
-
         if pending_annotation_collectable.pending.unwrap() == PendingStatus::Added {
-            
-            // info!("in da loop:::::::");
-
-            // info!("{:?}", a);
             
             let res = create_annotation(a).await;
 
@@ -559,9 +539,6 @@ pub async fn persist_appstate_pending (
     hashed_response_resorces.insert(ActionTypes::BOOKMARK, vec_responses_collectable_bookmarks);
     hashed_response_resorces.insert(ActionTypes::ANNOTATION, vec_responses_collectable_annotations);
 
-    // info!("PERSIST APPSTATE NOw RETURNIN::: :::: hashed_response_resorces");
-    // info!("{:?}", hashed_response_resorces);
-
     hashed_response_resorces
 }
 
@@ -570,8 +547,6 @@ pub async fn get_user_actions () -> HashMap<ActionTypes, Vec<Collectable>> {
     let bookmarks_data = get_user_bookmarks().await;
     let annotations_data = get_user_annotations().await;
     
-    // info!("{:?}", filters_data);annotation
-
     let mut collectable_filters : Vec<Collectable> = Vec::new();
 
     if filters_data.is_some() {

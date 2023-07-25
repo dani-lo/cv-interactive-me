@@ -1,7 +1,7 @@
 .StyledAboutContainer {
-    margin-top: var(--gap-large);
+    margin-top: var(--gap-medium);
     padding:  var(--gap-medium);
-    width: 500px;
+    width: 380px;
     border: 1px solid var(--white);
 }
 
@@ -55,9 +55,8 @@
     border-color: var(--white);
 }
 
-
 .StyledJobContainer.selected i.job-selector {
-    color: var(--text-inactive);;
+    color: var(--text-inactive);
     cursor: default;
     pointer-events: none;
 }
@@ -74,12 +73,12 @@
 
 .StyledJobDetail {
     position: fixed;
-    width: 400px;
+    width: 420px;
     overflow-y: scroll;
     height: 100%;
     top: 12px;
     padding: var(--gap-large);
-    left: 750px;
+    left: 740px;
     background: var(--white);
 }
 
@@ -99,12 +98,13 @@
     height: 100%;
     padding: var(--gap-large);
     z-index: var(--z-2);
+    transition: left 0.25s;
 }
 
 .StyledSidebar > .html-icon {
     position: absolute;
-    left: 0.5rem;
-    top: 0.5rem;
+    left: var(--gap-small);
+    top: var(--gap-small);
 }
 
 .StyledSidebar > div {
@@ -125,11 +125,14 @@
     opacity: 0.7;
 }
 
+.StyledSidebar i.fa-times {
+    display: none;
+}
+
 .StyledSidebar h3 {
     padding-bottom: var(--gap-small);
     margin: var(--gap-large) 0 var(--gap-medium);
 }
-
 
 .StyledCompanyContainer {
     margin: var(--gap-huge) 0 var(--gap-large) 0;
@@ -141,16 +144,17 @@
     padding: var(--gap-small) 0;
 }
 
-/* .StyledSidebar .StyledActionsList {
-    margin:  var(--gap-large) 0 var(--gap-medium);
-} */
+.StyledCompanyContainer > h3 {
+    padding: var(--gap-medium) 0 var(--gap-small);
+    margin-top: 0;
+}
 
 .StyledActionsList li {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* padding: 0; */
+    padding: 0;
 }
 
 .StyledActionsList li.list-footer-meta-action {
@@ -166,7 +170,6 @@
     margin: var(--gap-small) 0;
     padding-right: var(--gap-large);
 }
-
 
 .StyledLoaderRipple {
     display: inline-block;
@@ -224,7 +227,7 @@
 
 .StyledPrompt {
     width: 450px;
-    z-index: var(--z-3);
+    z-index: var(--z-4);
     position: fixed;
     right: var(--gap-large);
     padding:  var(--gap-medium);
@@ -244,6 +247,10 @@
     text-align: left;
 }
 
+.StyledPrompt > p {
+    margin: var(--gap-large) 0;
+}
+
 .StyledPrompt  p a {
     padding-left: var(--gap-small);
 }
@@ -255,7 +262,6 @@
 .StyledPrompt  .prompt {
     display: flex;
     align-items: center;
-
 }
 
 .StyledPrompt .prompt button {
@@ -267,24 +273,22 @@
     margin: 0 var(--gap-large) 0 0;
 }
 
-
 .StyledSettingsListContainer {
     position: fixed;
     top: 0;
     width: 290px;
     height: 100%;
-    z-index: var(--z-2);
-    left: 320px;
+    left: 315px;
+    z-index: var(--z-4);
     transition: left 0.25s;
     padding: var(--gap-large);
     padding-top: 2rem;
     background: var(--white);
     border-right: 1px dotted var(--border-col);
-    margin: 0  var(--gap-small) 0 0;
 }
 
-.StyledSettingsListContainer.disabled {
-    left: -320px;
+.StyledSettingsListContainer.unactive {
+    left: -768px;
 }
 
 .StyledSettingsListContainer > div {
@@ -309,41 +313,6 @@
 .StyledInlineWarning p {
     font-weight: bold;
     color: var(--warn);
-}
-
-@keyframes lds-ripple {
-    0% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    margin-top:100px
-    }
-    4.9% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    margin-top:100px
-    }
-    5% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 1;
-    margin-top:100px
-    }
-    100% {
-    top: 0px;
-    left: 0px;
-    width: 72px;
-    height: 72px;
-    opacity: 0;
-    margin-top:100px;
-    }
 }
 
 .StyledModalWrap {
@@ -410,14 +379,12 @@
     font-weight: bold;
 }
 
-/***
-    StyledMobileBar
-***/
-
 .StyledMobileBar {
     background: var(--black);
-    padding: var(--gap-medium);
+    padding: var(--gap-large);
     z-index: var(--z-3);
+    justify-content: space-between;
+    align-items: center;
     display: none;
     position: fixed;
     top: 0;
@@ -426,11 +393,41 @@
 
 .StyledMobileBar p, .StyledMobileBar i, .StyledMobileBar a {
     color: white;
+    font-size: 1.25rem;
 }
 
-@media only screen and (max-width: 768px) {
-    .StyledMobileBar {
-        display: flex;
-        justify-content: space-between;
-    }
+.StyledMobileBar > div > span:first-child {
+    margin-right: var(--gap-large);
+}
+
+.StyledNotification {
+    position: fixed;
+    display: inline-block;
+    left: 2rem;
+    top: 2rem;
+    z-index: var(--z-4);
+    color: white;
+    font-weight: bold;
+    padding: var(--gap-medium) var(--gap-large);
+    border: 2px solid var(--white);
+}
+
+.StyledNotification.active {
+    top: 0;
+}
+
+.StyledNotification.unactive {
+    top: -112px;
+} 
+
+.StyledNotification span {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    border-radius: 2px;
+    font-weight: bold;
+    color: white;
+    padding: 0.75rem 1.5rem;
 }

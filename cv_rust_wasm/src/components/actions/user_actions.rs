@@ -19,6 +19,7 @@ use crate::traits::{
     can_filter::Filter,
 };
 
+// use crate::util::resource_for_actions::set_state_modal_item;
 
 #[derive(Clone, PartialEq, Properties)]
 pub struct ActionProps {
@@ -58,6 +59,7 @@ impl Component for BookmarkComponent {
         let add_bookmark : yew::Callback<Option<MouseEvent>> = dispatcher.reduce_mut_callback(move |s| {
 
             s.add_bookmark(Bookmark::from_resource(c_item.unwrap()));
+            s.unset_modal_item();
         });
 
         if item.is_some() {
@@ -118,6 +120,7 @@ impl Component for FilterComponent {
         let add_filter: yew::Callback<Option<MouseEvent>> = dispatcher.reduce_mut_callback(move |s| {
 
             s.add_filter(Filter::from_resource(&c_item.unwrap()));
+            s.unset_modal_item();
         });
 
         if item.is_some() {
@@ -259,6 +262,7 @@ pub fn annotation_text (ActionProps {
             existin_text.set(Some(String::from(tgt_note_str256.to_str())));
 
             s.add_annotation(new_or_edited_note);
+            s.unset_modal_item();
         });
 
         let disabled_update = dbg_existin_text.is_some() && c_tgt_note.text == dbg_existin_text.as_ref().unwrap().clone();

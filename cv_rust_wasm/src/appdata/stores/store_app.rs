@@ -95,16 +95,9 @@ impl StoreApp {
         let existing = self.annotations
             .iter()
             .find(|&x| actionables_ident(&annotation, x) && x.pending != PendingStatus::Fresh);
-        
-        info!("Store:: add note .....");
-        info!("Store annotations are these");
-        info!("{:?}", self.annotations);
 
         if existing.is_some() {
-            
-            info!("Store:: existing is true, here it is! .....");
-            info!("{:?}", existing);
-
+        
             let existing_val = existing.unwrap();
 
             let index: usize = self.annotations
@@ -122,15 +115,9 @@ impl StoreApp {
                 self.annotations[index].pending = if curr_pending == PendingStatus::Void { PendingStatus::VoidThenEdited } else { PendingStatus::Added }
             }
         } else {
-            info!("Store:: existing is false, just add .....");
 
             self.annotations.push(annotation);
         }
-
-        info!("here are the new annotatons after the addibng OP");
-        info!("{:?}", self.annotations);
-
-        info!("Store:: <<< DONE>>>");
     }
 
     pub fn edit_annotation (
@@ -141,15 +128,8 @@ impl StoreApp {
             .iter()
             .find(|&x| actionables_ident(&annotation, x) && x.pending != PendingStatus::Fresh);
         
-        info!("Store:: add note .....");
-        info!("Store annotations are these");
-        info!("{:?}", self.annotations);
-
         if existing.is_some() {
             
-            info!("Store:: existing is true, here it is! .....");
-            info!("{:?}", existing);
-
             let existing_val = existing.unwrap();
 
             if existing_val.pending == PendingStatus::Deleted {
@@ -161,15 +141,9 @@ impl StoreApp {
                 self.annotations[index].pending = PendingStatus::Added;
             }
         } else {
-            info!("Store:: existing is false, just add .....");
 
             self.annotations.push(annotation);
         }
-
-        info!("here are the new annotatons after the addibng OP");
-        info!("{:?}", self.annotations);
-
-        info!("Store:: <<< DONE>>>");
     }
 
     pub fn remove_bookmark (
@@ -390,7 +364,6 @@ impl StoreApp {
             .iter()
             .map(|d| {
 
-                info!("IN MAP ---- {:?}", d);
                 let processed_opt = user_actions_hash
                     .get(&ActionTypes::ANNOTATION)
                     .unwrap()
@@ -425,8 +398,6 @@ impl StoreApp {
             .filter(|d| d.pending == PendingStatus::Void)
             .collect();
         
-        info!("+++ new_annotations {:?}", new_annotations);
-
         self.filters = new_filters;
         self.annotations = new_annotations;
         self.bookmarks = new_bookmarks;

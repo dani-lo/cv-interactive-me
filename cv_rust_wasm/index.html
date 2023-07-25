@@ -19,16 +19,16 @@
       <script src="https://use.fontawesome.com/26d8741e78.js"></script>
       <script>
 
-        function wasm_notification (msg) {
+        function WasmApp (msg) {
 
           this.id = 'notification-container';
           this.msg = msg;
           this.active = false
-          this.unactive_class = 'unactive'
-          this.active_class = 'active'
+          this.unactive_class = 'StyledNotification unactive'
+          this.active_class = 'StyledNotification active'
         }
 
-        wasm_notification.prototype.create_ui = function(success) {
+        WasmApp.prototype.create_ui = function(success) {
 
           this.destroy_ui();
           
@@ -46,7 +46,7 @@
           return this
         }
 
-        wasm_notification.prototype.show = function() {
+        WasmApp.prototype.show = function() {
           
           this.active = true;
 
@@ -55,7 +55,7 @@
           return this
         }
 
-        wasm_notification.prototype.hide = function() {
+        WasmApp.prototype.hide = function() {
           
           this.active = false;
 
@@ -64,7 +64,7 @@
           return this
         }
 
-        wasm_notification.prototype.toggle = function() {
+        WasmApp.prototype.toggle = function() {
           
           this.active = !this.active;
 
@@ -77,22 +77,21 @@
           return this
         }
 
-        wasm_notification.prototype.destroy_ui = function() {
+        
+        WasmApp.prototype.destroy_ui = function() {
 
           const tgt = document.getElementById(this.id);
 
           if (tgt) {
             tgt.remove();
-            console.log("DONE")
           }
-          
         }
 
         window.wasm_bridge_app = {
 
           notify: function (msg, success) {
 
-            var wasm_n = new wasm_notification(msg);
+            var wasm_n = new WasmApp(msg);
 
             wasm_n.create_ui(success);
 
@@ -109,21 +108,21 @@
           show_active_slot : function (slotId) {
 
             setTimeout(function () {
-              wasm_notification.scrollToActiveItem('slot-' + slotId);
-            }, 10);
-
-            
-          }
-        }
-
-        wasm_notification.scrollToActiveItem = function(slotId) {
-            
-          var elem =  document.getElementById(slotId);
+              var elem =  document.getElementById('slot-' + slotId);
           
-          elem.scrollIntoView({
-            block: "start", 
-            inline: "nearest"
-          });
+              elem.scrollIntoView({
+                block: "start", 
+                inline: "nearest"
+              });
+            }, 10);
+          },
+
+          show_top : function () {
+
+            setTimeout(function () {
+              window.scroll(0,0);
+            }, 10);
+          }
         }
       </script>
     </body>

@@ -15,6 +15,7 @@ pub struct StoreUI {
     pub msg: &'static str,
     pub busy: bool,
     pub settings_ui: bool,
+    pub sidebar_ui: bool,
     pub settings: SettingsConfig,
 }
 
@@ -25,13 +26,12 @@ impl Default for StoreUI {
         let mut settings = SettingsConfig::new();
 
         settings.populate();
-
-        info!("StoreUI::Default -------- {:?}", settings);
         
         Self {
             msg: "",
             busy: false,
             settings_ui: false,
+            sidebar_ui: false,
             settings, 
         }
     }
@@ -42,10 +42,14 @@ impl StoreUI {
     pub fn set_config (&mut self, k: &ConfigKeys, val: bool) {
        self.settings.set_config_setting_value(k, val);
 
-       notify_user("Your settings change has ben saved", true);
+       notify_user("Your  change has been saved", true);
     }
 
     pub fn toggle_settings_ui (&mut self) {
         self.settings_ui = !self.settings_ui;
+    }
+
+    pub fn toggle_sidebar_ui (&mut self) {
+        self.sidebar_ui = !self.sidebar_ui;
     }
 }

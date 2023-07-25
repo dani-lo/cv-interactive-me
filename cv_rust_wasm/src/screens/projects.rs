@@ -51,7 +51,10 @@ use crate::{
             projects_list::ProjectsListComponent,
             project_detail::ProjectDetailComponent,
         },
-        widget::settings::ConfigSettingsListComponent,
+        widget::{
+            settings::ConfigSettingsListComponent,
+            topbar::TopbarComponent,
+        },
     },
     CV_APP_LOADED, routes::AppRoute,
 };
@@ -65,12 +68,13 @@ pub struct ProjectsProps {
 pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
 
     let nav = use_navigator().unwrap();
+    let nav_back = nav.clone();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
@@ -78,21 +82,23 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
     
     let user:UseStateHandle<UserModel> = use_state(||  UserModel { _id: None, tok: None });
 
-    // let nav_location = BrowserHistory::new().location();
-    // let query_st = nav_location.query_str();
-    // let maybe_appquery = get_query_params(query_st);
-
-    // let selected_project_uid: UseStateHandle<Option<usize>> = use_state(|| if maybe_appquery.is_some() { Some(maybe_appquery.unwrap().uid) } else { None });
-    // let c_selected_project_uid = selected_project_uid.clone();
-
     let default_models = StaticModels::default();
     let app_static_models_hashes : UseStateHandle<AppStaticDataHashes> = use_state(|| default_models.model_hashes);
 
     let on_select_project_detail = Callback::from( move |uid: usize| {
-        // selected_project_uid.set(Some(uid));
         nav.push(&AppRoute::ProjectsDetailRoute { uid });
     });
     
+    let on_back = Callback::from( move |_uid: usize| {  
+        nav_back.push(&AppRoute::ProjectsRoute {});
+    });
+
+    let nav_location = BrowserHistory::new().location();
+    let query_st = nav_location.path();
+    let pos = query_st.rfind("/").unwrap();
+
+    let show_back_btn = pos > 0;// || ui_state.settings_ui || ui_state.sidebar_ui; 
+
     unsafe {
         let projects:UseStateHandle<Vec<ProjectModel>> = projects.clone();
 
@@ -134,12 +140,16 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
     html! {
         <>  
             <ConfigSettingsListComponent />
+            <TopbarComponent 
+                show_back_btn={ show_back_btn }
+                on_back={ on_back } 
+            />
             <ActionsModalComponent />
-            <div class="StyledSidebar">
+            <div class={ if ui_state.sidebar_ui { "StyledSidebar active" } else { "StyledSidebar" } }>
                 <span 
                     class="html-icon"
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                    <i class="fa fa-bars" aria-hidden="true" />
+                    <i class="fa fa-cog" aria-hidden="true" />
                 </span> 
                 <h1 class="app-logo">{ "Curriculum Vitae" }</h1>
                 <AppMenuComponent />
@@ -175,13 +185,10 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
                             }
                         }
                     }
-                }    
-
-                <div>
-                    <ProjectDetailComponent
-                        selected_project_uid={ route_id }
-                    />
-                </div>
+                }
+                <ProjectDetailComponent
+                    selected_project_uid={ route_id }
+                />
             </div>
         </>       
     }

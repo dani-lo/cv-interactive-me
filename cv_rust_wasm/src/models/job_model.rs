@@ -97,9 +97,6 @@ impl Model for JobModel {
          return true
       }
 
-      // info!("-- has_tech_filters {} {}", self.uid, has_tech_filters);
-      // info!("(some_resource_included_in_all_filters() :: {}", some_resource_included_in_all_filters(&filters_to_use, &job_techs));
-
       if !has_jobtype_filters && !has_tech_filters {
          return false
       }

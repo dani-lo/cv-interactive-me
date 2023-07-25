@@ -5,7 +5,8 @@ use yew::{
     Properties, 
     Callback, 
     function_component, 
-    html, use_effect_with_deps, 
+    html, 
+    use_effect_with_deps, 
 };
 
 use yewdux::prelude::use_store;

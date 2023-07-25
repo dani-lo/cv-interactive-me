@@ -1,11 +1,13 @@
+use log::info;
+
 use yew::{
     function_component, 
     html,
     Html,
     Properties, 
-    UseStateHandle, 
-    use_state, 
+    Callback, 
 };
+
 use yewdux::prelude::use_store;
 
 use crate::{
@@ -14,54 +16,82 @@ use crate::{
         tech_model::TechModel,
     }, 
     appdata::stores::{
-        store_app::StoreApp
+        store_app::StoreApp, 
+        store_ui::StoreUI,
     },
 };
 
 #[derive(PartialEq, Properties)]
-pub struct TechProps {
-    pub job_uid: usize,
-    pub job_techs: Vec<TechModel>,
-    pub actionable: bool,
+pub struct TopbarProps {
+    pub on_back: Callback<usize>,
+    pub show_back_btn: bool,
 }
 
 
 #[function_component(TopbarComponent)]
-pub fn topbar() -> Html {
-    
+pub fn topbar(TopbarProps { on_back, show_back_btn } : &TopbarProps) -> Html {
 
-    // let (_state, dispatch) = use_store::<StoreApp>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let settings_ui_dipatcher = ui_dispatch.clone();
+    let sidebar_ui_dipatcher = ui_dispatch.clone();
+    let top_settings_ui_dipatcher = ui_dispatch.clone();
+    let top_sidebar_ui_dipatcher = ui_dispatch.clone();
 
-    // let less_techs = 4;
-    // let skip_truncation = job_techs.len() < 4;
+    let on_click_back = on_back.clone();
 
-    // let show_tech_num:  UseStateHandle<&'static str>  = use_state(|| "less");
-    
-    // let show_techs = if !skip_truncation && *show_tech_num == "less" { 
-    //     &job_techs[..less_techs] 
-    // } else { 
-    //     &job_techs 
-    // };
+    let show_close_settings_button = ui_state.settings_ui;
+    let show_close_sidebar_button = ui_state.sidebar_ui;
 
     html!{  
         <div class="StyledMobileBar">
+        {
+            if *show_back_btn && !(show_close_settings_button || show_close_sidebar_button) {
+                html!{
+                    <span 
+                        class="html-icon"
+                        onclick={ move |_e| on_click_back.emit(0) }
+                    >
+                        <i 
+                            aria-hidden="true" 
+                            class="fa fa-arrow-left" 
+                        />   
+                    </span>
+                }
+            } else if show_close_sidebar_button {
+                html!{
+                    <span 
+                        class="html-icon"
+                        onclick={ move |_| sidebar_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui()) }>
+                        <i class="fa fa-times" aria-hidden="true" />
+                    </span> 
+                }
+            } else if show_close_settings_button {
+                html!{
+                    <span 
+                        class="html-icon"
+                        onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                        <i class="fa fa-times" aria-hidden="true" />
+                    </span> 
+                }
+            } else {
+                html!{
+                    <span></span>
+                }
+            }
+        }
+            
+        <div>
             <span 
-                class="html-icon"
-                // onClick={() => {
-
-                //     setClearSelections()
-                //     //router.back()
-                // }}
-                // 
-                >
-                <i 
-                    aria-hidden="true" 
-                    class="fa fa-arrow-left" 
-                />   
+                class={ if ui_state.settings_ui || ui_state.sidebar_ui { "html-icon disabled" } else { "html-icon" } }
+                onclick={ move |_| top_settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
+                    <i aria-hidden="true" class="fa fa-cog" />
             </span>
-        <span className="html-icon">
-            <i aria-hidden="true" className="fa fa-bars" />
-        </span>
+            <span 
+            class={ if ui_state.settings_ui || ui_state.sidebar_ui { "html-icon disabled" } else { "html-icon" } }
+                onclick={ move |_| top_sidebar_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui()) }>
+                    <i aria-hidden="true" class="fa fa-bars" />
+            </span>
+        </div>
     </div>
     }
 }

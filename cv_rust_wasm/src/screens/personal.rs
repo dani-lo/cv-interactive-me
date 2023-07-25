@@ -31,7 +31,6 @@ use crate::{
     }, 
     traits::ActionTypes, 
     util::{
-        url_query_params::get_query_params, 
         make_model::make_projects, 
         weight_techs::{
             techs_with_months_duration,
@@ -56,7 +55,10 @@ use crate::{
             projects_list::ProjectsListComponent,
             project_detail::ProjectDetailComponent,
         },
-        widget::settings::ConfigSettingsListComponent,
+        widget::{
+            settings::ConfigSettingsListComponent,
+            topbar::TopbarComponent,
+        },
     },
     CV_APP_LOADED, routes::AppRoute,
 };
@@ -67,7 +69,7 @@ use crate::{
 pub fn personal() -> Html {
 
     let (state, dispatch) = use_store::<StoreApp>();
-    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
@@ -81,6 +83,8 @@ pub fn personal() -> Html {
     let default_models = StaticModels::default();
     let app_static_models_hashes : UseStateHandle<AppStaticDataHashes> = use_state(|| default_models.model_hashes);
     
+    let show_back_btn = ui_state.settings_ui || ui_state.sidebar_ui; 
+
     unsafe {
         let projects:UseStateHandle<Vec<ProjectModel>> = projects.clone();
 
@@ -129,11 +133,19 @@ pub fn personal() -> Html {
         }
     }
 
+    let on_back = Callback::from( move |_uid: usize| {  
+        info!("nothing to do here");
+    });
+
     html! {
         <>  
             <ConfigSettingsListComponent />
+            <TopbarComponent 
+                show_back_btn={ show_back_btn }
+                on_back={ on_back } 
+            />
             <ActionsModalComponent />
-            <div class="StyledSidebar">
+            <div class={ if ui_state.sidebar_ui { "StyledSidebar active" } else { "StyledSidebar" } }>
                 <span 
                     class="html-icon"
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>

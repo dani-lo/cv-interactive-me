@@ -61,7 +61,7 @@ const Layout = ({
                     settingsDisabled ? null : <div className="generic-ui-overlay-bg"></div>
                 }
                 <PendingActionsComponent />
-                <StyledSidebar disabled={ !showactions }>
+                <StyledSidebar className={ showactions ? 'active' : ''}>
                     <span 
                         className="html-icon"
                         onClick={ () => setShowsettings(!showsettings) }>
