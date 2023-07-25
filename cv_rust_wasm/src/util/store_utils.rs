@@ -18,8 +18,6 @@ pub fn is_pending (c: &Collectable) -> bool {
 
 pub fn state_pending_actions (state: Rc<StoreApp>) -> Vec<Collectable> {
 
-    // info!("########## state_pending_actions ########### state: Rc<StoreApp> :: {:?}", state);
-
     let mut pending_filters_collectables : Vec<Collectable> = state.filters
         .clone()
         .iter()
