@@ -8,11 +8,6 @@ export enum SettingKeys {
 
 export const settingLabel = (s: SettingKeys) => s.replace(/_/g, ' ')
 
-enum SettingDependencyKey {
-    ChangeValue = 'changevalue',
-    Disable = 'disable',
-}
-
 export interface AppSetting<T extends (string | number | boolean)> {
     val: T | null,
     disabled: boolean,
@@ -21,9 +16,10 @@ export interface AppSetting<T extends (string | number | boolean)> {
     desc: string,
     force: boolean,
     validate ?: (v: T) => boolean,
-    depends ?: {
-        [k: string] : (k: SettingKeys, v: T) => boolean | T
-    }
+    disableIf ?: {
+        ifKey: SettingKeys,
+        ifVal: T,
+    },
 }
 
 const defaultSettings = [ 
@@ -34,6 +30,10 @@ const defaultSettings = [
         default: true,
         desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris',
         force: false,
+        disableIf: {
+            ifKey: SettingKeys.AutoPersist,
+            ifVal: true,
+        }
     },
     {
         key: SettingKeys.AutoPersist,
@@ -59,6 +59,7 @@ export class AppSettingsParser  {
     settings: AppSetting<any>[] = []
 
     constructor (isSSR: boolean = false) {
+
         this.settings = defaultSettings
         
         if (!isSSR) {
@@ -66,14 +67,30 @@ export class AppSettingsParser  {
         }
         
     }
-
+    
     get allSettings () {
         return this.settings
     }
 
+    private isDisabled (setting: AppSetting<any>) : boolean {
+
+        if (!!setting.disableIf) {
+
+            const val = this.getSetting(setting.disableIf.ifKey)
+
+            console.log(val, setting.disableIf.ifVal)
+
+            if (val === setting.disableIf.ifVal) {
+                return true
+            }
+        }
+
+        return setting.disabled
+    }
+
     private parseStorageSettings () {
 
-        const parsedSettigs = this.settings.map(setting => {
+        const parsedSettings = this.settings.map(setting => {
 
             let storageVal = localStorage.getItem(setting.key)
 
@@ -96,9 +113,18 @@ export class AppSettingsParser  {
 
             return { ...setting, val: storageVal } as unknown as AppSetting<string>
         })
+        
+        // TODO refactor this double assign rubbish 
+        this.settings = parsedSettings
 
-        // TODO :: run post parse dependency resolution
-        this.settings = [...parsedSettigs]
+        this.settings = parsedSettings.map(setting => {
+            return {
+                ...setting,
+                disabled: this.isDisabled(setting)
+            }
+        })
+
+        console.log(this.settings)
     }
 
     getSetting (k: SettingKeys) : string | number | boolean {

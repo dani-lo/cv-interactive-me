@@ -51,16 +51,18 @@ const JobsPage = (props: AppDataProps) => {
     const handleClose = () => {
         setActionItem(null);
     }
-    
-    if (!isNaN(maybeUid) && selectedJobId !== maybeUid) {
 
-        setSelectedJobId(maybeUid)
-        
-        const tgt = document.getElementById(`job-${ maybeUid }`)
+    useEffect( () => {
 
-        tgt?.scrollIntoView()
+        if (!isNaN(maybeUid) && selectedJobId !== maybeUid) {
 
-    } 
+            setSelectedJobId(maybeUid)
+            
+            const tgt = document.getElementById(`job-${ maybeUid }`)
+
+            tgt?.scrollIntoView()
+        } 
+    }, [])
     
     const ctx = useContext(CvJobsContext)
 

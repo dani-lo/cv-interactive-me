@@ -59,6 +59,9 @@ export const JobDetailsComponentBase = ({
                 job_job_types.map((jobTypeItem, i) => {
                     return <li 
                         className="itemised" 
+                        onClick={() => {
+                            showActions(jobTypeItem)
+                        }}
                         key={ jobTypeItem.uid }> 
                             <span className="action-wrap evident">
                                 <i 
@@ -77,6 +80,9 @@ export const JobDetailsComponentBase = ({
                 job_job_locations.map((jobTypeItem, i) => {
                     return <li 
                         className="itemised" 
+                        onClick={() => {
+                            showActions(jobTypeItem)
+                        }}
                         key={ jobTypeItem.uid }> 
                             <span className="action-wrap evident">
                                 <i 

@@ -1,12 +1,13 @@
 @media only screen and (max-width: 768px) {
-   .page {
-        margin-left: var(--gap-medium);
+    .page {
+        margin-left: 0;
         position: relative;
         top: 0;
+        margin-top: var(--gap-large);
    }
 
    .jobs-container {
-    padding-top: var(--gap-large);
+        padding-top: 2rem;
    }
    
    .jobs-container.with-selected {

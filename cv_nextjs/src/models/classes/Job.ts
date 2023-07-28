@@ -72,7 +72,10 @@ export class Job extends canAnnotate(canBookmark(canLink(ConcreteMdel))) impleme
 
         const jobFieldsIDs = this.company?.field.map(t => t.uid) || []
 
-        if  (fieldFiltersIDs.length && !fieldFiltersIDs.some(value => jobFieldsIDs.includes(value))) {
+        if  (fieldFiltersIDs.length && !fieldFiltersIDs.some(value => {
+                console.log('DISPLAY???????', jobFieldsIDs, value)
+                jobFieldsIDs.includes(value)
+            })) {
             return false
         }
 

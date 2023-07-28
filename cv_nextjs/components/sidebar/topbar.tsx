@@ -18,27 +18,37 @@ export const TopBarComponent = () => {
   const [showactions, setShowactions] = useAtom(atoms.uiShowActionsAtom)
 
   const [selectedJob, _setSelectedJob] = useAtom(atoms.uiSelectedJobAtom)
-  const [selectedProj, _setSelectedProj] = useAtom(atoms.uiSelectedJobAtom)
+  const [selectedProj, _setSelectedProj] = useAtom(atoms.uiSelectedProjectAtom)
 
   const href = router.asPath.indexOf('jobs') !== -1 ? '/jobs' : router.asPath.indexOf('project') !== -1 ? '/projects' : ''
   
   const hasJobOrProject = !!selectedProj || !!selectedJob
-  const showBack = hasJobOrProject || showsettings || showactions
-  
+    
+  console.log(hasJobOrProject)
+
   return <StyledMobileBar>
         <Link href={ href }>
             {
-                showBack ? 
+                showactions ? 
                     <span className="html-icon">
                         <i   
                             aria-hidden="true" 
-                            className="fa fa-arrow-left" 
+                            className="fa fa-times" 
                             onClick={() => {
                                 setClearSelections() 
                             }}
                         />   
                     </span> 
-                    : null
+                    : hasJobOrProject ?
+                        <span className="html-icon">
+                            <i   
+                                aria-hidden="true" 
+                                className="fa fa-arrow-left" 
+                                onClick={() => {
+                                    setClearSelections() 
+                                }}
+                            />   
+                        </span> : null
             }
         </Link>
         <div>

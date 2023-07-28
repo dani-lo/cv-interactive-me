@@ -21,7 +21,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
         <span  
             className="html-icon" 
             onClick={ toggleSettingsUI }>
-                <i aria-hidden="true" className="fa fa-arrow-left" />
+                <i aria-hidden="true" className="fa fa-times" />
         </span> 
         {
             settings.map(setting => {
@@ -53,7 +53,7 @@ const SettingComponent = ({ setting, saveSetting } : {
     const unchanged = val === setting.val
     const inputValid = setting.validate !== undefined ? setting.validate(val) : true
 
-    return  <div>
+    return  <div className={ setting.disabled ? 'disabled' : '' }>
         {
             typeofSetting == 'boolean' ?
                 <>

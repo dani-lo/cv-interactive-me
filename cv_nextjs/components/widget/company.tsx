@@ -30,21 +30,21 @@ export const CompanyComponent = (props : {
         <p>{ company.description }</p>
         <ul>
             { 
-                company.field.map(f => <CompanyFieldComponent  key={ f.uid } field={ f } />) 
+                company.field.map(f => <CompanyFieldComponent  key={ f.uid } field={ f } showActions={ showActions } />) 
             }
         </ul>
     </StyledCompanyContainer>
 }
 
-const CompanyFieldComponent = (props : { field: Field }) => {
+const CompanyFieldComponent = (props : { field: Field, showActions: (r: Resource) => void }) => {
 
-    const { field } = props
+    const { field, showActions } = props
 
     if (!(field instanceof Field)) {
         throw new Error("You must pass a Field resource to the CompanyComponent")
     }
 
-    return <li className="itemised">
+    return <li className="itemised" onClick={ () => showActions(field) }>
         <span className="action-wrap evident">
             <i 
                 className="action fa fa-plus" 

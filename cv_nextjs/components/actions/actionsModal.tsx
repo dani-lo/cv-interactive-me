@@ -33,14 +33,17 @@ export const ActionsModal = (props: Props) => {
           <ActionInputs.FilterActionInput 
             item={ item } 
             active={ narrowers.itemCanFilter(item) } 
+            close={ handleClose }
           /> 
           <ActionInputs.BookmarkActionInput 
             item={ item } 
             active={ narrowers.itemCanBookmark(item) }
+            close={ handleClose }
           /> 
           <ActionInputs.AnnotateActionInput 
             item={ item } 
             active={ narrowers.itemCanAnnotate(item) } 
+            close={ handleClose }
           /> 
         </div>
       </Box>

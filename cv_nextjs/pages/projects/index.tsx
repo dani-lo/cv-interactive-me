@@ -34,13 +34,30 @@ const ProjectsPage = (props: AppDataProps) => {
 
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
-    const handleOpenModal = (item: Resource | null) => {     
+    useEffect(() => {
+
+        const path = router.asPath
+        const maybeUid = parseInt(path.replace('/projects/', ''))
+
+        if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
+                        
+            setSelectedProjectId(maybeUid)
+
+            const tgt = document.getElementById(`project-${ maybeUid }`)
+
+            tgt?.scrollIntoView()
+        }
+    })
+
+    const handleOpenModal = (item: Resource | null) => {  
+
         if (item !== null) { 
             setActionItem(item) 
         }
     }
 
     const handleCloseModal = () => {
+
         setActionItem(null);
     }
 
@@ -49,26 +66,17 @@ const ProjectsPage = (props: AppDataProps) => {
     const selectedProject = selectedProjectId !== null ? projectModels.get(selectedProjectId) : null
 
     const ctx = useContext(CvJobsContext)
+
     if (ctx === null) {
         return null
     }
 
     const { filters} = ctx.appstate
-
-    const path = router.asPath
-    const maybeUid = parseInt(path.replace('/projects/', ''))
-
-    if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
-                    
-        setSelectedProjectId(maybeUid)
-
-        const tgt = document.getElementById(`project-${ maybeUid }`)
-
-        tgt?.scrollIntoView()
-    }
     
+    const containerClassName = `jobs-container${ selectedProject !== null ? ' with-selected' : ''  }`
+
     return <div className="page">  
-                <div className="jobs-container">
+                <div className={ containerClassName }>
                     {            
                         mapToComponents<Project>(projectModels, (project)  => {
 
@@ -96,14 +104,14 @@ const ProjectsPage = (props: AppDataProps) => {
                     }
                 </div> 
                 {
-                    selectedProject !== null && selectedProject !== undefined ? <div>
+                    selectedProject !== null && selectedProject !== undefined ? 
                         <ProjectDetailComponent 
                             project={ selectedProject }
                             showActions = { handleOpenModal }
                             bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
                             annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
                         />
-                    </div> : null
+                    : null
                 } 
             <ActionsModal 
                 open={ !!actionItem }

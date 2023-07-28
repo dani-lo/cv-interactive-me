@@ -126,7 +126,7 @@
 }
 
 .StyledSidebar i.fa-times {
-    display: none;
+    /* display: none; */
 }
 
 .StyledSidebar h3 {

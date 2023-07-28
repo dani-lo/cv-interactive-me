@@ -24,6 +24,11 @@ export const PendingActionsComponent = () => {
     const [user, ] = useState<User>(new User())
     const [showOptions, setShowOptions] = useState(false)
 
+    const appState = ctx?.appstate
+    const pendingActions = appState ? pendingAppstateActions(appState) : []
+
+    const [showself, setShowSelf] = useState(true)
+
     useEffect(() => {
 
         try {
@@ -50,11 +55,21 @@ export const PendingActionsComponent = () => {
         }
     }
 
-    const appState = ctx?.appstate
-    const pendingActions = pendingAppstateActions(appState)
+    useEffect(() => {
+        
+        setShowSelf(true)
+
+    }, [JSON.stringify(pendingActions)])
+
+    const active = pendingActions.length > 0 && showself
     
-    return <StyledPrompt className={ `${ pendingActions.length ? 'active' : '' }` }>
+    return <StyledPrompt className={ `${ active ? 'active' : '' }` }>
         <div className="prompt">
+            <span 
+                className="html-icon"
+                onClick={ () => setShowSelf(false) }>
+                    <i aria-hidden="true" className="fa fa-times" />
+            </span> 
             <p><strong>You have { pendingActions.length } pending changes</strong></p>
             <button 
                 className="err"
@@ -71,16 +86,18 @@ export const PendingActionsComponent = () => {
                         outcome: 'warning',
                         msg: 'Persisting your changes, please wait',
                     })
-                
-                    persistAppstateActionsData(appState).then((result: AppState) => {
+                    
+                    if (!!appState) {
+                        persistAppstateActionsData(appState).then((result: AppState) => {
                         
-                        uiOperationSuccess({
-                            outcome: 'success',
-                            msg: 'Changes Persisted',
+                            uiOperationSuccess({
+                                outcome: 'success',
+                                msg: 'Changes Persisted',
+                            })
+    
+                            ctx.dispatch({ type: AppStateAction.REFRESH_PENDING, payload: result })
                         })
-
-                        ctx.dispatch({ type: AppStateAction.REFRESH_PENDING, payload: result })
-                    })
+                    }
                 }}
             >Persist</button>
     </div>

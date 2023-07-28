@@ -89,6 +89,7 @@ export const StyledJobDetail = styled.div`
         position: relative;
         height: 100%;
         width: auto;
+        padding-top: var(--gap-huge);
     }
 `
 
@@ -144,6 +145,16 @@ export const StyledSidebar = styled.div`
     h3 {
         padding-bottom: var(--gap-small);
         margin: var(--gap-large) 0 var(--gap-medium);
+    }
+
+    @media only screen and (max-width: 768px) {
+        i.fa-cog {
+            display: none;
+        }
+
+        i.fa-times {
+            display: inline-block;
+        }
     }
 `
 
@@ -202,6 +213,10 @@ export const StyledPrompt = styled.div`
         text-align: left;
     }
 
+    > p {
+        margin: var(--gap-large) 0;
+    }
+
     .prompt {
         display: flex;
         align-items: center;
@@ -215,6 +230,28 @@ export const StyledPrompt = styled.div`
             margin: 0 var(--gap-large) 0 0;;
         }
     }
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        left: 0;
+        top: -500px;
+        padding-top: var(--gap-large);
+
+        &.active {
+            top: 0;
+        }
+
+        span.html-icon i {
+            font-size: 1rem;
+        }
+    }
+
+    span.html-icon {
+        display: inline-block;
+        position: absolute;
+        right: var(--gap-medium);
+        top: var(--gap-small);
+    }
 `
 
 export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
@@ -226,23 +263,29 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
 
     @media only screen and (max-width: 768px) {
         width: 100%;
-        margin-top: var(--gap-large);
+        padding-top: 2rem;
+        left: 0;
 
         ${ props => props.disabled ? 
             'left: -768px;' : 
             'left: 0;'
         }
 
-        i {
-            display: none;
+        span.html-icon {
+            right: var(--gap-large);
         }
+
+        span.html-icon i.fa-times {
+            font-size:1.25rem;
+        }
+    
     }
 
     position: fixed;
     top: 0;
     width: 290px;
     height: 100%;
-    z-index: var(--z-2);
+    z-index: var(--z-4);
     transition: left 0.25s;
     padding: var(--gap-large);
     padding-top: 2rem;
@@ -326,7 +369,16 @@ export const StyledModalWrap = styled(Modal)`
             border: none;
             outline: none;
         }
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            margin: 0;  
+        }
     }
+
+
 `
 
 export const StyledAnnotation = styled.div`
@@ -349,11 +401,15 @@ export const StyledNotification = styled.p`
     font-weight: bold;
     padding: var(--gap-medium) var(--gap-large);
     border: 2px solid var(--white);
+
+    @media only screen and (max-width: 768px) {
+        border: none;
+    }
 `
 
 export const StyledMobileBar = styled.div`
     background: var(--black);
-    padding: var(--gap-medium);
+    padding: var(--gap-large);
     z-index: var(--z-3);
     justify-content: space-between;
     align-items: center;
@@ -371,8 +427,11 @@ export const StyledMobileBar = styled.div`
     }
 
     @media only screen and (max-width: 768px) {
-        display: flex;
-        
+        display: flex;   
+
+        i {
+            font-size: 1.25rem;
+        }
     }
 `
 
@@ -381,4 +440,8 @@ export const StyledAboutContainer = styled.div`
     padding:  var(--gap-medium);
     width: 500px;
     border: 1px solid var(--white);
+
+    @media only screen and (max-width: 768px) {
+        width: auto;
+    }
 `
