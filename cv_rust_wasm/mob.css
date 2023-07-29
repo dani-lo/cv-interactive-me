@@ -81,6 +81,10 @@
         top: 0;
     }
 
+    .StyledPrompt span.html-icon {
+        font-size: 1rem;
+    }
+
     .StyledNotification {
         border: none;
     }

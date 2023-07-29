@@ -45,34 +45,42 @@ const Layout = ({
     }, [])
 
     let settingsDisabled = !showsettings || settingsparser === null
-        
+    
+    const isPrint = router.pathname.indexOf('print') !== -1
+    
     return <div className={feCname}>
         {
             router.pathname !== '/' ? 
             <StyledComponentsRegistry>
-                <TopBarComponent />
-                <SettingsComponent
+                { isPrint ? null : <TopBarComponent /> }
+                { isPrint ? null :  <SettingsComponent
                     disabled = { settingsDisabled }
                     settings={ settingsparser?.allSettings || [] }
                     saveSetting={ (s: AppSetting<any>) => settingsparser !== null ? settingsparser.saveSetting(s.key, s.val) : void 0 }
                     toggleSettingsUI={ () => setShowsettings(!showsettings) }
-                />
+                />  }
                 {
-                    settingsDisabled ? null : <div className="generic-ui-overlay-bg"></div>
+                    settingsDisabled || isPrint ? null : <div className="generic-ui-overlay-bg"></div>
                 }
-                <PendingActionsComponent />
-                <StyledSidebar className={ showactions ? 'active' : ''}>
-                    <span 
-                        className="html-icon"
-                        onClick={ () => setShowsettings(!showsettings) }>
-                            <i aria-hidden="true" className="fa fa-cog" />
-                    </span> 
-                    <h1 className="app-logo">CURRICULUM VITAE</h1>
-                    <AppMenu />
-                    <ActionsList 
-                        { ...pageProps }
-                    />
-                </StyledSidebar>
+                {
+                    !isPrint ? <PendingActionsComponent /> : null
+                    
+                }
+                {
+                    ! isPrint ? <StyledSidebar className={ showactions ? 'active' : ''}>
+                        <span 
+                            className="html-icon"
+                            onClick={ () => setShowsettings(!showsettings) }>
+                                <i aria-hidden="true" className="fa fa-cog" />
+                        </span> 
+                        <h1 className="app-logo">CURRICULUM VITAE</h1>
+                        <AppMenu />
+                        <ActionsList 
+                            { ...pageProps }
+                        />
+                    </StyledSidebar> : null
+                }
+                
             </StyledComponentsRegistry> :
             null
         }

@@ -34,6 +34,11 @@ pub fn pending_actions_component() -> Html {
     let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
     let user = use_state(|| UserModel { _id: None, tok: None });
+    let show_self = use_state(|| true);
+
+    let show_self_callback = show_self.clone();
+    let show_self_effect = show_self.clone();
+
     let c_user = user.clone();
 
     use_effect_with_deps( move |_| {
@@ -49,6 +54,15 @@ pub fn pending_actions_component() -> Html {
         || ()
     }, ());
 
+    let all_pending = state_pending_actions(state);
+
+    use_effect_with_deps( move |_| {
+
+        show_self_effect.set(true);
+
+        || ()
+    }, all_pending.clone());
+
     let user_opts: UseStateHandle<bool> = use_state(|| false);
 
     let show_persist_feedbak_opt = ui_state.settings.get_config_setting_value(&ConfigKeys::ShowPersistFeedback);
@@ -60,7 +74,6 @@ pub fn pending_actions_component() -> Html {
     let settings_ui_dipatcher = ui_dispatch.clone();
     let flush_dispatcher = dispatch.clone();
     
-    let all_pending = state_pending_actions(state);
     let all_pending_len = all_pending.len();
 
     let discard_pending: Callback<Option<yew::UiEvent>> = Callback::from(move |_e| {
@@ -69,7 +82,7 @@ pub fn pending_actions_component() -> Html {
         notify_user("Your changes have ben discarded", true);
     });
     
-    let panel_classname = if (show_persist_feedbak || auto_persist) && all_pending_len > 0  { "StyledPrompt active" } else { "StyledPrompt" };
+    let panel_classname = if (show_persist_feedbak || auto_persist) && all_pending_len > 0 && *show_self  { "StyledPrompt active" } else { "StyledPrompt" };
 
     let apply_pending : Callback<Option<yew::UiEvent>> = Callback::from(move |_e| {
 
@@ -107,6 +120,9 @@ pub fn pending_actions_component() -> Html {
 
     html!{
         <div class={ panel_classname }>
+            <span class="html-icon" onclick={ move |_| show_self_callback.set(false) }>
+                <i aria-hidden="true" class="fa fa-times" />
+            </span>
             <div class="prompt">
                 <p>
                     <strong>

@@ -193,7 +193,7 @@ export const StyledActionsList = styled.ul`
 
 export const StyledPrompt = styled.div`
     width: 450px;
-    z-index: var(--z-4);
+    z-index: var(--z-3);
     position: fixed;
     right: var(--gap-large);
     padding:  var(--gap-medium);
@@ -220,6 +220,7 @@ export const StyledPrompt = styled.div`
     .prompt {
         display: flex;
         align-items: center;
+        padding-top: var(--gap-large);
         
         button {
             margin: 0  var(--gap-small) 0 0;
@@ -235,8 +236,7 @@ export const StyledPrompt = styled.div`
         width: 100%;
         left: 0;
         top: -500px;
-        padding-top: var(--gap-large);
-
+        
         &.active {
             top: 0;
         }

@@ -261,6 +261,7 @@
 
 .StyledPrompt  .prompt {
     display: flex;
+    padding-top: var(--gap-large);
     align-items: center;
 }
 
@@ -271,6 +272,13 @@
 .StyledPrompt .prompt p {
     display: inline-block;
     margin: 0 var(--gap-large) 0 0;
+}
+
+.StyledPrompt span.html-icon {
+    display: inline-block;
+    position: absolute;
+    right: var(--gap-medium);
+    top: var(--gap-small);
 }
 
 .StyledSettingsListContainer {

@@ -67,7 +67,10 @@ export const PendingActionsComponent = () => {
         <div className="prompt">
             <span 
                 className="html-icon"
-                onClick={ () => setShowSelf(false) }>
+                onClick={ () => {
+                    setShowSelf(false)
+                    setShowOptions(false)
+                }}>
                     <i aria-hidden="true" className="fa fa-times" />
             </span> 
             <p><strong>You have { pendingActions.length } pending changes</strong></p>

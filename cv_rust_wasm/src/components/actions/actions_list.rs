@@ -16,7 +16,7 @@ use crate::{
             Collectable,
             PendingStatus,
         }, 
-        store_app::StoreApp
+        store_app::StoreApp, store_ui::StoreUI
     }, 
     util::{
         sort_group::collectionables_vector_to_grouped_hash, 
@@ -171,7 +171,10 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
         ordered_actionable_hashes, 
         collectable_type, 
     } : &ActionListActionablesProps) -> Html {
- 
+    
+    let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
+    
+
     let nav = use_navigator().unwrap();
     let (state, dispatch) = use_store::<StoreApp>();
 
@@ -204,7 +207,11 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                 let n = nav.clone();
                 let dispatcher = dispatch.clone();
 
+                let sidebar_jobs_ui_dipatcher = ui_dispatch.clone();
+                
                 let on_click_browseable_resource: yew::Callback<Option<MouseEvent>> = Callback::from(move |_| { 
+
+                    sidebar_jobs_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui());
 
                     if resource_type_type == ModelTypes::Project {
                         n.push(&AppRoute::ProjectsDetailRoute { uid: resource_id });

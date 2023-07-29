@@ -61,7 +61,7 @@ export default function App({
   }
 
   return  <CvJobsContext.Provider value={ appstateData }>
-    <Layout pageProps={ pageProps }>yl
+    <Layout pageProps={ pageProps }>
       
       { 
          uiOpStatus !== null ?
