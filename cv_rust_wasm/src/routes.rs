@@ -14,6 +14,8 @@ pub enum AppRoute {
     ProjectsDetailRoute{ uid: usize },
     #[at("/personal")]
     PersonalRoute,
+    #[at("/print")]
+    PrintRoute,
     #[not_found]
     #[at("/404")]
     NotFoundRoute,

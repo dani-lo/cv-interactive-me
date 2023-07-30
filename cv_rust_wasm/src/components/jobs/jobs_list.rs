@@ -36,13 +36,16 @@ pub struct JobListProps {
    pub jobs: Vec<JobModel>,
    pub on_select_job_detail:  Callback<usize>,
    pub active_job_id: usize,
+   pub for_print: bool,
 }
 
 #[function_component(JobsListComponent)]
 pub fn job_list(JobListProps { 
         jobs, 
         on_select_job_detail, 
-        active_job_id }: &JobListProps) -> Html {
+        active_job_id,
+        for_print 
+    }: &JobListProps) -> Html {
     
     let selected_id = *active_job_id;
 
@@ -79,7 +82,7 @@ pub fn job_list(JobListProps {
 
     let jobs_list = c_jobs.iter().map(|job| {
          
-        if  has_filters && !job.included_in_filters(&state.filters) {
+        if  !for_print && has_filters && !job.included_in_filters(&state.filters) {
 
             return html!{
                 <></>

@@ -182,6 +182,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                                     jobs={(*jobs).clone()} 
                                     on_select_job_detail={ on_select_job_detail }
                                     active_job_id={ if route_id.is_some() { route_id.unwrap() } else { 0 }  }
+                                    for_print={ false }
                                 />
                             }
                         }

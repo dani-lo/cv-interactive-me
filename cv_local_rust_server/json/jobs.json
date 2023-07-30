@@ -8,7 +8,6 @@
       "company": 1,
       "description":[
         "Working on dashboard and report engine react platforms - visualisation, new features, maintainance",
-        "Meteor, Mongo for frontend state and data storage",
         "Mentoring junior developers",
         "Frontend work across all the company products (Dashboard and Report Engine)",
         "Nodejs work on the Datamodel backend and cli utilities tools"
@@ -26,9 +25,7 @@
       "company": 2,
       "description":[
           "Working day to day in an Agile environment on enhancing the Admedo platform by liasing with the product owner and Backend team to build new features and maintain the existing ones",
-          "In charge of all charting functionalities for the app via in house d3 development (reporting, dashboards, widgets)",
-          "Daily standups, weekly team re trospectives",
-          "No public URL available (DSP ­ subscription based Application) "
+          "In charge of all charting functionalities for the app via in house d3 development (reporting, dashboards, widgets)"
       ],
       "from": [12, 2015],
       "to": [3, 2017],
@@ -42,7 +39,7 @@
       "position":"Frontend developer",
       "company": 3,
       "description":[
-          "Worked on VCCP campaign for O2 to promote rugby world campaigns #WearTheRose and Make Them Giant, aimed at supporting the National rugby team",
+          "Worked on a VCCP campaign for O2 to promote rugby world campaigns (#WearTheRose and Make Them Giant), aimed at supporting the National rugby team",
           "Backbone, responsive, OO javascript development for a video wall and other components within the O2 Make Them Giant website / app",
           "Bootstrap development as part of a team for a highly responsive rewrite of Hiscox new German website frontend "
       ],
@@ -59,7 +56,7 @@
       "company": 4,
       "description":[
           "Development of ATP's flagship online data mining tools, Attributer and Trader, by building on the single page app paradigm and interfacing with a complex backend via a set of RESTful apis to output various sets of data in charted and tabular formats. ",
-          "Ddeveloped ATP's ground breaking Profiler tool, a charting utility targeting demographic, behavioural, and psychographic attributes of online users based on campaigns tracking "
+          "Developed ATP's ground breaking Profiler tool, a charting utility targeting demographic, behavioural, and psychographic attributes of online users based on campaigns tracking "
       ],
       "from": [7, 2013],
       "to": [8, 2015],
@@ -92,7 +89,7 @@
       ],
       "from": [12, 2012],
       "to": [4, 2013],
-      "jobType": [2, 5]
+      "jobType": [2, 3, 5]
     },
     {
       "uid":11,
@@ -103,8 +100,7 @@
       "company": 7,
       "description":[
           "Developed a pilot html5 Javascript application for Sainsburys, Christmas recipes, in close collaboration with an Umbraco .NET developer. The application is Umbraco cms driven, and structured as a large single page ajax application ",
-          "Followed the project from technical specification to support for UX and design specifications and eventually development and backend integration. The pilot proved very successful and has been used for other Sainsburys recipes applications. ",
-          "Scrum project management"
+          "Followed the project from technical specification to support for UX and design specifications and eventually development and backend integration. The pilot proved very successful and has been used for other Sainsburys recipes applications. "
       ],
       "from": [10, 2012],
       "to": [12, 2012],
@@ -149,8 +145,7 @@
       "position":"Frontend developer",
       "company": 9,
       "description":[
-          "OO Javascript, HTML5 development for a locally hosted (no public URL access) photoboot app running on Chrome Local FS api features for their Google account",
-          "The final app was custom installed at major worldwide (i.e. Champions League finals in Munich) events in situ to promote google+ "
+          "OO Javascript, HTML5 development for a locally hosted  photoboot app running on Chrome Local FS api features for their Google account - installed at major worldwide (i.e. Champions League finals in Munich) events in situ to promote google+ "
       ],
       "from": [4, 2012],
       "to": [5, 2012],
@@ -165,11 +160,10 @@
       "company": 10,
       "description":[
           "Lead of small London based frontend team within the Capablue development team, focused on building applications for a new set­top box UI using frontend web technology",
-          "Work with (and on) an advanced custom OO javascript library  interfacing with lower level of the box RMAI",
+          "Work with (and on) an advanced custom OO javascript library  interfacing with the lower level of the box RMAI",
           "Liasing with end client (Software Development company) on all development matters, including enhancements to the RMAI and javascript libraries",
           "Xhtml and css work ('custom' transitions) within a custom browser environment (ANT port of Galio browser)",
-          "Unix routine work for interfacing with the test boxes, compiling and testing",
-          "No public URL available (STB UI Application)"
+          "Unix routine work for interfacing with the test boxes, compiling and testing"
       ],
       "from": [9, 2011],
       "to": [1, 2012],
@@ -183,7 +177,7 @@
       "position":"Frontend Developer",
       "company":11,
       "description":[
-          "Short contract at The App Business - front end development, thml css and javascript (custom development) with focus on web application mobile specific compatibility and optimization for a project for their Dove account"
+          "Front end development - css and javascript  with focus on web application mobile specific compatibility and optimization for a project for The App Buusines Dove account"
       ],
       "from": [8, 2011],
       "to": [9, 2011],
@@ -198,8 +192,8 @@
       "company": 12, 
       "description":[
           "Short contract at Profero, working on a CakePhp site for their account Barclays Stockbrokers",
-          "The role involved mostly css and javascript (UI with jQuery, largely interactive one page site) work",
-          "Redhat box, cakePHP backend (mvc development and refactoring involved), Mercurial versioning tool"
+          "Work on a CakePhp site for Proferos account Barclays Stockbrokers, involving mostly css and javascript work",
+          "Redhat deployment box, cakePHP backend (mvc development and refactoring involved), Mercurial versioning tool"
       ],
       "from": [7, 2011],
       "to": [8, 2011],
@@ -210,15 +204,13 @@
       "title":"July 2010 - July 2011, Iris Digital, London",
       "tech_str":"Php, MySql, SOAP, Regex, Unix (Red Hat), Html, Css, Javascript, Svn admin",
       "tech": [9, 2, 45, 4, 5, 39, 10],
-      "position":"Fullstack Developer",
+      "position":"Fullstack Developer, Lead (and only..) Php Developer",
       "company": 13,
       "description":[
-          "Working on a rolling contract at Iris Digital, lead (and only, admittedly) php developer",
-          "The role involved Php backend development, UI work, SVN and Unix administration, mostly on the client’s Volkswagen Vans account, plus minor work on the client’s other php sites (Sony Ericsson social media, CountryLife, FA)",
+          "Php backend development, UI work, SVN and Unix administration, mostly on the client’s Volkswagen Vans account, plus minor work on the client’s other php sites (Sony Ericsson social media, CountryLife, FA)",
           "Maintenance of the Volkswagen Vans website, involving data reports, PAF data updates, code upgrades, SOAP feeds work, liasing with the account director and account managers over daytoday tasks and with various project managers over new tasks",
           "Maintenance and modifications to the unique Php framework powering the Volkswagen Vans website  Fusebox framework, a Php port of Coldfusion Fusebox: mostly based on serverside inludes, no ORM",
-          "Planning and technical lead on all Volkswagen Vans new projects and improvements. Work on custom javascript / html5 video apps. Maintenance of Volkswagen Vans staging and live server (Unix) environments, SVN work",
-          "Support on various frontend and backend tasks for other accounts, php work apache setup, cPanel"
+          "Planning and technical lead on all Volkswagen Vans new projects and improvements. Work on custom javascript / html5 video apps. Maintenance of Volkswagen Vans staging and live server (Unix) environments, SVN work"
       ],
       "from": [7, 2010],
       "to": [7, 2011],

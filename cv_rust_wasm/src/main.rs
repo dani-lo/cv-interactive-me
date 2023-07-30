@@ -23,6 +23,7 @@ use crate::{
         jobs::JobsComponent,
         projects::ProjectsComponent,
         personal::PersonalComponent,
+        print::PrintComponent,
     },
     components::actions::actions_pending::PendingActionsComponent,
     components::widget::topbar::TopbarComponent,
@@ -49,6 +50,7 @@ fn app() -> Html {
             AppRoute::ProjectsRoute => html! {<ProjectsComponent route_id={ None } /> },
             AppRoute::ProjectsDetailRoute { uid } => html! {<ProjectsComponent route_id={ Some(uid) } /> },
             AppRoute::PersonalRoute => html! { <PersonalComponent /> },
+            AppRoute::PrintRoute => html! { <PrintComponent /> },
             AppRoute::NotFoundRoute => html! { <h1>{ "404" }</h1> },
         }
     }

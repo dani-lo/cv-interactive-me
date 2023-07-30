@@ -7,6 +7,7 @@ import Layout from '../components/layout'
 
 import '../styles/global.css'
 import '../styles/mob.css'
+import '../styles/print.scss'
 
 import type { AppProps } from 'next/app'
 

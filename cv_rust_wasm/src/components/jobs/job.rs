@@ -78,7 +78,7 @@ pub fn job(Props {
                     onclick={ move |_| c_job_detail.emit(c_uid) }
                 />
             </h2>
-            <h3>{ at_company_name }</h3>
+            <h3>{ job.position.clone() }{", "}{ at_company_name }</h3>
             <p>{ desc_text }{"..."}</p>
             <JobTypeComponent
                 job_jobtypes = { job.job_type.clone() }
