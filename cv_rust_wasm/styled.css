@@ -1,7 +1,7 @@
 .StyledAboutContainer {
     margin-top: var(--gap-medium);
     padding:  var(--gap-medium);
-    width: 380px;
+    width: 500px;
     border: 1px solid var(--white);
 }
 
@@ -413,7 +413,6 @@
     color: white;
     font-weight: bold;
     padding: var(--gap-medium) var(--gap-large);
-    border: 2px solid var(--white);
 }
 
 .StyledNotification.active {

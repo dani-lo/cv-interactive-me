@@ -37,7 +37,26 @@ const PersonalPage = (props: AppDataProps) => {
             </StyledAboutContainer>
             <StyledAboutContainer>
                 <h3>Professional Qualities</h3>
-                <p>I am an experienced developer, with a positive can do attitude. A good communicator amongst both technical and non-technical stakeholders, I enjoy finding simple, and thus elegant, solutions to complex problems.</p>
+                <p>I am an experienced developer, with a positive can do attitude. A good communicator with both technical and non-technical colleagues, I enjoy finding simple solutions to complex problems.</p>
+            </StyledAboutContainer>
+            <StyledAboutContainer>
+                <h3>Experience and team fit</h3>
+                <p>A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
+            </StyledAboutContainer>
+            <StyledAboutContainer>
+                <h3>Education</h3>
+                <ul>
+                    <li className="itemised">Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelor's Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st).</li></ul>
+            </StyledAboutContainer>
+            <StyledAboutContainer>
+                <h3>Personal Interests</h3>
+                <ul>
+                    <li className="itemised list-item">Yoga, Meditation</li>
+                    <li className="itemised list-item">Traveling</li>
+                    <li className="itemised list-item">Books</li>
+                    <li className="itemised list-item">Cooking</li>
+                    <li className="itemised list-item">Indian Philosophy</li>
+                </ul>
             </StyledAboutContainer>
             <StyledAboutContainer>
                 <h3>Skills</h3>
@@ -59,25 +78,6 @@ const PersonalPage = (props: AppDataProps) => {
                         return <span key={ i } style={ style }>{ model.name }</span>
                     })
                 }
-            </StyledAboutContainer>
-            <StyledAboutContainer>
-                <h3>Experience and team fit</h3>
-                <p>A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment</p>
-            </StyledAboutContainer>
-            <StyledAboutContainer>
-                <h3>Education</h3>
-                <ul>
-                    <li className="itemised">Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelor's Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st) - 2004</li></ul>
-            </StyledAboutContainer>
-            <StyledAboutContainer>
-                <h3>Personal Interests</h3>
-                <ul>
-                    <li className="itemised list-item">Yoga, Meditation</li>
-                    <li className="itemised list-item">Traveling</li>
-                    <li className="itemised list-item">Books</li>
-                    <li className="itemised list-item">Cooking</li>
-                    <li className="itemised list-item">Indian Philosophy</li>
-                </ul>
             </StyledAboutContainer>
         </div>
     </div>

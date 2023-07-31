@@ -86,14 +86,14 @@ pub fn config_settings() -> Html {
 
 #[derive(PartialEq, Properties)]
 pub struct SettingProps {
-    setting: ConfigItem,
+    setting: ConfigItem<bool>,
     setting_key: ConfigKeys,
     dispatch: Dispatch<StoreUI>,
 }
 
 #[function_component(ConfigSettingComponent)]
 pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &SettingProps) -> Html {    
-
+    
     let dispatcher = dispatch.clone();
     
     let val_opt: Option<bool> = setting.val;
@@ -112,9 +112,10 @@ pub fn config_settings(SettingProps { setting, dispatch, setting_key } : &Settin
     let next_checked_state = if val == true { false } else { true };
 
     let cloned_key = setting_key.clone();
+    let cname = if setting.disabled { "disabled" } else { "" };
 
     html!{
-        <div>    
+        <div class={ cname }>    
             <input 
                 type="checkbox" 
                 checked={ *checked_state }

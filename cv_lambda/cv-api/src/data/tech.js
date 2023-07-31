@@ -238,65 +238,65 @@ const techs = [{
 },
 {
   "name": "Nextjs",
-  "uid": 58
-},
-{
-  "name": "Jotai",
   "uid": 59
 },
 {
-  "name": "Github actions",
+  "name": "Jotai",
   "uid": 60
 },
 {
-  "name": "Deno",
+  "name": "Github actions",
   "uid": 61
 },
 {
-  "name": "Nginx",
+  "name": "Deno",
   "uid": 62
 },
 {
-  "name": "rocket",
+  "name": "Nginx",
   "uid": 63
 },
 {
-  "name": "Yewdux",
+  "name": "rocket",
   "uid": 64
 },
 {
-  "name": "Flask",
+  "name": "Yewdux",
   "uid": 65
 },
 {
- 
-  "name": "Classic ASP (Jscript)",
+  "name": "Flask",
   "uid": 66
 },
 {
  
-  "name": "xml",
+  "name": "Classic ASP (Jscript)",
   "uid": 67
 },
 {
  
-  "name": "actionscript",
+  "name": "xml",
   "uid": 68
 },
 {
  
-  "name": "iss",
+  "name": "actionscript",
   "uid": 69
 },
 {
  
-  "name": "Sourcesafe",
+  "name": "iss",
   "uid": 70
 },
 {
  
-  "name": "husky",
+  "name": "Sourcesafe",
   "uid": 71
+},
+{
+ 
+  "name": "husky",
+  "uid": 72
 }
 ];
 

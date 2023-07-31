@@ -165,7 +165,6 @@ pub fn personal() -> Html {
                             }
                         }
                     }   
-                    
                 }  
             </div>
             <div class="page">
@@ -189,7 +188,27 @@ pub fn personal() -> Html {
                                     </div>
                                     <div class="StyledAboutContainer">
                                         <h3>{ "Professional Qualities" }</h3>
-                                        <p>{"I am an experienced developer, with a positive can do attitude. A good communicator amongst both technical and non-technical stakeholders, I enjoy finding simple, and thus elegant, solutions to complex problems."}</p>
+                                        <p>{"I am an experienced developer, with a positive can do attitude. A good communicator with both technical and non-technical colleagues, I enjoy finding simple solutions to complex problems."}</p>
+                                    </div>
+                                    <div class="StyledAboutContainer">
+                                        <h3>{ "Experience and team fit" }</h3>
+                                        <p>{"A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment"}</p>
+                                    </div>
+                                    <div class="StyledAboutContainer">
+                                        <h3>{ "Education" }</h3>
+                                        <ul>
+                                            <li class="itemised">{"Laurea in "}<strong>{"Scienze della Comunicazione "}</strong>{"at Universita degli studi di Siena - Bachelor’s Degree (BSc) equivalent in "}<strong>{"Media Studies"}</strong>{" at Siena University, Italy, First class honours (1st)."}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="StyledAboutContainer">
+                                        <h3>{ "Personal Interests" }</h3>
+                                        <ul>
+                                            <li class="itemised list-item">{"Yoga, Meditation"}</li>
+                                            <li class="itemised list-item">{"Traveling"}</li>
+                                            <li class="itemised list-item">{"Books"}</li>
+                                            <li class="itemised list-item">{"Cooking"}</li>
+                                            <li class="itemised list-item">{"Indian Philosophy"}</li>
+                                        </ul>
                                     </div>
                                     <div class="StyledAboutContainer">
                                         <h3>{ "Skills" }</h3>
@@ -204,26 +223,6 @@ pub fn personal() -> Html {
                                             }).collect::<Html>()
                                         }
                                         </p>
-                                    </div>
-                                    <div class="StyledAboutContainer">
-                                        <h3>{ "Experience and team fit" }</h3>
-                                        <p>{"A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment"}</p>
-                                    </div>
-                                    <div class="StyledAboutContainer">
-                                        <h3>{ "Education" }</h3>
-                                        <ul>
-                                            <li class="itemised">{"Laurea in "}<strong>{"Scienze della Comunicazione "}</strong>{"at Universita degli studi di Siena - Bachelor’s Degree (BSc) equivalent in "}<strong>{"Media Studies"}</strong>{" at Siena University, Italy, First class honours (1st) - 2004"}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="StyledAboutContainer">
-                                        <h3>{ "Personal Interests" }</h3>
-                                        <ul>
-                                            <li class="itemised list-item">{"Yoga, Meditation"}</li>
-                                            <li class="itemised list-item">{"Traveling"}</li>
-                                            <li class="itemised list-item">{"Books"}</li>
-                                            <li class="itemised list-item">{"Cooking"}</li>
-                                            <li class="itemised list-item">{"Indian Philosophy"}</li>
-                                        </ul>
                                     </div>
                                 </div>
                             }

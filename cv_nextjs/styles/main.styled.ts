@@ -400,7 +400,6 @@ export const StyledNotification = styled.p`
     color: white;
     font-weight: bold;
     padding: var(--gap-medium) var(--gap-large);
-    border: 2px solid var(--white);
 
     @media only screen and (max-width: 768px) {
         border: none;
