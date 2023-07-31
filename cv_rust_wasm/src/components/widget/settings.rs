@@ -187,7 +187,7 @@ pub fn tok_setting_component() -> Html {
                 }}
                 value={ (*user_tok_state_val).clone() }
             />
-            <p>{ "lorem ipso dtiam non adiiscit eu fooler olor it amet et" }</p>
+            <p>{ "Change this value to use a custom user token: this could be done for example to be able to use somebody else token, and thus see their bookmarks, annotations etc." }</p>
             <button 
                 class={ save_class }
                 onclick={  save_tok }>

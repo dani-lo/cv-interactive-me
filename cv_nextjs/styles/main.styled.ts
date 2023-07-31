@@ -120,7 +120,7 @@ export const StyledSidebar = styled.div`
     border-right: 1px dotted var(--border-col);
     height: 100%;
     padding: var(--gap-large);
-    z-index: var(--z-2);
+    z-index: var(--z-4);
     transition: left 0.25s;
 
     > .html-icon {

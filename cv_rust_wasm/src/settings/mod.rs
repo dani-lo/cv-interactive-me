@@ -56,7 +56,7 @@ impl SettingsConfig {
             default: true,
             key: "auto_persist".to_string(),
             val: None,
-            desc: "Lorem ipso dolor sit amet etiam non vai ben bene cosi - bugiarda quando ti conviene ..".to_string(),
+            desc: "If set to true, the app will automatically persist your changes: they will be saved to database and indexed under your user token.".to_string(),
             label: "Auto Persist".to_string(),
         });
 
@@ -64,17 +64,9 @@ impl SettingsConfig {
             default: true,
             key: "show_persist_feedback".to_string(),
             val: None,
-            desc: "Lorem ipso dolor sit amet etiam non sei mica bugiarda quando ti conviene pero foo is a bar is a bar is a foo, usually".to_string(),
+            desc: "If set to true, the app will always ask you to manually persist your changes.".to_string(),
             label: "Show Persist Feedback".to_string(),
         });
-
-        // items.insert(ConfigKeys::UserTok, ConfigItem {
-        //     default: true,
-        //     key: "_".to_string(),
-        //     val: None,
-        //     desc: "Lorem ipso dolor sit amet etiam non sei mica bugiarda quando ti conviene pero foo is a bar is a bar is a foo, usually".to_string(),
-        //     label: "".to_string(),
-        // });
 
         Self {
             items

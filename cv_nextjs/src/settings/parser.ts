@@ -28,7 +28,7 @@ const defaultSettings = [
         disabled: false,
         val: null,
         default: true,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris',
+        desc: 'If set to true, the app will automatically persist your changes: they will be saved to database and indexed under your user token.',
         force: false,
         disableIf: {
             ifKey: SettingKeys.AutoPersist,
@@ -40,7 +40,7 @@ const defaultSettings = [
         disabled: false,
         val: null,
         default: false,
-        desc: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore',
+        desc: 'If set to true, the app will always ask you to manually persist your changes.',
         force: false,
     },
     {
@@ -48,7 +48,7 @@ const defaultSettings = [
         disabled: false,
         val: null,
         default: generateUserTok(),
-        desc: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore',
+        desc: 'Change this value to use a custom user token: this could be done for example to be able to use somebody else token, and thus see their bookmarks, annotations etc.',
         validate: (v: string) => v.length == 5,
         force: true,
     },
