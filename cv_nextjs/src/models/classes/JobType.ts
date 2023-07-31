@@ -22,4 +22,12 @@ export class JobType extends canFilter(ConcreteMdel) implements IJobType {
     toString() : string {
         return this.name
     }
+
+    toLabel () {
+        if (this.prefix == "PLACE") {
+            return 'Working from'
+        }
+        return 'Job type'
+    }
+    
 }

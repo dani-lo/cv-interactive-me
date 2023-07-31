@@ -85,7 +85,7 @@ export class Job extends canAnnotate(canBookmark(canLink(ConcreteMdel))) impleme
         
         const jobTypesIDs = this.jobType.map(t => t.uid) || []
 
-        if  (jobtypeFiltersIDs.length && !fieldFiltersIDs.some(value => jobTypesIDs.includes(value))) {
+        if  (jobtypeFiltersIDs.length && !jobtypeFiltersIDs.some(value => jobTypesIDs.includes(value))) {
             return false
         }
 

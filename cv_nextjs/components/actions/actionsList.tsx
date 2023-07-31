@@ -9,12 +9,20 @@ import { IAnnotate, IAnnotateKeys } from "../../src/models/mixins/withAnnotate"
 import { IBookmark, IBookmarkKeys } from "../../src/models/mixins/withBookmark"
 import { IFilter, IFilterKeys } from "../../src/models/mixins/withFilter"
 
-import { PendingStatus } from "../../src/store/appState"
+import { AppStatePending, PendingStatus } from "../../src/store/appState"
 
-import { AppDataProps, Resource } from "../../src/types"
+import { AppAction, AppDataProps, Collectable, Resource, ResourceType } from "../../src/types"
 
 import { StyledActionsList } from "../../styles/main.styled"
 import { ActionLink } from "./actionLink"
+
+const filterLabel = (resource: Resource & IFilter) : string => {
+    if (resource.toLabel() == '') {
+        return resource.resource_type
+    }
+    
+    return resource.toLabel()
+}
 
 export const ActionsList = (props: AppDataProps) => {
 
@@ -44,7 +52,7 @@ export const ActionsList = (props: AppDataProps) => {
 
                             return <li key={ `${appFilter.resource_type}-${appFilter.resource_id}` } className="action-wrap">
                                     <span>
-                                        <strong className="capital">{ appFilter.resource_type }</strong>: 
+                                        <strong className="capital">{ filterLabel(resource) }</strong>: 
                                         <ActionLink resource={ resource } />
                                     </span>
                                     <i className="action fa fa-times" onClick={ () => resource[IFilterKeys.UNDO_ACTION](ctx) } />

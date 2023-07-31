@@ -15,12 +15,17 @@ export abstract class Model {
     abstract toUrl(): string
     abstract display(filters: Filter[]) : boolean
     abstract getParentResource (): ResourceType | null
+    abstract toLabel() : string
 }
 
 export class ConcreteMdel extends Model {
 
     toString () {
         return 'Cv Model'
+    }
+
+    toLabel () {
+        return ''
     }
 
     toUrl () {

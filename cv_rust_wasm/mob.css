@@ -22,7 +22,7 @@
         position: relative;
         height: 100%;
         width: auto;
-        padding-top: 3rem;
+        top: 35px;
     }
 
     .StyledModalWrap > div {

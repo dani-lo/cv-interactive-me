@@ -51,6 +51,7 @@ body {
 
 .page {
   margin-left: 360px;
+  margin-top: var(--gap-large);
 }
 
 .page-grid {

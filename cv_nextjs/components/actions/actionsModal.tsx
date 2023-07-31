@@ -28,6 +28,12 @@ export const ActionsModal = (props: Props) => {
       aria-describedby="modal-modal-description"
     >
       <Box>
+        <span className="btn-close">
+          <i 
+            className="fa fa-times" 
+            onClick={ handleClose }
+          />
+        </span>
         <h2>{ item?.toString() }</h2>
         <div>
           <ActionInputs.FilterActionInput 

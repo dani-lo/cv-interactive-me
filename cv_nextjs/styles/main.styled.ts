@@ -89,7 +89,7 @@ export const StyledJobDetail = styled.div`
         position: relative;
         height: 100%;
         width: auto;
-        padding-top: var(--gap-huge);
+        top: 35px;
     }
 `
 
@@ -187,6 +187,10 @@ export const StyledActionsList = styled.ul`
             &:hover {
                 color: var(--active-pink);
             }
+        }
+
+        > span:first-child span, a {
+            padding-left: var(--gap-small);
         }
     }
 `
@@ -327,19 +331,19 @@ export const StyledModalWrap = styled(Modal)`
     top: 0;
     left: 0;
 
-    .span.btn-close {
+    .btn-close {
         position: absolute;
         right: 1em;
         top: 0.5em;
         cursor: pointer;
-    }
-    
-    .span.btn-close:hover i {
-        color: var(--active-action);
-    }
-    
-    .span.btn-close i {
-        font-size: 1em;
+
+        i {
+            font-size: 1em;
+        }
+
+        &:hover i {
+            color: var(--active-action);
+        }
     }
     
     .h2 {
@@ -364,6 +368,7 @@ export const StyledModalWrap = styled(Modal)`
         border-radius: 5px;
         padding: 1.5rem 2rem var(--gap-medium);
         border: none;
+        position: relative;
         
         &:focus-visible {
             border: none;
