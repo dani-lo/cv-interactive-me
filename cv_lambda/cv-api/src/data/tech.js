@@ -1,6 +1,6 @@
 const techs = [{
  
-  "name": "Classic ASP",
+  "name": "Classic ASP (VBscript)",
   "uid": 1
 },{
  
@@ -16,7 +16,7 @@ const techs = [{
   "uid": 4
 },{
  
-  "name": "Xhtml",
+  "name": "html",
   "uid": 5
 },{
  
@@ -227,8 +227,77 @@ const techs = [{
 {
   "name": "HTML5",
   "uid": 56
+},
+{
+  "name": "Python",
+  "uid": 57
+},
+{
+  "name": "Terminator",
+  "uid": 58
+},
+{
+  "name": "Nextjs",
+  "uid": 58
+},
+{
+  "name": "Jotai",
+  "uid": 59
+},
+{
+  "name": "Github actions",
+  "uid": 60
+},
+{
+  "name": "Deno",
+  "uid": 61
+},
+{
+  "name": "Nginx",
+  "uid": 62
+},
+{
+  "name": "rocket",
+  "uid": 63
+},
+{
+  "name": "Yewdux",
+  "uid": 64
+},
+{
+  "name": "Flask",
+  "uid": 65
+},
+{
+ 
+  "name": "Classic ASP (Jscript)",
+  "uid": 66
+},
+{
+ 
+  "name": "xml",
+  "uid": 67
+},
+{
+ 
+  "name": "actionscript",
+  "uid": 68
+},
+{
+ 
+  "name": "iss",
+  "uid": 69
+},
+{
+ 
+  "name": "Sourcesafe",
+  "uid": 70
+},
+{
+ 
+  "name": "husky",
+  "uid": 71
 }
-
-]
+];
 
 module.exports = techs;

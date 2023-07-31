@@ -13,8 +13,8 @@ const fields = [
     },
     {
         "uid": 4,
-        "name": "public"
-    },
+        "name": "software services"
+    }
 ];
 
 module.exports = fields;

@@ -24,6 +24,6 @@ const jobTypes = [
         "name": "office",
         "prefix": "PLACE"
     }
-]
+];
 
 module.exports = jobTypes;

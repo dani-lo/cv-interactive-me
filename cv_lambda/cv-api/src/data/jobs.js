@@ -296,6 +296,6 @@ const jobs = [
       "to": [10, 2007],
       "jobType": [1, 5]
     }
-  ]
+  ];
 
 module.exports = jobs;
