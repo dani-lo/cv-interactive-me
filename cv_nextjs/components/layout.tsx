@@ -73,7 +73,7 @@ const Layout = ({
                             onClick={ () => setShowsettings(!showsettings) }>
                                 <i aria-hidden="true" className="fa fa-cog" />
                         </span> 
-                        <h1 className="app-logo"><a href="/">CURRICULUM VITAE</a></h1> 
+                        <h1 className="app-logo"><a href="https://interactiveme.net/">CURRICULUM VITAE</a></h1> 
                         <AppMenu />
                         <ActionsList 
                             { ...pageProps }

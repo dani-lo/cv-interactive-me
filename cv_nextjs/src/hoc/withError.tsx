@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
             <div className="jobs-container">
               <StyledInlineWarning>
                 <p>There was an error</p>
-                <p><a href="/">back to safety</a></p>
+                <p><a href="https://interactiveme.net/">back to safety</a></p>
               </StyledInlineWarning>
             </div>
           </div>
