@@ -75,7 +75,7 @@ const JobsPage = (props: AppDataProps) => {
     const containerClassName = `jobs-container${ selectedJob !== null ? ' with-selected' : ''  }`
 
     return <div className="page">  
-        <div className={ containerClassName }>
+        <div className={ containerClassName } data-testid="jobs-container">
             {            
                 mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
 

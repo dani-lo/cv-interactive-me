@@ -153,15 +153,6 @@
     padding: 0;
 }
 
-.StyledActionsList li.list-footer-meta-action {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.StyledActionsList li.list-footer-meta-action:hover {
-    color: var(--active-pink);
-}
-
 .StyledProjectStatusList {
     margin: var(--gap-small) 0;
     padding-right: var(--gap-large);

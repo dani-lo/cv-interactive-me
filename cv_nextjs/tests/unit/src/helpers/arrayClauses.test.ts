@@ -1,8 +1,7 @@
-import { initialState } from '../../../src/store/appState'
-import * as ArrayClause from '../../../src/helpers/arrayClauses'
-import { Tech } from '../../../src/models/classes/Tech';
+import * as ArrayClause from '../../../../src/helpers/arrayClauses'
+import { Tech } from '../../../../src/models/classes/Tech';
 
-import { AppAction, ResourceType } from "../../../src/types";
+import { AppAction, ResourceType } from "../../../../src/types";
 
 describe('Array clauses for application actions', () => {
 

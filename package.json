@@ -1,0 +1,19 @@
+{
+  "name": "interactive-me",
+  "version": "1.0.0",
+  "description": "cv review app built in different frontend and backend techs as a learning platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dani-lo/cv-interactive-me.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dani-lo/cv-interactive-me/issues"
+  },
+  "homepage": "https://github.com/dani-lo/cv-interactive-me#readme"
+}

@@ -179,16 +179,6 @@ export const StyledActionsList = styled.ul`
         justify-content: space-between;
         padding: 0;
 
-        &.list-footer-meta-action {
-
-            text-decoration: underline;
-            cursor: pointer;
-
-            &:hover {
-                color: var(--active-pink);
-            }
-        }
-
         > span:first-child span, a {
             padding-left: var(--gap-small);
         }

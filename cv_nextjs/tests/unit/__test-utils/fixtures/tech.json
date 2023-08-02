@@ -1,6 +1,6 @@
 [{
  
-  "name": "Classic ASP",
+  "name": "Classic ASP (VBscript)",
   "uid": 1
 },{
  
@@ -16,7 +16,7 @@
   "uid": 4
 },{
  
-  "name": "Xhtml",
+  "name": "html",
   "uid": 5
 },{
  
@@ -223,5 +223,79 @@
 {
   "name": "Node",
   "uid": 55
+},
+{
+  "name": "HTML5",
+  "uid": 56
+},
+{
+  "name": "Python",
+  "uid": 57
+},
+{
+  "name": "Terminator",
+  "uid": 58
+},
+{
+  "name": "Nextjs",
+  "uid": 59
+},
+{
+  "name": "Jotai",
+  "uid": 60
+},
+{
+  "name": "Github actions",
+  "uid": 61
+},
+{
+  "name": "Deno",
+  "uid": 62
+},
+{
+  "name": "Nginx",
+  "uid": 63
+},
+{
+  "name": "rocket",
+  "uid": 64
+},
+{
+  "name": "Yewdux",
+  "uid": 65
+},
+{
+  "name": "Flask",
+  "uid": 66
+},
+{
+ 
+  "name": "Classic ASP (Jscript)",
+  "uid": 67
+},
+{
+ 
+  "name": "xml",
+  "uid": 68
+},
+{
+ 
+  "name": "actionscript",
+  "uid": 69
+},
+{
+ 
+  "name": "iss",
+  "uid": 70
+},
+{
+ 
+  "name": "Sourcesafe",
+  "uid": 71
+},
+{
+ 
+  "name": "husky",
+  "uid": 72
 }
 ]

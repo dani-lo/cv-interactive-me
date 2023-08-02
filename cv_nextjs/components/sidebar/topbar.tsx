@@ -24,8 +24,6 @@ export const TopBarComponent = () => {
   
   const hasJobOrProject = !!selectedProj || !!selectedJob
     
-  console.log(hasJobOrProject)
-
   return <StyledMobileBar>
         <Link href={ href }>
             {

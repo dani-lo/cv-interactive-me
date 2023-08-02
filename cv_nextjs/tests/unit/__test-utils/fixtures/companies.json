@@ -4,14 +4,14 @@
         "name": "Bright Analytics",
         "location": "London",
         "description": "Bright Analytics is a modular analytics platform with integrated solutions for data acquisition, preparation, analysis and sharing",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 2,
         "name": "Admedo",
         "location": "London",
         "description": "A performance based DSP, aiming at democratising programmatic advertising and simplifying the access to display media",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 3,
@@ -25,7 +25,7 @@
         "name": "ATP",
         "location": "London",
         "description": "A software platform led company that helps improve the return on media investment significantly by identifying and targeting audiences and continuously optimising marketing campaigns using bespoke algorithms and software tools",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 5,
@@ -53,7 +53,7 @@
         "name": "Grouptree",
         "location": "London",
         "description": "A privately owned software development company based in central London specialising in the development of object oriented software solutions designed to manage digital assets",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 9,
@@ -67,14 +67,14 @@
         "name": "Capablue",
         "location": "London",
         "description": "One of the UK’s leading Video on Demand (VoD) and Connected TV solutions provider",
-        "field": [1]
+        "field": [3]
     },
     {
         "uid": 11,
         "name": "The App Business",
         "location": "London",
         "description": "The App Business is a team of specialists dedicated to creating effective app strategy and ideas, and to developing high quality apps and web services",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 12,
@@ -102,13 +102,13 @@
         "name": "Dr Foster",
         "location": "London",
         "description": "The UK's leading independent supplier of health and social care information, whose work encompasses research, analysis, product development, social marketing campaigns, management information tools and industryguiding publications",
-        "field": [1]
+        "field": [4]
     },
     {
         "uid": 16,
         "name": "Filmnight",
         "location": "London",
         "description": "An ecommerce company specializing in online Dvds / Soundtrack sales, trailers, and technologies for delivery of mobile content.",
-        "field": [1]
+        "field": [2]
     }
 ]

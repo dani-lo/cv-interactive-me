@@ -234,6 +234,16 @@ li.itemised {
   display: list-item;
 }
 
+
+li.list-footer-meta-action {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+li.list-footer-meta-action:hover {
+  color: var(--active-pink);
+}
+
 i.bookmark {
   color: var(--text-clear);
   font-size: 1.2rem !important;

@@ -1,8 +1,7 @@
-import { initialState } from '../../../src/store/appState'
-import { mappedResource } from '../../../src/helpers/mappedResource'
-import { Tech } from '../../../src/models/classes/Tech';
+import { mappedResource } from '../../../../src/helpers/mappedResource'
+import { Tech } from '../../../../src/models/classes/Tech';
 
-import { ITech } from "../../../src/types";
+import { ITech } from "../../../../src/types";
 
 describe('Array clauses for application actions', () => {
 

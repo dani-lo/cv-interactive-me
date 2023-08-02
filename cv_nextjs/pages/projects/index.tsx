@@ -76,7 +76,7 @@ const ProjectsPage = (props: AppDataProps) => {
     const containerClassName = `jobs-container${ selectedProject !== null ? ' with-selected' : ''  }`
 
     return <div className="page">  
-                <div className={ containerClassName }>
+                <div className={ containerClassName }  data-testid="jobs-container">
                     {            
                         mapToComponents<Project>(projectModels, (project)  => {
 
