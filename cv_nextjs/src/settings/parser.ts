@@ -78,8 +78,6 @@ export class AppSettingsParser  {
 
             const val = this.getSetting(setting.disableIf.ifKey)
 
-            console.log(val, setting.disableIf.ifVal)
-
             if (val === setting.disableIf.ifVal) {
                 return true
             }
@@ -123,8 +121,6 @@ export class AppSettingsParser  {
                 disabled: this.isDisabled(setting)
             }
         })
-
-        console.log(this.settings)
     }
 
     getSetting (k: SettingKeys) : string | number | boolean {

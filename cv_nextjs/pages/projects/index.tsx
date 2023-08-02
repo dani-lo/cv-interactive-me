@@ -20,7 +20,6 @@ import { ProjectComponent } from '../../components/projects/project'
 
 import { annotationForResource } from '../../src/helpers/actionForResource'
 import { IBookmarkKeys } from '../../src/models/mixins/withBookmark'
-import { ErrorBoundary } from '../../src/hoc/withError'
 import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
 import { ProjectDetailComponent } from '../../components/projects/projectDetail'
 import { useRouter } from 'next/router'
@@ -76,49 +75,50 @@ const ProjectsPage = (props: AppDataProps) => {
     const containerClassName = `jobs-container${ selectedProject !== null ? ' with-selected' : ''  }`
 
     return <div className="page">  
-                <div className={ containerClassName }  data-testid="jobs-container">
-                    {            
-                        mapToComponents<Project>(projectModels, (project)  => {
+        <div className={ containerClassName } data-testid="jobs-container">
+            
+            {            
+                mapToComponents<Project>(projectModels, (project)  => {
 
-                            if (filters && !project.display(filters)) {
-                                return null
-                            }
-                            
-                            const annotation = annotationForResource(project, ctx.appstate)
-                            const annotationText = annotation ? (annotation.text || '') : null
-                            const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
-                            
-                            return  <ProjectComponent
-                                key={ project.name } 
-                                id={ `project-${ project.uid }` }
-                                project={ project } 
-                                selected={ selected }
-                                bookmarked={ project[IBookmarkKeys.STATUS](ctx) }
-                                annotationText={ annotationText }
-                                handleSelect={() => {
-                                    setSelectedProjectId(project.uid)
-                                    deepLinkSelected(project)
-                                }}
-                            />
-                        })
+                    if (filters && !project.display(filters)) {
+                        return null
                     }
-                </div> 
-                {
-                    selectedProject !== null && selectedProject !== undefined ? 
-                        <ProjectDetailComponent 
-                            project={ selectedProject }
-                            showActions = { handleOpenModal }
-                            bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
-                            annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
-                        />
-                    : null
-                } 
-            <ActionsModal 
-                open={ !!actionItem }
-                item={ actionItem }
-                handleClose={ handleCloseModal }
-            />
-        </div>
+                    
+                    const annotation = annotationForResource(project, ctx.appstate)
+                    const annotationText = annotation ? (annotation.text || '') : null
+                    const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
+                    
+                    return  <ProjectComponent
+                        key={ project.name } 
+                        id={ `project-${ project.uid }` }
+                        project={ project } 
+                        selected={ selected }
+                        bookmarked={ project[IBookmarkKeys.STATUS](ctx) }
+                        annotationText={ annotationText }
+                        handleSelect={() => {
+                            setSelectedProjectId(project.uid)
+                            deepLinkSelected(project)
+                        }}
+                    />
+                })
+            }
+        </div> 
+        {
+            selectedProject !== null && selectedProject !== undefined ? 
+                <ProjectDetailComponent 
+                    project={ selectedProject }
+                    showActions = { handleOpenModal }
+                    bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
+                    annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
+                />
+            : null
+        } 
+        <ActionsModal 
+            open={ !!actionItem }
+            item={ actionItem }
+            handleClose={ handleCloseModal }
+        />
+    </div>
 }
 
 export default ProjectsPage

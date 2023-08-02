@@ -4,6 +4,8 @@ import { useAtom } from 'jotai'
 import * as atoms from '../src/store-jotai/atomicUiStore'
 
 import Layout from '../components/layout'
+import { ErrorBoundary } from '../src/hoc/withError'
+
 
 import '../styles/global.css'
 import '../styles/mob.css'
@@ -69,7 +71,9 @@ export default function App({
             <StyledNotification className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</StyledNotification> :
             null
         }
-        <Component {...pageProps} />
+        <ErrorBoundary>
+          <Component {...pageProps} />
+        </ErrorBoundary>
       </Layout>
     </CvJobsContext.Provider>
 }

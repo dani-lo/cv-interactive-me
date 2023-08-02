@@ -8,7 +8,7 @@
 
     h2 {
         margin: var(--gap-large) 0 var(--gap-large) 0;
-        font-size: 15px;
+        font-size: 14px;
         color: var(--text-main);
         
     }
@@ -18,24 +18,25 @@
     }
 
     h3 {
-        font-size: 14px;
-        color: var(--text-main);
-        margin: var(--gap-medium) 0;
-        display: list-item;
-        list-style-position: inside;    
+        font-size: 13px;
+        // color: var(--text-main);
+        margin: 14px 0 10px;
+        color: #0a5f79;  
     }
 
     h4 {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--text-main);
-        margin: var(--gap-small) 0;
+        margin: auto;
     }
 
     p, li {
         font-size: 12px;
         color: var(--text-main);
-        padding: 2px;
-        margin: var(--gap-small) 0;
+        padding: 0;
+        margin: 8px 0px;
+        display: block;
+        line-height: 19px;
     }
 
     span.resource-name {
@@ -45,7 +46,7 @@
     div.pers-data {
         display: flex;
         justify-content: space-between;
-        width: 50%;
+        width: 85%;
 
         p {
             font-size: 14px;
@@ -60,19 +61,19 @@
         h2 {
             border: none;
             text-transform: none;
-            font-size: 14px;
             margin: 0;
-            padding: var(--gap-large) 0;
+            padding: 12px 0 0;
 
         }
     }
 
     ul.skills {
         li {
-            margin-right: 5px;
-            display: inline list-item;
+            display: inline-block;
             list-style: disc;
             text-transform: capitalize;
+            padding: 0 2px 0 0;
+            margin: 0 5px 0 0;
         }
     }
 }

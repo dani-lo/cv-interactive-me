@@ -1,12 +1,13 @@
 import React from "react"
+import { StyledInlineWarning } from "../../styles/main.styled";
 
-class ErrorBoundary extends React.Component<any, { hasError: Error | null }> {
+class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
     
     constructor (props: any) {
       super(props)
 
       this.state = {
-        hasError: null
+        hasError: false
       }
     }
     displayName = 'ErrorBoundary'
@@ -16,23 +17,22 @@ class ErrorBoundary extends React.Component<any, { hasError: Error | null }> {
       return { hasError: error };  
     }
 
-    componentDidCatch () {
-      console.log('I CAUGHT!!!')
+    componentDidCatch (err: Error) {
+      this.setState({
+        hasError: true
+      })
     }
 
     render() {
-
-      if (this.state && this.state.hasError) {
+      if (this.state && !this.state.hasError) {
         return (
-          <div>
-            <h3>There was an error</h3>
-            {/* <p>{ this.state.errorMessage || 'No error info available' }</p> */}
-            {/* <button
-              type="button"
-              onClick={() => this.setState({ hasError: null })}
-            >
-              Try again?
-            </button> */}
+          <div className="page">
+            <div className="jobs-container">
+              <StyledInlineWarning>
+                <p>There was an error</p>
+                <p><a href="/">back to safety</a></p>
+              </StyledInlineWarning>
+            </div>
           </div>
         )
       }

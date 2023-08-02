@@ -17,13 +17,11 @@ import { mapToComponents } from '../../src/helpers/mapMap'
 import { transformData } from '../../src/helpers/transformData'
 import { annotationForResource } from '../../src/helpers/actionForResource'
 
-import { ErrorBoundary } from '../../src/hoc/withError'
-
 import { 
     AppDataProps,
     Resource 
 } from '../../src/types'
-import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
+
 import { useRouter } from 'next/router'
 import { useAtom } from 'jotai'
 
@@ -95,8 +93,9 @@ const JobsPage = (props: AppDataProps) => {
                         annotationText={ annotationText }
                         selected={ selected }
                         handleSelect= { () => {
-                            deepLinkSelected(job)
-                            setSelectedJobId(job.uid)
+                            // deepLinkSelected(job)
+                            // setSelectedJobId(job.uid)
+                            throw new Error('error in jobs ....')
                         }}
                     />
                 })

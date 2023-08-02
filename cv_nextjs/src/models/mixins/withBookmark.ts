@@ -42,8 +42,6 @@ export function canBookmark<T extends Constructor<Model>>(constructor: T = Model
       }
 
       const { dispatch } = ctx
-
-      // console.log('UNDO BOOKMARK!!! ::: resource_id, resource_type', this.id, this.resource_type)
       
       dispatch({
         type: AppStateAction.REMOVE_BOOKMARK,
@@ -61,9 +59,7 @@ export function canBookmark<T extends Constructor<Model>>(constructor: T = Model
       }
 
       const { bookmarks } = ctx.appstate
-      // console.log(bookmarks)
-      // console.log(this.resource_type)
-      // console.log(!!(bookmarks.find(ArrayClause.findClause(this, this.resource_type))))
+     
       return !!(bookmarks.find(ArrayClause.findClause(this, this.resource_type)))
     }
   }

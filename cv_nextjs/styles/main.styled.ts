@@ -305,11 +305,18 @@ export const StyledInlineWarning = styled.div`
     border: 1px solid var(--warn);
     padding: var(--gap-large);
     background: white;
+    width: 300px;
 
     p {
         font-weight: bold;
         color: var(--warn);
     }
+
+    @media only screen and (max-width: 768px) {
+        margin: var(--gap-large);  
+        width: auto;
+    }
+   
 `
 
 export const StyledModalWrap = styled(Modal)`

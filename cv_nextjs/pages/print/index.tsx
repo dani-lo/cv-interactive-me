@@ -31,24 +31,26 @@ const JobsPage = (props: AppDataProps) => {
         <div className="pers-data">
             <h2 className="dani">
                 <strong>Daniele Longo</strong>
-                <strong>danielelongo@hotmail.com</strong>
+                {/* <strong>danielelongo@hotmail.com</strong> */}
             </h2>
             <h2>
                 <strong>github.com/dani-lo</strong>
                 <strong>interactiveme.net</strong>
             </h2>
         </div>
-        <h2>Skills</h2>
-        <ul className="skills">
+            
+            <h2>Professional Qualities</h2>
+            <p>I am an experienced developer, with a positive can do attitude and extensive experience in working within different sized teams, management styles and work arrangements.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
+            <h2>Team fit</h2>
+            <p>A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
+            <h2>Skills</h2>
+            <ul className="skills">
             {
                 techs.map(tech => {
-
                     return <li key={ tech.name }>{ tech.name }</li>
                 })
             }
             </ul>
-            <h2>Qualities</h2>
-            <p>I am an experienced developer, with a positive can do attitude and extensive experience in working within different sized teams, management styles and work arrangements.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
             <h2>Work</h2>
             {            
                 mapToComponents<Job>(jobModels, (job: Job, i: number)  => {

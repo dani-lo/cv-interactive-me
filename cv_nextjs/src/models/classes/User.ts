@@ -5,7 +5,6 @@ import { Collectable } from "../../types"
 import { AppSettingsParser, SettingKeys } from "../../settings/parser"
 
 const cvTokKey = 'cv-app-tok'
-const banUserTrackingKey = 'ban-user-tracking'
 
 const useStorage = (typeof window !== 'undefined') 
 
@@ -69,12 +68,9 @@ export class User implements Collectable {
                             tok: this.tok
                         })
                     )
-                    console.log('NOW set the created id', postUserResponse.data.data.user._id)
-                    console.log('(postUserResponse.data ---)')
-                    console.log(postUserResponse.data)
                     this._id = postUserResponse.data.data.user._id
                 } catch (e) {
-                    console.log('CAUGHT!!!! post user (postUserResponse)')
+
                     // @ts-ignore
                     throw(new Error('Failed to initialise User'))
                 }
