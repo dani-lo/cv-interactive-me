@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component<any, { hasError: boolean }> {
     }
 
     render() {
-      if (this.state && !this.state.hasError) {
+      if (this.state && this.state.hasError) {
         return (
           <div className="page">
             <div className="jobs-container">
