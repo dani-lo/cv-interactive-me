@@ -24,6 +24,7 @@ import {
 
 import { useRouter } from 'next/router'
 import { useAtom } from 'jotai'
+import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
 
 export const getStaticProps = getAppStaticProps
 
@@ -93,9 +94,8 @@ const JobsPage = (props: AppDataProps) => {
                         annotationText={ annotationText }
                         selected={ selected }
                         handleSelect= { () => {
-                            // deepLinkSelected(job)
-                            // setSelectedJobId(job.uid)
-                            throw new Error('error in jobs ....')
+                            deepLinkSelected(job)
+                            setSelectedJobId(job.uid)
                         }}
                     />
                 })
