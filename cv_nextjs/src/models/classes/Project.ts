@@ -41,7 +41,7 @@ export class Project extends canAnnotate(canBookmark(canLink(ConcreteMdel))) imp
         
         this.period = new JobPeriod(doc.from, doc.to)
         
-        this.tech = [4, 11, 33].map(techUid => techModels.get(techUid)).filter(techModel => !!techModel) as Tech[]
+        this.tech = doc.tech.map(techUid => techModels.get(techUid)).filter(techModel => !!techModel) as Tech[]
     }
 
     toString () {
