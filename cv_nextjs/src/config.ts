@@ -6,12 +6,13 @@ export const URL_GET_FIELDS = process.env.NODE_ENV == 'development' ? 'http://lo
 export const URL_GET_PROJECTS = process.env.NODE_ENV == 'development' ? 'http://localhost:8080/api/projects' : 'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/projects'
 export const URL_GET_PERSONAL = 'personal'
 
-const URL_ACTIONS_BASE = process.env.NODE_ENV == 'development' ? 'http://localhost:8000' : 'http://localhost:8000'
+const URL_ACTIONS_BASE = process.env.NODE_ENV == 'development' ? 'http://localhost:8000' : 'https://interactiveme.net'
 
 export const URL_ACTIONS = {
     BOOKMARKS: `${ URL_ACTIONS_BASE }/api/bookmarks`,
     FILTERS: `${ URL_ACTIONS_BASE }/api/filters`,
-    ANNOTATIONS: `${ URL_ACTIONS_BASE }/api/annotations`
+    ANNOTATIONS: `${ URL_ACTIONS_BASE }/api/annotations`,
+    USERS: `${ URL_ACTIONS_BASE }/api/users`
 }
 
 export const techShowLimit = 5

@@ -3,6 +3,7 @@ import Error from "next/error"
 import { generateUserTok } from "../../helpers/userTok"
 import { Collectable } from "../../types"
 import { AppSettingsParser, SettingKeys } from "../../settings/parser"
+import { URL_ACTIONS } from '../../config'
 
 const cvTokKey = 'cv-app-tok'
 
@@ -14,7 +15,7 @@ export class User implements Collectable {
     private tok: string | null
 
     constructor () {
-        this.tok = useStorage ? this.initTok() : null
+        this.tok = 'dani5'//useStorage ? this.initTok() : null
     }
 
     get name () {
@@ -51,7 +52,7 @@ export class User implements Collectable {
         }
 
         try {
-            const getUserDataResponse =  await axios.get(`http://localhost:8000/api/users/${ this.tok }`)
+            const getUserDataResponse =  await axios.get(`${ URL_ACTIONS.USERS }/${ this.tok }`)
 
             this._id = getUserDataResponse.data.data.user._id
 
@@ -63,7 +64,7 @@ export class User implements Collectable {
 
                 try {
                     const postUserResponse = await axios.post(
-                        `http://localhost:8000/api/users`, 
+                        URL_ACTIONS.USERS, 
                         new URLSearchParams({
                             tok: this.tok
                         })

@@ -60,6 +60,7 @@ body.scroll-down .StyledMobileBar i.fa {
 
 .page {
   margin-left: 360px;
+  margin-top: var(--gap-large);
 }
 
 .page-grid {

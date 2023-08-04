@@ -280,6 +280,16 @@ export const getAppstateActionsData = async () => {
 
     const user = await getUser()
 
+    console.log(user)
+
+    if (!user._id) {
+        return {
+            [AppstateKeys.BOOKMARKS] :      [],
+            [AppstateKeys.FILTERS] :        [],
+            [AppstateKeys.ANNOTATIONS] :    [],
+        }
+    }
+
     try {
 
         const responses = await Promise.all([
