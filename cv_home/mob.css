@@ -8,8 +8,8 @@
         display: none;
     }
     .logo {
-        position: static;
-        padding: var(--gap-large);
+        /* position: static;
+        padding: var(--gap-large); */
         width: auto;
     }
  }

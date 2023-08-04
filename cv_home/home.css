@@ -1,11 +1,12 @@
 .logo {
-    padding: 0;
-    align-items: center;
-    position: fixed;
-    top: var(--gap-huge);
-    left: 800px;
-    bottom: var(--gap-huge);
+    /* padding: 0; */
+    /* align-items: center; */
+    /* position: fixed; */
+    /* top: var(--gap-huge); */
+    /* left: 800px; */
+    /* bottom: var(--gap-huge); */
     width: 350px;
+    margin: var(--gap-huge);
 }
 
 .logo h1 {
@@ -48,6 +49,7 @@ h1 {
 .content {
     margin-left: var(--gap-huge);
     /* margin-top: 3.5rem; */
+    display: none;
 }
 
 .content-sect {
