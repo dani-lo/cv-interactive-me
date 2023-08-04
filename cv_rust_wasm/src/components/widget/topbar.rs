@@ -42,8 +42,12 @@ pub fn topbar(TopbarProps { on_back, show_back_btn } : &TopbarProps) -> Html {
     let show_close_settings_button = ui_state.settings_ui;
     let show_close_sidebar_button = ui_state.sidebar_ui;
 
+    let expanded = show_close_settings_button || show_close_sidebar_button;
+
+    let cname = if expanded { "StyledMobileBar expanded" } else { "StyledMobileBar" };
+
     html!{  
-        <div class="StyledMobileBar">
+        <div class={ cname }>
         {
             if *show_back_btn && !(show_close_settings_button || show_close_sidebar_button) {
                 html!{

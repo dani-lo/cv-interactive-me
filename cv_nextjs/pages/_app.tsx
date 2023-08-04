@@ -23,16 +23,37 @@ import { AppSettingsParser, SettingKeys } from '../src/settings/parser'
 
 export const CvJobsContext = createContext<CvContext | null>(null)
 
+let lastScrollTop = 0; 
 
 export default function App({ 
   Component, 
   pageProps }: AppProps & { pageProps: AppProps}) {
 
-    const [uiBusy, ] = useAtom(atoms.uiBusy)
     const [uiOpStatus, ] = useAtom(atoms.uiOpStatus)
     const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
 
     const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
+
+    useEffect(() => {
+      const onScroll = function() {
+
+        var st = window.pageYOffset || document.documentElement.scrollTop; 
+        
+        if (st > lastScrollTop) {
+            document.body.className = "scroll-down"
+        } else if (st < lastScrollTop) {
+            document.body.className = "scroll-up"
+        }
+        
+        lastScrollTop = st <= 0 ? 0 : st;
+      }
+        
+      window.addEventListener('scroll', onScroll);
+      
+      return () => {
+        window.removeEventListener('scroll', onScroll);
+      }
+    }, []);
 
     useEffect(() => {
       const parser = new AppSettingsParser()
@@ -62,10 +83,9 @@ export default function App({
     appstate,
     dispatch
   }
-
+      
   return  <CvJobsContext.Provider value={ appstateData }>
     <Layout pageProps={ pageProps }>
-      
       { 
          uiOpStatus !== null ?
             <StyledNotification className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</StyledNotification> :

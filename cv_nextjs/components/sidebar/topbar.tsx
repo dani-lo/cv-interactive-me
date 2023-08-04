@@ -23,8 +23,10 @@ export const TopBarComponent = () => {
   const href = router.asPath.indexOf('jobs') !== -1 ? '/jobs' : router.asPath.indexOf('project') !== -1 ? '/projects' : ''
   
   const hasJobOrProject = !!selectedProj || !!selectedJob
-    
-  return <StyledMobileBar>
+
+  const expanded = showsettings || showactions || hasJobOrProject
+
+  return <StyledMobileBar className={ expanded ? 'expanded mobile-bar' : 'mobile-bar' }>
         <Link href={ href }>
             {
                 showactions ? 

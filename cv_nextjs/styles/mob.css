@@ -3,11 +3,10 @@
         margin-left: 0;
         position: relative;
         top: 0;
-        margin-top: var(--gap-large);
    }
 
    .jobs-container {
-        padding-top: 2rem;
+        padding-top: 3rem;
    }
    
    .jobs-container.with-selected {

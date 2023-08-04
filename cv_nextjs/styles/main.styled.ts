@@ -187,7 +187,7 @@ export const StyledActionsList = styled.ul`
 
 export const StyledPrompt = styled.div`
     width: 450px;
-    z-index: var(--z-3);
+    z-index: var(--z-5);
     position: fixed;
     right: var(--gap-large);
     padding:  var(--gap-medium);
@@ -410,7 +410,7 @@ export const StyledNotification = styled.p`
 
 export const StyledMobileBar = styled.div`
     background: var(--black);
-    padding: var(--gap-large);
+    padding: var(--gap-medium);
     z-index: var(--z-3);
     justify-content: space-between;
     align-items: center;
@@ -419,8 +419,18 @@ export const StyledMobileBar = styled.div`
     top: 0;
     width: 100%;
 
-    p, i, a {
+    i {
         color: white;
+        font-size: 1.25rem;
+        transition: padding, font-size 0.2s;
+    }
+
+    &.expanded {
+        padding: var(--gap-medium)!important;
+    }
+    
+    &.expanded i {
+        font-size: 1.25rem!important;
     }
 
     > div > span:first-child {
@@ -428,11 +438,7 @@ export const StyledMobileBar = styled.div`
     }
 
     @media only screen and (max-width: 768px) {
-        display: flex;   
-
-        i {
-            font-size: 1.25rem;
-        }
+        display: flex;
     }
 `
 

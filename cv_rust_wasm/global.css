@@ -24,6 +24,7 @@
   --z-2: 10;
   --z-3: 100;
   --z-4: 1000;
+  --z-5: 10000;
 }
 
 * {
@@ -49,9 +50,16 @@ body {
   background: var(--white);
 }
 
+
+body.scroll-down .StyledMobileBar {
+  padding: var(--gap-small);
+}
+body.scroll-down .StyledMobileBar i.fa {
+  font-size: 1rem;
+}
+
 .page {
   margin-left: 360px;
-  margin-top: var(--gap-large);
 }
 
 .page-grid {
