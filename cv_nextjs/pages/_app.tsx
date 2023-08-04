@@ -10,6 +10,7 @@ import { ErrorBoundary } from '../src/hoc/withError'
 import '../styles/global.css'
 import '../styles/mob.css'
 import '../styles/print.scss'
+import '../styles/next.css'
 
 import type { AppProps } from 'next/app'
 

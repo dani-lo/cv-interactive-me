@@ -1,6 +1,9 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
+
+  const isSSR = typeof window === 'undefined'
+
   return (
     <Html>
       <Head>
@@ -16,7 +19,7 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" /> 
       </Head>
 
-      <body>
+      <body className={ isSSR ? "ssr" : "" }>
         <Main />
         <NextScript />
         <script defer src="https://use.fontawesome.com/26d8741e78.js"></script>
