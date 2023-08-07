@@ -15,6 +15,7 @@
 
     .StyledJobContainer, .StyledAboutContainer {
         width: auto;
+        margin: var(--gap-large);
     }
     
     .StyledJobDetail {

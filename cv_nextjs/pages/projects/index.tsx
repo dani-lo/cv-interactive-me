@@ -34,10 +34,12 @@ const ProjectsPage = (props: AppDataProps) => {
 
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
+    const path = router.asPath
+    const maybeUid = parseInt(path.replace('/projects/', ''))
+
     useEffect(() => {
 
-        const path = router.asPath
-        const maybeUid = parseInt(path.replace('/projects/', ''))
+        
 
         if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
                         
@@ -47,7 +49,7 @@ const ProjectsPage = (props: AppDataProps) => {
 
             tgt?.scrollIntoView()
         }
-    })
+    }, [maybeUid])
 
     const handleOpenModal = (item: Resource | null) => {  
 

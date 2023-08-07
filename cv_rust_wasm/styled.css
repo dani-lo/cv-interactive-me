@@ -9,7 +9,7 @@
     margin-top: var(--gap-large);
     padding:  var(--gap-medium);
     width: 380px;
-    border: 1px solid var(--white);
+    border: 1px solid var(--active-action);
 }
 
 .StyledJobContainer:first-child {   
@@ -73,12 +73,12 @@
 
 .StyledJobDetail {
     position: fixed;
-    width: 420px;
+    width: 380px;
     overflow-y: scroll;
     height: 100%;
     top: 12px;
     padding: var(--gap-large);
-    left: 740px;
+    left: 760px;
     background: var(--white);
 }
 
@@ -314,7 +314,7 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: var(--z-4);
+    z-index: var(--z-5);
     background: transparent;
     top: 0;
     left: 0;

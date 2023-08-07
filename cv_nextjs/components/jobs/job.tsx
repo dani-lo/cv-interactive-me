@@ -4,6 +4,7 @@ import { Job } from "../../src/models/classes/Job"
 import { Resource } from "../../src/types"
 
 import { StyledJobContainer } from '../../styles/main.styled'
+import { substrNice } from '../../src/helpers/substr'
 
 type JobProps = {
     bookmarked: boolean;
@@ -22,6 +23,9 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     selected,
 } : JobProps) => {
     
+    const desc = job.description[0];
+    let desc_text = substrNice(desc, 60)
+
     return <StyledJobContainer id={ id } className={ selected ? "selected" : "" }>
          <h2 > 
             <span>
@@ -39,6 +43,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
         <h3> 
         { job.position }{ job.company ? `, ${  job.company.name  }` : '' }
         </h3>
+        <p>{ desc_text } ...</p>
         <p> Job type:
             {
                 job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {

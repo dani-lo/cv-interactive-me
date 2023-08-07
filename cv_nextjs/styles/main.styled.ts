@@ -3,10 +3,10 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-    margin-top: var(--gap-medium);
+    margin-top: var(--gap-large);
     padding:  var(--gap-medium);
     width: 380px;
-    border: 1px solid var(--white);
+    border: 1px solid var(--active-action);
 
     &.selected {
         background: var(--active-action);
@@ -64,18 +64,19 @@ export const StyledJobContainer = styled.div`
 
     @media only screen and (max-width: 768px) {
         width: auto;
+        margin: var(--gap-large);
     }
 `
 
 export const StyledJobDetail = styled.div`
     
     position: fixed;
-    width: 420px;
+    width: 380px;
     overflow-y: scroll;
     height: 100%;
     top: 12px;
     padding: var(--gap-large);
-    left: 740px;
+    left: 760px;
     background: var(--white);
     
     h2 {
@@ -109,8 +110,6 @@ export const StyledSidebar = styled.div`
             left: 0;
         }
     }
-
-    
 
     width: 320px;
     position: fixed;
@@ -323,7 +322,7 @@ export const StyledModalWrap = styled(Modal)`
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: var(--z-3);
+    z-index: var(--z-5);
     background: transparent;
     top: 0;
     left: 0;

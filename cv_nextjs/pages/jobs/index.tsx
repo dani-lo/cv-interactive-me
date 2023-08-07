@@ -61,9 +61,9 @@ const JobsPage = (props: AppDataProps) => {
             const tgt = document.getElementById(`job-${ maybeUid }`)
 
             tgt?.scrollIntoView()
-            window.scrollBy(0,-12)
+            window.scrollBy(0,-24)
         } 
-    })
+    }, [maybeUid])
     
     const ctx = useContext(CvJobsContext)
 
