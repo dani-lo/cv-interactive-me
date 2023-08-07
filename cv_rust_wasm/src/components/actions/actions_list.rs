@@ -24,7 +24,10 @@ use crate::{
         parent_resource::parent_resource_or_self,
         wasm_bridge::scroll_to_slot,
     },
-    models::ModelTypes,
+    models::{
+        Model,
+        ModelTypes
+    },
     traits::{
         can_annotate::Annotation,
         can_bookmark::Bookmark,
@@ -95,7 +98,7 @@ pub fn actions_list ()  -> Html {
     let ordered_bookmark_hashes = collectionables_vector_to_grouped_hash(actionable_bookmarks);
     let ordered_annotations_hashes = collectionables_vector_to_grouped_hash(actionable_annotations);
     let ordered_filter_hashes = collectionables_vector_to_grouped_hash(actionable_filters);
-
+    
     html! {
         <>
             <div>
@@ -173,7 +176,15 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
     } : &ActionListActionablesProps) -> Html {
     
     let (_ui_state, ui_dispatch) = use_store::<StoreUI>();
-    
+    let (state, _dispatch) = use_store::<StoreApp>();
+
+    let active_filters = state.filters.iter().filter(|f| 
+        f.pending == PendingStatus::Void || 
+        f.pending == PendingStatus::VoidThenEdited || 
+        f.pending == PendingStatus::Added
+    ).collect::<Vec<&Filter>>();
+
+    let has_filters = active_filters.len() > 0;
 
     let nav = use_navigator().unwrap();
     let (state, dispatch) = use_store::<StoreApp>();
@@ -221,7 +232,41 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
 
                     scroll_to_slot(resource_id);
                 });
-                
+                 
+                let  mut item_cname = "";
+
+                if has_filters && parent.is_some() {
+                    let actual_parent_type = parent.unwrap().1;
+                    let actual_parent_id = parent.unwrap().0;
+
+                    if actual_parent_type == ModelTypes::Job {
+
+                        let job_opt = &static_models.model_hashes.jobs.get(&actual_parent_id);
+
+                        if job_opt.is_some() {
+                            
+                            let job = job_opt.unwrap();
+
+                            if !job.included_in_filters(&state.filters) {
+                                item_cname = "disabled";
+                            }
+                        }
+                        
+                    } else if actual_parent_type == ModelTypes::Project {
+
+                        let project_opt = &static_models.model_hashes.jobs.get(&actual_parent_id);
+
+                        if project_opt.is_some() {
+
+                            let project = project_opt.unwrap();
+
+                            if !project.included_in_filters(&state.filters) {
+                                item_cname = "disabled";
+                            }
+                        }
+                    }
+                }
+
                 html!{
                     <li class="itemised action-wrap">
                         <span>
@@ -229,6 +274,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                             {": "}
                             <ActionsListLinkComponent 
                                 item={ parent } 
+                                item_cname={ item_cname }
                                 text={ res_name.name } 
                                 on_click_browseable_resource={ on_click_browseable_resource }
                             />
@@ -287,6 +333,7 @@ pub struct ActionsListLinkProps {
     pub item: Option<(usize, ModelTypes)>,
     pub text: String,
     pub on_click_browseable_resource: yew::Callback<Option<MouseEvent>>,
+    pub item_cname: String,
 }
 
 
@@ -294,6 +341,7 @@ pub struct ActionsListLinkProps {
 pub fn actions_list_link (ActionsListLinkProps { 
         item, 
         text,
+        item_cname,
         on_click_browseable_resource } : &ActionsListLinkProps)  -> Html { 
 
     if item.is_none() {
@@ -305,7 +353,7 @@ pub fn actions_list_link (ActionsListLinkProps {
         let on_click = on_click_browseable_resource.clone();
 
         return html!{ 
-            <a onclick={ move |_| on_click.emit(None) }>{ text }</a> 
+            <a class={ item_cname } onclick={ move |_| on_click.emit(None) }>{ text }</a> 
         }
     }
 }

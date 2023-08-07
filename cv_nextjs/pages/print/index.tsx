@@ -40,9 +40,9 @@ const JobsPage = (props: AppDataProps) => {
         </div>
             
             <h2>Professional Qualities</h2>
-            <p>I am an experienced developer, with a positive can do attitude and extensive experience in working within different sized teams, management styles and work arrangements.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
+            <p>I am an experienced developer, with a positive can do attitude.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
             <h2>Team fit</h2>
-            <p>A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
+            <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
             <h2>Skills</h2>
             <ul className="skills">
             {

@@ -29,7 +29,10 @@ use crate::traits::{
     can_bookmark::Bookmark,
     can_filter::Filter,
 };
-use crate::util::wasm_bridge::scroll_to_slot;
+use crate::util::wasm_bridge::{
+    scroll_to_slot,
+    scroll_top,
+};
 
 #[derive(Properties, PartialEq)]
 pub struct JobListProps {
@@ -52,6 +55,8 @@ pub fn job_list(JobListProps {
     use_effect_with_deps(move|_| {
         if selected_id > 0 {
             scroll_to_slot(selected_id);
+        } else {
+            scroll_top();
         }
     }, ());
 

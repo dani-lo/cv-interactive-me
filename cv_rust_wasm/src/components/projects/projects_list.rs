@@ -1,11 +1,13 @@
 use std::{collections::HashMap, cmp::Ordering};
 
+use log::info;
 use yew::{
     Html, 
     Properties, 
     Callback, 
     function_component, 
-    html, use_effect_with_deps,
+    html, 
+    use_effect_with_deps,
 };
 
 use serde::{
@@ -27,7 +29,10 @@ use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
 };
-use crate::util::wasm_bridge::scroll_to_slot;
+use crate::util::wasm_bridge::{
+    scroll_to_slot,
+    scroll_top,
+};
 
 #[derive(Properties, PartialEq)]
 pub struct ProjectListProps {
@@ -69,7 +74,10 @@ pub fn job_list(ProjectListProps {
 
     use_effect_with_deps(move|_| {
         if selected_id > 0 {
+            info!("SCROLLING TO SLOT {}", selected_id);
             scroll_to_slot(selected_id);
+        } else {
+            scroll_top();
         }
     }, ());
 

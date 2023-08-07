@@ -51,10 +51,6 @@ pub fn job(Props {
     let desc = job.description[0].clone();
     let desc_text:fstr<80> = fstr::make(&desc);
 
-    use_effect(move || {
-        wasm_bridge::scroll_top();
-    });
-
     html! {
         <div class={ c_name } id={ format!("slot-{}", c_uid) }>
             <h2>

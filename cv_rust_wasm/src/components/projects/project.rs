@@ -44,9 +44,9 @@ pub fn project(ProjectProps {
 
     let c_uid = c_project.uid.clone();
 
-    use_effect(move || {
-        wasm_bridge::scroll_top();
-    });
+    // use_effect(move || {
+    //     wasm_bridge::scroll_top();
+    // });
 
     html! {
         <div class={ c_name } id={ format!("slot-{}", c_uid) }>

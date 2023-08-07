@@ -1,5 +1,5 @@
 use crate::{
-    models::ModelTypes, 
+    models::{ModelTypes, jobtype_model::JobtypePrefix}, 
     appdata::stores::store_app_types::AppStaticDataHashes
 };
 
@@ -35,9 +35,12 @@ pub fn resource_name (
             let resource = resource_hashmap.get(&res_id);
 
             if resource.is_some() {
+
+                let jtype = resource.unwrap();
+
                 ResourceName{
-                    type_name: "job type", 
-                    name: resource.unwrap().name.clone()
+                    type_name: if jtype.prefix == JobtypePrefix::PLACE { "work from" } else { "job type" },
+                    name: jtype.name.clone()
                 }
             } else {
                 ResourceName{

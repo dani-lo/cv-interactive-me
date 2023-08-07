@@ -110,11 +110,14 @@
 
             setTimeout(function () {
               var elem =  document.getElementById('slot-' + slotId);
-          
-              elem.scrollIntoView({
-                block: "start", 
-                inline: "nearest"
-              });
+              
+              if (elem) {
+                elem.scrollIntoView({
+                  block: "start", 
+                  inline: "nearest"
+                });
+              }
+              
             }, 10);
           },
 

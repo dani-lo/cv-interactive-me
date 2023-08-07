@@ -52,7 +52,7 @@ use crate::{
     traits::ActionTypes, 
     util::{
         make_model::make_jobs,
-        url_query_params::get_query_params, 
+        url_query_params::get_query_params, wasm_bridge, 
     },
     CV_APP_LOADED, routes::AppRoute,
 
