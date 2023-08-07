@@ -35,7 +35,8 @@ const Layout = ({
 
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
-
+    const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
+    
     const [settingsparser, setSettingsparser] = useState<AppSettingsParser | null>(null)
 
     useEffect(() => {
@@ -45,47 +46,37 @@ const Layout = ({
     }, [])
 
     let settingsDisabled = !showsettings || settingsparser === null
-    
-    const isPrint = router.pathname.indexOf('print') !== -1
-    
+        
     return <div className={feCname}>
+        { uiBusy ? null : <TopBarComponent /> }
+        { uiBusy ? null :  <SettingsComponent
+            disabled = { settingsDisabled }
+            settings={ settingsparser?.allSettings || [] }
+            saveSetting={ (s: AppSetting<any>) => settingsparser !== null ? settingsparser.saveSetting(s.key, s.val) : void 0 }
+            toggleSettingsUI={ () => setShowsettings(!showsettings) }
+        />  }
         {
-            router.pathname !== '/' ? 
-            <StyledComponentsRegistry>
-                { isPrint ? null : <TopBarComponent /> }
-                { isPrint ? null :  <SettingsComponent
-                    disabled = { settingsDisabled }
-                    settings={ settingsparser?.allSettings || [] }
-                    saveSetting={ (s: AppSetting<any>) => settingsparser !== null ? settingsparser.saveSetting(s.key, s.val) : void 0 }
-                    toggleSettingsUI={ () => setShowsettings(!showsettings) }
-                />  }
-                {
-                    settingsDisabled || isPrint ? null : <div className="generic-ui-overlay-bg"></div>
-                }
-                {
-                    !isPrint ? <PendingActionsComponent /> : null
-                    
-                }
-                {
-                    ! isPrint ? <StyledSidebar className={ showactions ? 'active' : ''}>
-                        <span 
-                            className="html-icon"
-                            onClick={ () => setShowsettings(!showsettings) }>
-                                <i aria-hidden="true" className="fa fa-cog" />
-                        </span> 
-                        <h1 className="app-logo"><a href="https://interactiveme.net/">CURRICULUM VITAE</a></h1> 
-                        <AppMenu />
-                        <ActionsList 
-                            { ...pageProps }
-                        />
-                    </StyledSidebar> : null
-                }
-                
-            </StyledComponentsRegistry> :
-            null
+            settingsDisabled || uiBusy ? null : <div className="generic-ui-overlay-bg"></div>
         }
         {
-            children
+            !uiBusy ? <PendingActionsComponent /> : null
+        }
+        {
+            ! uiBusy ? <StyledSidebar className={ showactions ? 'active' : ''}>
+                <span 
+                    className="html-icon"
+                    onClick={ () => setShowsettings(!showsettings) }>
+                        <i aria-hidden="true" className="fa fa-cog" />
+                </span> 
+                <h1 className="app-logo"><a href="https://interactiveme.net/">CURRICULUM VITAE</a></h1> 
+                <AppMenu />
+                <ActionsList 
+                    { ...pageProps }
+                />
+            </StyledSidebar> : null
+        }
+        {
+            uiBusy ? null :  children
         }
     </div>
 }

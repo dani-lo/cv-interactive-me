@@ -37,7 +37,7 @@ export const ProjectDetailsComponentBase = ({
             }
         </h2>
         { annotationText ? <AnnotationsComponent note={ annotationText }/> : null }
-            <p className="proj-repo"><a href={ project.repo } target="_blank">Github Repo</a></p>
+            <p className="proj-repo"><a href={ project.repo } target="_blank" rel="noreferrer">Github Repo</a></p>
             <ul>
             {
                 project.description.map((task: string) => {

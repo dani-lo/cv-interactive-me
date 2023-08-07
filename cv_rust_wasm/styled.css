@@ -406,13 +406,18 @@
 
 .StyledNotification {
     position: fixed;
-    display: inline-block;
-    left: 2rem;
-    top: 2rem;
+    width: 100%;
+    left: 0;
+    top: 0;
     z-index: var(--z-4);
+}
+
+.StyledNotification p {
+    display: block;
     color: white;
     font-weight: bold;
     padding: var(--gap-medium) var(--gap-large);
+    text-align: center;
 }
 
 .StyledNotification.active {

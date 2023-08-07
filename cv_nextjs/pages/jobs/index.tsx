@@ -16,7 +16,7 @@ import { IBookmarkKeys } from '../../src/models/mixins/withBookmark'
 import { mapToComponents } from '../../src/helpers/mapMap'
 import { transformData } from '../../src/helpers/transformData'
 import { annotationForResource } from '../../src/helpers/actionForResource'
-
+import { StyledInlineWarning} from '../../styles/main.styled'
 import { 
     AppDataProps,
     Resource 
@@ -33,6 +33,7 @@ const JobsPage = (props: AppDataProps) => {
     const { jobModels } = transformData(props)
 
     const [selectedJobId, setSelectedJobId] = useAtom(atoms.uiSelectedJobAtom)
+
     const selectedJob = selectedJobId !== null ? jobModels.get(selectedJobId) : null
 
     const router = useRouter()
@@ -60,8 +61,9 @@ const JobsPage = (props: AppDataProps) => {
             const tgt = document.getElementById(`job-${ maybeUid }`)
 
             tgt?.scrollIntoView()
+            window.scrollBy(0,-12)
         } 
-    }, [])
+    })
     
     const ctx = useContext(CvJobsContext)
 
@@ -72,35 +74,49 @@ const JobsPage = (props: AppDataProps) => {
     const { filters} = ctx.appstate
     
     const containerClassName = `jobs-container${ selectedJob !== null ? ' with-selected' : ''  }`
+    
+    let anyJobRendered = false
 
-    return <div className="page">  
-        <div className={ containerClassName } data-testid="jobs-container">
+    const list = mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
+
+        if (filters && !job.display(filters) ) {
+            return null
+        }
+
+        anyJobRendered = true  
+
+        const annotation = annotationForResource(job, ctx.appstate)
+        const annotationText = annotation ? (annotation.text || '') : null
+        const selected = selectedJob !== null && selectedJob !== undefined && selectedJob.uid == job.uid
+
+        return  <JobComponent
+            id={ `job-${ job.uid }` }
+            key={ job.uid } 
+            job={ job } 
+            bookmarked={ job[IBookmarkKeys.STATUS](ctx) }
+            annotationText={ annotationText }
+            selected={ selected }
+            handleSelect= { () => {
+                deepLinkSelected(job)
+                setSelectedJobId(job.uid)
+            }}
+        />
+    })
+
+    return <div className="page">
+    {
+        !anyJobRendered ?
+            <StyledInlineWarning>
+                <p>{ "No Jobs found - it looks like all  might be filtered out!" }</p>
+                <p>{ "Try removing some filters"}</p>
+            </StyledInlineWarning> :
+            <div className={ containerClassName } data-testid="jobs-container">
             {            
-                mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
-
-                    if (filters && !job.display(filters) ) {
-                        return null
-                    }
-                    
-                    const annotation = annotationForResource(job, ctx.appstate)
-                    const annotationText = annotation ? (annotation.text || '') : null
-                    const selected = selectedJob !== null && selectedJob !== undefined && selectedJob.uid == job.uid
-                    
-                    return  <JobComponent
-                        id={ `job-${ job.uid }` }
-                        key={ job.uid } 
-                        job={ job } 
-                        bookmarked={ job[IBookmarkKeys.STATUS](ctx) }
-                        annotationText={ annotationText }
-                        selected={ selected }
-                        handleSelect= { () => {
-                            deepLinkSelected(job)
-                            setSelectedJobId(job.uid)
-                        }}
-                    />
-                })
+                list
             }
         </div> 
+    }
+        
         {
             selectedJob !== null && selectedJob !== undefined ? 
                 <JobDetailComponent 

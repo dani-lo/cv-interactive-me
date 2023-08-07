@@ -393,18 +393,20 @@ export const StyledAnnotation = styled.div`
     }
 `
 
-export const StyledNotification = styled.p`
+export const StyledNotification = styled.div`
     position: fixed;
-    display: inline-block;
-    left: 2rem;
-    top: 2rem;
+    width: 100%;
+    left: 0;
+    top: 0;
     z-index: var(--z-4);
-    color: white;
-    font-weight: bold;
-    padding: var(--gap-medium) var(--gap-large);
 
-    @media only screen and (max-width: 768px) {
-        border: none;
+    p {
+        display: block;
+        color: white;
+        font-weight: bold;
+        padding: var(--gap-medium) var(--gap-large);
+        text-align: center;
+        margin: 0;
     }
 `
 

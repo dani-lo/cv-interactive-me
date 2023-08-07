@@ -282,33 +282,29 @@ export const getAppstateActionsData = async () => {
 
     console.log(user)
 
-    if (!user._id) {
-        return {
-            [AppstateKeys.BOOKMARKS] :      [],
-            [AppstateKeys.FILTERS] :        [],
-            [AppstateKeys.ANNOTATIONS] :    [],
+    if (user._id) {
+        try {
+
+            const responses = await Promise.all([
+                getUserBookmarks(user),
+                getUserFilters(user),
+                getUserAnnotations(user)
+            ]) 
+    
+            return {
+                [AppstateKeys.BOOKMARKS] :      responses[0]?.data.data[AppstateKeys.BOOKMARKS] || [],
+                [AppstateKeys.FILTERS] :        responses[1]?.data.data[AppstateKeys.FILTERS] || [],
+                [AppstateKeys.ANNOTATIONS] :    responses[2]?.data.data[AppstateKeys.ANNOTATIONS] || [],
+            }
+        } catch (err) {
+    
+            console.log(err)
+    
+            return []
         }
     }
 
-    try {
-
-        const responses = await Promise.all([
-            getUserBookmarks(user),
-            getUserFilters(user),
-            getUserAnnotations(user)
-        ]) 
-
-        return {
-            [AppstateKeys.BOOKMARKS] :      responses[0]?.data.data[AppstateKeys.BOOKMARKS] || [],
-            [AppstateKeys.FILTERS] :        responses[1]?.data.data[AppstateKeys.FILTERS] || [],
-            [AppstateKeys.ANNOTATIONS] :    responses[2]?.data.data[AppstateKeys.ANNOTATIONS] || [],
-        }
-    } catch (err) {
-
-        console.log(err)
-
-        return []
-    }
+    
 }
 
 export const persistAppstateActionsData = async (appstate: AppState) : Promise<AppState> => {

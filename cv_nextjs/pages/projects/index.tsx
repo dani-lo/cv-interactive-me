@@ -17,6 +17,7 @@ import { transformData } from '../../src/helpers/transformData'
 import { getAppStaticProps } from '../../lib/api/getAppStaticProps'
 import { Project } from '../../src/models/classes/Project'
 import { ProjectComponent } from '../../components/projects/project'
+import { StyledInlineWarning} from '../../styles/main.styled'
 
 import { annotationForResource } from '../../src/helpers/actionForResource'
 import { IBookmarkKeys } from '../../src/models/mixins/withBookmark'
@@ -74,35 +75,47 @@ const ProjectsPage = (props: AppDataProps) => {
     
     const containerClassName = `jobs-container${ selectedProject !== null ? ' with-selected' : ''  }`
 
-    return <div className="page">  
-        <div className={ containerClassName } data-testid="jobs-container">
-            
-            {            
-                mapToComponents<Project>(projectModels, (project)  => {
+    let anyProjectbRendered = false
 
-                    if (filters && !project.display(filters)) {
-                        return null
-                    }
-                    
-                    const annotation = annotationForResource(project, ctx.appstate)
-                    const annotationText = annotation ? (annotation.text || '') : null
-                    const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
-                    
-                    return  <ProjectComponent
-                        key={ project.name } 
-                        id={ `project-${ project.uid }` }
-                        project={ project } 
-                        selected={ selected }
-                        bookmarked={ project[IBookmarkKeys.STATUS](ctx) }
-                        annotationText={ annotationText }
-                        handleSelect={() => {
-                            setSelectedProjectId(project.uid)
-                            deepLinkSelected(project)
-                        }}
-                    />
-                })
+    let list = mapToComponents<Project>(projectModels, (project)  => {
+
+        if (filters && !project.display(filters)) {
+            return null
+        }
+
+        anyProjectbRendered = true
+        
+        const annotation = annotationForResource(project, ctx.appstate)
+        const annotationText = annotation ? (annotation.text || '') : null
+        const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
+        
+        return  <ProjectComponent
+            key={ project.name } 
+            id={ `project-${ project.uid }` }
+            project={ project } 
+            selected={ selected }
+            bookmarked={ project[IBookmarkKeys.STATUS](ctx) }
+            annotationText={ annotationText }
+            handleSelect={() => {
+                setSelectedProjectId(project.uid)
+                deepLinkSelected(project)
+            }}
+        />
+    })
+
+    return <div className="page">  
+        {
+            !anyProjectbRendered ? 
+            <StyledInlineWarning>
+                <p>{ "No Project found - it looks like all  might be filtered out!" }</p>
+                <p>{ "Try removing some filters"}</p>
+            </StyledInlineWarning> :
+            <div className={ containerClassName } data-testid="jobs-container"> 
+            {            
+                list
             }
-        </div> 
+        </div>
+        }
         {
             selectedProject !== null && selectedProject !== undefined ? 
                 <ProjectDetailComponent 

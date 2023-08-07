@@ -30,8 +30,9 @@ export default function App({
 
     const [uiOpStatus, ] = useAtom(atoms.uiOpStatus)
     const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
+    const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
 
-    const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
+    // const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
 
     useEffect(() => {
       const onScroll = function() {
@@ -57,7 +58,7 @@ export default function App({
     useEffect(() => {
       const parser = new AppSettingsParser()
       setUisettings(parser.allSettings)
-    }, [])
+    }, [setUisettings])
 
     useEffect(() => {
  
@@ -68,12 +69,15 @@ export default function App({
               type: AppStateAction.LOAD_USER_STATE,
               payload: userAppstateData as AppState
             })
+
+            setTimeout(() => setUiBusy(false), 500)
+            
         
         })
         .catch (function(err) {
           console.log(err)
         })
-    }, [userTokSetting.val])
+    }, [])
   
 
   const [appstate, dispatch] = useReducer(reducer, initialState)
@@ -87,7 +91,9 @@ export default function App({
     <Layout pageProps={ pageProps }>
       { 
          uiOpStatus !== null ?
-            <StyledNotification className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</StyledNotification> :
+            <StyledNotification>
+              <p className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</p>
+            </StyledNotification> :
             null
         }
         <ErrorBoundary>

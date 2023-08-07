@@ -17,7 +17,7 @@ export const PendingActionsComponent = () => {
     const ctx = useContext(CvJobsContext)
 
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
-    const [, setBusy] = useAtom(atoms.uiBusy)
+    // const [, setBusy] = useAtom(atoms.uiBusy)
     const [, setUiOpStatus] = useAtom(atoms.uiOpStatus)
     const [, uiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
 
@@ -42,24 +42,24 @@ export const PendingActionsComponent = () => {
         
     }, [user.name])
 
-    if (!ctx) {
-        return null
-    }    
-
-    if (typeof window !== 'undefined') {
-
-        const parser = new AppSettingsParser()
-
-        if (parser.getSetting(SettingKeys.ShowPersistFeedback) == false) {
-            return null
-        }
-    }
-
     useEffect(() => {
         
         setShowSelf(true)
 
     }, [JSON.stringify(pendingActions)])
+    
+    if (!ctx) {
+        return null
+    }    
+
+    // if (typeof window !== 'undefined') {
+
+    //     const parser = new AppSettingsParser()
+
+    //     if (parser.getSetting(SettingKeys.ShowPersistFeedback) == false) {
+    //         return null
+    //     }
+    // }
 
     const active = pendingActions.length > 0 && showself
     
@@ -84,7 +84,7 @@ export const PendingActionsComponent = () => {
             <button
                 className="ok"
                 onClick={ () => {        
-                    setBusy(true)
+                    // setBusy(true)
                     setUiOpStatus({
                         outcome: 'warning',
                         msg: 'Persisting your changes, please wait',

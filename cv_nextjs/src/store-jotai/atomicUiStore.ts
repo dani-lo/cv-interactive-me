@@ -9,7 +9,7 @@ type UiOpStatus = {
     msg: string,
 }
 
-export const uiBusy = atom<boolean>(false)
+export const uiBusy = atom<boolean>(true)
 export const uiOpStatus = atom<UiOpStatus | null>(null)
 export const uiToken = atom<string | null>(null)
 export const uiSettingsAtom = atom<AppSetting<any>[]>([])
@@ -38,11 +38,11 @@ export const uiOperationSuccess = atom(
         
         setTimeout(() => {
 
-            set(uiBusy, true)
+            // set(uiBusy, true)
             set(uiOpStatus, status)
 
             setTimeout(() => {
-                set(uiBusy, false)
+                // set(uiBusy, false)
                 set(uiOpStatus, null)
             }, 1500)
         }, 1500)
