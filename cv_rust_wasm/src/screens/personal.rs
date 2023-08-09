@@ -149,7 +149,7 @@ pub fn personal() -> Html {
                 <span 
                     class="html-icon"
                     onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }>
-                    <i class="fa fa-bars" aria-hidden="true" />
+                    <i class="fa fa-cog" aria-hidden="true" />
                 </span> 
                 <h1 class="app-logo"><a href="/">{ "Curriculum Vitae" }</a></h1>
                 <AppMenuComponent />
