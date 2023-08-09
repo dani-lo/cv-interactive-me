@@ -47,8 +47,10 @@ pub fn pending_actions_component() -> Html {
             wasm_bindgen_futures::spawn_local(async move {
 
                 let loaded_user = get_user().await;
-        
-                c_user.set(loaded_user.unwrap());
+                
+                if loaded_user.is_some() {
+                    c_user.set(loaded_user.unwrap());
+                }
             });
         }
         || ()

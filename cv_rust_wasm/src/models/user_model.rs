@@ -150,7 +150,7 @@ impl UserModel {
                     match user_post_request {
                             Ok(post_res) => {
 
-                                if post_res.status() != 200 {
+                                if post_res.status() != 200 && post_res.status() != 201 {
                                     info!("Error loading user, operation aborted");
 
                                     notify_user("Error loading user", false);
