@@ -15,6 +15,8 @@ export default function Document() {
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" /> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" /> 
+
+        <link rel="icon" type="image/png" href="favicon-32x32.png"/>
       </Head>
 
       <body>
