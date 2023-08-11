@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
+
         <title>Interactive Me (nextjs)</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -16,7 +17,7 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" /> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" /> 
 
-        <link rel="icon" type="image/png" href="favicon-32x32.png"/>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       <body>
