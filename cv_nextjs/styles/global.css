@@ -72,11 +72,11 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
   text-transform: uppercase;
   line-height: 2.5rem;
-  margin-bottom: var(--gap-large);
-  margin-top: var(--gap-small);
+  margin-bottom: var(--gap-huge);
+  margin-top: var(--gap-huge);
   color: white;
   font-weight: bold;
 }

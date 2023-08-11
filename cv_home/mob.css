@@ -11,5 +11,6 @@
         /* position: static;
         padding: var(--gap-large); */
         width: auto;
+        margin: var(--gap-huge);
     }
  }

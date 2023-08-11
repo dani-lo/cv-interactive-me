@@ -3,7 +3,7 @@ import { ICompany, IField, IJob, IJobType, IProject, ITech } from '../../src/typ
 import * as configs from '../../src/config'
 
 const getJobs = async () => {
-
+  console.log(configs.URL_GET_JOB)
   return await axios.get(configs.URL_GET_JOB)
     .then(({data}) => {        
         return data as IJob[]

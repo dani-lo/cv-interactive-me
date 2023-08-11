@@ -5,8 +5,8 @@
     /* top: var(--gap-huge); */
     /* left: 800px; */
     /* bottom: var(--gap-huge); */
-    width: 350px;
-    margin: var(--gap-huge);
+    width: 500px;
+    margin: var(--gap-huge) auto;
 }
 
 .logo h1 {
