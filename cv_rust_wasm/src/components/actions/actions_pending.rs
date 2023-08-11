@@ -38,6 +38,7 @@ pub fn pending_actions_component() -> Html {
 
     let show_self_callback = show_self.clone();
     let show_self_effect = show_self.clone();
+    let show_self_edit = show_self.clone();
 
     let c_user = user.clone();
 
@@ -180,7 +181,10 @@ pub fn pending_actions_component() -> Html {
                         </div>
                         <button 
                             style="display: flex;margin-top: var(--gap-large);"
-                            onclick={ move |_| settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) }
+                            onclick={ move |_| {
+                                show_self_edit.set(false);
+                                settings_ui_dipatcher.reduce_mut(|s| s.toggle_settings_ui()) 
+                            }}
                         >
                             { "Edit settings" }
                         </button>

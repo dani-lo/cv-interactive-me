@@ -280,8 +280,6 @@ export const getAppstateActionsData = async () => {
 
     const user = await getUser()
 
-    console.log(user)
-
     if (user._id) {
         try {
 

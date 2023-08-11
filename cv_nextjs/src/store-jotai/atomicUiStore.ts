@@ -17,6 +17,7 @@ export const uiSelectedJobAtom = atom<number | null>(null)
 export const uiSelectedProjectAtom = atom<number | null>(null)
 export const uiShowSettingsAtom = atom<boolean>(false)
 export const uiShowActionsAtom = atom<boolean>(false)
+export const tok = atom<string>("")
 
 // export const uiSettings = atom(
 //     () => {

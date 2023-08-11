@@ -31,6 +31,7 @@ export default function App({
     const [uiOpStatus, ] = useAtom(atoms.uiOpStatus)
     // const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
     const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
+    const [tok, _setTok] = useAtom(atoms.tok)
 
     // const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
 
@@ -77,7 +78,7 @@ export default function App({
         .catch (function(err) {
           console.log(err)
         })
-    }, [])
+    }, [tok])
   
 
   const [appstate, dispatch] = useReducer(reducer, initialState)

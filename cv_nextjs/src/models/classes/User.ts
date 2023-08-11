@@ -15,7 +15,7 @@ export class User implements Collectable {
     private tok: string | null
 
     constructor () {
-        this.tok = 'dani5'//useStorage ? this.initTok() : null
+        this.tok = useStorage ? this.initTok() : null
     }
 
     get name () {

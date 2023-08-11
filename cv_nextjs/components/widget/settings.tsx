@@ -16,6 +16,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting }: {
     
     const [_uiOperationSuccess, setUiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
+    const [_tok, setTok] = useAtom(atoms.tok)
 
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
@@ -34,6 +35,10 @@ export const SettingsComponent = ({ disabled, settings, saveSetting }: {
                             outcome: 'success',
                             msg: 'Your changes were saved'
                         })
+                        if (settingKey == SettingKeys.UserTok) {
+                            setTok(val as string)
+                        }
+
                     }}
                     key={ setting.key.toString() } 
                 />

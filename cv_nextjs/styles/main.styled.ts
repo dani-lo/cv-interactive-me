@@ -194,7 +194,7 @@ export const StyledPrompt = styled.div`
     background: var(--bg-white);
     border: 2px solid var(--border-col);
     text-align: center;
-    top: -390px;
+    top: -500px;
     transition: top 0.5s;
     padding: var(--gap-large);
   

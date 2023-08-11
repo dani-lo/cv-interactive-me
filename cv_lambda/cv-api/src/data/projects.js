@@ -32,7 +32,6 @@ const projects = [
         "live_url": "",
         "notes": "Interactive CV reviewing app",
         "tech": [
-            58,
             36,
             29,
             59,
