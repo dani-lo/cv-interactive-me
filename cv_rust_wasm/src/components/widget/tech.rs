@@ -35,21 +35,23 @@ pub fn job_tech(TechProps {
 
     let (_state, dispatch) = use_store::<StoreApp>();
 
-    let less_techs = 4;
-    let skip_truncation = job_techs.len() < 4;
+    // let less_techs = 4;
+    // let skip_truncation = job_techs.len() < 4;
 
-    let show_tech_num:  UseStateHandle<&'static str>  = use_state(|| "less");
+    // let show_tech_num:  UseStateHandle<&'static str>  = use_state(|| "less");
     
-    let show_techs = if !skip_truncation && *show_tech_num == "less" { 
-        &job_techs[..less_techs] 
-    } else { 
-        &job_techs 
-    };
+    // let show_techs = if !skip_truncation && *show_tech_num == "less" { 
+    //     &job_techs[..less_techs] 
+    // } else { 
+    //     &job_techs 
+    // };
+
+    let show_techs = &job_techs;
 
     html!{  
         <div>
-            <h3>{ "Technical Resume" }</h3>
-            <ul>
+            <h3 style="margin-top: var(--gap-huge);">{ "Technical Resume" }</h3>
+            <ul class="StyledTechList">
             {
                 show_techs.iter().map(|jt| {
 
@@ -85,19 +87,19 @@ pub fn job_tech(TechProps {
                     }
                 }).collect::<Html>()
             }
-            {
-                if *show_tech_num == "less" && job_techs.len() > 4 {
-                    html!{
-                        <li class="list-footer-meta-action" onclick={ move |_| show_tech_num.set("more") }><strong>{"show more"}</strong></li>
-                    }
-                } else if job_techs.len() > 4 {
-                    html!{
-                        <li class="list-footer-meta-action" onclick={ move |_| show_tech_num.set("less") }><strong>{"show less"}</strong></li>
-                    }
-                } else {
-                    html!{}
-                }
-            }
+            // {
+            //     if *show_tech_num == "less" && job_techs.len() > 4 {
+            //         html!{
+            //             <li class="list-footer-meta-action" onclick={ move |_| show_tech_num.set("more") }><strong>{"show more"}</strong></li>
+            //         }
+            //     } else if job_techs.len() > 4 {
+            //         html!{
+            //             <li class="list-footer-meta-action" onclick={ move |_| show_tech_num.set("less") }><strong>{"show less"}</strong></li>
+            //         }
+            //     } else {
+            //         html!{}
+            //     }
+            // }
             </ul>
         </div>
     }

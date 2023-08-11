@@ -15,4 +15,4 @@ export const URL_ACTIONS = {
     USERS: `${ URL_ACTIONS_BASE }/api/users`
 }
 
-export const techShowLimit = 5
+export const techShowLimit = 500

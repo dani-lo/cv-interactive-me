@@ -454,3 +454,11 @@ export const StyledAboutContainer = styled.div`
         width: auto;
     }
 `
+
+export const StyledTechList = styled.ul`
+
+    li {
+        display: inline-block;
+        margin-right: var(--gap-large);
+    }
+`

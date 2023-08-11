@@ -5,9 +5,10 @@ import * as ArrayClause from '../../src/helpers/arrayClauses'
 
 import { Tech } from "../../src/models/classes/Tech"
 
-import { techShowLimit } from '../../src/config'
+import { StyledTechList } from '../../styles/main.styled'
+
+// import { techShowLimit } from '../../src/config'
 import { CvJobsContext } from "../../pages/_app"
-import { StyledActionsList } from "../../styles/main.styled"
 
 type TechProps = {
     showActions: (item: Resource) => void;
@@ -22,19 +23,20 @@ type TechListProps = {
 
 export const TechListComponent = (props: TechListProps) => {
 
-    const [fulltech, setFulltech] = useState(false)
+    // const [fulltech, setFulltech] = useState(false)
     const ctx = useContext(CvJobsContext)
 
     if (!ctx) {
         return null
     }
 
-    const limit = fulltech ? props.techs.length :  techShowLimit
+    // const limit = fulltech ? props.techs.length :  techShowLimit
     const filters = ctx.appstate.filters
 
-    return <ul>
+    return <StyledTechList>
         {   
-            props.techs.slice(0, limit).map(tech => {
+            //props.techs.slice(0, limit).map(tech => {
+            props.techs.map(tech => {
 
                 const filtered = !!(filters.find(ArrayClause.findClause(tech, ResourceType.Tech)))
 
@@ -46,14 +48,14 @@ export const TechListComponent = (props: TechListProps) => {
                 />
             })
         }
-        {
+        {/* {
             !fulltech && limit < props.techs.length ?
                 <li className="list-footer-meta-action" onClick={ () => setFulltech(true)}>show more</li> :
                     fulltech ? 
                         <li className="list-footer-meta-action" onClick={ () => setFulltech(false)}>show less</li> :
                         null
-        }
-    </ul>
+        } */}
+    </StyledTechList>
 }
 
 const TechComponent = React.memo<TechProps>(
@@ -65,11 +67,11 @@ const TechComponent = React.memo<TechProps>(
         return <li 
                 className={ `itemised ${ filtered? 'filtered' : '' }` } 
                 onClick={ () => showActions(tech) } > 
-            <span className="action-wrap">
-                <i 
-                    className="action fa fa-plus" 
-                    aria-hidden="true"
-                />  
+                <span className="action-wrap">
+                    <i 
+                        className="action fa fa-plus" 
+                        aria-hidden="true"
+                    />  
                   
                 <span>{ tech.name }</span>
             </span>

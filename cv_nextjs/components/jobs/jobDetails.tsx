@@ -107,6 +107,7 @@ export const JobDetailComponent  = ({
                 })
             }
         </ul>
+        <h3 style={{ marginTop: 'var(--gap-huge' }}>Technical Resume</h3>
         <TechListComponent
             techs={ job.tech}
             showActions={ showActions }

@@ -43,6 +43,7 @@ const projects = [
             32,
             61,
             63,
+            65,
             37,
             64,
             38,
@@ -104,7 +105,7 @@ const projects = [
         "notes": "Outlier detection in datasets using classic outlier algorightms",
         "tech": [
             57,
-            65,
+            66,
             4,
             5
         ],

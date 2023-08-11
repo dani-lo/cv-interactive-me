@@ -203,7 +203,7 @@ const jobs = [
       "uid": 4,
       "title":"July 2010 - July 2011, Iris Digital, London",
       "tech_str":"Php, MySql, SOAP, Regex, Unix (Red Hat), Html, Css, Javascript, Svn admin",
-      "tech": [9, 2, 45, 4, 5, 39, 10],
+      "tech": [9, 2, 73, 4, 5, 39, 10],
       "position":"Fullstack Developer, Lead (and only..) Php Developer",
       "company": 13,
       "description":[

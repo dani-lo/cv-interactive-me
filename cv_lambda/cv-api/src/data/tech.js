@@ -175,10 +175,7 @@ const techs = [{
   "name": "PM2",
   "uid": 44
 },
-{
-  "name": "SOAP",
-  "uid": 45
-},
+
 {
   "name": "Scss",
   "uid": 45
@@ -297,6 +294,10 @@ const techs = [{
  
   "name": "husky",
   "uid": 72
+},
+{
+  "name": "SOAP",
+  "uid": 73
 }
 ];
 
