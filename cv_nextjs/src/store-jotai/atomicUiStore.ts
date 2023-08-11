@@ -12,25 +12,25 @@ type UiOpStatus = {
 export const uiBusy = atom<boolean>(true)
 export const uiOpStatus = atom<UiOpStatus | null>(null)
 export const uiToken = atom<string | null>(null)
-export const uiSettingsAtom = atom<AppSetting<any>[]>([])
+// export const uiSettingsAtom = atom<AppSetting<any>[]>([])
 export const uiSelectedJobAtom = atom<number | null>(null)
 export const uiSelectedProjectAtom = atom<number | null>(null)
 export const uiShowSettingsAtom = atom<boolean>(false)
 export const uiShowActionsAtom = atom<boolean>(false)
 
-export const uiSettings = atom(
-    () => {
+// export const uiSettings = atom(
+//     () => {
 
-        return uiSettingsAtom
-    },
-    (_get, set, setting: AppSetting<any>) => {
+//         return uiSettingsAtom
+//     },
+//     (_get, set, setting: AppSetting<any>) => {
         
-        const parser = new AppSettingsParser()        
-        parser.saveSetting(setting.key, setting.val)
+//         const parser = new AppSettingsParser()        
+//         parser.saveSetting(setting.key, setting.val)
 
-        set(uiSettingsAtom, parser.allSettings)
-    }
-)
+//         set(uiSettingsAtom, parser.allSettings)
+//     }
+// )
 
 export const uiOperationSuccess = atom(
     null,

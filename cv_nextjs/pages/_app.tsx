@@ -29,7 +29,7 @@ export default function App({
   pageProps }: AppProps & { pageProps: AppProps}) {
 
     const [uiOpStatus, ] = useAtom(atoms.uiOpStatus)
-    const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
+    // const [uisettings, setUisettings] = useAtom(atoms.uiSettingsAtom || [])
     const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
 
     // const userTokSetting = uisettings.find(s => s.key == SettingKeys.UserTok) || {val: ''}
@@ -55,10 +55,10 @@ export default function App({
       }
     }, []);
 
-    useEffect(() => {
-      const parser = new AppSettingsParser()
-      setUisettings(parser.allSettings)
-    }, [setUisettings])
+    // useEffect(() => {
+    //   const parser = new AppSettingsParser()
+    //   setUisettings(parser.allSettings)
+    // }, [setUisettings])
 
     useEffect(() => {
  

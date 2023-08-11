@@ -8,7 +8,7 @@ import * as atoms  from "../src/store-jotai/atomicUiStore"
 import StyledComponentsRegistry from '../lib/registry'
 
 import { AppDataProps } from "../src/types"
-import { AppSetting, AppSettingsParser } from "../src/settings/parser"
+import { AppSetting, AppSettingsParser, SettingKeys } from "../src/settings/parser"
 
 import { ActionsList } from "./actions/actionsList"
 import { PendingActionsComponent } from "./actions/pendingAction"
@@ -36,30 +36,41 @@ const Layout = ({
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
     const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
-    
-    const [settingsparser, setSettingsparser] = useState<AppSettingsParser | null>(null)
+  
+    const [settings, setSettings] = useState([])
 
     useEffect(() => {
         const settingsparser = new AppSettingsParser()
+        const settings = settingsparser.allSettings
 
-        setSettingsparser(settingsparser)
+        // @ts-ignore
+        setSettings(settings)
     }, [])
 
-    let settingsDisabled = !showsettings || settingsparser === null
+    // let settingsDisabled = !settings.length &&
         
     return <div className={feCname}>
         { uiBusy ? null : <TopBarComponent /> }
         { uiBusy ? null :  <SettingsComponent
-            disabled = { settingsDisabled }
-            settings={ settingsparser?.allSettings || [] }
-            saveSetting={ (s: AppSetting<any>) => settingsparser !== null ? settingsparser.saveSetting(s.key, s.val) : void 0 }
-            toggleSettingsUI={ () => setShowsettings(!showsettings) }
+            disabled = { !showsettings }
+            settings={ settings }
+            saveSetting={ (k: SettingKeys, val: any) => {
+                const settingsparser = new AppSettingsParser()
+                
+                settingsparser.saveSetting(k, val)
+                settingsparser.parseStorageSettings()
+                
+                const settings = settingsparser.allSettings
+
+                // @ts-ignore
+                setSettings(settings)
+            }}
         />  }
         {
-            settingsDisabled || uiBusy ? null : <div className="generic-ui-overlay-bg"></div>
+            !showsettings || uiBusy ? null : <div className="generic-ui-overlay-bg"></div>
         }
         {
-            !uiBusy ? <PendingActionsComponent /> : null
+            !uiBusy ? <PendingActionsComponent settings={ settings } /> : null
         }
         {
             ! uiBusy ? <StyledSidebar className={ showactions ? 'active' : ''}>

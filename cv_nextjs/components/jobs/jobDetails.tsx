@@ -21,7 +21,7 @@ type Props = {
     annotationText: string | null;
 }
 
-export const JobDetailsComponentBase = ({ 
+export const JobDetailComponent  = ({ 
         job, 
         showActions, 
         bookmarked, 
@@ -30,6 +30,8 @@ export const JobDetailsComponentBase = ({
     
     const job_job_types = job.jobType.filter(jt => jt.prefix == "TIME")
     const job_job_locations = job.jobType.filter(jt => jt.prefix == "PLACE")
+
+    console.log('companyBookmarked', companyBookmarked)
 
     return <StyledJobDetail>
         <h2> 
@@ -112,9 +114,9 @@ export const JobDetailsComponentBase = ({
     </StyledJobDetail>
 }
 
-export const JobDetailComponent = React.memo(
-    JobDetailsComponentBase, 
-    (p: Props, c: Props) => {
-        return c.job.uid == p.job.uid && c.annotationText == p.annotationText && p.bookmarked == c.bookmarked
-    }
-)
+// export const JobDetailComponent = React.memo(
+//     JobDetailsComponentBase, 
+//     (p: Props, c: Props) => {
+//         return c.job.uid == p.job.uid && c.annotationText == p.annotationText && p.bookmarked == c.bookmarked && p.companyBookmarked == c.companyBookmarked
+//     }
+// )

@@ -15,7 +15,7 @@ import { IBookmarkKeys } from '../../src/models/mixins/withBookmark'
 
 import { mapToComponents } from '../../src/helpers/mapMap'
 import { transformData } from '../../src/helpers/transformData'
-import { annotationForResource } from '../../src/helpers/actionForResource'
+import { annotationForResource, bookmarkForResource } from '../../src/helpers/actionForResource'
 import { StyledInlineWarning} from '../../styles/main.styled'
 import { 
     AppDataProps,
@@ -123,10 +123,7 @@ const JobsPage = (props: AppDataProps) => {
                     job={ selectedJob }
                     showActions = { handleOpen }
                     bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
-                    companyBookmarked= { selectedJob.company !== null
-                        ? selectedJob.company[IBookmarkKeys.STATUS](ctx) 
-                        : false 
-                    }
+                    companyBookmarked= { selectedJob.company !== null && !!bookmarkForResource(selectedJob.company, ctx.appstate) }
                     annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
                 /> : null
         } 

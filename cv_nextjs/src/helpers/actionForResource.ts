@@ -1,4 +1,4 @@
-import { AppState, AppstateKeys } from "../store/appState"
+import { AppState, AppstateKeys, PendingStatus } from "../store/appState"
 import { Annotation, Bookmark, Filter, Resource } from "../types"
 import { NullableT, toNullableT } from "./nullable"
 
@@ -20,7 +20,17 @@ export const filterForResource = (item: Resource, appstate: AppState) : Filter |
 
 export const bookmarkForResource = (item: Resource, appstate: AppState) : Bookmark | null => {
     
-    return appstate[AppstateKeys.BOOKMARKS].find((bookmark) => {
+    // console.log('==== bookmarkForResource')
+    // console.log('BMs', appstate[AppstateKeys.BOOKMARKS])
+    // console.log(item)
+    
+    const bmarks = appstate[AppstateKeys.BOOKMARKS]
+
+    const activeBookmarks = (bmarks || []).filter(b => {
+        return b.pending === null || ![PendingStatus.DELETED].includes(b.pending)
+    })
+
+    return activeBookmarks.find((bookmark) => {
         return bookmark.resource_id == item.uid && bookmark.resource_type == item.resource_type
     }) || null
 }

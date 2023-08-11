@@ -10,9 +10,11 @@ import { CvJobsContext } from "../../pages/_app"
 import { persistAppstateActionsData } from "../../lib/api/actions-api"
 import { StyledPrompt } from "../../styles/main.styled";
 import { User } from "../../src/models/classes/User";
-import { AppSettingsParser, SettingKeys } from "../../src/settings/parser";
+import { AppSetting, AppSettingsParser, SettingKeys } from "../../src/settings/parser";
 
-export const PendingActionsComponent = () => {
+export const PendingActionsComponent = ({
+    settings
+}: { settings: AppSetting<any>[]}) => {
     
     const ctx = useContext(CvJobsContext)
 
@@ -50,18 +52,20 @@ export const PendingActionsComponent = () => {
     
     if (!ctx) {
         return null
-    }    
+    }       
 
-    // if (typeof window !== 'undefined') {
+    const parser = new AppSettingsParser()
+    
+    const allowFeedback = parser.getSetting(SettingKeys.ShowPersistFeedback)
+    const autoPersist = parser.getSetting(SettingKeys.AutoPersist)
 
-    //     const parser = new AppSettingsParser()
+    // console.log('allowFeedback', allowFeedback)
+    // console.log('autoPersist', autoPersist)
+    const userAllows = (!autoPersist && allowFeedback)
 
-    //     if (parser.getSetting(SettingKeys.ShowPersistFeedback) == false) {
-    //         return null
-    //     }
-    // }
+    // console.log('userAllows', userAllows)
 
-    const active = pendingActions.length > 0 && showself
+    const active = pendingActions.length > 0 && showself && userAllows
     
     return <StyledPrompt className={ `${ active ? 'active' : '' }` }>
         <div className="prompt">
@@ -125,7 +129,11 @@ export const PendingActionsComponent = () => {
                 </p>
                 <button 
                     style={{ display: 'flex', marginTop: 'var(--gap-large)' }}
-                    onClick={ () => setShowsettings(true) }
+                    onClick={ () => {
+                        setShowsettings(true) 
+                        setShowSelf(false)
+                        setShowOptions(false)
+                    }}
                     className={ showsettings ? 'disabled' : '' }
                 >
                     { "Edit settings" }

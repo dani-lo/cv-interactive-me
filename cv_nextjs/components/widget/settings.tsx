@@ -1,35 +1,35 @@
 import { useState } from "react"
 import { useAtom } from "jotai"
 
-import { AppSetting, settingLabel } from "../../src/settings/parser"
+import { AppSetting, AppSettingsParser, SettingKeys, settingLabel } from "../../src/settings/parser"
 
 import * as atoms  from "../../src/store-jotai/atomicUiStore"
 
 import { StyledSettingsListContainer } from "../../styles/main.styled"
 
-export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSettingsUI }: {
+export const SettingsComponent = ({ disabled, settings, saveSetting }: {
     disabled: boolean,
     settings: AppSetting<any>[],
-    saveSetting: <T extends (string | number | boolean)>(s: AppSetting<T>) => void,
-    toggleSettingsUI: () => void,
+    saveSetting: (settingKey: SettingKeys, val: any) => void,
+    // toggleSettingsUI: () => void,
 }) => {
     
     const [_uiOperationSuccess, setUiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
-    const [_uisettings, setUisettings] = useAtom(atoms.uiSettings)
+    const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
 
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
             className="html-icon" 
-            onClick={ toggleSettingsUI }>
+            onClick={ () => setShowsettings(!showsettings) }>
                 <i aria-hidden="true" className="fa fa-times" />
         </span> 
         {
-            settings.map(setting => {
+            settings.map((setting: any) => {
                 return <SettingComponent 
                     setting={ setting }
-                    saveSetting={ (s: AppSetting<any>) => {
-                        saveSetting(s) 
-                        setUisettings(s)
+                    saveSetting={ (settingKey: SettingKeys, val: any) => {
+                        saveSetting(settingKey, val) 
+                        // setUisettings(s)
                         setUiOperationSuccess({
                             outcome: 'success',
                             msg: 'Your changes were saved'
@@ -44,7 +44,7 @@ export const SettingsComponent = ({ disabled, settings, saveSetting, toggleSetti
 
 const SettingComponent = ({ setting, saveSetting } : {
     setting: AppSetting<any>,
-    saveSetting: <T extends (string | number | boolean)>(s: AppSetting<T>) => void,
+    saveSetting: (settingKey: SettingKeys, val: any) => void,
 }) => {
 
     const typeofSetting = typeof setting.default
@@ -53,19 +53,23 @@ const SettingComponent = ({ setting, saveSetting } : {
     const unchanged = val === setting.val
     const inputValid = setting.validate !== undefined ? setting.validate(val) : true
 
-    return  <div className={ setting.disabled ? 'disabled' : '' }>
+    const disabled = AppSettingsParser.isDisabled(setting)
+
+    return  <div className={ disabled ? 'disabled' : '' }>
         {
             typeofSetting == 'boolean' ?
                 <>
                     <input 
                         type="checkbox" 
+                        id={ setting.key }
                         checked={ val }
                         onChange={ () => setVal(!val) }
                     />
-                    <label>{ settingLabel(setting.key) }</label>
+                    <label htmlFor={ setting.key }>{ settingLabel(setting.key) }</label>
                 </>:
                 <>
                     <label 
+                        htmlFor={ setting.key }
                         style={{ 
                             padding: '0',
                             display: 'block',
@@ -73,6 +77,7 @@ const SettingComponent = ({ setting, saveSetting } : {
                         { settingLabel(setting.key) }
                     </label>
                     <input 
+                        id={ setting.key }
                         type={ typeofSetting == 'number' ? "number" : 'text'}
                         value={ val }
                         onChange={ (e) => setVal(e.target.value) }
@@ -82,10 +87,7 @@ const SettingComponent = ({ setting, saveSetting } : {
         <p>{ setting.desc }</p>
         <button 
             className={ (unchanged || !inputValid) ? 'disabled' : '' }
-            onClick={ () => saveSetting<typeof setting.default>({
-                ...setting,
-                val: val
-            })}>
+            onClick={ () => saveSetting(setting.key, val) }>
             save
         </button>
     </div>

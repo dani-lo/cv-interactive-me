@@ -305,6 +305,7 @@ export const StyledInlineWarning = styled.div`
     padding: var(--gap-large);
     background: white;
     width: 300px;
+    margin: 3.5rem 1rem;
 
     p {
         font-weight: bold;

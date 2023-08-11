@@ -22,13 +22,14 @@ export interface AppSetting<T extends (string | number | boolean)> {
     },
 }
 
+
 const defaultSettings = [ 
     {
         key: SettingKeys.ShowPersistFeedback,
         disabled: false,
         val: null,
         default: true,
-        desc: 'If set to true, the app will automatically persist your changes: they will be saved to database and indexed under your user token.',
+        desc: 'If set to true, the app will ask you to persist your changes, or discard them: if saved, they will be saved to database and indexed under your user token.',
         force: false,
         disableIf: {
             ifKey: SettingKeys.AutoPersist,
@@ -40,7 +41,7 @@ const defaultSettings = [
         disabled: false,
         val: null,
         default: false,
-        desc: 'If set to true, the app will always ask you to manually persist your changes.',
+        desc: 'If set to true, the app will automatically persist your changes: they will be saved to database and indexed under your user token.',
         force: false,
     },
     {
@@ -65,30 +66,49 @@ export class AppSettingsParser  {
         if (!isSSR) {
             this.parseStorageSettings()
         }
-        
     }
     
-    get allSettings () {
-        return this.settings
-    }
-
-    private isDisabled (setting: AppSetting<any>) : boolean {
+    static isDisabled (setting: AppSetting<any>) {
 
         if (!!setting.disableIf) {
 
-            const val = this.getSetting(setting.disableIf.ifKey)
-
+            const parser = new AppSettingsParser()
+            const val = parser.getSetting(setting.disableIf.ifKey)
+    
+            // console.log('disable target val VS setting.disableIf.ifVal', val, setting.disableIf.ifVal)
+    
             if (val === setting.disableIf.ifVal) {
                 return true
             }
         }
-
+    
         return setting.disabled
     }
+    get allSettings () {
 
-    private parseStorageSettings () {
+        return this.settings
+    }
 
-        const parsedSettings = this.settings.map(setting => {
+    // private isDisabled (setting: AppSetting<any>) : boolean {
+    //     // console.log('IS DISABLED')
+
+    //     if (!!setting.disableIf) {
+    //         const val = this.getSetting(setting.disableIf.ifKey)
+
+    //         // console.log('disable target val VS setting.disableIf.ifVal', val, setting.disableIf.ifVal)
+
+
+    //         if (val === setting.disableIf.ifVal) {
+    //             return true
+    //         }
+    //     }
+
+    //     return setting.disabled
+    // }
+
+    parseStorageSettings () {
+
+        this.settings = this.settings.map(setting => {
 
             let storageVal = localStorage.getItem(setting.key)
 
@@ -113,14 +133,16 @@ export class AppSettingsParser  {
         })
         
         // TODO refactor this double assign rubbish 
-        this.settings = parsedSettings
+        // this.settings = parsedSettings
 
-        this.settings = parsedSettings.map(setting => {
-            return {
-                ...setting,
-                disabled: this.isDisabled(setting)
-            }
-        })
+        // this.settings = parsedSettings.map(setting => {
+        //     return {
+        //         ...setting,
+        //         disabled: this.isDisabled(setting)
+        //     }
+        // })
+
+        // console.log(this.settings)
     }
 
     getSetting (k: SettingKeys) : string | number | boolean {
@@ -143,7 +165,17 @@ export class AppSettingsParser  {
         }
 
         localStorage.setItem(k, v.toString())
+
+        this.settings = this.settings.map(s => {
+            if (s.key == k) {
+                return {
+                    ...s,
+                    val: v
+                }
+            }
+            return s
+        })
     
-        this.parseStorageSettings()
+        //this.parseStorageSettings()
     }
 }

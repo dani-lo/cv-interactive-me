@@ -31,15 +31,27 @@ export const ActionsList = (props: AppDataProps) => {
     if (!ctx) {
         return null
     }
-    
+
     const mappedResources = transformData(props)
+
+    const activeFilter = (ctx.appstate.filters || []).filter(b => {
+        return b.pending === null || ![PendingStatus.DELETED].includes(b.pending)
+    })
+
+    const activeBookmarks = (ctx.appstate.bookmarks || []).filter(b => {
+        return b.pending === null || ![PendingStatus.DELETED].includes(b.pending)
+    })
+
+    const activeAnnotations = (ctx.appstate.annotations || []).filter(b => {
+        return b.pending === null || ![PendingStatus.DELETED, PendingStatus.ADDED_THEN_EDITED].includes(b.pending)
+    })
     
     return <>
         <div>
             <h3>Your Filters</h3> 
             <StyledActionsList>
             { 
-                ctx.appstate.filters?.length ? 
+                activeFilter.length ? 
                     groupBy(ctx.appstate.filters, 'resource_type')
                         .map((appFilter) => {
 
@@ -66,7 +78,7 @@ export const ActionsList = (props: AppDataProps) => {
             <h3>Your Bookmarks</h3> 
             <StyledActionsList>
             {
-                ctx.appstate.bookmarks?.length ?
+                activeBookmarks.length ?
                     groupBy(ctx.appstate.bookmarks, 'resource_type').map((appBookmark) => {
 
                         if (appBookmark.pending === PendingStatus.DELETED) {
@@ -91,7 +103,7 @@ export const ActionsList = (props: AppDataProps) => {
         <div>
             <h3>Your Notes</h3> 
             <StyledActionsList>
-            {   ctx.appstate.annotations?.length ?
+            {   activeAnnotations.length ?
                     groupBy(ctx.appstate.annotations, 'resource_type').map((appNote) => {
 
                         if (appNote.pending === PendingStatus.DELETED) {

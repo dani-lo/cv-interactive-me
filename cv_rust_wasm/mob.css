@@ -89,4 +89,8 @@
     .StyledNotification {
         border: none;
     }
+
+    .StyledInlineWarning {
+        width: auto;
+    }
 }
