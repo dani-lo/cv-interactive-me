@@ -10,11 +10,24 @@ pub fn parent_resource_or_self (
     
     match res_type {
         ModelTypes::Company => {
-            let resource_hashmap = &static_models.jobs;
-            let resource = resource_hashmap.get(&res_id);
+            let jobs_hashmap = &static_models.jobs;
+            // let jobs = jobs_hashmap.values().collect<();
+            // let job =jobs.iter().find(|j| j)
 
-            if resource.is_some() {
-                return Some((resource.unwrap().uid, ModelTypes::Job));
+            let mut job_id = 0;
+
+            for  (_k, j) in jobs_hashmap.iter() {
+
+                let comp = j.company.clone();
+                
+                if comp.is_some() && comp.unwrap().uid == res_id {
+                    job_id = j.uid;
+                }
+                // println!("key={}, value={}", k, v);
+            }
+
+            if job_id > 0 {
+                return Some((job_id, ModelTypes::Job));
             } else {
                 return None;
             }

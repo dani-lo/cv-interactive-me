@@ -45,6 +45,8 @@ export const ActionsList = (props: AppDataProps) => {
     const activeAnnotations = (ctx.appstate.annotations || []).filter(b => {
         return b.pending === null || ![PendingStatus.DELETED, PendingStatus.ADDED_THEN_EDITED].includes(b.pending)
     })
+
+    console.log(props)
     
     return <>
         <div>
@@ -55,6 +57,8 @@ export const ActionsList = (props: AppDataProps) => {
                     groupBy(ctx.appstate.filters, 'resource_type')
                         .map((appFilter) => {
 
+                            console.log(appFilter)
+
                             if (appFilter.pending === PendingStatus.DELETED) {
                                 return null
                             }
@@ -62,6 +66,8 @@ export const ActionsList = (props: AppDataProps) => {
                             const resources = grabMappedResource(appFilter.resource_type, mappedResources)
                             const resource = resources.get(appFilter.resource_id) as Resource & IFilter
 
+                            console.log(resources)
+                            console.log(resource)
                             return <li key={ `${appFilter.resource_type}-${appFilter.resource_id}` } className="action-wrap">
                                     <span>
                                         <strong className="capital">{ filterLabel(resource) }</strong>: 

@@ -35,7 +35,7 @@ pub fn job_detail(JobDetailProps {
     } : &JobDetailProps) -> Html {
     
     let (state, dispatch) = use_store::<StoreApp>();
-
+    
     if selected_job_uid.is_some() {
 
         let static_mods = state.static_models.clone();
@@ -70,15 +70,15 @@ pub fn job_detail(JobDetailProps {
                 n.resource_id == job.uid && n.resource_type == ModelTypes::Job
             });
 
-        let mut c_name = "StyledJobDetail";
+        // let mut c_name = "StyledJobDetail";
 
-        if bookmarked { c_name = "bookmarked StyledJobDetail"; }
+        // if bookmarked { c_name = "bookmarked StyledJobDetail"; }
 
         let c_job = job.clone();
         let dispatcher = dispatch.clone();
 
         html! {
-            <div class={ c_name }>
+            <div class="StyledJobDetail">
                 <h2 onclick={ move |_| { 
                     set_state_modal_item(dispatch.clone(), ModelTypes::Job, job.uid)
                 }}>
@@ -86,6 +86,22 @@ pub fn job_detail(JobDetailProps {
                         <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                         <span>{ &job.period.formatted() }</span>
                     </span>
+                    {
+                        if bookmarked {
+
+                            html!{
+                                <span>
+                                    <i class="fa fa-bookmark bookmark" />
+                                </span>
+                                
+                            }
+                        } else {
+                            html!{
+                                <></>
+                            }
+                        }
+                    }
+                    
                </h2>
                 {
                     if job_note.is_some() {
@@ -105,6 +121,7 @@ pub fn job_detail(JobDetailProps {
                             <CompanyComponent
                                 company={ job.company.clone().unwrap() }
                                 dispatch={ dispatcher.clone() }
+                                bookmarks={ bookmarks.clone() }
                             />
                         }
                     } else {
@@ -159,13 +176,25 @@ pub fn job_list(JobDescriptionListProps { description }: &JobDescriptionListProp
 pub struct CompanyProps {
     pub company:  CompanyModel,
     pub dispatch: Dispatch<StoreApp>,
+    pub bookmarks: Vec<Bookmark> ,
 }
 
 #[function_component(CompanyComponent)]
-pub fn company_component(CompanyProps { company, dispatch } : &CompanyProps) -> Html {
+pub fn company_component(CompanyProps { company, dispatch, bookmarks } : &CompanyProps) -> Html {
 
     let company_id = company.uid.clone();
     let dispatcher = dispatch.clone();
+
+    let bookmarked =  bookmarks
+        .iter()
+        .fold(false, |acc, n: &Bookmark| {
+
+            if acc {
+                return true
+            }
+
+            n.resource_id == company.uid && n.resource_type == ModelTypes::Company
+        });
     
     html! {
         <div class="StyledCompanyContainer">
@@ -184,6 +213,21 @@ pub fn company_component(CompanyProps { company, dispatch } : &CompanyProps) -> 
                     </span>
                     <span>{ company.name.clone() }</span>
                 </span>
+                {
+                    if bookmarked {
+
+                        html!{
+                            <span>
+                                <i class="fa fa-bookmark bookmark" />
+                            </span>
+                            
+                        }
+                    } else {
+                        html!{
+                            <></>
+                        }
+                    }
+                }
             </h3>
             <p>{ company.description.clone() }</p>
             <FieldsItemsComponent fields={ company.field.clone() } />

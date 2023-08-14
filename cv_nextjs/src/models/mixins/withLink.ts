@@ -10,6 +10,7 @@ export function canLink<T extends Constructor<ConcreteMdel>>(constructor: T = Mo
   return class extends constructor implements ILink {
 
     getSearchString () {
+      
       return `/${ this.resource_type }s/${ this.id }`.toLowerCase()
     }
   }

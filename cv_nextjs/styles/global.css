@@ -109,6 +109,7 @@ h3 {
   color: var(--text-clear);
   font-weight: bold;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 

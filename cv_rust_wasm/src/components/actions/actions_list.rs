@@ -1,6 +1,6 @@
 use std::{collections::HashMap};
 use itertools::Itertools;
-
+use log::info;
 use yew::{
     prelude::*, 
 };
@@ -224,10 +224,22 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
 
                     sidebar_jobs_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui());
 
+                    info!("on_click_browseable_resource {}", resource_type_type);
+
                     if resource_type_type == ModelTypes::Project {
+                        info!("PROJ R");
                         n.push(&AppRoute::ProjectsDetailRoute { uid: resource_id });
-                    } else {
+                    } else if resource_type_type == ModelTypes::Job {
+                        info!("JOB R");
                         n.push(&AppRoute::JobsDetailRoute { uid: resource_id });
+                    } else if resource_type_type == ModelTypes::Company && parent.is_some() {
+                        info!("COMP R");
+                        // let company = &static_models.model_hashes.companies.get(&resource_id);
+                        // 
+                        info!("parent:: {:?}", parent.unwrap());
+                        let parent_id = parent.unwrap().0;
+
+                        n.push(&AppRoute::JobsDetailRoute { uid: parent_id });
                     }
 
                     scroll_to_slot(resource_id);
@@ -236,6 +248,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                 let  mut item_cname = "";
 
                 if has_filters && parent.is_some() {
+
                     let actual_parent_type = parent.unwrap().1;
                     let actual_parent_id = parent.unwrap().0;
 

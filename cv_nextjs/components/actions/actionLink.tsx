@@ -15,7 +15,7 @@ export const ActionLink = ({ resource }: { resource: Resource }) => {
     if (itemCanLink(resource)) {
 
         const href = (resource as ILink).getSearchString()
-
+        console.log(href)
         return <Link
             legacyBehavior
             href={ href }>

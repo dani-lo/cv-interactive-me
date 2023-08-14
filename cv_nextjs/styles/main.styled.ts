@@ -304,8 +304,8 @@ export const StyledInlineWarning = styled.div`
     border: 1px solid var(--warn);
     padding: var(--gap-large);
     background: white;
-    width: 300px;
-    margin: 3.5rem 1rem;
+    width: 400px;
+    margin: 2rem 0;
 
     p {
         font-weight: bold;
@@ -313,8 +313,8 @@ export const StyledInlineWarning = styled.div`
     }
 
     @media only screen and (max-width: 768px) {
-        margin: var(--gap-large);  
         width: auto;
+        margin: 3rem 1rem;
     }
    
 `

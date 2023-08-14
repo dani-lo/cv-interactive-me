@@ -7,6 +7,12 @@ import * as atoms  from "../../src/store-jotai/atomicUiStore"
 
 import { StyledSettingsListContainer } from "../../styles/main.styled"
 
+type Foo = {
+    doo: string;
+}
+
+type Loo = Foo & { voo: number; }
+
 export const SettingsComponent = ({ disabled, settings, saveSetting }: {
     disabled: boolean,
     settings: AppSetting<any>[],

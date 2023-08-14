@@ -43,7 +43,7 @@ export class Company extends canAnnotate(canBookmark(canLink(ConcreteMdel))) {
 
             const job = Array.from(jobModels.values()).find(j => j.company !== null && j.company.id == this.id)
 
-            return `${ ResourceType.Job }/${ job?.id }`.toLowerCase()
+            return `${ ResourceType.Job }s/${ job?.id }`.toLowerCase()
         }
 
         return ''      
