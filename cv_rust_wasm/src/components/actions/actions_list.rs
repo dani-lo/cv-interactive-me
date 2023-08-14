@@ -224,19 +224,12 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
 
                     sidebar_jobs_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui());
 
-                    info!("on_click_browseable_resource {}", resource_type_type);
-
                     if resource_type_type == ModelTypes::Project {
-                        info!("PROJ R");
                         n.push(&AppRoute::ProjectsDetailRoute { uid: resource_id });
                     } else if resource_type_type == ModelTypes::Job {
-                        info!("JOB R");
                         n.push(&AppRoute::JobsDetailRoute { uid: resource_id });
                     } else if resource_type_type == ModelTypes::Company && parent.is_some() {
-                        info!("COMP R");
-                        // let company = &static_models.model_hashes.companies.get(&resource_id);
-                        // 
-                        info!("parent:: {:?}", parent.unwrap());
+  
                         let parent_id = parent.unwrap().0;
 
                         n.push(&AppRoute::JobsDetailRoute { uid: parent_id });
@@ -267,7 +260,7 @@ pub fn ActionListActionablesComponent(ActionListActionablesProps {
                         
                     } else if actual_parent_type == ModelTypes::Project {
 
-                        let project_opt = &static_models.model_hashes.jobs.get(&actual_parent_id);
+                        let project_opt = &static_models.model_hashes.projects.get(&actual_parent_id);
 
                         if project_opt.is_some() {
 
