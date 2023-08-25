@@ -82,15 +82,13 @@ h1 {
 }
 
 h2 {
-  /* font-family: 'Arvo', sans-serif; */
-  /* font-family: 'Montserrat', sans-serif; */
   font-size: 1.2rem;
   text-transform: capitalize;
   padding: var(--gap-small) 0;
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px dotted var(--black);
+  border-bottom: 1px dotted var(--active-action);
 }
 
 h2 i.fa {
@@ -156,7 +154,7 @@ button {
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
   background: var(--text-clear);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
   margin: var(--gap-small) 0;
@@ -207,6 +205,7 @@ ul.nav li {
   margin: var(--gap-small) var(--gap-small) var(--gap-large);
   color: var(--text-clear);
   font-weight: bold;
+  border-radius: 0.25rem;
 }
 
 ul.nav li a {
@@ -350,6 +349,22 @@ span.html-icon:hover {
   cursor: default;
   pointer-events: none;
 }
+
+.paged-out {
+  display: none;
+}
+
+.filtered-out {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+.filtered-out i {
+  cursor: default!important;
+  pointer-events: none!important;
+}
+
 
 .err {
   background: var(--err);

@@ -12,4 +12,8 @@
    .jobs-container.with-selected {
        display: none;
     }
+
+    .paged-out {
+        display: block;
+    }
 }

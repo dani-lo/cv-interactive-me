@@ -31,8 +31,6 @@ export const JobDetailComponent  = ({
     const job_job_types = job.jobType.filter(jt => jt.prefix == "TIME")
     const job_job_locations = job.jobType.filter(jt => jt.prefix == "PLACE")
 
-    console.log('companyBookmarked', companyBookmarked)
-
     return <StyledJobDetail>
         <h2> 
             <span className="action-wrap" onClick={ () => showActions(job) } >

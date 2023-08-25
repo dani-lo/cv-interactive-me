@@ -7,23 +7,30 @@ import { Resource } from "../../src/types";
 import * as atoms from "../../src/store-jotai/atomicUiStore";
 import { deepLinkSelected } from "../../src/helpers/deeplinkSelected";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const ActionLink = ({ resource }: { resource: Resource }) => {
 
-    const [showactions, setShowactions] = useAtom(atoms.uiShowActionsAtom)
+    const [_showactions, setShowactions] = useAtom(atoms.uiShowActionsAtom)
+
+    const router = useRouter()
 
     if (itemCanLink(resource)) {
 
         const href = (resource as ILink).getSearchString()
-        console.log(href)
-        return <Link
-            legacyBehavior
-            href={ href }>
-            
-                <a onClick={ () => {
-                    setShowactions(false) 
-                }}>{ resource.toString() }</a>
-            </Link>
+
+        return <a onClick={ () => {
+            setShowactions(false) 
+            router.push(href)
+        }}>{ resource.toString() }</a>
+
+        // return <Link
+        //     legacyBehavior
+        //     href={ href }>
+        //         <a onClick={ () => {
+        //             setShowactions(false) 
+        //         }}>{ resource.toString() }</a>
+        //     </Link>
     }
 
     return <span>{ resource.toString() }</span>

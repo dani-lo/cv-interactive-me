@@ -13,6 +13,8 @@ type JobProps = {
     handleSelect: () => void;
     job: Job;
     id: string;
+    pagedOut: boolean;
+    filteredOut: boolean;
 }
 
 export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes<any>> = ({ 
@@ -21,12 +23,19 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     handleSelect,
     bookmarked, 
     selected,
+    pagedOut,
+    filteredOut,
 } : JobProps) => {
     
     const desc = job.description[0];
+    
     let desc_text = substrNice(desc, 60)
 
-    return <StyledJobContainer id={ id } className={ selected ? "selected" : "" }>
+    const cnamePag = pagedOut ? 'paged-out' : ''
+    const cnameSel = selected ? 'selected' : ''
+    const cnameFil = filteredOut ? 'filtered-out': ''
+
+    return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }>
          <h2 > 
             <span>
                 {
@@ -64,7 +73,10 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
 const comparator = (p: JobProps, c: JobProps) => {
     return c.annotationText == p.annotationText && 
             p.bookmarked == c.bookmarked && 
-            p.selected == c.selected
+            p.selected == c.selected &&
+            p.pagedOut == c.pagedOut &&
+            p.filteredOut == c.filteredOut
+            
 }
 
 export const JobComponent = React.memo<JobProps>(

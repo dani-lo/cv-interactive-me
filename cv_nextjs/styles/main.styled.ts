@@ -74,7 +74,7 @@ export const StyledJobDetail = styled.div`
     width: 380px;
     overflow-y: scroll;
     height: 100%;
-    top: 12px;
+    top: 80px;
     padding: var(--gap-large);
     left: 760px;
     background: var(--white);
@@ -460,5 +460,18 @@ export const StyledTechList = styled.ul`
     li {
         display: inline-block;
         margin-right: var(--gap-large);
+    }
+`
+
+export const StyledTabber = styled.ul`
+    margin-bottom: var(--gap-huge);
+    li {
+        display: inline-block;
+        margin: 0 var(--gap-medium) 0 0;
+        
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: none;
     }
 `

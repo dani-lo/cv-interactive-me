@@ -19,26 +19,30 @@ import { annotationForResource, bookmarkForResource } from '../../src/helpers/ac
 import { StyledInlineWarning} from '../../styles/main.styled'
 import { 
     AppDataProps,
-    Resource 
+    Resource,
 } from '../../src/types'
 
 import { useRouter } from 'next/router'
 import { useAtom } from 'jotai'
-import { deepLinkSelected } from '../../src/helpers/deeplinkSelected'
+import { Tabber, pageSize, pageForItem, DateRangedItem } from '../../components/widget/tabber'
+import { chunker } from '../../src/helpers/chunk'
 
 export const getStaticProps = getAppStaticProps
 
 const JobsPage = (props: AppDataProps) => {
-        
-    const { jobModels } = transformData(props)
+    
+    const router = useRouter()
+
 
     const [selectedJobId, setSelectedJobId] = useAtom(atoms.uiSelectedJobAtom)
 
-    const selectedJob = selectedJobId !== null ? jobModels.get(selectedJobId) : null
+    const [page, setPage] = useState(0)
 
-    const router = useRouter()
-    const path = router.asPath
-    const maybeUid = parseInt(path.replace('/jobs/', ''))
+    const { jobModels } = transformData(props)
+
+    const chunks = chunker<DateRangedItem>([...Array.from(jobModels.values())], pageSize)
+
+    const selectedJob = selectedJobId !== null ? jobModels.get(selectedJobId) : null
 
     const [actionItem, setActionItem] = useState<Resource | null>(null)
     
@@ -52,19 +56,30 @@ const JobsPage = (props: AppDataProps) => {
         setActionItem(null);
     }
 
-    useEffect( () => {
+    useEffect(() => {
+
+        const path = router.asPath
+        const maybeUid = parseInt(path.replace('/jobs/', ''))
 
         if (!isNaN(maybeUid) && selectedJobId !== maybeUid) {
 
             setSelectedJobId(maybeUid)
-            
-            const tgt = document.getElementById(`job-${ maybeUid }`)
-
-            tgt?.scrollIntoView()
-            window.scrollBy(0,-24)
         } 
-    }, [maybeUid])
+
+    }, [router])
     
+    useEffect(() => {
+        if (selectedJobId !== null) {
+
+            const newPage = pageForItem(chunks, selectedJobId)
+
+            if (newPage !== page) {
+                setPage(newPage)
+            } 
+        }
+        
+    }, [page, selectedJobId])
+
     const ctx = useContext(CvJobsContext)
 
     if (ctx === null) {
@@ -79,9 +94,9 @@ const JobsPage = (props: AppDataProps) => {
 
     const list = mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
 
-        if (filters && !job.display(filters) ) {
-            return null
-        }
+        // if (filters && !job.display(filters) ) {
+        //     return null
+        // }
 
         anyJobRendered = true  
 
@@ -90,6 +105,8 @@ const JobsPage = (props: AppDataProps) => {
         const selected = selectedJob !== null && selectedJob !== undefined && selectedJob.uid == job.uid
 
         return  <JobComponent
+            pagedOut={ i < (pageSize * page) || i >= ((pageSize * (page + 1))) }
+            filteredOut={ !!(filters && !job.display(filters) ) }
             id={ `job-${ job.uid }` }
             key={ job.uid } 
             job={ job } 
@@ -97,13 +114,22 @@ const JobsPage = (props: AppDataProps) => {
             annotationText={ annotationText }
             selected={ selected }
             handleSelect= { () => {
-                deepLinkSelected(job)
+                router.push(`/jobs/${ job.uid }`)
                 setSelectedJobId(job.uid)
             }}
         />
     })
 
     return <div className="page">
+        <Tabber 
+            items={ chunks } 
+            page={ page }
+            onPageSelect={ (p: number) => {
+                setPage(p)
+                setSelectedJobId(null)
+                router.push('/jobs')
+            } }
+        />
     {
         !anyJobRendered ?
             <StyledInlineWarning>

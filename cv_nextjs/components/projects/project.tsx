@@ -14,13 +14,17 @@ type Props = {
     handleSelect: () => void;
     annotationText: string | null;
     selected: boolean;
+    pagedOut: boolean;
+    filteredOut: boolean;
 }
 
 const memoComparator = (p: Props, c: Props) => {
     return c.project.uid == p.project.uid && 
             c.annotationText == p.annotationText && 
             p.bookmarked == c.bookmarked  && 
-            p.selected == c.selected
+            p.selected == c.selected &&
+            p.pagedOut == c.pagedOut &&
+            p.filteredOut == c.filteredOut
 }
 
 export const ProjectComponentBase = ({ 
@@ -29,10 +33,16 @@ export const ProjectComponentBase = ({
     bookmarked, 
     annotationText, 
     selected, 
-    handleSelect 
+    handleSelect,
+    pagedOut,
+    filteredOut
 } : Props) => {
 
-    return <StyledJobContainer id={ id } className={ selected ? "selected" : "" }>
+    const cnamePag = pagedOut ? 'paged-out' : ''
+    const cnameSel = selected ? 'selected' : ''
+    const cnameFil = filteredOut ? 'filtered-out': ''
+
+    return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }>
         <h2> 
             <span>
             {
