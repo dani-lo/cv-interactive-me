@@ -1,5 +1,0 @@
-export class Collection {
-    _id: string | null
-
-    constructor(_id) {}
-}
