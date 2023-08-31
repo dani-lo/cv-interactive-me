@@ -76,7 +76,6 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
-    let sidebar_ui_dispatcher = ui_dispatch.clone();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
 

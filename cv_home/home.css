@@ -1,3 +1,13 @@
+.spot {
+    border-radius: 50%;
+    position: fixed;
+    width: 85%;
+    height: 577px;
+    background: var(--active-action);
+    top: -270px;
+    margin: -3rem;
+}
+
 .logo {
     /* padding: 0; */
     /* align-items: center; */
@@ -7,8 +17,18 @@
     /* bottom: var(--gap-huge); */
     width: 500px;
     margin: var(--gap-huge) auto;
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 1rem;
+    border: 2px solid var\(--active-action;
+    border-radius: 2rem;
 }
 
+
+body {
+    background: var(--white);
+}
 .logo h1 {
    color: var(--black);
 
