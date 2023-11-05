@@ -19,10 +19,10 @@ const pageTitle = (items: DateRangedItem[]) => {
     const yearTo = items[0].period.toYear 
     const yearToStub = (yearTo + "").substring(2,4)
     
-    return `${ yearFrom } - ${ yearTo }`
+    return `${ yearFrom } - ${ `${yearTo}`.substring(2, 4) }`
 }
 
-export const pageSize = 3
+export const pageSize = 4
 
 export const pageForItem = (items: DateRangedItem[][], uid: number) => {
     
@@ -42,7 +42,7 @@ export const Tabber = ({ items, page, onPageSelect }: Props) => {
 
     return <StyledTabber>
         {
-            items.map((chunk, i) => <li>
+            items.map((chunk, i) => <li key={ i }>
                 <button 
                     className={ i == page ? "disabled" : "" }
                     onClick={() =>  onPageSelect(i) }>

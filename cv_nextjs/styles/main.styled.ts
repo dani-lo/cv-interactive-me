@@ -3,10 +3,11 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-    margin-top: var(--gap-large);
+    // margin-top: var(--gap-medium);
     padding:  var(--gap-medium);
     width: 380px;
-    border: 1px solid var(--active-action);
+    border-radius: 0.2rem;
+    // border: 1px solid var(--active-action);
 
     &.selected {
         background: var(--active-action);
@@ -65,6 +66,12 @@ export const StyledJobContainer = styled.div`
     @media only screen and (max-width: 768px) {
         width: auto;
         margin: var(--gap-large);
+    }
+
+    cursor: pointer;
+
+    &:hover {
+        background: #f2f1f1;
     }
 `
 
@@ -161,7 +168,9 @@ export const StyledCompanyContainer = styled.div`
 
     margin: var(--gap-huge) 0 var(--gap-large) 0;
     border: 1px solid var(--active-action);
-    padding: 0 var(--gap-medium) var(--gap-medium);
+    padding: var(--gap-medium) var(--gap-large);
+    border-radius: 0.2rem;
+    background: #f5f5f5;
 
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);
@@ -276,7 +285,7 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
 
     position: fixed;
     top: 0;
-    width: 290px;
+    width: 400px;
     height: 100%;
     z-index: var(--z-4);
     transition: left 0.25s;
@@ -294,8 +303,8 @@ export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     > .html-icon {
         display: inline-block;
         position: absolute;
-        right: 5px;
-        top: 11px;
+        right: 16px;
+        top: 10px;
     }
 `
 
@@ -445,10 +454,13 @@ export const StyledMobileBar = styled.div`
 `
 
 export const StyledAboutContainer = styled.div`
-    margin-top: var(--gap-large);
     padding:  var(--gap-medium);
-    width: 500px;
+    max-width: 800px;
     border: 1px solid var(--white);
+
+    h3 {
+        margin-top: 0;
+    }
 
     @media only screen and (max-width: 768px) {
         width: auto;

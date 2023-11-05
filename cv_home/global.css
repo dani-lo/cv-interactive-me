@@ -1,16 +1,28 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #0d252f;
+
+  /* --border-col-dark: #0d252f; */
+  --border-col-dark: #113544;
+  
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
-  --black : #0d252f;
+
+  /* --black : #0d252f; */
+--black: #113544;
   --active-action: cadetblue;
+  /* --active-action: #0a2f3f; */
   --text-clear: cadetblue;
+  /* --text-clear: #0a2f3f; */
+
   --active-pink: #bdc9ce;
   --pending-action: grey;
-  --text-main: #0d252f;
-  --text-dark: #0d252f;
+
+  /* --text-main: #0d252f; */
+  --text-main: #113544;
+  /* --text-dark: #0d252f; */
+  --text-dark: #113544;
+  
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -24,8 +36,8 @@
   --z-2: 10;
   --z-3: 100;
   --z-4: 1000;
+  --z-5: 10000;
 }
-
 * {
   box-sizing: border-box;
 }

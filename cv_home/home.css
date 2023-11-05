@@ -20,14 +20,13 @@
     position: relative;
     z-index: 2;
     background: white;
-    padding: 1rem;
-    border: 2px solid var\(--active-action;
-    border-radius: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
 }
 
 
 body {
-    background: var(--white);
+    background: var(--black);
 }
 .logo h1 {
    color: var(--black);
@@ -69,7 +68,7 @@ h1 {
 .content {
     margin-left: var(--gap-huge);
     /* margin-top: 3.5rem; */
-    display: none;
+    /* display: none; */
 }
 
 .content-sect {

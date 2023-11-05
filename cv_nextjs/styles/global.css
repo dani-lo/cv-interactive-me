@@ -1,16 +1,28 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #0d252f;
+
+  /* --border-col-dark: #0d252f; */
+  --border-col-dark: #113544;
+  
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
-  --black : #0d252f;
+
+  /* --black : #0d252f; */
+--black: #113544;
   --active-action: cadetblue;
+  /* --active-action: #0a2f3f; */
   --text-clear: cadetblue;
+  /* --text-clear: #0a2f3f; */
+
   --active-pink: #bdc9ce;
   --pending-action: grey;
-  --text-main: #0d252f;
-  --text-dark: #0d252f;
+
+  /* --text-main: #0d252f; */
+  --text-main: #113544;
+  /* --text-dark: #0d252f; */
+  --text-dark: #113544;
+  
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -44,7 +56,7 @@ body {
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
-  font-family: 'Open Sans', sans-serif;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, sans-serif;
   /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
   font-weight: 300; 
   background: var(--white);
@@ -69,7 +81,7 @@ body.scroll-down .mobile-bar i.fa {
 
 h1 {
   /* font-family: 'Arvo', sans-serif; */
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   font-weight: 800;
   text-align: center;
   font-size: 1.7rem;
@@ -88,7 +100,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px dotted var(--active-action);
+  /* border-bottom: 1px dotted var(--active-action); */
 }
 
 h2 i.fa {
@@ -201,7 +213,7 @@ ul.nav li {
   list-style: none;
   padding: var(--gap-medium);
   font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
   margin: var(--gap-small) var(--gap-small) var(--gap-large);
   color: var(--text-clear);
   font-weight: bold;
@@ -391,8 +403,4 @@ span.html-icon:hover {
 }
 .margin-no {
   margin: 0!important;
-}
-
-.jobs-container {
-  padding-bottom: 2rem;
 }
