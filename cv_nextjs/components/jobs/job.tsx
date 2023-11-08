@@ -35,7 +35,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     const cnameSel = selected ? 'selected' : ''
     const cnameFil = filteredOut ? 'filtered-out': ''
 
-    return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }>
+    return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` } onClick={ handleSelect }>
          <h2 > 
             <span>
                 {
@@ -44,10 +44,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
                 
                 { job.period.formatted }
             </span>
-            <i 
-                className={ "job-selector fa fa-chevron-right" }
-                onClick={ handleSelect }
-            />
+            <i className={ "fa fa-chevron-right" } />
         </h2>
         <h3> 
         { job.position }{ job.company ? `, ${  job.company.name  }` : '' }

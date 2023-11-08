@@ -42,7 +42,10 @@ export const ProjectComponentBase = ({
     const cnameSel = selected ? 'selected' : ''
     const cnameFil = filteredOut ? 'filtered-out': ''
 
-    return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }>
+    return <StyledJobContainer 
+            id={ id } 
+            className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }
+            onClick={ handleSelect }>
         <h2> 
             <span>
             {
@@ -50,10 +53,7 @@ export const ProjectComponentBase = ({
             }
             { project.name }
             </span>
-            <i 
-                className={ "job-selector fa fa-chevron-right" }
-                onClick={ handleSelect }
-            />
+            <i className={ "fa fa-chevron-right" } />
         </h2>
         { annotationText ? <AnnotationsComponent note={ annotationText } /> : null }
         <h3>

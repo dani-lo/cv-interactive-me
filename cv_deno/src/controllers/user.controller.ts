@@ -5,7 +5,7 @@ import { Bson } from '../../deps.ts'
 import { User } from '../models/user.model.ts'
 
 import type { CreateUserInput } from '../schema/user.schema.ts'
-import { urlSearchParamsToBody } from '../utils/formDataReader.ts'
+import { FormFieldsObject, urlSearchParamsToBody } from '../utils/formDataReader.ts'
 
 const createUserController = async ({
     request,
@@ -79,6 +79,7 @@ const findUserController = async ({
     response,
   }: RouterContext<string>) => {
 
+    console.log('FIN USER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     if (User.isNone()) {
         return
     }

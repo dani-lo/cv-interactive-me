@@ -6,7 +6,8 @@ import config from '../config/default.ts';
 const {dbUri, dbName} = config
 
 let db: Option<Database> = None();
-
+console.log('====================')
+console.log(dbUri)
 try {
     const client = new MongoClient()
     await client.connect(dbUri)

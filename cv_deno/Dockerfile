@@ -29,4 +29,4 @@ RUN deno cache main.ts
 
 # CMD ["deno", "run", "--allow-read", "--allow-env", "--allow-net", "main.ts"]
 
-CMD ["bash"]
+# CMD ["bash"]

@@ -3,7 +3,7 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-    // margin-top: var(--gap-medium);
+    margin-top: var(--gap-medium);
     padding:  var(--gap-medium);
     width: 380px;
     border-radius: 0.2rem;
@@ -20,11 +20,8 @@ export const StyledJobContainer = styled.div`
             border-color: var(--white);
         }
 
-        i.job-selector {
-            color: var(--text-inactive);
-            cursor: default;
-            pointer-events: none;
-        }
+        cursor: default;
+        pointer-events: none;
     }
     
     &:first-child {   
@@ -41,16 +38,6 @@ export const StyledJobContainer = styled.div`
         margin-right: var(--gap-medium);
     }
 
-    i.job-selector {
-        font-size: 1rem;
-        color: var(--active-action);
-        cursor: pointer;    
-
-        &:hover {
-            color: var(--active-pink);
-        }
-    }
-    
     p {
         span {
             padding-right:  var(--gap-medium);

@@ -318,18 +318,6 @@ span.html-icon {
   display: inline-block;
 }
 
-span.html-icon.job-selector {
-  font-size: 3rem;
-}
-
-span.html-icon.job-selector {
-  font-size: 3rem;
-}
-
-.selected span.html-icon.job-selector {
-  opacity: 0.5;
-}
-
 span.html-icon:hover {
   color: var(--active-pink);
 }

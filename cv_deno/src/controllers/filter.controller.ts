@@ -84,6 +84,8 @@ const findAllFiltersController = async ({
     response,
   }: RouterContext<string>) => {
 
+    console.log('Filter.isNone()', Filter.isNone())
+
     if (Filter.isNone()) {
         return
     }
