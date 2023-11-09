@@ -1,15 +1,22 @@
-import { dotenvConfig } from '../../deps.ts'
+import { load as loadLocalEnv } from '../../deps.ts'
 
-dotenvConfig({ export: true, path: '../.env' })
+const dockerComposeEnv = Deno.env.get('COMPOSE')
+
+const envConf = await loadLocalEnv({
+    export: true,
+    envPath: '.env'
+  })
 
 const config: {
     port: number;
+    nodeEnv: string;
     dbUri: string;
     dbName: string;
 } = {
-    port: parseInt(Deno.env.get('PORT') as unknown as string),
-    dbUri: Deno.env.get('MONGODB_URI') as unknown as string,
-    dbName:  Deno.env.get('MONGODB_DATABASE_NAME') as unknown as string,
+  port: parseInt(envConf.PORT as unknown as string),
+  nodeEnv: envConf.NODE_ENV as unknown as string,
+  dbUri: dockerComposeEnv ? envConf.MONGODB_URI_DOCKER as unknown as string : envConf.MONGODB_URI_LOCAL as unknown as string,
+  dbName: envConf.MONGODB_DATABASE_NAME as unknown as string,
 }
 
-export default config;
+export default config

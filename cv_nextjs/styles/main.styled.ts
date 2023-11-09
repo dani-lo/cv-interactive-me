@@ -391,18 +391,20 @@ export const StyledAnnotation = styled.div`
 
 export const StyledNotification = styled.div`
     position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
+    width: ;
+    right: var(--gap-large);
+    top: var(--gap-large);
     z-index: var(--z-4);
 
-    p {
+    h3 {
         display: block;
         color: white;
         font-weight: bold;
+        font-size: 0.8rem;
         padding: var(--gap-medium) var(--gap-large);
         text-align: center;
         margin: 0;
+        border-radius: 0.25rem;
     }
 `
 

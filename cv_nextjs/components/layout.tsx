@@ -43,7 +43,7 @@ const Layout = ({
         const settingsparser = new AppSettingsParser()
         const settings = settingsparser.allSettings
 
-        // @ts-ignore
+        // @ts-ignorel
         setSettings(settings)
     }, [])
 

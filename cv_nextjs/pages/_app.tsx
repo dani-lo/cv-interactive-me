@@ -93,7 +93,7 @@ export default function App({
       { 
          uiOpStatus !== null ?
             <StyledNotification>
-              <p className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</p>
+              <h3 className={ `${atoms.outcomeClassName(uiOpStatus.outcome)}` }>{ uiOpStatus.msg }</h3>
             </StyledNotification> :
             null
         }

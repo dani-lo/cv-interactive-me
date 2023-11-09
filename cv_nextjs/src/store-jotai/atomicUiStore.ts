@@ -2,7 +2,7 @@
 import { atom } from "jotai"
 import { AppSetting, AppSettingsParser } from "../settings/parser";
 
-type UiOpStatusOutcome =  'success' | 'error' | 'warning'
+export type UiOpStatusOutcome =  'success' | 'error' | 'warning'
 
 type UiOpStatus = {
     outcome:UiOpStatusOutcome,

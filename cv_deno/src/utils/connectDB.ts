@@ -7,7 +7,8 @@ const {dbUri, dbName} = config
 
 let db: Option<Database> = None();
 console.log('====================')
-console.log(dbUri)
+console.log(config)
+console.log("+++++++++++++++++++++++++++++++++= Deno.env.get('COMPOSE')", Deno.env.get('COMPOSE'))
 try {
     const client = new MongoClient()
     await client.connect(dbUri)

@@ -31,13 +31,13 @@ COPY . .
 
 # If using npm comment out above and use below instead
 
-# dev RUN npm run build
+RUN npm run build
 
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV development
+# ENV NODE_ENV development
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
@@ -69,12 +69,11 @@ COPY --from=builder /app/styles ./styles
 COPY --from=builder /app/tests ./tests
 COPY --from=builder /app/next-env.d.ts ./next-env.d.ts
 
-
 USER nextjs
 
 EXPOSE 3000
 
 ENV PORT 3000
 
-# CMD ["npm", "run", "dev"]
+# CMD ["npm", "start"]
 CMD ["tail", "-f", "/dev/null"]

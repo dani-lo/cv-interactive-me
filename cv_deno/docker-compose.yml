@@ -2,12 +2,11 @@ version: '3.9'
 services:
   mongo:
     image: mongo
-    container_name: cv_mongo_container
+    container_name: cv_mongo_container_standalone
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
-    
     env_file:
       - ./.env
     volumes:

@@ -42,30 +42,51 @@ export const PendingActionsComponent = ({
             console.log(e)
         }
         
-    }, [user.name])
+    }, [user])
 
-    useEffect(() => {
-        
-        setShowSelf(true)
-
-    }, [JSON.stringify(pendingActions)])
-    
-    if (!ctx) {
-        return null
-    }       
+    const actionsDep = JSON.stringify(pendingActions)
 
     const parser = new AppSettingsParser()
     
     const allowFeedback = parser.getSetting(SettingKeys.ShowPersistFeedback)
     const autoPersist = parser.getSetting(SettingKeys.AutoPersist)
 
-    // console.log('allowFeedback', allowFeedback)
-    // console.log('autoPersist', autoPersist)
     const userAllows = (!autoPersist && allowFeedback)
 
-    // console.log('userAllows', userAllows)
+    console.log('userAllows', userAllows)
 
     const active = pendingActions.length > 0 && showself && userAllows
+
+    useEffect(() => {
+        
+        setShowSelf(true)
+
+        if (pendingActions.length && autoPersist) {
+            setUiOpStatus({
+                outcome: 'warning',
+                msg: 'Persisting your changes, please wait',
+            })
+            
+            if (!!appState) {
+                persistAppstateActionsData(appState).then((result: AppState) => {
+                
+                    uiOperationSuccess({
+                        outcome: 'success',
+                        msg: 'Changes Persisted',
+                    })
+
+                    ctx.dispatch({ type: AppStateAction.REFRESH_PENDING, payload: result })
+                })
+            }
+        }
+
+    }, [actionsDep, appState])
+    
+    if (!ctx) {
+        return null
+    }       
+
+    
     
     return <StyledPrompt className={ `${ active ? 'active' : '' }` }>
         <div className="prompt">
