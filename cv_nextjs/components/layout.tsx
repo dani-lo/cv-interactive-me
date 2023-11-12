@@ -84,6 +84,12 @@ const Layout = ({
                 <ActionsList 
                     { ...pageProps }
                 />
+                <div className="StyledAppPayoff">  
+                    <div>
+                        <p>You are viewing the Nextjs implementation.</p>
+                        <p>Try the <a href="https://webassembly.interactiveme.net/personal">Web Assembley (Rust) implementation</a></p>
+                    </div>
+                </div>
             </StyledSidebar> : null
         }
         {

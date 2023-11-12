@@ -49,7 +49,9 @@ pub fn project(ProjectProps {
     // });
 
     html! {
-        <div class={ c_name } id={ format!("slot-{}", c_uid) }>
+        <div 
+            class={ c_name } id={ format!("slot-{}", c_uid) } 
+            onclick={ move |_| project_detail.emit(c_uid) }>
             <h2>
                 {
                     if *bookmarked {
@@ -68,7 +70,6 @@ pub fn project(ProjectProps {
                 }
                 <i 
                     class={if *selected { "job-selector selected fa fa-chevron-right"} else { "job-selector fa fa-chevron-right" }}
-                    onclick={ move |_| project_detail.emit(c_uid) }
                 />
             </h2>
             <h3>

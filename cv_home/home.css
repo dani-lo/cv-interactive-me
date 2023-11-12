@@ -56,7 +56,7 @@
 
 
 body {
-    background: var(--black);
+    background: #642323;
 }
 .logo h1 {
    color: var(--black);
@@ -87,7 +87,7 @@ p {
 }
 
 .menu li a {
-    color: var(--active-action);
+    /* color: var(--active-action); */
 }
 
 h1 {

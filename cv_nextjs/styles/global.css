@@ -2,14 +2,14 @@
   --border-col: #d0d0d0;
 
   /* --border-col-dark: #0d252f; */
-  --border-col-dark: #113544;
+  --border-col-dark: #142d37;;
   
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
 
   /* --black : #0d252f; */
---black: #113544;
+--black: #142d37;;
   --active-action: cadetblue;
   /* --active-action: #0a2f3f; */
   --text-clear: cadetblue;
@@ -19,9 +19,9 @@
   --pending-action: grey;
 
   /* --text-main: #0d252f; */
-  --text-main: #113544;
+  --text-main: #142d37;;
   /* --text-dark: #0d252f; */
-  --text-dark: #113544;
+  --text-dark: #142d37;;
   
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
@@ -252,6 +252,7 @@ li.itemised {
   text-transform: capitalize;
   padding: 0;
   display: list-item;
+  font-size: 0.85rem;
 }
 
 li.list-footer-meta-action {
@@ -391,4 +392,30 @@ span.html-icon:hover {
 }
 .margin-no {
   margin: 0!important;
+}
+
+.StyledAppPayoff {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  left: 0;
+}
+.StyledAppPayoff > div {
+  padding: var(--gap-large);
+  background: black;
+  margin: 0 auto;
+  width:80%;
+  border-radius: 0.25rem;
+  background: var(--white);
+}
+
+.StyledAppPayoff p {
+  color: var(--black)!important;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.StyledAppPayoff p a {
+  color: var(--black);
+  
 }

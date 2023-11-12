@@ -1,16 +1,33 @@
 .StyledAboutContainer {
-    margin-top: var(--gap-medium);
-    padding: 0  var(--gap-medium);
+    margin-top: var(--gap-small);
+    padding: 0  var(--gap-small);
     width: 500px;
-    border: 1px solid var(--white);
+    /* border: 1px solid var(--white); */
 }
 
 .StyledJobContainer {   
-    /* margin-top: var(--gap-large); */
-    padding:  0 var(--gap-medium);
+    margin-top: var(--gap-small);
+    padding:  var(--gap-medium);
     width: 380px;
     /* border: 1px solid var(--active-action); */
-    margin: var(--gap-large) 0;
+    margin: var(--gap-medium) 0;
+    cursor: pointer;
+}
+
+.StyledJobContainer ul {   
+    margin: 0;
+    padding: 0;
+}
+
+.StyledJobContainer ul li {   
+    margin: 0;
+    padding: 0;
+    line-height: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.StyledJobContainer:hover {
+    background: var(--white);
 }
 
 .StyledJobContainer:first-child {   
@@ -33,9 +50,9 @@
     cursor: pointer;    
 }
 
-.StyledJobContainer i.job-selector:hover {
+/* .StyledJobContainer i.job-selector:hover {
     color: var(--active-pink);
-}
+} */
 
 
 .StyledJobContainer.selected {
@@ -44,8 +61,12 @@
     cursor: default;
     pointer-events: none; 
     border-radius: 0.25rem;
-    padding:  var(--gap-medium);
+    
+    cursor: default;
+    pointer-events: none;
 }
+
+
 
 /* UNPORTED */
 .StyledJobContainer.selected h2,
@@ -59,9 +80,10 @@
 }
 
 .StyledJobContainer.selected i.job-selector {
-    color: var(--text-inactive);
+    color: white;
     cursor: default;
     pointer-events: none;
+    
 }
 
 .StyledJobContainer p span {
@@ -80,9 +102,9 @@
     overflow-y: scroll;
     height: 100%;
     top: 94px;
-    padding: var(--gap-large);
+    padding: 0 var(--gap-large);
     left: 760px;
-    background: var(--white);
+    /* background: var(--white); */
 }
 
 .StyledJobDetail h2 {
@@ -135,9 +157,9 @@
 
 .StyledCompanyContainer {
     margin: var(--gap-huge) 0 var(--gap-large) 0;
-    border: 1px solid var(--active-action);
+    /* border: 1px solid var(--active-action); */
     padding: var(--gap-medium) var(--gap-large);
-    background: #f5f5f5;
+    background: var(--white);
     border-radius: 0.2rem;
 }
 
@@ -223,13 +245,12 @@
     position: fixed;
     right: var(--gap-large);
     padding:  var(--gap-medium);
-    background: var(--active-action);
-    background: var(--bg-white);
-    border: 2px solid var(--border-col);
+    background: var(--black);
     text-align: center;
     top: -500px;
     transition: top 0.5s;
     padding: var(--gap-large);
+    border-radius: 0.25rem;;
 }
 .StyledPrompt.active {
     top: var(--gap-large);
@@ -237,18 +258,24 @@
 
 .StyledPrompt  p {
     text-align: left;
+    color: white;
 }
 
 .StyledPrompt > p {
     margin: var(--gap-large) 0;
+    color: white;
 }
 
 .StyledPrompt  p a {
     padding-left: var(--gap-small);
+    color: white;
+    font-weight: bold;
 }
+
 
 .StyledPrompt  i {
     width: 1rem;
+    color: white;
 }
 
 .StyledPrompt  .prompt {
@@ -264,6 +291,7 @@
 .StyledPrompt .prompt p {
     display: inline-block;
     margin: 0 var(--gap-large) 0 0;
+    color: white;
 }
 
 .StyledPrompt span.html-icon {
@@ -276,7 +304,7 @@
 .StyledSettingsListContainer {
     position: fixed;
     top: 0;
-    width: 290px;
+    width: 400px;
     height: 100%;
     left: 315px;
     z-index: var(--z-4);
@@ -300,8 +328,8 @@
 .StyledSettingsListContainer > .html-icon {
     display: inline-block;
     position: absolute;
-    right: 5px;
-    top: 11px;
+    right: 10px;
+    top: 4px;
 }
 
 .StyledInlineWarning {
@@ -462,4 +490,29 @@
     margin: 0 var(--gap-medium) 0 0;
     
 }
+
+.StyledAppPayoff {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    left: 0;
+}
+.StyledAppPayoff > div {
+    padding: var(--gap-large);
+    background: black;
+    margin: 0 auto;
+    width:80%;
+    border-radius: 0.25rem;
+    background: var(--white);
+}
+
+.StyledAppPayoff p {
+    color: var(--black);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.StyledAppPayoff p a {
+    color: var(--black);
     
+}

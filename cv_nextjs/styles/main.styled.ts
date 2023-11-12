@@ -186,13 +186,12 @@ export const StyledPrompt = styled.div`
     position: fixed;
     right: var(--gap-large);
     padding:  var(--gap-medium);
-    background: var(--active-action);
-    background: var(--bg-white);
-    border: 2px solid var(--border-col);
+    background: var(--black);
     text-align: center;
     top: -500px;
     transition: top 0.5s;
     padding: var(--gap-large);
+    border-radius: 0.25rem;
   
     &.active {
         top: var(--gap-large);
@@ -200,6 +199,16 @@ export const StyledPrompt = styled.div`
     
     p {
         text-align: left;
+        color: white;
+    }
+
+    i {
+        color: white;
+    }
+
+    a {
+        color: white;
+        font-weight: bold;
     }
 
     > p {

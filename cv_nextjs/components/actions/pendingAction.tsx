@@ -135,7 +135,7 @@ export const PendingActionsComponent = ({
             <i className="fa fa-chevron-down" /> :
             <i className="fa fa-chevron-right" />
         }
-        <span style={{ paddingLeft: 'var(--gap-medium'}}>Why am I seeing this?</span>
+        <a style={{ paddingLeft: 'var(--gap-medium'}}>Why am I seeing this?</a>
         </p>
         { showOptions ?
             <div className="pending-actions-user-info">

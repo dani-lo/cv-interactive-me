@@ -158,7 +158,26 @@ pub fn actions_list ()  -> Html {
                         }
                     }
                 }
+            </div>
+            <div class="StyledAppPayoff">  
+                <div>
+                    <p>
+                        {
+                            "You are viewing the Web Asssembly (Rust) implemntation."
+                        }
+                    </p>
+                    <p>
+                        {
+                            "Try the "
+                        }
+                        <a href="https://nextjs.interactiveme.net/personal">
+                        {
+                            "Nextjs implementation"
+                        }
+                        </a>
+                    </p>
                 </div>
+            </div>
         </>       
     }
 }

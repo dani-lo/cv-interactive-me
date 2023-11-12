@@ -2,14 +2,14 @@
   --border-col: #d0d0d0;
 
   /* --border-col-dark: #0d252f; */
-  --border-col-dark: #113544;
+  --border-col-dark: #112215;
   
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
 
   /* --black : #0d252f; */
---black: #113544;
+--black: #112215;
   --active-action: cadetblue;
   /* --active-action: #0a2f3f; */
   --text-clear: cadetblue;
@@ -19,9 +19,9 @@
   --pending-action: grey;
 
   /* --text-main: #0d252f; */
-  --text-main: #113544;
+  --text-main: #113112215544;
   /* --text-dark: #0d252f; */
-  --text-dark: #113544;
+  --text-dark: #112215;
   
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
@@ -128,7 +128,7 @@ a:hover {
 
 p {
   line-height: 1.4rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   padding: 0;
   margin: var(--gap-small) 0;
   color: var(--text-main);
@@ -229,7 +229,7 @@ ul.nav li.active a {
 }
 
 li {
-  font-size:0.9rem;
+  font-size:0.8rem;
   line-height: 1.4rem;
   list-style: none;
   list-style-position: inside;
@@ -244,6 +244,8 @@ li.itemised {
   text-transform: capitalize;
   padding: 0;
   display: list-item;
+
+  font-size: 0.85rem;
 }
 
 li.list-footer-meta-action {

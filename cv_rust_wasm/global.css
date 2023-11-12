@@ -1,16 +1,16 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #0d252f;
+  --border-col-dark: #421616;
   --bg-grey: #fafafa;
   --bg-white: #fff;
-  --white : #fbfbfb;
-  --black : #0d252f;
-  --active-action: cadetblue;
-  --text-clear: cadetblue;
+  --white : #f2f2f2;
+  --black : #421616;
+  --active-action: #c16d30;
+  --text-clear: #c16d30;
   --active-pink: #bdc9ce;
   --pending-action: grey;
-  --text-main: #0d252f;
-  --text-dark: #0d252f;
+  --text-main: #421616;
+  --text-dark: #421616;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -51,7 +51,7 @@ body {
   font-family:  -apple-system, BlinkMacSystemFont, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, sans-serif;
 
   font-weight: 300; 
-  background: var(--white);
+  background: white;
 }
 
 
@@ -111,7 +111,7 @@ h3 {
   font-size: 1rem;
   margin: var(--gap-medium) 0;
   line-height: 1.5rem;
-  color: var(--text-clear);
+  color: var(--black);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -346,7 +346,7 @@ span.html-icon:hover {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: var(--black);
+  background: black;
   top: 0;
   left: 0;
   opacity: 0.5;
@@ -385,7 +385,7 @@ span.html-icon:hover {
 .margin-no {
   margin: 0!important;
 }
-
+/* 
 .jobs-container {
   padding-bottom: 2rem;
-}
+} */
