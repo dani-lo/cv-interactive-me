@@ -36,6 +36,9 @@ impl StaticAsset for ProjectData {
     fn get_uid (&self) -> usize {
         self.uid.clone()
     }
+    fn get_daterange (&self) -> Option<DateRange> {
+        Some(DateRange::new(self.from, self.to))
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
@@ -57,6 +60,10 @@ impl HasBookmarkTrait for ProjectModel {}
 impl StaticAsset for ProjectModel {
     fn get_uid (&self) -> usize {
         self.uid.clone()
+    }
+
+    fn get_daterange (&self) -> Option<DateRange> {
+        Some(self.period.clone())
     }
 }
 

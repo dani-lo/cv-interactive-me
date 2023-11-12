@@ -4,7 +4,9 @@ use crate::{
     traits::can_filter::{
         HasFilterTrait, 
         Filter,
-    }, appdata::stores::store_app_types::AppStaticDataHashes,
+    }, 
+    appdata::stores::store_app_types::AppStaticDataHashes, 
+    util::daterange::DateRange,
 };
 
 use super::{Model, ModelTypes, StaticAsset};
@@ -19,6 +21,9 @@ impl StaticAsset for TechData {
     fn get_uid (&self) -> usize {
         self.uid.clone()
     }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
+    }
 }
  
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
@@ -30,6 +35,9 @@ pub struct TechModel {
 impl StaticAsset for TechModel {
     fn get_uid (&self) -> usize {
         self.uid.clone()
+    }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
     }
 }
 

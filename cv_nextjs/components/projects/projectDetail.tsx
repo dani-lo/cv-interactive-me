@@ -54,7 +54,7 @@ export const ProjectDetailsComponentBase = ({
             project.status.map((ps, i) => <li key={ i }><RichTextParagraphComponent text={ ps } /></li>)
         }
         </ul>
-        <h3 style={{ marginTop: 'var(--gap-huge' }}>Technical Resume</h3>
+        <h3 style={{ marginTop: 'var(--gap-huge' }}>Tech</h3>
         <TechListComponent
             techs={ project.tech}
             showActions={ showActions }

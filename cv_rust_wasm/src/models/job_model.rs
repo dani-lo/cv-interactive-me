@@ -39,6 +39,9 @@ use super::{
    fn get_uid (&self) -> usize {
        self.uid.clone()
    }
+   fn get_daterange (&self) -> Option<DateRange> {
+      Some(DateRange::new(self.from, self.to))
+   }
 }
 
  #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
@@ -58,6 +61,9 @@ impl ImplicitClone for JobModel {}
 impl StaticAsset for JobModel {
    fn get_uid (&self) -> usize {
        self.uid.clone()
+   }
+   fn get_daterange (&self) -> Option<DateRange> {
+      Some(self.period.clone())
    }
 }
 

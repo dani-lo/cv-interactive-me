@@ -6,6 +6,8 @@ use crate::{traits::can_filter::{HasFilterTrait, Filter}, appdata::stores::store
 
 use super::{Model, ModelTypes, StaticAsset};
 
+use crate::util::daterange::DateRange;
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct JobtypeData {
     pub uid: usize,
@@ -23,6 +25,9 @@ impl StaticAsset for JobtypeData {
     fn get_uid (&self) -> usize {
         self.uid.clone()
     }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
+     }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
@@ -37,6 +42,9 @@ impl HasFilterTrait for JobtypeModel {}
 impl StaticAsset for JobtypeModel {
     fn get_uid (&self) -> usize {
         self.uid.clone()
+    }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
     }
 }
 

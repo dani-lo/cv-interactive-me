@@ -44,8 +44,12 @@ body {
   /* font-family: 'Roboto', sans-serif; */
   /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
-  font-family: 'Open Sans', sans-serif;
+  
+  /* font-family: 'Open Sans', sans-serif; */
+  
   /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
+  font-family:  -apple-system, BlinkMacSystemFont, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, sans-serif;
+
   font-weight: 300; 
   background: var(--white);
 }
@@ -90,7 +94,7 @@ h2 {
   margin: 0;
   color: var(--text-clear);
   font-weight: bold;
-  border-bottom: 1px dotted var(--active-action);
+  /* border-bottom: 1px dotted var(--active-action); */
   
 }
 
@@ -157,7 +161,7 @@ button {
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
   background: var(--text-clear);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
   margin: var(--gap-small) 0;
@@ -218,6 +222,7 @@ ul.nav li.active {
   text-decoration: none;
   pointer-events: none;
   background: var(--bg-grey);
+  border-radius: 0.25rem;
   
 }
 ul.nav li.active a {

@@ -94,4 +94,8 @@
         width: auto;
         margin: 3rem 1rem;
     }
+
+    .StyledTabber {
+        display: none;
+    }
 }

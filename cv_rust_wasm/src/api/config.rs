@@ -3,6 +3,7 @@ use std::{
 };
 use std::env;
 
+use log::info;
 use serde::Deserialize;
 
 #[derive(Eq, Hash, PartialEq, Deserialize)]
@@ -62,24 +63,30 @@ pub fn get_actions_api_config () -> HashMap<CvActionsEndpoints, &'static str>  {
 
     let mut conf: HashMap<CvActionsEndpoints, &'static str> = HashMap::new();
 
-    // let release = env::var("INTERACTIVEME_RELEASE").is_ok();
+    let stage =  env::var("STAGE");
 
-    // if !release {
-    //     conf.insert(CvActionsEndpoints::BOOKMARKS, "http://localhost:8000/api/bookmarks");
-    //     conf.insert(CvActionsEndpoints::FILTERS, "http://localhost:8000/api/filters");
-    //     conf.insert(CvActionsEndpoints::ANNOTATIONS, "http://localhost:8000/api/annotations");
-    //     conf.insert(CvActionsEndpoints::USER, "http://localhost:8000/api/users");
-    // } else {
-    //     conf.insert(CvActionsEndpoints::BOOKMARKS, "https://interactiveme.net/api/bookmarks");
-    //     conf.insert(CvActionsEndpoints::FILTERS, "https://interactiveme.net/api/filters");
-    //     conf.insert(CvActionsEndpoints::ANNOTATIONS, "https://interactiveme.net/api/annotations");
-    //     conf.insert(CvActionsEndpoints::USER, "https://interactiveme.net/api/users");
-    // }
+    if (stage.is_ok()){
+        info!("----- {}", stage.unwrap());
+    }
 
-    conf.insert(CvActionsEndpoints::BOOKMARKS, "https://interactiveme.net/api/bookmarks");
-    conf.insert(CvActionsEndpoints::FILTERS, "https://interactiveme.net/api/filters");
-    conf.insert(CvActionsEndpoints::ANNOTATIONS, "https://interactiveme.net/api/annotations");
-    conf.insert(CvActionsEndpoints::USER, "https://interactiveme.net/api/users");
+    let dev =  true;//if  stage.is_ok() && stage.unwrap() == "DEVELOPMENT" { true } else { false };
+
+    if dev {
+        conf.insert(CvActionsEndpoints::BOOKMARKS, "http://localhost:8000/api/bookmarks");
+        conf.insert(CvActionsEndpoints::FILTERS, "http://localhost:8000/api/filters");
+        conf.insert(CvActionsEndpoints::ANNOTATIONS, "http://localhost:8000/api/annotations");
+        conf.insert(CvActionsEndpoints::USER, "http://localhost:8000/api/users");
+    } else {
+        conf.insert(CvActionsEndpoints::BOOKMARKS, "https://interactiveme.net/api/bookmarks");
+        conf.insert(CvActionsEndpoints::FILTERS, "https://interactiveme.net/api/filters");
+        conf.insert(CvActionsEndpoints::ANNOTATIONS, "https://interactiveme.net/api/annotations");
+        conf.insert(CvActionsEndpoints::USER, "https://interactiveme.net/api/users");
+    }
+
+    conf.insert(CvActionsEndpoints::BOOKMARKS, "http://localhost:8000/api/bookmarks");
+        conf.insert(CvActionsEndpoints::FILTERS, "http://localhost:8000/api/filters");
+        conf.insert(CvActionsEndpoints::ANNOTATIONS, "http://localhost:8000/api/annotations");
+        conf.insert(CvActionsEndpoints::USER, "http://localhost:8000/api/users");
 
     conf
 }

@@ -1,15 +1,16 @@
 .StyledAboutContainer {
     margin-top: var(--gap-medium);
-    padding:  var(--gap-medium);
+    padding: 0  var(--gap-medium);
     width: 500px;
     border: 1px solid var(--white);
 }
 
 .StyledJobContainer {   
-    margin-top: var(--gap-large);
-    padding:  var(--gap-medium);
+    /* margin-top: var(--gap-large); */
+    padding:  0 var(--gap-medium);
     width: 380px;
-    border: 1px solid var(--active-action);
+    /* border: 1px solid var(--active-action); */
+    margin: var(--gap-large) 0;
 }
 
 .StyledJobContainer:first-child {   
@@ -39,9 +40,11 @@
 
 .StyledJobContainer.selected {
     background: var(--active-action);
-    padding:  var(--gap-medium);
+    /* padding:  var(--gap-medium); */
     cursor: default;
     pointer-events: none; 
+    border-radius: 0.25rem;
+    padding:  var(--gap-medium);
 }
 
 /* UNPORTED */
@@ -76,7 +79,7 @@
     width: 380px;
     overflow-y: scroll;
     height: 100%;
-    top: 12px;
+    top: 94px;
     padding: var(--gap-large);
     left: 760px;
     background: var(--white);
@@ -133,7 +136,9 @@
 .StyledCompanyContainer {
     margin: var(--gap-huge) 0 var(--gap-large) 0;
     border: 1px solid var(--active-action);
-    padding: 0 var(--gap-medium) var(--gap-medium);
+    padding: var(--gap-medium) var(--gap-large);
+    background: #f5f5f5;
+    border-radius: 0.2rem;
 }
 
 .StyledCompanyContainer > h3 {
@@ -446,3 +451,15 @@
     display: inline-block;
     margin-right: var(--gap-large);
 }
+
+.StyledTabber {
+    margin-bottom: var(--gap-huge);
+    
+}
+    
+.StyledTabber li {
+    display: inline-block;
+    margin: 0 var(--gap-medium) 0 0;
+    
+}
+    

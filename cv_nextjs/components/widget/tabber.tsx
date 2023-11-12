@@ -17,7 +17,6 @@ type Props = {
 const pageTitle = (items: DateRangedItem[]) => {
     const yearFrom = items[items.length - 1].period.fromYear
     const yearTo = items[0].period.toYear 
-    const yearToStub = (yearTo + "").substring(2,4)
     
     return `${ yearFrom } - ${ `${yearTo}`.substring(2, 4) }`
 }

@@ -33,7 +33,6 @@ const JobsPage = (props: AppDataProps) => {
     
     const router = useRouter()
 
-
     const [selectedJobId, setSelectedJobId] = useAtom(atoms.uiSelectedJobAtom)
 
     const [page, setPage] = useState(0)

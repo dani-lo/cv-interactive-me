@@ -4,6 +4,8 @@ use crate::{traits::can_filter::{HasFilterTrait, Filter}, appdata::stores::store
 
 use super::{Model, ModelTypes, StaticAsset};
 
+use crate::util::daterange::DateRange;
+
 #[derive(Debug, Serialize, Deserialize)]
 pub struct FieldData {
     pub uid: usize,
@@ -13,6 +15,9 @@ pub struct FieldData {
 impl StaticAsset for FieldData {
     fn get_uid (&self) -> usize {
         self.uid.clone()
+    }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
     }
 }
 
@@ -27,6 +32,9 @@ impl HasFilterTrait for FieldModel {}
 impl StaticAsset for FieldModel {
     fn get_uid (&self) -> usize {
         self.uid.clone()
+    }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
     }
 }
 

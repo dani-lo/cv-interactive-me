@@ -15,17 +15,18 @@ mod traits;
 mod screens;
 mod settings;
 
+
+// extern crate console_error_panic_hook;
+// use std::panic;
+
 use crate::{
-    appdata::stores::{
-        store_ui::StoreUI,
-    }, 
+    appdata::stores::store_ui::StoreUI, 
     screens::{
         jobs::JobsComponent,
         projects::ProjectsComponent,
         personal::PersonalComponent,
     },
-    components::actions::actions_pending::PendingActionsComponent,
-    components::widget::topbar::TopbarComponent,
+    components::actions::actions_pending::PendingActionsComponent
 };
 
 use routes::AppRoute;

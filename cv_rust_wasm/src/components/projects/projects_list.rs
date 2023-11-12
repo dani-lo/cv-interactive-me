@@ -7,7 +7,7 @@ use yew::{
     Callback, 
     function_component, 
     html, 
-    use_effect_with_deps,
+    use_effect_with_deps, use_state,
 };
 
 use serde::{
@@ -19,6 +19,7 @@ use yewdux::prelude::use_store;
 use crate::appdata::stores::store_app_types::PendingStatus;
 use crate::appdata::stores::store_app::StoreApp;
 use crate::components::projects::project::ProjectComponent;
+use crate::components::widget::tabber::TabberComponent;
 use crate::models::{
     Model,
     ModelTypes,
@@ -29,6 +30,7 @@ use crate::traits::{
     can_annotate::Annotation,
     can_bookmark::Bookmark,
 };
+use crate::util::chunker::{chunker, page_from_chunk};
 use crate::util::wasm_bridge::{
     scroll_to_slot,
     scroll_top,
@@ -54,7 +56,9 @@ pub fn job_list(ProjectListProps {
         active_project_id }: &ProjectListProps) -> Html {
 
     let (state, _dispatch) = use_store::<StoreApp>();
-    
+        
+    let page = use_state(|| 0);
+
     let selected_id = *active_project_id;
 
     let notes: Vec<Annotation> = state.annotations.clone().to_vec();
@@ -81,15 +85,43 @@ pub fn job_list(ProjectListProps {
         }
     }, ());
 
-    let mut sorted_projects = projects.clone();
-    
-    sorted_projects.sort_by(|a, b| {
-        if a < b { Ordering::Less } 
-        else if a > b { Ordering::Greater } 
-        else { Ordering::Equal }
+    // let mut sorted_projects = projects.clone();
+    let c_projects = projects.clone();
+
+    let chunks : Vec<Vec<ProjectModel>> = chunker(projects.clone(), 4);
+    let curr_chunk = &chunks[*page];
+
+    let active_project_id_c = active_project_id.clone();
+
+    let p = page_from_chunk(c_projects, &active_project_id_c, 4);
+    let c_page = page.clone();
+    let c_c_page = page.clone();
+
+    let on_select_tab = Callback::from( move |page_num: usize| {  
+
+        if page_num != *c_c_page {
+            c_c_page.set(page_num);
+        }
     });
 
-    let projects_list = sorted_projects.iter().map(|project| {
+    use_effect_with_deps(move |_| {
+
+        if active_project_id_c  != 0 {
+
+            if p != *c_page {
+                c_page.set(p);
+            }
+        }
+    }, active_project_id.clone());
+
+    
+    // sorted_projects.sort_by(|a, b| {
+    //     if a < b { Ordering::Less } 
+    //     else if a > b { Ordering::Greater } 
+    //     else { Ordering::Equal }
+    // });
+
+    let projects_list = curr_chunk.iter().map(|project| {
         
         if  has_filters && !project.included_in_filters(&state.filters) {
             return html!{
@@ -133,9 +165,14 @@ pub fn job_list(ProjectListProps {
             } else {
                 html!{
                     <div class={ container_cname }>
-                    {
-                        html!{ projects_list }
-                    }
+                        <TabberComponent<ProjectModel>
+                            items={ chunks }
+                            page={ *page }
+                            on_select_tab={ on_select_tab }
+                        />
+                        {
+                            html!{ projects_list }
+                        }
                     </div>
                 }
             }

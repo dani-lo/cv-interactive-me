@@ -42,6 +42,22 @@ impl DateRange {
       format!("{} - {}", date_time_from.format("%b %Y"), date_time_to.format("%b %Y"))
    }
 
+   pub fn get_month_from (&self) -> usize {
+      self.from_month_year.0 as usize
+   }
+
+   pub fn get_month_to (&self) -> usize {
+      self.to_month_year.0 as usize
+   }
+
+   pub fn get_year_from (&self) -> usize {
+      self.from_month_year.1 as usize
+   }
+
+   pub fn get_year_to (&self) -> usize {
+      self.to_month_year.1 as usize
+   }
+
    pub fn months_duration (&self) -> i32 {
       
       let from_month = i32::try_from(self.from_month_year.0).unwrap();

@@ -10,6 +10,7 @@ use crate::
     }, 
     appdata::stores::store_app_types::{PendingStatus, AppStaticDataHashes}, 
     util::filter_utils::some_resource_included_in_all_filters,
+    util::daterange::DateRange,
 };
 
 use super::{Model, ModelTypes, field_model::FieldModel, StaticAsset, job_model::JobModel};
@@ -26,6 +27,9 @@ impl StaticAsset for CompanyData {
     fn get_uid (&self) -> usize {
         self.uid.clone()
     }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
+     }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, PartialOrd)]
@@ -42,6 +46,9 @@ impl StaticAsset for CompanyModel {
     fn get_uid (&self) -> usize {
         self.uid.clone()
     }
+    fn get_daterange (&self) -> Option<DateRange> {
+        None
+     }
 }
 
 impl Model for CompanyModel {

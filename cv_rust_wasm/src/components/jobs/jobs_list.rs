@@ -6,7 +6,7 @@ use yew::{
     Callback, 
     function_component, 
     html, 
-    use_effect_with_deps, 
+    use_effect_with_deps, use_state, 
 };
 
 use yewdux::prelude::use_store;
@@ -16,8 +16,9 @@ use crate::appdata::stores::{
     store_app::StoreApp,
 };
 
-use crate::components::jobs::job::JobComponent;
+use crate::components::{jobs::job::JobComponent, widget::tabber::TabberComponent};
 
+use crate::models::StaticAsset;
 use crate::models::{
     Model,
     ModelTypes,
@@ -29,6 +30,7 @@ use crate::traits::{
     can_bookmark::Bookmark,
     can_filter::Filter,
 };
+use crate::util::chunker::{chunker, page_from_chunk};
 use crate::util::wasm_bridge::{
     scroll_to_slot,
     scroll_top,
@@ -49,7 +51,7 @@ pub fn job_list(JobListProps {
         active_job_id,
         for_print 
     }: &JobListProps) -> Html {
-    
+        // return html!{ <p>{ html!{"sdsf"}}</p>};
     let selected_id = *active_job_id;
 
     use_effect_with_deps(move|_| {
@@ -61,6 +63,8 @@ pub fn job_list(JobListProps {
     }, ());
 
     let (state, _dispatch) = use_store::<StoreApp>();
+
+    let page = use_state(|| 0);
     
     let notes: Vec<Annotation> = state.annotations.clone().to_vec();
     let bookmarks: Vec<Bookmark> = state.bookmarks.clone().to_vec();
@@ -77,15 +81,42 @@ pub fn job_list(JobListProps {
     
     let mut anything_rendered = 0;
 
-    let mut c_jobs = jobs.clone();
+    // let mut c_jobs = jobs.clone();
+    let c_jobs = jobs.clone();
     
-    c_jobs.sort_by(|a, b| {
-        if a < b { Ordering::Greater } 
-        else if a > b { Ordering::Less } 
-        else { Ordering::Equal }
+    let chunks : Vec<Vec<JobModel>> = chunker(jobs.clone(), 4);
+    let curr_chunk = &chunks[*page];
+
+    let active_job_id_c = active_job_id.clone();
+
+    let p = page_from_chunk(c_jobs, active_job_id, 4);
+    let c_page = page.clone();
+    let c_c_page = page.clone();
+
+    let on_select_tab = Callback::from( move |page_num: usize| {  
+
+        if page_num != *c_c_page {
+            c_c_page.set(page_num);
+        }
     });
 
-    let jobs_list = c_jobs.iter().map(|job| {
+    use_effect_with_deps(move |_| {
+
+        if active_job_id_c  != 0 {
+
+            if p != *c_page {
+                c_page.set(p);
+            }
+        }
+    }, active_job_id.clone());
+    
+    // c_jobs.sort_by(|a, b| {
+    //     if a < b { Ordering::Greater } 
+    //     else if a > b { Ordering::Less } 
+    //     else { Ordering::Equal }
+    // });
+
+    let jobs_list = curr_chunk.iter().map(|job| {
          
         if  !for_print && has_filters && !job.included_in_filters(&state.filters) {
 
@@ -131,9 +162,14 @@ pub fn job_list(JobListProps {
             } else {
                 html!{
                     <div class={ container_cname }>
-                    {
-                        html!{ jobs_list }
-                    }
+                        <TabberComponent<JobModel>
+                            items={ chunks }
+                            page={ *page }
+                            on_select_tab={ on_select_tab }
+                        />
+                        {
+                            html!{ jobs_list }
+                        }
                     </div>
                 }
             }

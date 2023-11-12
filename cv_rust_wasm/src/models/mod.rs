@@ -2,7 +2,7 @@ use std::fmt;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{traits::can_filter::Filter, appdata::stores::store_app_types::AppStaticDataHashes};
+use crate::{traits::can_filter::Filter, appdata::stores::store_app_types::AppStaticDataHashes, util::daterange::DateRange};
 
 pub mod job_model;
 pub mod company_model;
@@ -14,6 +14,7 @@ pub mod user_model;
 
 pub trait StaticAsset {
     fn get_uid (&self) -> usize;
+    fn get_daterange (&self) -> Option<DateRange>;
 }
 
 pub trait Model {

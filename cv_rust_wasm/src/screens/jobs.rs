@@ -65,7 +65,7 @@ pub struct JobsProps {
 
 #[function_component(JobsComponent)]
 pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
-
+    
     let (state, dispatch) = use_store::<StoreApp>();
     let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
