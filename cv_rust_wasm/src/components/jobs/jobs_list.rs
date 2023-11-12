@@ -45,7 +45,7 @@ pub struct JobListProps {
 }
 
 #[function_component(JobsListComponent)]
-pub fn job_list(JobListProps { 
+pub fn jobs_list_component(JobListProps { 
         jobs, 
         on_select_job_detail, 
         active_job_id,
@@ -117,15 +117,16 @@ pub fn job_list(JobListProps {
     // });
 
     let jobs_list = curr_chunk.iter().map(|job| {
-         
-        if  !for_print && has_filters && !job.included_in_filters(&state.filters) {
+        
+        let is_filtered_out = if !for_print && has_filters && !job.included_in_filters(&state.filters) {true } else { false };
+        // if  !for_print && has_filters && !job.included_in_filters(&state.filters) {
 
-            return html!{
-                <></>
-            }
-        } else {
-            anything_rendered = anything_rendered + 1
-        }
+        //     return html!{
+        //         <></>
+        //     }
+        // } else {
+        //     anything_rendered = anything_rendered + 1
+        // }
 
         notes.clone()
             .retain(|n: &Annotation| n.resource_id == job.uid && n.resource_type == ModelTypes::Job);
@@ -143,6 +144,7 @@ pub fn job_list(JobListProps {
                 bookmarked={ has_job_bookmarks && bookmark.is_some() }
                 job_annotations={ notes.clone() }
                 selected={ *active_job_id == job.uid }
+                is_filtered_out={ is_filtered_out }
             />
         }
     }).collect::<Html>();
@@ -152,14 +154,14 @@ pub fn job_list(JobListProps {
     html!{
 
         {
-            if anything_rendered == 0 {
-                html!{ 
-                    <div class="StyledInlineWarning">
-                        <p>{ "No Jobs found - it looks like all  might be filtered out!" }</p>
-                        <p>{ "Try removing some filters"}</p>
-                    </div>
-                }
-            } else {
+            // if anything_rendered == 0 {
+            //     html!{ 
+            //         <div class="StyledInlineWarning">
+            //             <p>{ "No Jobs found - it looks like all  might be filtered out!" }</p>
+            //             <p>{ "Try removing some filters"}</p>
+            //         </div>
+            //     }
+            // } else {
                 html!{
                     <div class={ container_cname }>
                         <TabberComponent<JobModel>
@@ -172,7 +174,7 @@ pub fn job_list(JobListProps {
                         }
                     </div>
                 }
-            }
+            // }
         }
     }
 }

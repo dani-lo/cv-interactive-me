@@ -19,20 +19,23 @@ use crate::{
 };
 
 #[derive( PartialEq, Properties)]
-pub struct ProjectProps {
+pub struct Props {
     pub project:  ProjectModel,
     pub on_select_project_detail: Callback<usize>,
     pub selected: bool,
     pub bookmarked: bool,
+    pub is_filtered_out: bool,
 }
 
 #[function_component(ProjectComponent)]
-pub fn project(ProjectProps {
+pub fn project(Props {
+    is_filtered_out,
     project,
     on_select_project_detail,
     selected,
     bookmarked,
-}: &ProjectProps) -> Html {
+    
+}: &Props) -> Html {
 
     let c_project = project.clone(); 
     let project_detail = on_select_project_detail.clone();       
@@ -41,6 +44,7 @@ pub fn project(ProjectProps {
 
     if *bookmarked { c_name.push_str(" bookmarked"); }
     if *selected { c_name.push_str(" selected"); }
+    if *is_filtered_out { c_name.push_str(" disabled"); }
 
     let c_uid = c_project.uid.clone();
 

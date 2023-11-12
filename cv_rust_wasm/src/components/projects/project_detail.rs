@@ -95,7 +95,21 @@ pub fn job_detail(ProjectDetailProps {
                         <span class="html-icon"><i class="fa fa-plus" aria-hidden="true" /></span>
                         <span>{ &project.name }</span>
                     </span>
-                    
+                    {
+                        if bookmarked {
+
+                            html!{
+                                <span>
+                                    <i class="fa fa-bookmark bookmark" />
+                                </span>
+                                
+                            }
+                        } else {
+                            html!{
+                                <></>
+                            }
+                        }
+                    }
                 </h2>
                 {
                     if project_note.is_some() {

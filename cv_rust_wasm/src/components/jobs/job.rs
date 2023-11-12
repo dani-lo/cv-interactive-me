@@ -26,6 +26,7 @@ pub struct Props {
     pub selected: bool,
     pub bookmarked: bool,
     pub job_annotations: Vec<Annotation>,
+    pub is_filtered_out: bool,
 }
 
 #[function_component(JobComponent)]
@@ -35,6 +36,7 @@ pub fn job(Props {
     selected,
     bookmarked,
     job_annotations,
+    is_filtered_out
 }: &Props) -> Html {
 
     let c_job = job.clone(); 
@@ -45,6 +47,8 @@ pub fn job(Props {
 
     if *bookmarked { c_name.push_str(" bookmarked"); }
     if *selected { c_name.push_str(" selected"); }
+
+    if *is_filtered_out { c_name.push_str(" disabled") };
 
     let at_company_name = if job.company.is_none() { "Various Agencies".to_string() } else { format!("{}", &job.company.as_ref().unwrap().name) };
 

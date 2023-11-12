@@ -60,6 +60,16 @@ export const StyledJobContainer = styled.div`
     &:hover {
         background: #f2f1f1;
     }
+
+    ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0;
+            padding: var(--gap-micro) 0;
+        }
+    }
 `
 
 export const StyledJobDetail = styled.div`

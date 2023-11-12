@@ -50,7 +50,7 @@ pub struct UrlParams {
 }
 
 #[function_component(ProjectsListComponent)]
-pub fn job_list(ProjectListProps { 
+pub fn projects_list_component(ProjectListProps { 
         projects, 
         on_select_project_detail, 
         active_project_id }: &ProjectListProps) -> Html {
@@ -123,13 +123,15 @@ pub fn job_list(ProjectListProps {
 
     let projects_list = curr_chunk.iter().map(|project| {
         
-        if  has_filters && !project.included_in_filters(&state.filters) {
-            return html!{
-                <></>
-            }
-        } else {
-            anything_rendered = anything_rendered + 1
-        }
+        let is_filtered_out = if  has_filters && !project.included_in_filters(&state.filters) {true } else { false };
+
+        // if  has_filters && !project.included_in_filters(&state.filters) {
+        //     return html!{
+        //         <></>
+        //     }
+        // } else {
+        //     anything_rendered = anything_rendered + 1
+        // }
 
         notes.clone()
             .retain(|n: &Annotation| n.resource_id == project.uid && n.resource_type == ModelTypes::Job);
@@ -146,6 +148,7 @@ pub fn job_list(ProjectListProps {
                 project={ project.clone() }
                 bookmarked={ has_project_bookmarks && bookmark.is_some() }
                 selected={ *active_project_id == project.uid }
+                is_filtered_out={ is_filtered_out }
             />
         }
     }).collect::<Html>();
@@ -155,14 +158,14 @@ pub fn job_list(ProjectListProps {
     html!{
 
         {
-            if anything_rendered == 0 {
-                html!{ 
-                    <div class="StyledInlineWarning">
-                        <p>{ "No Projects found - it looks like all  might be filtered out!" }</p>
-                        <p>{ "Try removing some filters"}</p>
-                    </div>
-                }
-            } else {
+            // if anything_rendered == 0 {
+            //     html!{ 
+            //         <div class="StyledInlineWarning">
+            //             <p>{ "No Projects found - it looks like all  might be filtered out!" }</p>
+            //             <p>{ "Try removing some filters"}</p>
+            //         </div>
+            //     }
+            // } else {
                 html!{
                     <div class={ container_cname }>
                         <TabberComponent<ProjectModel>
@@ -175,7 +178,7 @@ pub fn job_list(ProjectListProps {
                         }
                     </div>
                 }
-            }
+            // }
         }
     }
 }
