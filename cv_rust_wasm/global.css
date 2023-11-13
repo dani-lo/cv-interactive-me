@@ -1,16 +1,16 @@
 :root {
   --border-col: #d0d0d0;
-  --border-col-dark: #421616;
+  --border-col-dark: #462c20;
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #f2f2f2;
-  --black : #421616;
+  --black : #462c20;
   --active-action: #c16d30;
   --text-clear: #c16d30;
   --active-pink: #bdc9ce;
   --pending-action: grey;
-  --text-main: #421616;
-  --text-dark: #421616;
+  --text-main: #462c20;
+  --text-dark: #462c20;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -111,7 +111,7 @@ h3 {
   font-size: 1rem;
   margin: var(--gap-medium) 0;
   line-height: 1.5rem;
-  color: var(--black);
+  color: var(--active-action);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -247,6 +247,8 @@ li.itemised {
   text-transform: capitalize;
   padding: 0;
   display: list-item;
+  font-size: 0.85rem;
+  line-height: 1.2rem;
 }
 
 

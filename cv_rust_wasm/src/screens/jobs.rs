@@ -69,6 +69,8 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
     let (state, dispatch) = use_store::<StoreApp>();
     let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
+    let payoff_ui_dipatcher = ui_dispatch.clone();
+
     let nav = use_navigator().unwrap();
     let nav_back = nav.clone();
 
@@ -167,6 +169,38 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                         }
                     } 
                 }  
+                {
+                    if ui_state.payoff_ui { 
+                        html!{
+                            <div class="StyledAppPayoff">  
+                                <div>
+                                    <span 
+                                        class="html-icon"
+                                        onclick={ move |_| payoff_ui_dipatcher.reduce_mut(|s| s.hide_payoff_ui()) }>
+                                            <i aria-hidden="true" class="fa fa-times" />
+                                    </span>
+                                    <p>
+                                        {
+                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                        }
+                                    </p>
+                                    <p>
+                                        {
+                                            "Try the "
+                                        }
+                                        <a href="https://nextjs.interactiveme.net/personal">
+                                        {
+                                            "Nextjs implementation"
+                                        }
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    } else {
+                        html!{ <></> }
+                    }
+                }
             </div>
             <div class="page">
                 { 

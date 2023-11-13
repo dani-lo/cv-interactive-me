@@ -81,7 +81,6 @@ export const StyledJobDetail = styled.div`
     top: 80px;
     padding: var(--gap-large);
     left: 760px;
-    background: var(--white);
     
     h2 {
         display: flex;
@@ -164,7 +163,6 @@ export const StyledSidebar = styled.div`
 export const StyledCompanyContainer = styled.div`
 
     margin: var(--gap-huge) 0 var(--gap-large) 0;
-    border: 1px solid var(--active-action);
     padding: var(--gap-medium) var(--gap-large);
     border-radius: 0.2rem;
     background: #f5f5f5;
@@ -463,11 +461,10 @@ export const StyledMobileBar = styled.div`
 
 export const StyledAboutContainer = styled.div`
     padding:  var(--gap-medium);
-    max-width: 800px;
-    border: 1px solid var(--white);
+    max-width: 700px;
 
     h3 {
-        margin-top: 0;
+        margin-top: var(--gap-small);
     }
 
     @media only screen and (max-width: 768px) {
@@ -494,4 +491,52 @@ export const StyledTabber = styled.ul`
     @media only screen and (max-width: 768px) {
         display: none;
     }
+`
+
+export const StyledAppPayoff = styled.div`
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    left: 0;
+  
+    & > div {
+        padding: var(--gap-large);
+        background: black;
+        margin: 0 auto;
+        width:80%;
+        border-radius: 0.25rem;
+        background: var(--white);
+        background:#c5dcdf;
+        position: relative;
+    }
+    
+    p {
+        
+        color: var(--black)!important;
+        font-size: 0.8rem;
+        font-weight: bold;
+
+        a {
+            color: var(--black);
+            
+        }
+    }
+  
+    span.html-icon {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        right: 0.5rem;
+        text-align: right;
+
+        i {
+            color: black;
+            cursor: pointer;
+        
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
 `

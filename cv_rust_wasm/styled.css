@@ -1,8 +1,11 @@
 .StyledAboutContainer {
-    margin-top: var(--gap-small);
-    padding: 0  var(--gap-small);
-    width: 500px;
+    padding:  var(--gap-medium);
+    max-width: 700px;
     /* border: 1px solid var(--white); */
+}
+
+.StyledAboutContainer h3 {
+    margin-top:  var(--gap-small);
 }
 
 .StyledJobContainer {   
@@ -490,7 +493,7 @@
     margin: 0 var(--gap-medium) 0 0;
     
 }
-
+/* 
 .StyledAppPayoff {
     position: absolute;
     bottom: 1rem;
@@ -499,11 +502,10 @@
 }
 .StyledAppPayoff > div {
     padding: var(--gap-large);
-    background: black;
+    background: #dfcfc6;
     margin: 0 auto;
     width:80%;
     border-radius: 0.25rem;
-    background: var(--white);
 }
 
 .StyledAppPayoff p {
@@ -516,3 +518,47 @@
     color: var(--black);
     
 }
+ */
+
+.StyledAppPayoff {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    left: 0;
+  }
+  .StyledAppPayoff > div {
+    padding: var(--gap-large);
+    margin: 0 auto;
+    width:80%;
+    border-radius: 0.25rem;
+    background: var(--white);
+    background: #dfcfc6;;
+    position: relative;
+  }
+  
+  .StyledAppPayoff p {
+    color: var(--black)!important;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .StyledAppPayoff p a {
+    color: var(--black);
+  }
+  
+  .StyledAppPayoff span.html-icon {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    right: 0.5rem;
+    text-align: right;
+  }
+  
+  .StyledAppPayoff span.html-icon i {
+    color: black;
+    cursor: pointer;
+  }
+  
+  .StyledAppPayoff span.html-icon i:hover {
+    opacity: 0.5;
+  }

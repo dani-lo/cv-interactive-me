@@ -2,14 +2,14 @@
   --border-col: #d0d0d0;
 
   /* --border-col-dark: #0d252f; */
-  --border-col-dark: #142d37;;
+  --border-col-dark: #13252d;;
   
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
 
   /* --black : #0d252f; */
---black: #142d37;;
+--black: #13252d;;
   --active-action: #5b9395;
   /* --active-action: #0a2f3f; */
   --text-clear: #5b9395;
@@ -19,9 +19,9 @@
   --pending-action: grey;
 
   /* --text-main: #0d252f; */
-  --text-main: #142d37;;
+  --text-main: #13252d;;
   /* --text-dark: #0d252f; */
-  --text-dark: #142d37;;
+  --text-dark: #13252d;;
   
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
@@ -59,7 +59,7 @@ body {
   font-family:  -apple-system, BlinkMacSystemFont, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, sans-serif;
   /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
   font-weight: 300; 
-  background: var(--white);
+  background: white;
 }
 
 body.scroll-down .mobile-bar {
@@ -392,30 +392,4 @@ span.html-icon:hover {
 }
 .margin-no {
   margin: 0!important;
-}
-
-.StyledAppPayoff {
-  position: absolute;
-  bottom: 1rem;
-  width: 100%;
-  left: 0;
-}
-.StyledAppPayoff > div {
-  padding: var(--gap-large);
-  background: black;
-  margin: 0 auto;
-  width:80%;
-  border-radius: 0.25rem;
-  background: var(--white);
-}
-
-.StyledAppPayoff p {
-  color: var(--black)!important;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.StyledAppPayoff p a {
-  color: var(--black);
-  
 }

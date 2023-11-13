@@ -16,7 +16,7 @@ import { PendingActionsComponent } from "./actions/pendingAction"
 import { AppMenu } from "./sidebar/menu"
 import { SettingsComponent } from "./widget/settings"
 
-import { StyledSidebar } from "../styles/main.styled"
+import { StyledAppPayoff, StyledSidebar } from "../styles/main.styled"
 import { useFrontendClassname } from "../src/hooks/useFrontendClassname"
 import { TopBarComponent } from "./sidebar/topbar"
 
@@ -35,6 +35,7 @@ const Layout = ({
 
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
+    const [showpayoff, setShowpayoff] = useAtom(atoms.uiShowPayoffAtom)
     const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
   
     const [settings, setSettings] = useState([])
@@ -46,8 +47,6 @@ const Layout = ({
         // @ts-ignorel
         setSettings(settings)
     }, [])
-
-    // let settingsDisabled = !settings.length &&
         
     return <div className={feCname}>
         { uiBusy ? null : <TopBarComponent /> }
@@ -84,12 +83,22 @@ const Layout = ({
                 <ActionsList 
                     { ...pageProps }
                 />
-                <div className="StyledAppPayoff">  
-                    <div>
-                        <p>You are viewing the Nextjs implementation.</p>
-                        <p>Try the <a href="https://webassembly.interactiveme.net/personal">Web Assembley (Rust) implementation</a></p>
-                    </div>
-                </div>
+                {
+                    showpayoff ?
+                    <StyledAppPayoff>  
+                        <div>
+                            <span  
+                                className="html-icon" 
+                                onClick={ () => setShowpayoff(!showpayoff) }>
+                                    <i aria-hidden="true" className="fa fa-times" />
+                            </span>
+                            <p>You are viewing the Nextjs implementation.</p>
+                            <p>Try the <a href="https://webassembly.interactiveme.net/personal">Web Assembley (Rust) implementation</a></p>
+                        </div>
+                    </StyledAppPayoff> :
+                    null
+                }
+                
             </StyledSidebar> : null
         }
         {

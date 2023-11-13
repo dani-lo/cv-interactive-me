@@ -73,6 +73,7 @@ pub fn personal() -> Html {
 
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
+    let payoff_ui_dipatcher = ui_dispatch.clone();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
@@ -166,6 +167,38 @@ pub fn personal() -> Html {
                         }
                     }   
                 }  
+                {
+                    if ui_state.payoff_ui { 
+                        html!{
+                            <div class="StyledAppPayoff">  
+                                <div>
+                                    <span 
+                                        class="html-icon"
+                                        onclick={ move |_| payoff_ui_dipatcher.reduce_mut(|s| s.hide_payoff_ui()) }>
+                                            <i aria-hidden="true" class="fa fa-times" />
+                                    </span>
+                                    <p>
+                                        {
+                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                        }
+                                    </p>
+                                    <p>
+                                        {
+                                            "Try the "
+                                        }
+                                        <a href="https://nextjs.interactiveme.net/personal">
+                                        {
+                                            "Nextjs implementation"
+                                        }
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    } else {
+                        html!{ <></> }
+                    }
+                }
             </div>
             <div class="page">
                 {
@@ -180,10 +213,16 @@ pub fn personal() -> Html {
                                     <div class="StyledAboutContainer">
                                         <ul class="itemised">
                                             
-                                            <li><strong>{"Daniele Longo"}</strong></li>
-                                            <li><strong>{"danielelongo@hotmail.com"}</strong></li>
+                                            <li>
+                                                <strong>{"Daniele Longo"}</strong>
+                                                
+                                            </li>
+                                            <li>
+                                            <strong>{"danielelongo@hotmail.com"}</strong>
+                                            </li>
+                                            <li></li>
                                             <li><a href="https://github.com/dani-lo"><strong>{"github"}</strong></a></li>
-                                            <li><a href="https://interactiveme.net"><strong>{"interactiveme.net"}</strong></a></li>
+                                            // <li><a href="https://interactiveme.net"><strong>{"interactiveme.net"}</strong></a></li>
                                         </ul>
                                     </div>
                                     <div class="StyledAboutContainer">
@@ -200,16 +239,7 @@ pub fn personal() -> Html {
                                             <li class="itemised">{"Laurea in "}<strong>{"Scienze della Comunicazione "}</strong>{"at Universita degli studi di Siena - Bachelor’s Degree (BSc) equivalent in "}<strong>{"Media Studies"}</strong>{" at Siena University, Italy, First class honours (1st)."}</li>
                                         </ul>
                                     </div>
-                                    <div class="StyledAboutContainer">
-                                        <h3>{ "Personal Interests" }</h3>
-                                        <ul>
-                                            <li class="itemised list-item">{"Yoga, Meditation"}</li>
-                                            <li class="itemised list-item">{"Traveling"}</li>
-                                            <li class="itemised list-item">{"Books"}</li>
-                                            <li class="itemised list-item">{"Cooking"}</li>
-                                            <li class="itemised list-item">{"Indian Philosophy"}</li>
-                                        </ul>
-                                    </div>
+                                    
                                     <div class="StyledAboutContainer">
                                         <h3>{ "Skills" }</h3>
                                         <p>
@@ -223,6 +253,17 @@ pub fn personal() -> Html {
                                             }).collect::<Html>()
                                         }
                                         </p>
+                                    </div>
+
+                                    <div class="StyledAboutContainer">
+                                        <h3>{ "Personal Interests" }</h3>
+                                        <ul>
+                                            <li class="itemised list-item">{"Yoga, Meditation"}</li>
+                                            <li class="itemised list-item">{"Traveling"}</li>
+                                            <li class="itemised list-item">{"Books"}</li>
+                                            <li class="itemised list-item">{"Cooking"}</li>
+                                            <li class="itemised list-item">{"Indian Philosophy"}</li>
+                                        </ul>
                                     </div>
                                 </div>
                             }

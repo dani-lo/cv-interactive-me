@@ -17,6 +17,7 @@ pub struct StoreUI {
     pub settings_ui: bool,
     pub sidebar_ui: bool,
     pub settings: SettingsConfig,
+    pub payoff_ui: bool,
 }
 
 impl Default for StoreUI {
@@ -32,6 +33,7 @@ impl Default for StoreUI {
             busy: false,
             settings_ui: false,
             sidebar_ui: false,
+            payoff_ui: true,
             settings, 
         }
     }
@@ -51,5 +53,9 @@ impl StoreUI {
 
     pub fn toggle_sidebar_ui (&mut self) {
         self.sidebar_ui = !self.sidebar_ui;
+    }
+
+    pub fn hide_payoff_ui (&mut self) {
+        self.payoff_ui = false;
     }
 }

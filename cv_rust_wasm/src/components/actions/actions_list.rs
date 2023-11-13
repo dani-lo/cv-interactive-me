@@ -40,6 +40,9 @@ use crate::{
 pub fn actions_list ()  -> Html { 
     
     let (state, _dispatch) = use_store::<StoreApp>();
+    let (ui_state, ui_dispatch) = use_store::<StoreUI>();
+
+    let payoff_ui_dipatcher = ui_dispatch.clone();
 
     let mut annotations = state.annotations.clone();
     annotations.retain(|n| n.pending != PendingStatus::Fresh && n.pending != PendingStatus::VoidThenDeleted);
@@ -158,25 +161,6 @@ pub fn actions_list ()  -> Html {
                         }
                     }
                 }
-            </div>
-            <div class="StyledAppPayoff">  
-                <div>
-                    <p>
-                        {
-                            "You are viewing the Web Asssembly (Rust) implemntation."
-                        }
-                    </p>
-                    <p>
-                        {
-                            "Try the "
-                        }
-                        <a href="https://nextjs.interactiveme.net/personal">
-                        {
-                            "Nextjs implementation"
-                        }
-                        </a>
-                    </p>
-                </div>
             </div>
         </>       
     }

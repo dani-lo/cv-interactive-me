@@ -67,7 +67,6 @@ pub fn config_settings() -> Html {
                         <></> 
                     }
                 }
-                
             }
             <div class={ c_name }>
                 <span  

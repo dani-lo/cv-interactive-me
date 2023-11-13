@@ -32,7 +32,7 @@ const PersonalPage = (props: AppDataProps) => {
                     <li><strong>Daniele Longo</strong></li>
                     <li><strong>danielelongo@hotmail.com</strong></li>
                     <li><a href="https://github.com/dani-lo"><strong>github</strong></a></li>
-                    <li><a href="https://interactiveme.net"><strong>interactiveme.net</strong></a></li>
+                    {/* <li><a href="https://interactiveme.net"><strong>interactiveme.net</strong></a></li> */}
                 </ul>
             </StyledAboutContainer>
             <StyledAboutContainer>
@@ -47,16 +47,6 @@ const PersonalPage = (props: AppDataProps) => {
                 <h3>Education</h3>
                 <ul>
                     <li className="itemised">Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelors Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st).</li></ul>
-            </StyledAboutContainer>
-            <StyledAboutContainer>
-                <h3>Personal Interests</h3>
-                <ul>
-                    <li className="itemised list-item">Yoga, Meditation</li>
-                    <li className="itemised list-item">Traveling</li>
-                    <li className="itemised list-item">Books</li>
-                    <li className="itemised list-item">Cooking</li>
-                    <li className="itemised list-item">Indian Philosophy</li>
-                </ul>
             </StyledAboutContainer>
             <StyledAboutContainer>
                 <h3>Skills</h3>
@@ -78,6 +68,16 @@ const PersonalPage = (props: AppDataProps) => {
                         return <span key={ i } style={ style }>{ model.name }</span>
                     })
                 }
+            </StyledAboutContainer>
+            <StyledAboutContainer>
+                <h3>Personal Interests</h3>
+                <ul>
+                    <li className="itemised list-item">Yoga, Meditation</li>
+                    <li className="itemised list-item">Traveling</li>
+                    <li className="itemised list-item">Books</li>
+                    <li className="itemised list-item">Cooking</li>
+                    <li className="itemised list-item">Indian Philosophy</li>
+                </ul>
             </StyledAboutContainer>
         </div>
     </div>

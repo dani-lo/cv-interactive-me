@@ -70,6 +70,8 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
     let (state, dispatch) = use_store::<StoreApp>();
     let (ui_state, ui_dispatch) = use_store::<StoreUI>();
 
+    let payoff_ui_dipatcher = ui_dispatch.clone();
+
     let dispatcher = dispatch.clone();
     let settings_ui_dipatcher = ui_dispatch.clone();
 
@@ -166,7 +168,39 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
                         }
                     }   
                     
-                }  
+                } 
+                {
+                    if ui_state.payoff_ui { 
+                        html!{
+                            <div class="StyledAppPayoff">  
+                                <div>
+                                    <span 
+                                        class="html-icon"
+                                        onclick={ move |_| payoff_ui_dipatcher.reduce_mut(|s| s.hide_payoff_ui()) }>
+                                            <i aria-hidden="true" class="fa fa-times" />
+                                    </span>
+                                    <p>
+                                        {
+                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                        }
+                                    </p>
+                                    <p>
+                                        {
+                                            "Try the "
+                                        }
+                                        <a href="https://nextjs.interactiveme.net/personal">
+                                        {
+                                            "Nextjs implementation"
+                                        }
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    } else {
+                        html!{ <></> }
+                    }
+                } 
             </div>
             <div class="page">
                 {

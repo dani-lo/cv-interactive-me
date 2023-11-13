@@ -91,7 +91,7 @@ pub fn topbar(TopbarProps { on_back, show_back_btn } : &TopbarProps) -> Html {
                     <i aria-hidden="true" class="fa fa-cog" />
             </span>
             <span 
-            class={ if ui_state.settings_ui || ui_state.sidebar_ui { "html-icon disabled" } else { "html-icon" } }
+                class={ if ui_state.settings_ui || ui_state.sidebar_ui { "html-icon disabled" } else { "html-icon" } }
                 onclick={ move |_| top_sidebar_ui_dipatcher.reduce_mut(|s| s.toggle_sidebar_ui()) }>
                     <i aria-hidden="true" class="fa fa-bars" />
             </span>
