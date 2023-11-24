@@ -14,7 +14,7 @@ const app = new oak_Application(appOptions)
 
 app.use(oakCors())
 
-const port = config.port
+const port = 8000 // config.port
 
 appRouter.init(app)
 
