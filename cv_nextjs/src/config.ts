@@ -14,7 +14,7 @@ export const URL_GET_FIELDS = 'https://xbhydccz1j.execute-api.eu-west-2.amazonaw
 export const URL_GET_PROJECTS = 'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/projects'
 export const URL_GET_PERSONAL = 'personal'
 
-const URL_ACTIONS_BASE = 'http://localhost:8000'//process.env.NODE_ENV == 'development' ? 'http://localhost:8000' : 'https://interactiveme.net'
+const URL_ACTIONS_BASE =  process.env.NODE_ENV == 'development' ? 'http://localhost:8000' : 'https://interactiveme.net'
 
 export const URL_ACTIONS = {
     BOOKMARKS: `${ URL_ACTIONS_BASE }/api/bookmarks`,
