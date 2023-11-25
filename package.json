@@ -1,19 +1,15 @@
 {
-  "name": "interactive-me",
+  "name": "deno-project",
   "version": "1.0.0",
-  "description": "cv review app built in different frontend and backend techs as a learning platform",
+  "description": "A barebone deno project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dani-lo/cv-interactive-me.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dani-lo/cv-interactive-me/issues"
-  },
-  "homepage": "https://github.com/dani-lo/cv-interactive-me#readme"
+  "dependencies": {
+    "deno_ls_plugin": "^0.1.0",
+    "typescript": "^3.3.1"
+  }
 }

@@ -1,12 +1,11 @@
 import { load as loadLocalEnv } from '../../deps.ts'
 
-const dockerComposeEnv = Deno.env.get('COMPOSE')
-
 const envConf = await loadLocalEnv({
     export: true,
-    envPath: '.env'
+    envPath: 'src/config/.env'
   })
 
+  console.log('=====', envConf)
 const config: {
     port: number;
     nodeEnv: string;
@@ -15,8 +14,8 @@ const config: {
 } = {
   port: parseInt(envConf.PORT as unknown as string),
   nodeEnv: envConf.NODE_ENV as unknown as string,
-  dbUri: dockerComposeEnv ? envConf.MONGODB_URI_DOCKER as unknown as string : envConf.MONGODB_URI_LOCAL as unknown as string,
-  dbName: envConf.MONGODB_DATABASE_NAME as unknown as string,
+  dbUri: envConf.CONFIG_MONGODB_URI,
+  dbName: envConf.CONFIG_MONGODB_DATABASE_NAME as unknown as string,
 }
 
 export default config

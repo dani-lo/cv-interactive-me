@@ -17,7 +17,7 @@ export type {
 
 // export { config as dotenvConfig } from "https://deno.land/x/dotenv@v3.2.2/mod.ts"
 
-export { load } from "https://deno.land/std@0.205.0/dotenv/mod.ts";
+export { load } from "https://deno.land/std@0.208.0/dotenv/mod.ts";
 
 export { z } from 'https://deno.land/x/zod@v3.16.1/mod.ts'
 
