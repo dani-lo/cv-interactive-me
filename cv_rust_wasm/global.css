@@ -160,15 +160,16 @@ button {
   font-weight: bold;
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
-  background: var(--text-clear);
+  background: var(--black);
   font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
   margin: var(--gap-small) 0;
 }
 
-button:hover {
-  background-color: var(--active-pink);
+button.disabled, button:hover {
+  background: var(--text-clear);
+  opacity: 1;
 }
 
 label {
