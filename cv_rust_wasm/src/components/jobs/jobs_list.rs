@@ -79,7 +79,7 @@ pub fn jobs_list_component(JobListProps {
 
     let has_filters = active_filters.len() > 0;
     
-    let mut anything_rendered = 0;
+    // let mut anything_rendered = 0;
 
     // let mut c_jobs = jobs.clone();
     let c_jobs = jobs.clone();

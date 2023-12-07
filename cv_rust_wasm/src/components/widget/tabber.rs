@@ -7,8 +7,9 @@ use yew::{
     Html,
     Properties, Callback
 };
+use yew_router::hooks::use_navigator;
 
-use crate::models::StaticAsset;
+use crate::{models::StaticAsset, routes::AppRoute};
 
 #[derive(PartialEq, Properties)]
 pub struct TabberProps <T: StaticAsset + PartialEq>{
@@ -26,6 +27,9 @@ pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_
 
     let mut idx = 0;
 
+    let nav = use_navigator().unwrap();
+    
+
     let tabs = items.iter().map(|item| {
         
         if item.len() == 0 {
@@ -33,6 +37,8 @@ pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_
         }
         
         let on_select_tab_c = on_select_tab.clone();
+
+        let nav_back = nav.clone();
 
         // info!("ONE ITEM ---------------------------");
         // info!("{:?}", item);
@@ -56,7 +62,10 @@ pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_
         let markup = html!{
             <li>
             <button 
-                onclick={ move |_| on_select_tab_c.emit(idx) }
+                onclick={ move |_|{ 
+                    nav_back.push(&AppRoute::JobsRoute {});
+                    on_select_tab_c.emit(idx);
+                }}
                 class={ if *page != idx { "" } else { "disabled" }}
             >
             { body_str }
