@@ -78,9 +78,11 @@ export const StyledJobDetail = styled.div`
     width: 380px;
     overflow-y: scroll;
     height: 100%;
-    top: 80px;
-    padding: var(--gap-large);
+    top: 0px;
+    padding: 0 var(--gap-large) 0;
     left: 760px;
+    height: calc(100% - 100px);
+    top: 84px;
     
     h2 {
         display: flex;

@@ -1,5 +1,40 @@
 [
     {
+        "uid": 7,
+        "name": "Q-Rated",
+        "description": [
+            "Collborative articles review tool",
+            "For usage see _#README_ docs within repository"
+        ],
+        "repo": "https://github.com/dani-lo/qrated",
+        "status": ["Ongoing development"], 
+        "live_url": "",
+        "notes": "Collborative articles review tool",
+        "tech": [
+            75,
+            74,
+            33,
+            79,
+            76,
+            55,
+            31,
+            90,
+            81,
+            80,
+            82,
+            29,
+            4,
+            88,
+            53,
+            52,
+            57, 
+            63,
+            89
+        ],
+        "from": [8, 2023],
+        "to": [12, 2023]
+    },
+    {
         "uid": 1,
         "name": "Terminator tabs plugin",
         "description": [
@@ -49,7 +84,14 @@
             44,
             53,
             4,
-            5
+            5,
+            85,
+            34,
+            76,
+            77,
+            74,
+            32,
+            89
         ],
         "from": [10, 2022],
         "to": [4, 2023]
@@ -89,7 +131,8 @@
             24,
             53,
             4,
-            5
+            5,
+            63
         ],
         "from": [1, 2019],
         "to": [2, 2019]

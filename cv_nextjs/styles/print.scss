@@ -13,8 +13,9 @@
         
     }
 
-    h2 strong {
-        display: block;
+    h2.detail-list strong {
+        display: list-item;
+        font-size: 12px;
     }
 
     h3 {

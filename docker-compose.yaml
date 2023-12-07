@@ -36,18 +36,6 @@ services:
       - WAIT_HOSTS_TIMEOUT=300
       - WAIT_SLEEP_INTERVAL=30
       - WAIT_HOST_CONNECT_TIMEOUT=30
-      - COMPOSE=1
-  nextjs:
-    build: ./cv_nextjs
-    container_name: cv_nextjs_container
-    ports:
-      - "3000:3000"
-    networks:
-      - cv_api_network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    environment:
-      - COMPOSE=1
 volumes:
   mongo:
 networks:

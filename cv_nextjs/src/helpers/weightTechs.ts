@@ -39,13 +39,15 @@ export const techWeight = (
 
     let percent = (100  * thisWeight) / maxTechWeight;
 
-    if (percent > 75) {
-        return 26
-    } else if (percent > 50) {
+    if (percent > 80) {
+        return 24
+    } else if (percent > 60) {
         return 22
-    } else if (percent > 25) {
-        return 18
-    } else {
+    } else if (percent > 40) {
+        return 19
+    } else if (percent > 20) {
         return 14
+    } else {
+        return 12
     }
 }

@@ -5,7 +5,6 @@ const envConf = await loadLocalEnv({
     envPath: 'src/config/.env'
   })
 
-  console.log('=====', envConf)
 const config: {
     port: number;
     nodeEnv: string;

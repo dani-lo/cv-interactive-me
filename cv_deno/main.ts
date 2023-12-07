@@ -9,8 +9,10 @@ import { oakCors } from './deps.ts';
 import config from './src/config/default.ts'
 import appRouter from './src/routes/index.ts'
 
-const appOptions = oak_hasFlash() ? { serverConstructor: oak_FlashServer } : undefined;
-const app = new oak_Application(appOptions)
+// console.log(oak_hasFlash())
+
+// const appOptions = oak_hasFlash() ? { serverConstructor: oak_FlashServer } : undefined;
+const app = new oak_Application()
 
 app.use(oakCors())
 

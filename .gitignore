@@ -1,2 +1,4 @@
 cv_nginx
 node_modules
+scripts
+**/.env

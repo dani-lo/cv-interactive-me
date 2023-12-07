@@ -7,15 +7,17 @@ const {dbUri, dbName} = config
 
 let db: Option<Database> = None();
 
-console.log('====================')
-console.log(config)
-console.log("+++++++++++++++++++++++++++++++++= Deno.env.get('COMPOSE')", Deno.env.get('COMPOSE'))
+// console.log('====================')
+// console.log(config)
+// console.log("+++++++++++++++++++++++++++++++++= Deno.env.get('COMPOSE')", Deno.env.get('COMPOSE'))
 
 try {
     const client = new MongoClient()
     await client.connect(dbUri)
 
     db = Some(client.database(dbName))
+
+    console.log(db)
 } catch (e) {
     console.log('ERROR FROM MONGO:: dbUri')
     console.log(dbUri)

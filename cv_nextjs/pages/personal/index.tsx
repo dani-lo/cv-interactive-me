@@ -8,11 +8,14 @@ import {
 } from '../../src/helpers/weightTechs'
 
 import { StyledAboutContainer } from '../../styles/main.styled'
+import { namedListSort } from "../../src/helpers/sort"
 
 export const getStaticProps = getAppStaticProps
 
 const PersonalPage = (props: AppDataProps) => {
 
+    console.log(props)
+    
     const { jobModels, projectModels, techModels } = transformData(props)
 
     const jobs = Array.from(jobModels.values())
@@ -20,10 +23,35 @@ const PersonalPage = (props: AppDataProps) => {
 
     const allTechhavers = [ ...jobs, ...projects ]
 
-    const techWeights = techsWithMonthsDuration(allTechhavers)
-    const techIDs = Array.from(techWeights.keys())
-    const techValues = Array.from(techWeights.values())
-    const maxWeight = techValues.reduce((acc, curr) => curr > acc ? curr : acc, 0)
+    const techMonthsDurationsList = techsWithMonthsDuration(allTechhavers)
+
+    const techIDs = Array.from(techMonthsDurationsList.keys())
+    const techValues = Array.from(techMonthsDurationsList.values())
+    
+    const maxWeight = techValues.reduce((acc, curr) => curr > acc ? (curr * 0.75) : acc, 0)
+
+    const weightedTechList = techIDs.map((techID, i) => {
+
+        const fontSize = techWeight(techID, techMonthsDurationsList, maxWeight)
+        const model = techModels.get(techID)
+
+        if (model === undefined) {
+            return null
+        }
+
+        const style = {
+            fontSize: `${ fontSize }px`,
+            marginRight: `var(--gap-small)`,
+            display: 'inline-block'
+        }
+
+        return {
+            style,
+            name: model.name
+        }
+    })
+
+    console.log(weightedTechList.filter(d => d !== null).sort(namedListSort))
 
     return <div className="page">  
         <div className="jobs-container">
@@ -51,21 +79,11 @@ const PersonalPage = (props: AppDataProps) => {
             <StyledAboutContainer>
                 <h3>Skills</h3>
                 {
-                    techIDs.map((techID, i) => {
-                        const fontSize = techWeight(techID, techWeights, maxWeight)
-                        const model = techModels.get(techID)
-
-                        if (model === undefined) {
-                            return null
-                        }
-
-                        const style = {
-                            fontSize: `${ fontSize }px`,
-                            marginRight: `var(--gap-small)`,
-                            display: 'inline-block'
-                        }
-
-                        return <span key={ i } style={ style }>{ model.name }</span>
+                    weightedTechList.filter(d => d !== null).sort(namedListSort).map((def, i) => {
+                       if (def === null) {
+                        return null
+                       }
+                        return <span key={ i } style={ def.style }>{ def.name }</span>
                     })
                 }
             </StyledAboutContainer>

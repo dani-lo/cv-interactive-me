@@ -9,6 +9,7 @@ import { StyledTechList } from '../../styles/main.styled'
 
 // import { techShowLimit } from '../../src/config'
 import { CvJobsContext } from "../../pages/_app"
+import { namedListSort } from "../../src/helpers/sort"
 
 type TechProps = {
     showActions: (item: Resource) => void;
@@ -36,7 +37,7 @@ export const TechListComponent = (props: TechListProps) => {
     return <StyledTechList>
         {   
             //props.techs.slice(0, limit).map(tech => {
-            props.techs.map(tech => {
+            props.techs.sort(namedListSort).map(tech => {
 
                 const filtered = !!(filters.find(ArrayClause.findClause(tech, ResourceType.Tech)))
 

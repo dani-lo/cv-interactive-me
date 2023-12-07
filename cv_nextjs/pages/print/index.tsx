@@ -25,7 +25,14 @@ const JobsPage = (props: AppDataProps) => {
 
     const allTechhavers = [ ...jobs, ...projects ]
 
-    const techs = Array.from(techModels.values())
+    const techs = Array.from(techModels.values()).sort((a, b) => {
+        if (a.name.toUpperCase() > b.name.toUpperCase()) {
+            return 1
+        } else if (b.name.toUpperCase() > a.name.toUpperCase()) {
+            return -1
+        }
+        return 0
+    })
 
     return <div className="print">  
         <div className="pers-data">
@@ -33,7 +40,7 @@ const JobsPage = (props: AppDataProps) => {
                 <strong>Daniele Longo</strong>
                 {/* <strong>danielelongo@hotmail.com</strong> */}
             </h2>
-            <h2>
+            <h2 className="detail-list">
                 <strong>github.com/dani-lo</strong>
                 <strong>interactiveme.net</strong>
             </h2>
