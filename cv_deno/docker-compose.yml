@@ -29,6 +29,7 @@ services:
       - mongo
     networks:
       - cv_api_network
+    profiles: ["with_deno"]
     command: sh -c "/wait && deno run --allow-read --allow-env --allow-net main.ts"
     environment:
       - WAIT_HOSTS=mongo:27017
