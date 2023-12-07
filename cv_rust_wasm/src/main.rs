@@ -14,6 +14,7 @@ mod routes;
 mod traits;
 mod screens;
 mod settings;
+mod loc_env;
 
 
 // extern crate console_error_panic_hook;
