@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 use serde::{ Deserialize, Serialize };
 
 use crate::{
@@ -60,3 +62,19 @@ impl Model for TechModel {
         None
     }
 }
+
+
+impl Ord for TechModel {
+   
+    fn cmp(&self, other:&Self) -> Ordering {
+
+       if  self.name.to_lowercase() > other.name.to_lowercase() {
+          return Ordering::Greater;
+       }
+       if  self.name.to_lowercase() < other.name.to_lowercase() {
+          return Ordering::Less;
+       }
+       
+       Ordering::Equal
+    }
+ }

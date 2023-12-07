@@ -47,19 +47,20 @@ pub fn tech_weight (tech_id: usize, tech_weights: &HashMap<usize, i32>, max_tech
     let this_weight = tech_weights.get(&tech_id);
 
     if this_weight.is_none() {
-        
         return 0
     }
 
     let percent = (100 *  this_weight.unwrap()) / max_tech;
 
-    if percent > 75 {
-        return 26
-    } else if percent > 50 {
-        return 22
-    } else if percent > 25 {
+    if percent > 80 {
+        return 24
+    } else if percent > 60 {
+        return 21
+    } else if percent > 40 {
         return 18
+    } else if percent > 20 {
+        return 15
     } else {
-        return 14
+        return 11
     }
 }

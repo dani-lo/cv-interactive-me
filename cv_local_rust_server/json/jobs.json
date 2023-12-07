@@ -3,7 +3,7 @@
     "uid": 17,
       "title":"April 2017 - Ongoing,   BrightAnalytics, London",
       "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
-      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85, 89,  54, 35, 55, 86, 76, 75, 32, 33],
+      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
       "position":"Fullstack / Lead Frontend developer",
       "company": 1,
       "description":[
@@ -21,7 +21,7 @@
       "uid": 16,
       "title":"December 2015 ­ - March 2017,   Admedo, London",
       "tech_str":"Angular 1.5, Gmaps, d3, Gulp, Mocha, Protractor, Karma, Sinon, Scss, Git, AWS S3",
-      "tech": [28, 51, 75, 24, 25, 26, 49, 52, 89],
+      "tech": [28, 51, 75, 24, 25, 26, 49, 52, 89, 38],
       "position":"Frontend developer",
       "company": 2,
       "description":[

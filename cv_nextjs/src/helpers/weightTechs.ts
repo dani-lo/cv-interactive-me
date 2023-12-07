@@ -42,12 +42,12 @@ export const techWeight = (
     if (percent > 80) {
         return 24
     } else if (percent > 60) {
-        return 22
+        return 21
     } else if (percent > 40) {
-        return 19
+        return 18
     } else if (percent > 20) {
-        return 14
+        return 15
     } else {
-        return 12
+        return 11
     }
 }

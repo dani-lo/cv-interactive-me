@@ -3,14 +3,15 @@ const jobs = [
     "uid": 17,
       "title":"April 2017 - Ongoing,   BrightAnalytics, London",
       "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
-      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 54, 55, 71],
-      "position":"Lead Frontend developer",
+      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
+      "position":"Fullstack / Lead Frontend developer",
       "company": 1,
       "description":[
         "Working on dashboard and report engine react platforms - visualisation, new features, maintainance",
         "Mentoring junior developers",
-        "Frontend work across all the company products (Dashboard and Report Engine)",
-        "Nodejs work on the Datamodel backend and cli utilities tools"
+        "S3 and Node Express project work for micro services, Auth engine",
+        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, D3 custom visualisations)",
+        "Work on the Datamodel, Auth and Frontend cli project management utilities tools"
       ],
       "from": [4, 2017],
       "to": [12, 2023],
@@ -19,13 +20,15 @@ const jobs = [
     {
       "uid": 16,
       "title":"December 2015 ­ - March 2017,   Admedo, London",
-      "tech_str":"Angular 1.5, Gmaps, d3, Gulp, Mocha, Protractor, Karma, Sinon, Scss, Git",
-      "tech": [28, 51, 24, 25, 26, 49, 52],
+      "tech_str":"Angular 1.5, Gmaps, d3, Gulp, Mocha, Protractor, Karma, Sinon, Scss, Git, AWS S3",
+      "tech": [28, 51, 75, 24, 25, 26, 49, 52, 89, 38],
       "position":"Frontend developer",
       "company": 2,
       "description":[
           "Working day to day in an Agile environment on enhancing the Admedo platform by liasing with the product owner and Backend team to build new features and maintain the existing ones",
-          "In charge of all charting functionalities for the app via in house d3 development (reporting, dashboards, widgets)"
+          "In charge of all charting functionalities for the app via in house d3 development (reporting, dashboards, widgets)",
+          "Work on UI for remote S3 based DSP assets management",
+          "Regular team meetings for Standup, Restrocsectives, Features scheduling, Roadmaps"
       ],
       "from": [12, 2015],
       "to": [3, 2017],

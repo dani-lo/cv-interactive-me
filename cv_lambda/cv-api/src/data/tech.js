@@ -144,12 +144,12 @@ const techs = [{
   "uid": 36
 },{
  
-  "name": "Yew (wasm)",
+  "name": "Yew (Rust wasm)",
   "uid": 37
 },{
  
   "uid": 38,
-  "name": "Typscript"
+  "name": "Typescript"
 },{
  
   "uid": 39,
@@ -218,7 +218,7 @@ const techs = [{
   "uid": 54
 },
 {
-  "name": "Node",
+  "name": "Nodejs",
   "uid": 55
 },
 {
@@ -298,6 +298,74 @@ const techs = [{
 {
   "name": "SOAP",
   "uid": 73
+},
+{
+  "name": "AWS ECS",
+  "uid": 74
+},
+{
+  "name": "AWS S3",
+  "uid": 75
+},
+{
+  "name": "Docker",
+  "uid": 76
+},
+{
+  "name": "AWS API Gateway",
+  "uid": 77
+},
+{
+  "name": "AWS Route 53",
+  "uid": 78
+},
+{
+  "name": "Terraform",
+  "uid": 79
+},
+{
+  "name": "GraphQL",
+  "uid": 80
+},
+{
+  "name": "Tanstack Query",
+  "uid": 81
+},
+{
+  "name": "Prisma",
+  "uid": 82
+},
+{
+  "name": "OAK",
+  "uid": 83
+},
+{
+  "name": "Chai",
+  "uid": 84
+},
+{
+  "name": "Playwright",
+  "uid": 85
+},
+{
+  "name": "CircleCI",
+  "uid": 86
+},
+{
+  "name": "JWT",
+  "uid": 87
+},
+{
+  "name": "Tailwind",
+  "uid": 88
+},
+{
+  "name": "Postman",
+  "uid": 89
+},
+{
+  "name": "Postgresql",
+  "uid": 90
 }
 ];
 

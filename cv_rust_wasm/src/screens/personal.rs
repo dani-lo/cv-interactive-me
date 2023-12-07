@@ -45,7 +45,7 @@ use crate::{
          user_model::{
             UserModel, 
             get_user,
-        }
+        }, tech_model::TechModel
     }, 
     components::{
         appmenu::AppMenuComponent,
@@ -76,6 +76,13 @@ pub fn personal() -> Html {
     let payoff_ui_dipatcher = ui_dispatch.clone();
 
     let m_hashes : &AppStaticDataHashes = &state.static_models.model_hashes; 
+    let m_hashes_tech = m_hashes.techs.clone();
+
+    let m_hashes_tech_sorted = m_hashes_tech.iter().sorted_by_key(|x| x.1).collect::<HashMap<&usize, &TechModel>>();
+
+    info!("1 {:?}", m_hashes_tech);
+    info!("2 {:?}", m_hashes_tech_sorted);
+    
     let store_projects = m_hashes.projects.values().cloned().collect::<Vec<ProjectModel>>();
     let projects:UseStateHandle<Vec<ProjectModel>> = use_state(|| store_projects);
     
@@ -244,7 +251,7 @@ pub fn personal() -> Html {
                                         <h3>{ "Skills" }</h3>
                                         <p>
                                         {
-                                            m_hashes.techs.values().map(|d| {
+                                            m_hashes_tech_sorted.values().map(|d| {
 
                                                 let weighted_tech_range_result = tech_weight(d.uid, &weights, weights_max);
                                                 let style_str = format!("display:inline-block;margin-left:4px;font-size:{}px;", weighted_tech_range_result);
