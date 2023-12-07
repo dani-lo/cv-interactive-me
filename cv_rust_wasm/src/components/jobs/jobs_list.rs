@@ -168,6 +168,7 @@ pub fn jobs_list_component(JobListProps {
                             items={ chunks }
                             page={ *page }
                             on_select_tab={ on_select_tab }
+                            sectione_model_type={ ModelTypes::Job }
                         />
                         {
                             html!{ jobs_list }

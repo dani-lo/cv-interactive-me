@@ -9,18 +9,19 @@ use yew::{
 };
 use yew_router::hooks::use_navigator;
 
-use crate::{models::StaticAsset, routes::AppRoute};
+use crate::{models::{StaticAsset, ModelTypes}, routes::AppRoute};
 
 #[derive(PartialEq, Properties)]
 pub struct TabberProps <T: StaticAsset + PartialEq>{
     pub items: Vec<Vec<T>>,
     pub page: usize,
     pub on_select_tab: Callback<usize>,
+    pub sectione_model_type: ModelTypes,
 }
 
 
 #[function_component(TabberComponent)]
-pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_select_tab } : &TabberProps<T>) -> Html {
+pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_select_tab, sectione_model_type } : &TabberProps<T>) -> Html {
 
 
     // info!("{:?}", items.iter().map(|item| &item[0].get_daterange().unwrap().formatted()));
@@ -58,12 +59,16 @@ pub fn tabber<T: StaticAsset + PartialEq + Debug>(TabberProps { items, page, on_
 
         let body_str = format!("{}-{}", first_year_str, &last_year_str[2..4]);//&last_year_str[2..4]
         // info!("{}", body_str);
+        let c_sectione_model_type = sectione_model_type.clone();
 
         let markup = html!{
             <li>
             <button 
                 onclick={ move |_|{ 
-                    nav_back.push(&AppRoute::JobsRoute {});
+                    
+                    let curr_route = if c_sectione_model_type == ModelTypes::Job { &AppRoute::JobsRoute {} } else { &AppRoute::ProjectsRoute {} };
+
+                    nav_back.push(curr_route);
                     on_select_tab_c.emit(idx);
                 }}
                 class={ if *page != idx { "" } else { "disabled" }}

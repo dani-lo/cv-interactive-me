@@ -172,6 +172,7 @@ pub fn projects_list_component(ProjectListProps {
                             items={ chunks }
                             page={ *page }
                             on_select_tab={ on_select_tab }
+                            sectione_model_type={ ModelTypes::Project }
                         />
                         {
                             html!{ projects_list }
