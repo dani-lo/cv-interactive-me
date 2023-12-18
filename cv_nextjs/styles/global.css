@@ -70,8 +70,9 @@ body.scroll-down .mobile-bar i.fa {
 }
 
 .page {
-  margin-left: 360px;
-  margin-top: var(--gap-large);
+  /* margin-left: 360px; */
+  /* margin-top: var(--gap-large); */
+  padding-left: 4rem;
 }
 
 .page-grid {
@@ -113,7 +114,7 @@ h2 span.action-wrap {
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: var(--gap-medium) 0;
   line-height: 1.5rem;
   color: var(--text-clear);
@@ -123,6 +124,14 @@ h3 {
   align-items: center;
 }
 
+h4 {
+  font-size: 1rem;
+  margin: var(--gap-small) 0;
+  line-height: 1.35rem;
+  color: var(--black);
+  font-weight: bold;
+}
+
 a {
   color: var(--text-dark);
   cursor: pointer;
@@ -130,7 +139,7 @@ a {
 }
 
 a:hover {
-  color: var(--active-pink);
+  color: var(--active-action);
 }
 
 p {
@@ -165,14 +174,18 @@ button {
   font-weight: bold;
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
-  background: var(--black);
+  background: var(--text-clear);
   font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
   margin: var(--gap-small) 0;
 }
-button.disabled, button:hover {
-  background: var(--text-clear);
+button.disabled {
+  opacity: 0.5;
+}
+
+button:hover {
+  background: var(--border-col);
   opacity: 1;
 }
 
@@ -286,7 +299,12 @@ i.fa.action {
 }
 
 i.fa.action:hover {
-  color: var(--active-pink);
+  color: var(--active-action);
+}
+
+i:hover, 
+a:hover {
+    opacity: 0.7;
 }
 
 span.resource-name {
@@ -310,9 +328,20 @@ h2 span.action-wrap i {
 }
 
 
-span.action-wrap:hover, span.action-wrap:hover i, span.action-wrap:hover .html-icon {
-  color: var(--active-pink);
+span.action-wrap:hover,  span.action-wrap:hover .html-icon {
+  color: var(--active-action);
 }
+
+/* h2 span.action-wrap:hover, h2 span.action-wrap:hover i,  h2 span.action-wrap:hover .html-icon {
+  color: var(--black);
+}
+
+h3 span.action-wrap:hover, h3 span.action-wrap:hover i,  h3 span.action-wrap:hover .html-icon {
+  color: var(--black);
+} */
+
+
+
 
 span.html-icon {
   display: inline-block;
@@ -320,8 +349,38 @@ span.html-icon {
   display: inline-block;
 }
 
-span.html-icon:hover {
-  color: var(--active-pink);
+span.html-icon:hover i {
+  color: var(--active-action) !important;
+  opacity: 1;
+}
+
+span.html-icon.main-toggle {
+  transition: transform .2s; 
+}
+
+span.html-icon.main-toggle i {
+  font-size: 1.2rem;
+}
+
+span.html-icon.main-toggle:hover {
+  transform: scale(1.25);
+}
+
+span.html-icon.app-ctrl {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    transition: transform .2s; 
+    z-index: 1;
+} 
+
+span.html-icon.app-ctrl i {
+  font-size: 1.2rem;
+  color: var(--black);
+} 
+
+span.html-icon.app-ctrl:hover {
+  transform: scale(1.25);
 }
 
 .generic-ui-overlay-bg {
@@ -357,7 +416,7 @@ span.html-icon:hover {
 }
 
 .filtered-out {
-  opacity: 0.35;
+  /* opacity: 0.35; */
   cursor: default;
   pointer-events: none;
 }
@@ -393,4 +452,8 @@ span.html-icon:hover {
 }
 .margin-no {
   margin: 0!important;
+}
+
+.jobs-container {
+  display: flex;
 }

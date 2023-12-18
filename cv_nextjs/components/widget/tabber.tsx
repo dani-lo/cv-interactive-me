@@ -21,7 +21,10 @@ const pageTitle = (items: DateRangedItem[]) => {
     return `${ yearFrom } - ${ `${yearTo}`.substring(2, 4) }`
 }
 
-export const pageSize = 4
+export const pageSize = {
+    dense: 4,
+    sparse: 3
+}
 
 export const pageForItem = (items: DateRangedItem[][], uid: number) => {
     

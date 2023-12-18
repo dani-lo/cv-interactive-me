@@ -7,12 +7,6 @@ import * as atoms  from "../../src/store-jotai/atomicUiStore"
 
 import { StyledSettingsListContainer } from "../../styles/main.styled"
 
-type Foo = {
-    doo: string;
-}
-
-type Loo = Foo & { voo: number; }
-
 export const SettingsComponent = ({ disabled, settings, saveSetting }: {
     disabled: boolean,
     settings: AppSetting<any>[],
@@ -26,8 +20,10 @@ export const SettingsComponent = ({ disabled, settings, saveSetting }: {
 
     return <StyledSettingsListContainer disabled={ disabled }>
         <span  
-            className="html-icon" 
-            onClick={ () => setShowsettings(!showsettings) }>
+            className="html-icon main-toggle" 
+            onClick={ () => {
+                setShowsettings(false) 
+            }}>
                 <i aria-hidden="true" className="fa fa-times" />
         </span> 
         {

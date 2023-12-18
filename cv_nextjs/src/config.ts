@@ -8,6 +8,8 @@ export const URL_GET_FIELDS = process.env.NODE_ENV == 'development' ? 'http://lo
 export const URL_GET_PROJECTS = process.env.NODE_ENV == 'development' ? 'http://localhost:8080/api/projects' : 'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/projects'
 export const URL_GET_PERSONAL = 'personal'
 
+console.log(URL_GET_JOB)
+
 // export const URL_GET_JOB =  'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/jobs'
 // export const URL_GET_TECHS= 'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/tech'
 // export const URL_GET_COMPANIES = 'https://xbhydccz1j.execute-api.eu-west-2.amazonaws.com/Prod/companies'

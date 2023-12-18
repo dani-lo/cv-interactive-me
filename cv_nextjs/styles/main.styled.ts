@@ -3,15 +3,15 @@ import { Modal } from '@mui/material'
 
 export const StyledJobContainer = styled.div`    
 
-    margin-top: var(--gap-medium);
-    padding:  var(--gap-medium);
+    margin-top: var(--gap-large);
+    padding:  var(--gap-large);
     width: 380px;
     border-radius: 0.2rem;
-    // border: 1px solid var(--active-action);
+    background: #f2f1f1;
+    position: relative;
 
     &.selected {
         background: var(--active-action);
-        padding:  var(--gap-medium);
         cursor: default;
         pointer-events: none; 
 
@@ -22,10 +22,6 @@ export const StyledJobContainer = styled.div`
 
         cursor: default;
         pointer-events: none;
-    }
-    
-    &:first-child {   
-        margin-top: 0;
     }
 
     h2 {
@@ -53,12 +49,17 @@ export const StyledJobContainer = styled.div`
     @media only screen and (max-width: 768px) {
         width: auto;
         margin: var(--gap-large);
+        position: static;
     }
 
     cursor: pointer;
 
     &:hover {
-        background: #f2f1f1;
+        background: var(--active-action);
+        h2, h3, p, li, a, i {
+            color: white;
+            border-color: var(--white);
+        }
     }
 
     ul {
@@ -74,20 +75,23 @@ export const StyledJobContainer = styled.div`
 
 export const StyledJobDetail = styled.div`
     
-    position: fixed;
     width: 380px;
     overflow-y: scroll;
-    height: 100%;
-    top: 0px;
     padding: 0 var(--gap-large) 0;
-    left: 760px;
     height: calc(100% - 100px);
     top: 84px;
+    margin-left: var(--gap-huge);
+    margin-top: var(--gap-medium);
     
     h2 {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        color: var(--black);
+    }
+
+    h3 {
+        color: var(--black);
     }
 
     @media only screen and (max-width: 768px) {
@@ -118,19 +122,18 @@ export const StyledSidebar = styled.div`
 
     width: 320px;
     position: fixed;
-    left: 0;
-    top: 0;
     background: var(--black);
     border-right: 1px dotted var(--border-col);
     height: 100%;
     padding: var(--gap-large);
     z-index: var(--z-4);
     transition: left 0.25s;
+    top: 0;
 
     > .html-icon {
         position: absolute;
-        left: 0.5rem;
         top: 0.5rem;
+        right: 1rem;
     }
 
     > div {
@@ -141,10 +144,7 @@ export const StyledSidebar = styled.div`
         color: white;
     }
 
-    i:hover, 
-    a:hover {
-        opacity: 0.7;
-    }
+    
 
     h3 {
         padding-bottom: var(--gap-small);
@@ -167,7 +167,7 @@ export const StyledCompanyContainer = styled.div`
     margin: var(--gap-huge) 0 var(--gap-large) 0;
     padding: var(--gap-medium) var(--gap-large);
     border-radius: 0.2rem;
-    background: #f5f5f5;
+    border: 2px solid var(--active-action);
 
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);
@@ -186,6 +186,17 @@ export const StyledActionsList = styled.ul`
 
         > span:first-child span, a {
             padding-left: var(--gap-small);
+        }
+
+        &.action-filtered-out {
+            opacity: 0.6;
+            pointer-events: none;
+            cursor: default;
+
+            a, i {
+                pointer-events: none;
+                cursor: default;
+            }
         }
     }
 `
@@ -265,7 +276,7 @@ export const StyledPrompt = styled.div`
 export const StyledSettingsListContainer = styled.div<{ disabled : boolean }>`
     
     ${ props => props.disabled ? 
-        'left: -320px;' : 
+        'left: -400px;' : 
         'left: 320px;'
     }
 
@@ -400,7 +411,8 @@ export const StyledModalWrap = styled(Modal)`
 
 export const StyledAnnotation = styled.div`
 
-    margin-top: var(--gap-large);
+    margin-top: var(--gap-medium);
+    margin-bottom: var(--gap-large);
 
     p {
         font-style: italic;
@@ -484,10 +496,23 @@ export const StyledTechList = styled.ul`
 
 export const StyledTabber = styled.ul`
     margin-bottom: var(--gap-huge);
+    margin-top: var(--gap-large);
     li {
         display: inline-block;
         margin: 0 var(--gap-medium) 0 0;
-        
+        button {
+            background: #f2f1f1;
+            color: var(--black);
+            &:hover {
+                background: var(--text-clear);
+            color: var(--white);
+            }
+        }
+        button.disabled {
+            background: var(--text-clear);
+            color: var(--white);
+            opacity: 1;
+        }
     }
 
     @media only screen and (max-width: 768px) {
@@ -500,6 +525,18 @@ export const StyledAppPayoff = styled.div`
     bottom: 1rem;
     width: 100%;
     left: 0;
+    opacity: 1;
+    transition: opacity 100ms;
+
+    &.disabled {
+        opacity: 0;
+        pointer-events: none;
+
+        i {
+            cursor: default;
+            pointer-events: none;
+        }
+    }
   
     & > div {
         padding: var(--gap-large);
@@ -526,10 +563,8 @@ export const StyledAppPayoff = styled.div`
   
     span.html-icon {
         position: absolute;
-        top: 0;
-        width: 100%;
+        top: 0.5rem;
         right: 0.5rem;
-        text-align: right;
 
         i {
             color: black;
@@ -541,4 +576,31 @@ export const StyledAppPayoff = styled.div`
         }
     }
 
+`
+
+export const StyleFilteredOutCardWarning = styled.div`
+    position: absolute;
+    z-index: var(--z-1);
+    width: 100%;
+    height: 100%;
+    background: #ffffffd1;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    h3 {
+        text-align: center;
+        width: 100%;
+        display: block;
+        color: var(--black);
+    }
+
+    i {
+        font-size: 2rem;
+        color: var(--warn);
+    }
 `

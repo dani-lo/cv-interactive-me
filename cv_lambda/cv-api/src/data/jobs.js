@@ -1,20 +1,21 @@
 const jobs = [
   {
     "uid": 17,
-      "title":"April 2017 - Ongoing,   BrightAnalytics, London",
+      "title":"April 2017 - April 2023,   BrightAnalytics, London",
       "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
       "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
-      "position":"Fullstack / Lead Frontend developer",
+      "position":"Fullstack / Lead Frontend",
       "company": 1,
       "description":[
-        "Working on dashboard and report engine react platforms - visualisation, new features, maintainance",
+        "Working on dashboard and report engine react platforms - leading on visualisations, new features, maintainance",
         "Mentoring junior developers",
         "S3 and Node Express project work for micro services, Auth engine",
-        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, D3 custom visualisations)",
-        "Work on the Datamodel, Auth and Frontend cli project management utilities tools"
+        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, D3 custom visualisations, Maps)",
+        "Work on the Datamodel, Auth and Frontend cli project management utilities tools",
+        "Led the ground-up rebuild of BA core data mapping and data harmonisation interface, used to integrate any number of data sources, define custom sub-queries to create new data sources, create custom KPIs that use re-usable metric definitions, define rules to automatically harmonise your data, manage dimension values and colour schemes"
       ],
       "from": [4, 2017],
-      "to": [12, 2023],
+      "to": [4, 2023],
       "jobType": [1, 4, 5]
     },
     {

@@ -18,7 +18,11 @@ export const uiSelectedProjectAtom = atom<number | null>(null)
 export const uiShowSettingsAtom = atom<boolean>(false)
 export const uiShowActionsAtom = atom<boolean>(false)
 export const uiShowPayoffAtom = atom<boolean>(true)
+export const uiExpandLayoutAtom = atom<boolean>(true)
+
+export const fooAtomz = atom<boolean>(false)
 export const tok = atom<string>("")
+
 
 // export const uiSettings = atom(
 //     () => {

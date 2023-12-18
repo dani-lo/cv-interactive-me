@@ -1,24 +1,20 @@
 import { AppProps } from "next/app"
-import { useRouter } from 'next/router'
-
-import {  useEffect, useState } from "react"
-import { useAtom } from "jotai";
+import { CSSTransition } from 'react-transition-group';
+import {  useEffect, useRef, useState } from "react"
+import { useAtom } from "jotai"
 
 import * as atoms  from "../src/store-jotai/atomicUiStore"
-import StyledComponentsRegistry from '../lib/registry'
 
 import { AppDataProps } from "../src/types"
-import { AppSetting, AppSettingsParser, SettingKeys } from "../src/settings/parser"
+import { AppSettingsParser, SettingKeys } from "../src/settings/parser"
 
-import { ActionsList } from "./actions/actionsList"
 import { PendingActionsComponent } from "./actions/pendingAction"
 
-import { AppMenu } from "./sidebar/menu"
 import { SettingsComponent } from "./widget/settings"
 
-import { StyledAppPayoff, StyledSidebar } from "../styles/main.styled"
 import { useFrontendClassname } from "../src/hooks/useFrontendClassname"
 import { TopBarComponent } from "./sidebar/topbar"
+import { SidebarComponent } from "./widget/sidebar";
 
 type Props = {
     children: any,
@@ -31,12 +27,15 @@ const Layout = ({
 }: Props) => {
 
     const feCname = useFrontendClassname()
-    const router = useRouter()
+
+    const nodeRefContent = useRef(null)
 
     const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
-    const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
-    const [showpayoff, setShowpayoff] = useAtom(atoms.uiShowPayoffAtom)
-    const [uiBusy, setUiBusy] = useAtom(atoms.uiBusy)
+    const [_showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
+    const [uiBusy, _setUiBusy] = useAtom(atoms.uiBusy)
+    // const [xpandLayout, setXpandLayout] = useAtom(atoms.uiExpandLayoutAtom)
+
+    const [foo, setFoo] = useAtom(atoms.fooAtomz)
   
     const [settings, setSettings] = useState([])
 
@@ -44,67 +43,78 @@ const Layout = ({
         const settingsparser = new AppSettingsParser()
         const settings = settingsparser.allSettings
 
-        // @ts-ignorel
+        // @ts-ignore
         setSettings(settings)
-    }, [])
         
-    return <div className={feCname}>
-        { uiBusy ? null : <TopBarComponent /> }
-        { uiBusy ? null :  <SettingsComponent
-            disabled = { !showsettings }
-            settings={ settings }
-            saveSetting={ (k: SettingKeys, val: any) => {
-                const settingsparser = new AppSettingsParser()
-                
-                settingsparser.saveSetting(k, val)
-                settingsparser.parseStorageSettings()
-                
-                const settings = settingsparser.allSettings
+    }, [])
 
-                // @ts-ignore
-                setSettings(settings)
-            }}
-        />  }
-        {
-            !showsettings || uiBusy ? null : <div className="generic-ui-overlay-bg"></div>
-        }
-        {
-            !uiBusy ? <PendingActionsComponent settings={ settings } /> : null
-        }
-        {
-            ! uiBusy ? <StyledSidebar className={ showactions ? 'active' : ''}>
-                <span 
-                    className="html-icon"
-                    onClick={ () => setShowsettings(!showsettings) }>
-                        <i aria-hidden="true" className="fa fa-cog" />
-                </span> 
-                <h1 className="app-logo"><a href="https://interactiveme.net/">Interactive Me</a></h1> 
-                <AppMenu />
-                <ActionsList 
-                    { ...pageProps }
-                />
+
+    
+    return <div className={`${ feCname } anime-relative`}>
+            <span 
+                className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
+                style={{ right: '1rem', left: 'auto'}}
+                onClick={ () => {
+                    setShowsettings(true) 
+                    setFoo(true)
+                }}>
+                    <i aria-hidden="true" className="fa fa-cog" />
+            </span> 
+                { uiBusy ? null : <TopBarComponent /> }
+                { uiBusy ? null :  <SettingsComponent
+                    disabled = { !showsettings }
+                    settings={ settings }
+                    saveSetting={ (k: SettingKeys, val: any) => {
+                        const settingsparser = new AppSettingsParser()
+                        
+                        settingsparser.saveSetting(k, val)
+                        settingsparser.parseStorageSettings()
+                        
+                        const settings = settingsparser.allSettings
+
+                        // @ts-ignore
+                        setSettings(settings)
+                    }}
+                />  }
                 {
-                    showpayoff ?
-                    <StyledAppPayoff>  
-                        <div>
-                            <span  
-                                className="html-icon" 
-                                onClick={ () => setShowpayoff(!showpayoff) }>
-                                    <i aria-hidden="true" className="fa fa-times" />
-                            </span>
-                            <p>You are viewing the Nextjs implementation.</p>
-                            <p>Try the <a href="https://webassembly.interactiveme.net/personal">Web Assembley (Rust) implementation</a></p>
-                        </div>
-                    </StyledAppPayoff> :
-                    null
+                    !showsettings || uiBusy ? null : <div className="generic-ui-overlay-bg"></div>
                 }
-                
-            </StyledSidebar> : null
-        }
-        {
-            uiBusy ? null :  children
-        }
-    </div>
+                {
+                    !uiBusy ? <PendingActionsComponent settings={ settings } /> : null
+                }
+                {
+                    ! uiBusy ? 
+                    
+                        <>
+                        { uiBusy ? null : 
+                            <span 
+                                className="html-icon app-ctrl"
+                                onClick={ () => {
+                                    setFoo(true) 
+                                }}>
+                                    <i aria-hidden="true" className="fa fa-bars" />
+                            </span>  
+                        }
+                        <SidebarComponent pageProps={ pageProps } />
+                        </>
+                    : null
+                }
+                {
+                    uiBusy ? null :  <CSSTransition 
+                        nodeRef={nodeRefContent} 
+                        in={  foo } 
+                        timeout={ 0 } 
+                        classNames="anime-popright-node">
+                        <section className="content-container anime-popright-init" ref={ nodeRefContent }>
+                            {
+                                children
+                            }
+                        </section>
+                    </CSSTransition>
+                }
+    </div>  
+    
+    
 }
 
 export default Layout

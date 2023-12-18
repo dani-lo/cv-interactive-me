@@ -15,6 +15,9 @@ import { AppAction, AppDataProps, Collectable, Resource, ResourceType } from "..
 
 import { StyledActionsList } from "../../styles/main.styled"
 import { ActionLink } from "./actionLink"
+import { filteredOut } from "../../src/helpers/displayItemFilters"
+import { Job } from "../../src/models/classes/Job"
+import { Project } from "../../src/models/classes/Project"
 
 const filterLabel = (resource: Resource & IFilter) : string => {
     if (resource.toLabel() == '') {
@@ -33,6 +36,8 @@ export const ActionsList = (props: AppDataProps) => {
     }
 
     const mappedResources = transformData(props)
+
+    console.log(mappedResources)
 
     const activeFilter = (ctx.appstate.filters || []).filter(b => {
         return b.pending === null || ![PendingStatus.DELETED].includes(b.pending)
@@ -88,7 +93,11 @@ export const ActionsList = (props: AppDataProps) => {
                         const resources = grabMappedResource(appBookmark.resource_type, mappedResources)
                         const resource = resources.get(appBookmark.resource_id)  as Resource & IBookmark
                         
-                        return <li key={ `${appBookmark.resource_type}-${appBookmark.resource_id}`} className="action-wrap">
+                        const filtered= [ResourceType.Job, ResourceType.Project].includes( resource.resource_type) ? 
+                            filteredOut(resource as Job | Project, ctx.appstate.filters || null) : 
+                            false
+
+                        return <li key={ `${appBookmark.resource_type}-${appBookmark.resource_id}`} className={ `${ filtered ? 'action-wrap action-filtered-out' : 'action-wrap' }` }>
                                 <span>
                                     <strong className="capital">{ appBookmark.resource_type }</strong>: 
                                     <ActionLink resource={ resource } />
@@ -113,7 +122,11 @@ export const ActionsList = (props: AppDataProps) => {
                         const resources = grabMappedResource(appNote.resource_type, mappedResources)
                         const resource = resources.get(appNote.resource_id) as Resource & IAnnotate
                         
-                        return <li key={ `${appNote.resource_type}-${appNote.resource_id}`} className="action-wrap">
+                        const filtered= [ResourceType.Job, ResourceType.Project].includes( resource.resource_type) ? 
+                            filteredOut(resource as Job | Project, ctx.appstate.filters || null) : 
+                            false
+
+                        return <li key={ `${appNote.resource_type}-${appNote.resource_id}`} className={ `${ filtered ? 'action-wrap action-filtered-out' : 'action-wrap' }` }>
                             <span>
                                 <strong className="capital">{ appNote.resource_type }</strong>: 
                                 <ActionLink resource={ resource } />

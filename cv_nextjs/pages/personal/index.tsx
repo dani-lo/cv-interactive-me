@@ -13,8 +13,6 @@ import { namedListSort } from "../../src/helpers/sort"
 export const getStaticProps = getAppStaticProps
 
 const PersonalPage = (props: AppDataProps) => {
-
-    console.log(props)
     
     const { jobModels, projectModels, techModels } = transformData(props)
 
@@ -51,10 +49,11 @@ const PersonalPage = (props: AppDataProps) => {
         }
     })
 
-    console.log(weightedTechList.filter(d => d !== null).sort(namedListSort))
+    // console.log(weightedTechList.filter(d => d !== null).sort(namedListSort))
 
     return <div className="page">  
         <div className="jobs-container">
+            <div>
             <StyledAboutContainer>
                 <ul className="itemised">
                     <li><strong>Daniele Longo</strong></li>
@@ -97,6 +96,7 @@ const PersonalPage = (props: AppDataProps) => {
                     <li className="itemised list-item">Indian Philosophy</li>
                 </ul>
             </StyledAboutContainer>
+        </div>
         </div>
     </div>
 }

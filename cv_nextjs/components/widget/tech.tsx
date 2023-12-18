@@ -7,9 +7,9 @@ import { Tech } from "../../src/models/classes/Tech"
 
 import { StyledTechList } from '../../styles/main.styled'
 
-// import { techShowLimit } from '../../src/config'
 import { CvJobsContext } from "../../pages/_app"
 import { namedListSort } from "../../src/helpers/sort"
+import { isUnique } from "../../src/helpers/filterBy"
 
 type TechProps = {
     showActions: (item: Resource) => void;
@@ -24,20 +24,17 @@ type TechListProps = {
 
 export const TechListComponent = (props: TechListProps) => {
 
-    // const [fulltech, setFulltech] = useState(false)
     const ctx = useContext(CvJobsContext)
 
     if (!ctx) {
         return null
     }
 
-    // const limit = fulltech ? props.techs.length :  techShowLimit
     const filters = ctx.appstate.filters
 
     return <StyledTechList>
         {   
-            //props.techs.slice(0, limit).map(tech => {
-            props.techs.sort(namedListSort).map(tech => {
+            props.techs.filter(isUnique).sort(namedListSort).map(tech => {
 
                 const filtered = !!(filters.find(ArrayClause.findClause(tech, ResourceType.Tech)))
 
@@ -49,13 +46,6 @@ export const TechListComponent = (props: TechListProps) => {
                 />
             })
         }
-        {/* {
-            !fulltech && limit < props.techs.length ?
-                <li className="list-footer-meta-action" onClick={ () => setFulltech(true)}>show more</li> :
-                    fulltech ? 
-                        <li className="list-footer-meta-action" onClick={ () => setFulltech(false)}>show less</li> :
-                        null
-        } */}
     </StyledTechList>
 }
 

@@ -2,14 +2,16 @@ import { StyledCompanyContainer } from '../../styles/main.styled'
 import { Company } from "../../src/models/classes/Company"
 import { Field } from '../../src/models/classes/Field'
 import { Resource, ResourceProps } from '../../src/types'
+import { AnnotationsComponent } from './annotations'
 
 export const CompanyComponent = (props : { 
     company: Company ,
     showActions: (item: Resource) => void,
     bookmarked: boolean,
+    annotationText: string | null,
 }) => {
 
-    const { company, showActions, bookmarked } = props
+    const { company, showActions, bookmarked, annotationText } = props
 
     if (!(company instanceof Company)) {
         throw new Error("You must pass a Company resource to the CompanyComponent")
@@ -27,6 +29,7 @@ export const CompanyComponent = (props : {
                 bookmarked ? <i className="fa fa-bookmark bookmark" /> : null
             }
         </h3>
+        { annotationText ? <AnnotationsComponent note={ annotationText }/> : null }
         <p>{ company.description }</p>
         <ul>
             { 

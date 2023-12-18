@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useAtom } from 'jotai'
+import { CSSTransition } from 'react-transition-group';
 
 import * as atoms from '../../src/store-jotai/atomicUiStore'
 
@@ -27,6 +28,7 @@ import { useRouter } from 'next/router'
 import { chunker } from '../../src/helpers/chunk'
 
 import { Tabber, pageSize, pageForItem, DateRangedItem } from '../../components/widget/tabber'
+import { filteredOut, pagedOut } from '../../src/helpers/displayItemFilters';
 
 export const getStaticProps = getAppStaticProps
 
@@ -38,18 +40,31 @@ const ProjectsPage = (props: AppDataProps) => {
     const [page, setPage] = useState(0)
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
+    const ctx = useContext(CvJobsContext)
+
+    const { filters } = ctx?.appstate || {}
+
+    const nodeRef = useRef(null);
+
+    const [inprop, setInprop] = useState(false)
+    // const [useprojs, setUseprojs] = useState<null | Map<number, Project>>(null)
+
+    const { projectModels } = transformData(props)
+
+    const displayProjectModelsArr =  Array.from(projectModels).filter(([k, proj], i) => !pagedOut(page, i, pageSize.sparse) && !filteredOut(proj, filters || null))
+    
+    const chunks = chunker<DateRangedItem>([...Array.from(projectModels.values())], pageSize.sparse)
+
     useEffect(() => {
-        console.log('route change with dependency', router.pathname)
 
         const path = router.asPath
         const maybeUid = parseInt(path.replace('/jobs/', ''))
 
         if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
-
             setSelectedProjectId(maybeUid)
         } 
 
-    }, [router])
+    }, [router, selectedProjectId, setSelectedProjectId])
     
     useEffect(() => {
 
@@ -62,7 +77,14 @@ const ProjectsPage = (props: AppDataProps) => {
             } 
         }
         
-    }, [page, selectedProjectId])
+    }, [page, selectedProjectId, chunks])
+
+    useEffect(() => {
+        
+        setTimeout(() => {
+            setInprop(true)
+        }, 100)
+    }, [displayProjectModelsArr])
 
     const handleOpenModal = (item: Resource | null) => {  
 
@@ -76,32 +98,17 @@ const ProjectsPage = (props: AppDataProps) => {
         setActionItem(null);
     }
 
-    const { projectModels } = transformData(props)
-
-    const chunks = chunker<DateRangedItem>([...Array.from(projectModels.values())], pageSize)
-
     const selectedProject = selectedProjectId !== null ? projectModels.get(selectedProjectId) : null
 
-    const ctx = useContext(CvJobsContext)
-
-    if (ctx === null) {
-        return null
-    }
-
-    const { filters} = ctx.appstate
-    
     const containerClassName = `jobs-container${ selectedProject !== null ? ' with-selected' : ''  }`
 
     let anyProjectbRendered = false
-
-    console.log(page)
-    console.log(chunks)
-
-    let list = mapToComponents<Project>(projectModels, (project, i)  => {
-
-        // if (filters && !project.display(filters)) {
-        //     return null
-        // }
+    
+    if (ctx === null) {
+        return null
+    }
+    
+    let list =  mapToComponents<Project>(projectModels, (project, i)  => {
 
         anyProjectbRendered = true
         
@@ -110,8 +117,8 @@ const ProjectsPage = (props: AppDataProps) => {
         const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
         
         return  <ProjectComponent
-            pagedOut={ i < (pageSize * page) || i >= ((pageSize * (page + 1))) }
-            filteredOut={ !!(filters && !project.display(filters)) }
+            pagedOut={ pagedOut(page, i, pageSize.sparse) }
+            filteredOut={ filteredOut(project, filters || null) }
             key={ project.name } 
             id={ `project-${ project.uid }` }
             project={ project } 
@@ -125,14 +132,22 @@ const ProjectsPage = (props: AppDataProps) => {
         />
     })
 
+    if (ctx === null) {
+        return null
+    }
+
     return <div className="page">  
         <Tabber 
             items={ chunks } 
             page={ page }
             onPageSelect={ (p: number) => {
-                setPage(p)
-                setSelectedProjectId(null)
-                router.push('/projects')
+                setInprop(false)
+
+                setTimeout(() => {
+                    setPage(p)
+                    setSelectedProjectId(null)
+                    router.push('/projects')
+                }, 200)
             } }
         />
         {
@@ -142,21 +157,31 @@ const ProjectsPage = (props: AppDataProps) => {
                 <p>{ "Try removing some filters"}</p>
             </StyledInlineWarning> :
             <div className={ containerClassName } data-testid="jobs-container"> 
-            {            
-                list
-            }
+                <CSSTransition 
+                    nodeRef={nodeRef} 
+                    in={  inprop } 
+                    timeout={ 100 } 
+                    classNames="anime-fade-node">
+                        
+                    <div ref={nodeRef} className="anime-fade-init"> 
+                    {            
+                        list
+                    }
+                    </div> 
+                </CSSTransition>
+                {
+                selectedProject !== null && selectedProject !== undefined ? 
+                    <ProjectDetailComponent 
+                        project={ selectedProject }
+                        showActions = { handleOpenModal }
+                        bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
+                        annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
+                    />
+                : null
+                } 
         </div>
         }
-        {
-            selectedProject !== null && selectedProject !== undefined ? 
-                <ProjectDetailComponent 
-                    project={ selectedProject }
-                    showActions = { handleOpenModal }
-                    bookmarked={ !!selectedProject[IBookmarkKeys.STATUS](ctx) }
-                    annotationText={ annotationForResource(selectedProject, ctx.appstate)?.text || null }
-                />
-            : null
-        } 
+        
         <ActionsModal 
             open={ !!actionItem }
             item={ actionItem }

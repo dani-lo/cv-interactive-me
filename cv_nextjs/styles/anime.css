@@ -1,0 +1,91 @@
+.anime-relative {
+  position: relative;
+}
+
+.anime-fade-init {
+  opacity: 0;
+  display: none;
+}
+
+.anime-fade-node-enter {
+  opacity: 0;
+  display: block;
+  transition: opacity 250ms;
+}
+
+.anime-fade-node-enter-done {
+  opacity: 1;
+  display:block;
+  transition: opacity 250ms;
+}
+
+
+.anime-fade-node-exit {
+  opacity: 0;
+  display: block;
+  transition: opacity 250ms;
+}
+
+.anime-fade-node-exit-done {
+  display:none;
+}
+
+/* */
+
+.anime-popright-init {
+  left: -320px;
+  /* display: none; */
+}
+
+.anime-popright-node-enter {
+  left: -320px;
+  /* display: block; */
+  transition: left 250ms;
+}
+
+.anime-popright-node-enter-done {
+  left: 0px;
+  /* display:block; */
+  transition: left 250ms;
+}
+
+.anime-popright-node-exit {
+  left: -320px;
+  /* display: block; */
+  transition: left 250ms;
+}
+
+.anime-popright-node-exit-done {
+  left: -320px;
+}
+
+/**/
+.content-container {
+  position: relative;
+}
+.content-container.anime-popright-init {
+  left: 0;
+  /* display: none; */
+}
+
+.content-container.anime-popright-node-enter {
+  left: 0;
+  /* display: block; */
+  transition: left 250ms;
+}
+
+.content-container.anime-popright-node-enter-done {
+  left: 290px;
+  /* display:block; */
+  transition: left 250ms;
+}
+
+.content-container.anime-popright-node-exit {
+  left: 0;
+  /* display: block; */
+  transition: left 250ms;
+}
+
+.content-container.anime-popright-node-exit-done {
+  left: 0;
+}

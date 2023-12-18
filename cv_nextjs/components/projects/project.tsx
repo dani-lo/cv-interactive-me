@@ -6,6 +6,7 @@ import { StyledJobContainer } from '../../styles/main.styled'
 
 import { Project } from '../../src/models/classes/Project'
 import { RichTextParagraphComponent } from '../widget/richTextParagraph'
+import { FilteredOutCardWarningComponent } from '../widget/cardWarning'
 
 type Props = {
     project: Project;
@@ -42,10 +43,15 @@ export const ProjectComponentBase = ({
     const cnameSel = selected ? 'selected' : ''
     const cnameFil = filteredOut ? 'filtered-out': ''
 
+    const statusDesc = [...project.status]
+
     return <StyledJobContainer 
             id={ id } 
             className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` }
             onClick={ handleSelect }>
+        {
+            filteredOut ? <FilteredOutCardWarningComponent /> : null
+        }
         <h2> 
             <span>
             {
@@ -60,9 +66,11 @@ export const ProjectComponentBase = ({
             <RichTextParagraphComponent text={ project.notes } />
         </h3>
         <ul>
-        { 
-            project.status.map((ps, i) => <li className="itemised" key={ i }><RichTextParagraphComponent text={ ps } /></li>)
-        }
+            <li className="itemised">
+            { 
+                statusDesc.map((ps, i) => <span  key={ i }><RichTextParagraphComponent text={ ps } />{ i < (statusDesc.length - 1) ? ', ' : '' }</span>)
+            }
+            </li>
         </ul>
     </StyledJobContainer>
 }

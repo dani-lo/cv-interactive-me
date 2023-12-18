@@ -3,8 +3,9 @@ import React, { RefAttributes } from 'react'
 import { Job } from "../../src/models/classes/Job"
 import { Resource } from "../../src/types"
 
-import { StyledJobContainer } from '../../styles/main.styled'
+import { StyledJobContainer, StyleFilteredOutCardWarning } from '../../styles/main.styled'
 import { substrNice } from '../../src/helpers/substr'
+import { FilteredOutCardWarningComponent } from '../widget/cardWarning'
 
 type JobProps = {
     bookmarked: boolean;
@@ -29,13 +30,16 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
     
     const desc = job.description[0];
     
-    let desc_text = substrNice(desc, 60)
+    // let desc_text = substrNice(desc, 60)
 
     const cnamePag = pagedOut ? 'paged-out' : ''
     const cnameSel = selected ? 'selected' : ''
     const cnameFil = filteredOut ? 'filtered-out': ''
 
     return <StyledJobContainer id={ id } className={ `${ cnamePag } ${ cnameSel } ${ cnameFil }` } onClick={ handleSelect }>
+        {
+            filteredOut ? <FilteredOutCardWarningComponent /> : null
+        }
          <h2 > 
             <span>
                 {
@@ -49,7 +53,7 @@ export const JobComponentBase : React.FunctionComponent<JobProps & RefAttributes
         <h3> 
         { job.position }{ job.company ? `, ${  job.company.name  }` : '' }
         </h3>
-        <p>{ desc_text } ...</p>
+        {/* <p>{ desc_text } ...</p> */}
         <p> Job type:
             {
                 job.jobType.filter(jt => jt.prefix == "TIME").map((jobTypeItem, i) => {

@@ -22,6 +22,7 @@ export const PendingActionsComponent = ({
     // const [, setBusy] = useAtom(atoms.uiBusy)
     const [, setUiOpStatus] = useAtom(atoms.uiOpStatus)
     const [, uiOperationSuccess] = useAtom(atoms.uiOperationSuccess)
+    const [foo, setFoo] = useAtom(atoms.fooAtomz)
 
     const [user, ] = useState<User>(new User())
     const [showOptions, setShowOptions] = useState(false)
@@ -52,8 +53,6 @@ export const PendingActionsComponent = ({
     const autoPersist = parser.getSetting(SettingKeys.AutoPersist)
 
     const userAllows = (!autoPersist && allowFeedback)
-
-    console.log('userAllows', userAllows)
 
     const active = pendingActions.length > 0 && showself && userAllows
 
@@ -86,7 +85,7 @@ export const PendingActionsComponent = ({
         return null
     }       
 
-    
+    console.log('active, active', active)
     
     return <StyledPrompt className={ `${ active ? 'active' : '' }` }>
         <div className="prompt">
@@ -152,8 +151,9 @@ export const PendingActionsComponent = ({
                     style={{ display: 'flex', marginTop: 'var(--gap-large)' }}
                     onClick={ () => {
                         setShowsettings(true) 
-                        setShowSelf(false)
-                        setShowOptions(false)
+                        setFoo(true)
+                        // setShowSelf(false)
+                        // setShowOptions(false)
                     }}
                     className={ showsettings ? 'disabled' : '' }
                 >
