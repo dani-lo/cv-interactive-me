@@ -37,8 +37,6 @@ export const ActionsList = (props: AppDataProps) => {
 
     const mappedResources = transformData(props)
 
-    console.log(mappedResources)
-
     const activeFilter = (ctx.appstate.filters || []).filter(b => {
         return b.pending === null || ![PendingStatus.DELETED].includes(b.pending)
     })

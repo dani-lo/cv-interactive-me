@@ -8,7 +8,7 @@
 
     h2 {
         margin: var(--gap-large) 0 var(--gap-large) 0;
-        font-size: 14px;
+        font-size: 16px;
         color: var(--text-main);
         
     }
@@ -40,6 +40,13 @@
         line-height: 19px;
     }
 
+    ul {
+        margin-top: 10px;
+    }
+    li {
+        margin: 6px 0;
+    }
+
     span.resource-name {
         text-transform: lowercase;
     }
@@ -69,6 +76,7 @@
     }
 
     ul.skills {
+        margin-top: 0;
         li {
             display: inline-block;
             list-style: disc;
@@ -76,5 +84,9 @@
             padding: 0 2px 0 0;
             margin: 0 5px 0 0;
         }
+    }
+
+    .app-ctrl {
+        display: none;
     }
 }

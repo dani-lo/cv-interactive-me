@@ -15,6 +15,7 @@ import { SettingsComponent } from "./widget/settings"
 import { useFrontendClassname } from "../src/hooks/useFrontendClassname"
 import { TopBarComponent } from "./sidebar/topbar"
 import { SidebarComponent } from "./widget/sidebar";
+import { useRouter } from "next/router";
 
 type Props = {
     children: any,
@@ -26,6 +27,10 @@ const Layout = ({
     pageProps
 }: Props) => {
 
+    const router = useRouter()
+    const path = router.asPath || ''
+
+    const isPrint = path.indexOf('print') !== -1
     const feCname = useFrontendClassname()
 
     const nodeRefContent = useRef(null)
@@ -50,7 +55,7 @@ const Layout = ({
 
 
     
-    return <div className={`${ feCname } anime-relative`}>
+    return <div className={`${ feCname } anime-relative ${ isPrint ? 'print' : '' }`}>
             <span 
                 className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
                 style={{ right: '1rem', left: 'auto'}}

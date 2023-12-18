@@ -13,6 +13,7 @@ import {
     AppDataProps,
 } from '../../src/types'
 import { techsWithMonthsDuration } from '../../src/helpers/weightTechs'
+import { RichTextParagraphComponent } from '../../components/widget/richTextParagraph'
 
 export const getStaticProps = getAppStaticProps
 
@@ -50,7 +51,7 @@ const JobsPage = (props: AppDataProps) => {
             <p>I am an experienced developer, with a positive can do attitude.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
             <h2>Team fit</h2>
             <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
-            <h2>Skills</h2>
+            <h2>Tech</h2>
             <ul className="skills">
             {
                 techs.map(tech => {
@@ -90,8 +91,13 @@ const JobsPage = (props: AppDataProps) => {
                         </h4>
                         <ul>
                             {
-                                job.description.map((task: string) => {
-                                    return <li key={ task.replace(/\s/g, '') }>{ task }</li>
+                                job.description.map((task: string, i: number) => {
+                                    return <li key={ task.replace(/\s/g, '') }>
+                                        <RichTextParagraphComponent text={ task } />
+                                        {
+                                            i < job.description.length - 1 ? <span>;</span> : <span>.</span>
+                                        }
+                                    </li>
                                 })
                             }
                         </ul>

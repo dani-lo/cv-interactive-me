@@ -84,8 +84,6 @@ export const PendingActionsComponent = ({
     if (!ctx) {
         return null
     }       
-
-    console.log('active, active', active)
     
     return <StyledPrompt className={ `${ active ? 'active' : '' }` }>
         <div className="prompt">

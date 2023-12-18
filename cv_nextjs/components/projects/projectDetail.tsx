@@ -65,11 +65,14 @@ export const ProjectDetailsComponentBase = ({
                         <p className="proj-repo"><a href={ proj.repo } target="_blank" rel="noreferrer">Github Repo</a></p>
                         <ul>
                         {
-                            proj.description.map((task: string) => {
+                            proj.description.map((task: string, i: number) => {
                                 return <li key={ task.replace(/\s/g, '') }>
                                     <RichTextParagraphComponent 
                                         text={ task } 
                                     />
+                                    {
+                                        i < proj.description.length - 1 ? <span>;</span> : <span>.</span>
+                                    }
                                 </li>
                             })
                         }

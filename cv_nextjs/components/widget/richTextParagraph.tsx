@@ -4,7 +4,7 @@ type RichTextParagraphProps = {
 
 export const RichTextParagraphComponent = ({ text }: RichTextParagraphProps)  => {
     
-    const parts: string[] = text.split("_");
+    const parts: string[] = text.split("_")
 
     return <span>{
             parts.map((str_part, i) => {
