@@ -155,18 +155,18 @@ const JobsPage = (props: AppDataProps) => {
                         className={ containerClassName } 
                         data-testid="jobs-container">
                          
-                        <CSSTransition 
+                        {/* <CSSTransition 
                             nodeRef={nodeRef} 
                             in={  inprop } 
                             timeout={ 100 } 
-                            classNames="anime-fade-node">
+                            classNames="anime-fade-node"> */}
                                 
-                        <div ref={nodeRef} className="anime-fade-init"> 
+                        <div ref={nodeRef} className="anime-fade-init-"> 
                         {            
                             list
                         }
                         </div> 
-                    </CSSTransition>
+                    {/* </CSSTransition> */}
                     {
                         selectedJob !== null && selectedJob !== undefined ? 
                             <JobDetailComponent 

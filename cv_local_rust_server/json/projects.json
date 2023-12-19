@@ -148,7 +148,7 @@
         "repo": "https://github.com/dani-lo/baoutliers",
         "status": ["_#Finished_", "Can be run locally"],
         "live_url": "",
-        "notes": "Outlier detection in datasets using classic outlier algorightms",
+        "notes": "Outlier detection in datasets",
         "tech": [
             57,
             66,

@@ -1,0 +1,22 @@
+[   
+    {
+        "uid": 1,
+        "name": "very small"
+    },    
+    {
+        "uid": 2,
+        "name": "small"
+    },
+    {
+        "uid": 3,
+        "name": "medium"
+    },
+    {
+        "uid": 4,
+        "name": "large"
+    },
+    {
+        "uid": 5,
+        "name": "very large"
+    }
+]

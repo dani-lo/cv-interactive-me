@@ -3,16 +3,16 @@ const jobs = [
     "uid": 17,
       "title":"April 2017 - April 2023,   BrightAnalytics, London",
       "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
-      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
-      "position":"Fullstack / Lead Frontend",
+      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85,52, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
+      "position":"Fullstack / Lead Frontend developer",
       "company": 1,
       "description":[
-        "Working on dashboard and report engine react platforms - leading on visualisations, new features, maintainance",
+        "Working on _#dashboard_ and _#report engine_ react platforms - leading on visualisations, new features, maintainance",
         "Mentoring junior developers",
-        "S3 and Node Express project work for micro services, Auth engine",
-        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, D3 custom visualisations, Maps)",
+        "S3 and Node Express project work for _#micro services_, Auth engine",
+        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, _#D3_ custom visualisations, Maps)",
         "Work on the Datamodel, Auth and Frontend cli project management utilities tools",
-        "Led the ground-up rebuild of BA core data mapping and data harmonisation interface, used to integrate any number of data sources, define custom sub-queries to create new data sources, create custom KPIs that use re-usable metric definitions, define rules to automatically harmonise your data, manage dimension values and colour schemes"
+        "Led the ground-up rebuild of BA _#core data mapping and data harmonisation_ interface, used to integrate any number of data sources, define custom sub-queries to create new data sources, create custom KPIs that use re-usable metric definitions, define rules to automatically harmonise _#ETL_ data, manage dimension values and colour schemes"
       ],
       "from": [4, 2017],
       "to": [4, 2023],
@@ -26,10 +26,10 @@ const jobs = [
       "position":"Frontend developer",
       "company": 2,
       "description":[
-          "Working day to day in an Agile environment on enhancing the Admedo platform by liasing with the product owner and Backend team to build new features and maintain the existing ones",
-          "In charge of all charting functionalities for the app via in house d3 development (reporting, dashboards, widgets)",
-          "Work on UI for remote S3 based DSP assets management",
-          "Regular team meetings for Standup, Restrocsectives, Features scheduling, Roadmaps"
+          "Working as part of a large development team  in an _#Agile_ environment on enhancing the Admedo platform by liasing with the product owner and Backend team to build new features and maintain the existing ones",
+          "In charge of all _#charting_ functionalities for the app via in house d3 development (reporting, dashboards, widgets)",
+          "Work on UI for remote S3 based DSP _#assets management_",
+          "Regular team meetings for Standup, Restrospectives, Features scheduling, Roadmaps"
       ],
       "from": [12, 2015],
       "to": [3, 2017],
@@ -43,9 +43,9 @@ const jobs = [
       "position":"Frontend developer",
       "company": 3,
       "description":[
-          "Worked on a VCCP campaign for O2 to promote rugby world campaigns (#WearTheRose and Make Them Giant), aimed at supporting the National rugby team",
-          "Backbone, responsive, OO javascript development for a video wall and other components within the O2 Make Them Giant website / app",
-          "Bootstrap development as part of a team for a highly responsive rewrite of Hiscox new German website frontend "
+          "Worked on a VCCP campaign for O2 to promote rugby world cup campaigns (WearTheRose and MakeThemGiant), aimed at supporting the _#National rugby team_",
+          "Backbone, _#Media Queries_, OO javascript development for a video wall and other components within the O2 MakeThemGiant website / app",
+          "Bootstrap development as part of a team for a highly responsive rewrite of _#Hiscox_ new German website frontend "
       ],
       "from": [9, 2015],
       "to": [10, 2015],
@@ -59,8 +59,8 @@ const jobs = [
       "position":"Frontend developer",
       "company": 4,
       "description":[
-          "Development of ATP's flagship online data mining tools, Attributer and Trader, by building on the single page app paradigm and interfacing with a complex backend via a set of RESTful apis to output various sets of data in charted and tabular formats. ",
-          "Developed ATP's ground breaking Profiler tool, a charting utility targeting demographic, behavioural, and psychographic attributes of online users based on campaigns tracking "
+          "Development of ATP's flagship online _#data mining_ tools, Attributer and Trader, by building on the _#single page app_ paradigm and interfacing with a complex backend via a set of RESTful apis to output various sets of data in charted and tabular formats",
+          "Developed ATP's ground breaking Profiler tool, a charting utility targeting demographic, behavioural, and psychographic attributes of online users based on _#campaigns tracking_"
       ],
       "from": [7, 2013],
       "to": [8, 2015],
@@ -74,7 +74,7 @@ const jobs = [
       "position":"Frontend developer ",
       "company": 5,
       "description":[
-          "Worked on Hangar 7 online game suite for children 'Tottenham Turfies' redeveloping Ajax routines and UI flows, bringing the project to delivery"
+          "Worked on Hangar 7 online game suite for children _#'Tottenham Turfies'_ redeveloping Ajax routines and UI flow and, bringing the project to delivery"
       ],
       "from": [5, 2013],
       "to": [6, 2013],
@@ -88,8 +88,8 @@ const jobs = [
       "position":"Frontend developer",
       "company": 6,
       "description":[
-          "Redevelopment of the entire user interface for one of the UK top range supermarkets website (flagship site), Waitrose, with focus on groundbreaking interactive elements to enhance customers online shopping experience. ",
-          "The project was managed in a loose Agile format with daily scrums "
+          "_#Redevelopment_ of the entire user interface for one of the UK top range supermarkets e-commerce website (flagship site), _#Waitrose_, with focus on groundbreaking interactive elements to enhance customers online shopping experience. ",
+          "The project was managed in a strict _#Agile_ format"
       ],
       "from": [12, 2012],
       "to": [4, 2013],
@@ -103,8 +103,8 @@ const jobs = [
       "tech": [19, 18, 6, 45],
       "company": 7,
       "description":[
-          "Developed a pilot html5 Javascript application for Sainsburys, Christmas recipes, in close collaboration with an Umbraco .NET developer. The application is Umbraco cms driven, and structured as a large single page ajax application ",
-          "Followed the project from technical specification to support for UX and design specifications and eventually development and backend integration. The pilot proved very successful and has been used for other Sainsburys recipes applications. "
+          "Developed a pilot Javascript application for _#Sainsburys_, Christmas recipes, in close collaboration with an _#Umbraco_ .NET developer. The application is Umbraco cms driven, and structured as a large single page ajax application ",
+          "Followed the project from technical specification to support for UX and design specifications and eventually _#development and backend integration_. The pilot proved very successful and has been used for other Sainsburys recipes applications"
       ],
       "from": [10, 2012],
       "to": [12, 2012],
@@ -118,8 +118,8 @@ const jobs = [
       "position":"Frontend developer",
       "company": 6,
       "description":[
-          "Worked on Butlins UK website rebuild (all frontend, backend developed by third party) as part of the frontend team ",
-          "Developed the javascript interactive application 'Interactive Resort Guide' for the new Butlins website:  a highly interactive single page js application based on drag navigation and background images animation"
+          "Worked on _#Butlins_ UK website rebuild (all frontend, backend developed by third party) as part of the frontend team",
+          "Developed the javascript interactive application _#'Interactive Resort Guide'_ for the new Butlins website:  a highly interactive single page js application based on _#drag n drop navigation_ and background images animation"
       ],
       "from": [7, 2012],
       "to": [9, 2012],
@@ -133,8 +133,8 @@ const jobs = [
       "position":"Frontend developer",
       "company": 8,
       "description":[
-          "Javascript development work to port a large web map application to version 3 of the googlemaps api",
-          "Refactoring to object oriented architecture (custom mvc, namespacing, abstraction) of a very large procedural code repository "
+          "Javascript development work to port a large web map application to version 3 of the _#googlemaps api_",
+          "_#Refactoring_ to object oriented architecture (custom mvc, namespacing, abstraction) of a very large procedural code repository "
       ],
       "from": [6, 2012],
       "to": [7, 2012],
@@ -149,7 +149,7 @@ const jobs = [
       "position":"Frontend developer",
       "company": 9,
       "description":[
-          "OO Javascript, HTML5 development for a locally hosted  photoboot app running on Chrome Local FS api features for their Google account - installed at major worldwide (i.e. Champions League finals in Munich) events in situ to promote google+ "
+          "OO Javascript, HTML5 development for a locally hosted  _#photoboot app_ running on Chrome Local FS api features for their Google account - installed at major worldwide (i.e. Champions League finals in Munich) events in situ to promote_# google+_"
       ],
       "from": [4, 2012],
       "to": [5, 2012],
@@ -163,10 +163,10 @@ const jobs = [
       "position":"Javascript Team Lead",
       "company": 10,
       "description":[
-          "Lead of small London based frontend team within the Capablue development team, focused on building applications for a new set­top box UI using frontend web technology",
-          "Work with (and on) an advanced custom OO javascript library  interfacing with the lower level of the box RMAI",
+          "_#Lead_ of small London based frontend team within the Capablue development team, focused on building applications for a new _#set­top box UI_ using frontend web technology",
+          "Work with (and on) an advanced custom OO javascript library  interfacing with the lower level of the box _#RMAI_",
           "Liasing with end client (Software Development company) on all development matters, including enhancements to the RMAI and javascript libraries",
-          "Xhtml and css work ('custom' transitions) within a custom browser environment (ANT port of Galio browser)",
+          "Xhtml and css work ('custom' transitions) within a custom browser environment (_#ANT_ port of Galio browser)",
           "Unix routine work for interfacing with the test boxes, compiling and testing"
       ],
       "from": [9, 2011],
@@ -181,7 +181,7 @@ const jobs = [
       "position":"Frontend Developer",
       "company":11,
       "description":[
-          "Front end development - css and javascript  with focus on web application mobile specific compatibility and optimization for a project for The App Buusines Dove account"
+          "Front end development - css and javascript  with focus on web application mobile specific compatibility and optimization for a project for The App Busines Dove account"
       ],
       "from": [8, 2011],
       "to": [9, 2011],
@@ -195,7 +195,7 @@ const jobs = [
       "position":"Fullstack Developer",
       "company": 12, 
       "description":[
-          "Short contract at Profero, working on a CakePhp site for their account Barclays Stockbrokers",
+          "Contract at Profero, working on a CakePhp site for their account _#Barclays Stockbrokers_",
           "Work on a CakePhp site for Proferos account Barclays Stockbrokers, involving mostly css and javascript work",
           "Redhat deployment box, cakePHP backend (mvc development and refactoring involved), Mercurial versioning tool"
       ],
@@ -208,7 +208,7 @@ const jobs = [
       "title":"July 2010 - July 2011, Iris Digital, London",
       "tech_str":"Php, MySql, SOAP, Regex, Unix (Red Hat), Html, Css, Javascript, Svn admin",
       "tech": [9, 2, 73, 4, 5, 39, 10],
-      "position":"Fullstack Developer, Lead (and only..) Php Developer",
+      "position":"Fullstack Developer",
       "company": 13,
       "description":[
           "Php backend development, UI work, SVN and Unix administration, mostly on the client’s Volkswagen Vans account, plus minor work on the client’s other php sites (Sony Ericsson social media, CountryLife, FA)",
@@ -237,10 +237,10 @@ const jobs = [
       ],
       "position":"Freelancing on short term contracts",
       "description":[
-        "Short term front end and php development contract at maynardmalone.com. Involved Php, css, xhtml, javascript and javascript/flash integration work on their 'Kallo' account 'Just Bouillon' website: ",
-          "Short termCakePHP development contract at WanderingBear (wanderingbear.co.uk) on the refactoring of an existing cakePHP based website; Chinese language support added to the site: ",
-          "Short term front end development contract at greenroomatmomentum.com. Involved css, xhtml,javascript work on their Nestle' account 'Rolo' website, .NET framework environment under SVN",
-          "Short term front end development contract at Iris Digital. Involved css, xhtml, javascript work on their Volkswagen Vans account website, php (Lightbox framework) environment under SVN"
+        "Front end development contract at _#Maynard Malone_:  Php, css, xhtml, javascript and javascript/flash integration work on their _#Kallo_ account 'Just Bouillon' website",
+        "CakePHP development contract at _#WanderingBear_ on the refactoring of an existing cakePHP based website; Chinese language support added to the site",
+        "Front end development contract at _#Green Room At Momentum_: css, xhtml,javascript work on their _#Nestle_ account 'Rolo' website, .NET framework environment under SVN",
+        "Front end and Php development contract at _#Iris Digital_:  css, xhtml, javascript work on their _#Volkswagen Vans_ account website, php (Lightbox framework) environment under SVN"
       ],
       "from": [7, 2009],
       "to": [7, 2010],
@@ -260,12 +260,12 @@ const jobs = [
       "position":"Frontend Developer",
       "company": 15,
       "description":[
-          "Acting as team leader within the UI Development team for all css, xhtml and javascript work across the company in general and specifically within the Product Development Department",
-          "In charge of classic ASP legacy work and bug fixes across the Tools (Dr Foster main Intelligence product), which were continuously ported to .NET C#",
-          "Enuring the UI Development team effective communication with the (.NET C# based) Business Development team",
+          "_#Team leader_ within the UI Development team for all css, xhtml and javascript work across the company in general and specifically within the Product Development Department",
+          "Covering most _#classic ASP_ (JScript) legacy work and bug fixes across the Tools (Dr Foster main Intelligence product), which were then ported to .NET",
+          "Ensuring the UI Development team _#effective communication_ with the .NET Business Development team",
           "In charge of updates and development of Dr Foster public website: ",
           "Support on all web-related tasks for the Marketing and Marketing Services team",
-          "Research and Development on new Data Presentation technologies, in particular Adobe Flex Builder based dashboards "
+          "Research and Development on new _#Data Presentation_ technologies, in particular Adobe Flex Builder based dashboards "
       ],
       "from": [10, 2007],
       "to": [5, 2009],
@@ -290,16 +290,15 @@ const jobs = [
       "position":"Fullstack Developer",
       "company":16,
       "description":[
-          "Working on new functionalities for white label sites and new components for the in-house xml Cms",
-          "Basic Perl automation and rss feeds work",
-          "Weekly content updates of main and white label sites (filmnight.com, mirrorfilmstore.co.uk, empirefilmstore.com) through xml based proprietary cms",
+          "Working on new functionalities for white label sites and new components for the in-house _#xml Cms_",
+          "Basic _#Perl_ automation and rss feeds work",
+          "Weekly content updates of main and white label sites (filmnight.com, mirrorfilmstore.co.uk, empirefilmstore.com) through xml based _#proprietary cms_",
           "Acionscript (2.0) work for filmnight trailers player",
-          "Development and maintenance of Ajax based applications for tracking web sites traffic (Trailer Tracker and Competitions Reporter)"
+          "Development and maintenance of _#Ajax_ based applications for tracking web sites traffic (Trailer Tracker and Competitions Reporter)"
       ],
       "from": [10, 2006],
       "to": [10, 2007],
       "jobType": [1, 5]
     }
   ];
-
 module.exports = jobs;

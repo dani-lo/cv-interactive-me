@@ -157,18 +157,18 @@ const ProjectsPage = (props: AppDataProps) => {
                 <p>{ "Try removing some filters"}</p>
             </StyledInlineWarning> :
             <div className={ containerClassName } data-testid="jobs-container"> 
-                <CSSTransition 
+                {/* <CSSTransition 
                     nodeRef={nodeRef} 
                     in={  inprop } 
                     timeout={ 100 } 
-                    classNames="anime-fade-node">
+                    classNames="anime-fade-node"> */}
                         
-                    <div ref={nodeRef} className="anime-fade-init"> 
+                    <div ref={nodeRef} className="anime-fade-init-"> 
                     {            
                         list
                     }
                     </div> 
-                </CSSTransition>
+                {/* </CSSTransition> */}
                 {
                 selectedProject !== null && selectedProject !== undefined ? 
                     <ProjectDetailComponent 

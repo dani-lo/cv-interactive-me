@@ -1,0 +1,22 @@
+[   
+    {
+        "uid": 1,
+        "name": "reactive"
+    },    
+    {
+        "uid": 2,
+        "name": "kanban"
+    },
+    {
+        "uid": 3,
+        "name": "tickets"
+    },
+    {
+        "uid": 4,
+        "name": "scrum"
+    },
+    {
+        "uid": 5,
+        "name": "agile"
+    }
+]

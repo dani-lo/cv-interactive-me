@@ -168,7 +168,7 @@ const techs = [{
 "name": "React Native"
 },{
  
-  "name": "AWS S3",
+  "name": "Highcharts Maps",
   "uid": 43
 },
 {
@@ -368,5 +368,4 @@ const techs = [{
   "uid": 90
 }
 ];
-
 module.exports = techs;

@@ -167,11 +167,14 @@ export const StyledCompanyContainer = styled.div`
     margin: var(--gap-huge) 0 var(--gap-large) 0;
     padding: var(--gap-medium) var(--gap-large);
     border-radius: 0.2rem;
-    border: 2px solid var(--active-action);
-
+    background: var(--active-action);
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);
         margin-top: 0;
+    }
+
+    h3, p, li {
+        color: white;
     }
 `
 
