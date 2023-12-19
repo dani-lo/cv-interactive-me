@@ -130,11 +130,8 @@ export const JobDetailComponent  = ({
                         usejob.description.map((task: string, i: number) => {
                             return <li key={ task.replace(/\s/g, '') }> 
                                 <RichTextParagraphComponent 
-                                    text={ task } 
-                                />    
-                                {
-                                    i < job.description.length - 1 ? <span>;</span> : <span>.</span>
-                                }
+                                    text={ `${ task }${  i < job.description.length - 1 ? ';' : '.' }` } 
+                                />
                             </li>
                         })
                     }

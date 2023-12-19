@@ -68,11 +68,8 @@ export const ProjectDetailsComponentBase = ({
                             proj.description.map((task: string, i: number) => {
                                 return <li key={ task.replace(/\s/g, '') }>
                                     <RichTextParagraphComponent 
-                                        text={ task } 
+                                        text={ `${ task }${  i < proj.description.length - 1 ? ';' : '.' }` } 
                                     />
-                                    {
-                                        i < proj.description.length - 1 ? <span>;</span> : <span>.</span>
-                                    }
                                 </li>
                             })
                         }

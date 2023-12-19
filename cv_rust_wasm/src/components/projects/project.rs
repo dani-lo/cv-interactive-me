@@ -82,12 +82,13 @@ pub fn project(Props {
                 />
             </h3>
             <ul>
-            { 
-                project.status.iter().map(|ps| {
+            <li class="itemised"><RichTextParagraphComponent text={ project.status[0].clone() } /></li>
+            // { 
+            //     project.status.iter().map(|ps| {
                     
-                    html! { <li class="itemised"><RichTextParagraphComponent text={ ps.clone() } /></li> }
-                }).collect::<Html>()
-            }
+            //         html! { <li class="itemised"><RichTextParagraphComponent text={ ps.clone() } /></li> }
+            //     }).collect::<Html>()
+            // }
             </ul>  
         </div>        
     }

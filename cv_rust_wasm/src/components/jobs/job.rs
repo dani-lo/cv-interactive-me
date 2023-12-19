@@ -79,7 +79,8 @@ pub fn job(Props {
                 />
             </h2>
             <h3>{ job.position.clone() }{", "}{ at_company_name }</h3>
-            <p>{ desc_text }{"..."}</p>
+            // <h2>{ job.title.clone() }</h2>
+            // <p>{ desc_text }{"..."}</p>
             <JobTypeComponent
                 job_jobtypes = { job.job_type.clone() }
                 detail={ false }
