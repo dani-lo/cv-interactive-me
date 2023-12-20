@@ -20,6 +20,7 @@ export const SidebarComponent = ({ pageProps }: { pageProps: AppProps & AppDataP
     const [showpayoff, setShowpayoff] = useAtom(atoms.uiShowPayoffAtom)
     // const [xpandLayout, setXpandLayout] = useAtom(atoms.uiExpandLayoutAtom)
 
+    console.log('SHOWACTSSSS', showactions)
 
     const [foo, setFoo] = useAtom(atoms.fooAtomz)
 
@@ -29,7 +30,7 @@ export const SidebarComponent = ({ pageProps }: { pageProps: AppProps & AppDataP
             timeout={ 0 } 
             classNames="anime-popright-node"
         >
-        <StyledSidebar className='anime-popright-init' ref={ nodeRefSidebar } >
+        <StyledSidebar className={ `anime-popright-init ${ showactions ? ' active' : ''} ` } ref={ nodeRefSidebar } >
             <span 
                 className="html-icon main-toggle"
                 onClick={ () => {

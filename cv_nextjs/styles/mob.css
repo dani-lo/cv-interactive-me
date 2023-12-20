@@ -29,5 +29,17 @@
     }
     .with-selected div.item-detail {
         display: block;
+        display: block;
+        top: 10px;
+        left: 0;
+        margin: var(--gap-medium);
+    }
+
+    .anime-popright-init {
+        left:0;
+    }
+
+    .active > .main-toggle {
+        display: none;
     }
 }
