@@ -49,7 +49,7 @@ export const ProjectDetailsComponentBase = ({
             timeout={ 100 } 
             classNames="anime-fade-node">
                 
-            <StyledJobDetail ref={nodeRef} className="anime-fade-init"> 
+            <StyledJobDetail ref={nodeRef} className="anime-fade-init item-detail"> 
                 { proj !== null && proj.id == project.id? 
                 <>
                     <h2> 

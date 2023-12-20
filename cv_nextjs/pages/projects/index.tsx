@@ -163,7 +163,7 @@ const ProjectsPage = (props: AppDataProps) => {
                     timeout={ 100 } 
                     classNames="anime-fade-node"> */}
                         
-                    <div ref={nodeRef} className="anime-fade-init-"> 
+                    <div ref={nodeRef} className="anime-fade-init- main-list"> 
                     {            
                         list
                     }

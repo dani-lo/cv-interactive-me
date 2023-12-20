@@ -55,7 +55,7 @@ export const JobDetailComponent  = ({
             timeout={ 100 } 
             classNames="anime-fade-node">
                 
-            <StyledJobDetail ref={nodeRef} className="anime-fade-init"> 
+            <StyledJobDetail ref={nodeRef} className="anime-fade-init item-detail"> 
             { usejob !== null && usejob.id == job.id ? 
                 <>
                 <h2> 

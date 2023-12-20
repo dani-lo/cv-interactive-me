@@ -3,6 +3,7 @@
         margin-left: 0;
         position: relative;
         top: 0;
+        padding-left: 0;
    }
 
    .jobs-container {
@@ -10,10 +11,23 @@
    }
    
    .jobs-container.with-selected {
-       display: none;
+       /* display: none; */
     }
 
     .paged-out {
+        display: block;
+    }
+
+    .jobs-container >.anime-fade-init, .jobs-container > .anime-fade-init- {
+        width: 100%;
+        display: block;
+        opacity: 1;
+    }
+
+    .with-selected  div.main-list {
+        display: none;
+    }
+    .with-selected div.item-detail {
         display: block;
     }
 }
