@@ -58,13 +58,13 @@ const ProjectsPage = (props: AppDataProps) => {
     useEffect(() => {
 
         const path = router.asPath
-        const maybeUid = parseInt(path.replace('/jobs/', ''))
+        const maybeUid = parseInt(path.replace('/projects/', ''))
 
-        if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {
+        if (!isNaN(maybeUid) && selectedProjectId !== maybeUid) {            
             setSelectedProjectId(maybeUid)
         } 
 
-    }, [router, selectedProjectId, setSelectedProjectId])
+    }, [router])
     
     useEffect(() => {
 
