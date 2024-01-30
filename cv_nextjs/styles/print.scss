@@ -7,10 +7,10 @@
     }
 
     h2 {
-        margin: var(--gap-large) 0 var(--gap-large) 0;
+        margin: 1.25rem 0 0.5rem;
         font-size: 16px;
         color: var(--text-main);
-        
+        border-bottom: 1px solid #aaa;
     }
 
     h2.detail-list strong {
@@ -23,6 +23,12 @@
         // color: var(--text-main);
         margin: 14px 0 10px;
         color: #0a5f79;  
+    }
+
+    h3 span.job-pos {
+        display: list-item;
+        list-style: disc;
+        list-style-position: inside;
     }
 
     h4 {
@@ -45,6 +51,9 @@
     }
     li {
         margin: 6px 0;
+        list-style: circle;
+        list-style-position: inside;
+        display: list-item;
     }
 
     span.resource-name {
@@ -89,4 +98,28 @@
     .app-ctrl {
         display: none;
     }
+
+    .job-title {
+        display: flex;
+        justify-content: space-between;
+        text-transform: capitalize;
+    }
+
+    .job-subtitle {
+        
+        display: flex;
+        justify-content: space-between;
+        text-transform: capitalize;
+      
+    }
+
+    .job-title span {
+        text-transform: capitalize;
+    }
+
+    .job-subtitle span, .job-subtitle span span {
+        text-transform: capitalize;
+      
+    }
+
 }

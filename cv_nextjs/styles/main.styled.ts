@@ -9,6 +9,7 @@ export const StyledJobContainer = styled.div`
     border-radius: 0.2rem;
     background: #f2f1f1;
     position: relative;
+    transition: background 0.2s;
 
     &.selected {
         background: var(--active-action);

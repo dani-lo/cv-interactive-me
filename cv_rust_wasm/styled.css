@@ -15,6 +15,7 @@
     cursor: pointer;
     background: #f1f4f4;
     margin: var(--gap-large) 0;
+    transition: background 0.2s;
 }
 
 .StyledJobContainer:hover {   

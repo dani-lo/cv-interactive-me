@@ -35,23 +35,30 @@ const JobsPage = (props: AppDataProps) => {
         return 0
     })
 
+    const listStyle = {
+        display: 'list-item',
+        listStyle: 'circle',
+        listStylePosition: 'inside'
+    }
+
     return <div className="print">  
         <div className="pers-data">
             <h2 className="dani">
                 <strong>Daniele Longo</strong>
-                {/* <strong>danielelongo@hotmail.com</strong> */}
+                <br />
+                <strong style={{ fontSize: '13px'}}>daniele.longo.development@gmail.com</strong>
             </h2>
             <h2 className="detail-list">
                 <strong>github.com/dani-lo</strong>
-                <strong>interactiveme.net</strong>
+                <strong>nextjs.interactiveme.net</strong>
             </h2>
         </div>
             
-            <h2>Professional Qualities</h2>
+            <h2 style={{ marginTop: '2rem' }}>Professional Qualities</h2>
             <p>I am an experienced developer, with a positive can do attitude.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
             <h2>Team fit</h2>
             <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
-            <h2>Tech</h2>
+            <h2>Technical Skills and Exposure</h2>
             <ul className="skills">
             {
                 techs.map(tech => {
@@ -59,18 +66,36 @@ const JobsPage = (props: AppDataProps) => {
                 })
             }
             </ul>
-            <h2>Work</h2>
+            {/* <h2>Projects</h2>
+            <ul>
+                <li>Web Assembly</li>
+                <li>Shape recognition (chart)</li>
+                <li>CLI</li>
+                <li>NextJS</li>
+            </ul> */}
+            <h2>Professional Experience</h2>
             {            
                 mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
 
                     const jobtypesTime = job.jobType.filter(jt => jt.prefix == "TIME")
-                    const jobtypesPlace = job.jobType.filter(jt => jt.prefix == "PLACE")
-
+                    const jobtypesPlace = job.jobType.filter(jt => jt.prefix == "PLACE") 
+                    const fields = job.company?.field || []
                     return  <>
-                        <h3> 
-                        { job.period.formatted }: { job.position }{ job.company ? `, ${  job.company.name  }` : '' }
+                        <h3 className="job-itle" style={ { display: 'flex', textTransform: 'capitalize'  } }> 
+                            <span className="job-pos">
+                                { job.period.formatted }: { job.position }
+                            </span>
+                            
+                            <span> 
+                                { job.company  ? <span>{  job.company.name  }</span> : null }
+                                {/* { fields?.length ? <span>Field: </span> : null } */}
+                                {
+                                    fields.map(f => <span style={{ paddingLeft: '0.5rem', display: 'inline-block'}} key={ f.name }>({ f.name })</span>)
+                                }
+                            </span>
                         </h3>
-                        <h4>
+
+                        <h4 className="job-subtitle" style={ { display: 'flex', justifyContent: 'space-between', textTransform: 'capitalize' } }>
                         <span> 
                             Type:
                             {
@@ -79,12 +104,12 @@ const JobsPage = (props: AppDataProps) => {
                                 })
                             }
                         </span>
-                        <span> - </span>
+                        {/* <span> - </span> */}
                         <span> 
                             From: 
                             {
                                 jobtypesPlace.map((jobTypeItem, i) => {
-                                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesPlace.length - 1  ? ', ' : '' }` }</span>
+                                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesPlace.length - 1  ? ' + ' : '' }` }</span>
                                 })
                             } 
                         </span>
