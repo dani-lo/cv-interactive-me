@@ -18,9 +18,6 @@ export const SidebarComponent = ({ pageProps }: { pageProps: AppProps & AppDataP
     const [_showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
     const [showactions, _setShowactions] = useAtom(atoms.uiShowActionsAtom)
     const [showpayoff, setShowpayoff] = useAtom(atoms.uiShowPayoffAtom)
-    // const [xpandLayout, setXpandLayout] = useAtom(atoms.uiExpandLayoutAtom)
-
-    console.log('SHOWACTSSSS', showactions)
 
     const [foo, setFoo] = useAtom(atoms.fooAtomz)
 

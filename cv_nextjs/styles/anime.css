@@ -10,20 +10,20 @@
 .anime-fade-node-enter {
   opacity: 0;
   display: block;
-  transition: opacity 250ms;
+  transition: opacity 150ms;
 }
 
 .anime-fade-node-enter-done {
   opacity: 1;
   display:block;
-  transition: opacity 250ms;
+  transition: opacity 150ms;
 }
 
 
 .anime-fade-node-exit {
   opacity: 0;
   display: block;
-  transition: opacity 250ms;
+  transition: opacity 150ms;
 }
 
 .anime-fade-node-exit-done {

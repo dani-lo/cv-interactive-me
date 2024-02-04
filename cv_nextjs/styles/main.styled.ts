@@ -177,6 +177,10 @@ export const StyledCompanyContainer = styled.div`
     h3, p, li {
         color: white;
     }
+
+    i.bookmark {
+        color: var(--white);
+    }
 `
 
 export const StyledActionsList = styled.ul`

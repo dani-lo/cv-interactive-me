@@ -61,7 +61,6 @@ const JobsPage = (props: AppDataProps) => {
         const maybeUid = parseInt(path.replace('/jobs/', ''))
 
         if (!isNaN(maybeUid) && selectedJobId !== maybeUid) {
-
             setSelectedJobId(maybeUid)
         } 
 
@@ -83,7 +82,8 @@ const JobsPage = (props: AppDataProps) => {
     useEffect(() => {
         
         setTimeout(() => {
-            setInprop(true)
+                setInprop(true)
+            
         }, 100)
     }, [displayJobsModelsArr])
 
@@ -151,35 +151,35 @@ const JobsPage = (props: AppDataProps) => {
                 <p>{ "No Jobs found - it looks like all  might be filtered out!" }</p>
                 <p>{ "Try removing some filters"}</p>
             </StyledInlineWarning> :
-                    <div 
-                        className={ containerClassName } 
-                        data-testid="jobs-container">
-                         
-                        {/* <CSSTransition 
-                            nodeRef={nodeRef} 
-                            in={  inprop } 
-                            timeout={ 100 } 
-                            classNames="anime-fade-node"> */}
-                                
-                        <div ref={nodeRef} className="anime-fade-init- main-list"> 
-                        {            
-                            list
-                        }
-                        </div> 
-                    {/* </CSSTransition> */}
-                    {
-                        selectedJob !== null && selectedJob !== undefined ? 
-                            <JobDetailComponent 
-                                job={ selectedJob }
-                                showActions = { handleOpen }
-                                bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
-                                companyBookmarked= { selectedJob.company !== null && !!bookmarkForResource(selectedJob.company, ctx.appstate) }
-                                annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
-                                jobCompanyAnnotationText={ selectedJob.company ? (annotationForResource(selectedJob.company, ctx.appstate)?.text || null) : null }
-                            /> : null
-                    } 
+            <div 
+                className={ containerClassName } 
+                data-testid="jobs-container">
                     
+                <CSSTransition 
+                    nodeRef={nodeRef} 
+                    in={  inprop } 
+                    timeout={ 100 } 
+                    classNames="anime-fade-node">
+                        
+                    <div ref={nodeRef} className="anime-fade-init main-list"> 
+                    {            
+                        list
+                    }
                 </div> 
+                </CSSTransition>
+            {
+                selectedJob !== null && selectedJob !== undefined ? 
+                    <JobDetailComponent 
+                        job={ selectedJob }
+                        showActions = { handleOpen }
+                        bookmarked={ selectedJob[IBookmarkKeys.STATUS](ctx) }
+                        companyBookmarked= { selectedJob.company !== null && !!bookmarkForResource(selectedJob.company, ctx.appstate) }
+                        annotationText={ annotationForResource(selectedJob, ctx.appstate)?.text || null }
+                        jobCompanyAnnotationText={ selectedJob.company ? (annotationForResource(selectedJob.company, ctx.appstate)?.text || null) : null }
+                    /> : null
+            } 
+            
+        </div> 
             // </CSSTransition>
     }
         
