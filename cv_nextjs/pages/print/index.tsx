@@ -58,14 +58,7 @@ const JobsPage = (props: AppDataProps) => {
             <p>I am an experienced developer, with a positive can do attitude.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
             <h2>Team fit</h2>
             <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
-            <h2>Technical Skills and Exposure</h2>
-            <ul className="skills">
-            {
-                techs.map(tech => {
-                    return <li key={ tech.name }>{ tech.name }</li>
-                })
-            }
-            </ul>
+            
             {/* <h2>Projects</h2>
             <ul>
                 <li>Web Assembly</li>
@@ -126,10 +119,32 @@ const JobsPage = (props: AppDataProps) => {
                                 })
                             }
                         </ul>
+                        <ul className="some-tech">
+                            <li><span>Some tech involved</span>:</li>
+                            {
+                             (job.tech).map((t, i) => {
+
+                                if (i > 4) {
+                                    return null
+                                }
+                                return <li key={ t.uid}>{t.name}</li>
+                             })
+                            }
+                        </ul>
                     </>
                 })
             }
+
+            <h2>Technical Skills and Exposure</h2>
+            <ul className="skills">
+            {
+                techs.map(tech => {
+                    return <li key={ tech.name }>{ tech.name }</li>
+                })
+            }
+            </ul>
         </div> 
+        
        
 }
 

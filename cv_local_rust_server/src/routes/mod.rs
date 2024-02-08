@@ -79,3 +79,24 @@ pub fn projects() -> Json<Vec<ProjectData>> {
     
     Json(res)
 }
+
+
+#[get("/fooler")]
+pub fn fooler() -> Json<Vec<JobData>> {
+    
+    let path = Path::new("./json/jobs.json");
+    let path_tech = Path::new("./json/tech.json");
+    let contents = fs::read_to_string(path).unwrap();
+    let contents_tech = fs::read_to_string(path_tech).unwrap();
+
+    let res : Vec<JobData> = from_str(&contents.as_str()).unwrap();
+    let res_tech: Vec<TechData> = from_str(&contents_tech.as_str()).unwrap();
+
+    // let res_out = Vec::new();
+
+    // res_out.app
+
+    println!("HELOOOOOOOOO");
+    
+    Json(res)
+}

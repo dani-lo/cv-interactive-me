@@ -110,6 +110,13 @@ const companies = [
         "location": "London",
         "description": "An ecommerce company specializing in online Dvds / Soundtrack sales, trailers, and technologies for delivery of mobile content.",
         "field": [2]
+    },
+    {
+        "uid": 17,
+        "name": "Dev Interactive - own LTD",
+        "location": "London",
+        "description": "Own LTD company: used extensively in the past for contract work",
+        "field": [5]
     }
 ];
 

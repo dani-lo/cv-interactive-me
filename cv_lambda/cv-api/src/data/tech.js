@@ -366,6 +366,11 @@ const techs = [{
 {
   "name": "Postgresql",
   "uid": 90
+},
+{
+  "name": "Mongo",
+  "uid": 91
 }
 ];
+
 module.exports = techs;

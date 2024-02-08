@@ -1,28 +1,43 @@
 const jobs = [
   {
-    "uid": 17,
-      "title":"April 2017 - April 2023,   BrightAnalytics, London",
-      "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
-      "tech": [38, 39, 22, 34, 35, 42, 43, 45, 53, 30, 31, 24, 29, 86, 85,52, 89,  54, 35, 44, 55, 86, 76, 75, 32, 33, 59],
-      "position":"Fullstack / Lead Frontend developer",
-      "company": 1,
+    "uid": 18,
+      "title":"April 2023 - now,   Dev Interactive, London",
+      "tech_str":"Typescript,React,  Node, Express, Highcharts, Jest, Styled Components, Husky",
+      "tech": [29,59,55, 38, 91, 81, 82, 85, 83, 79, 75, 77, 76, 62, 63, 64, 65, 57, 60, 58, 59, 55,53,44, 36, 37, 32,33, 80, 89, 88],
+      "position":"Sabbatical",
+      "company": 17,
       "description":[
-        "Working on _#dashboard_ and _#report engine_ react platforms - leading on visualisations, new features, maintainance",
-        "Mentoring junior developers",
-        "S3 and Node Express project work for _#micro services_, Auth engine",
-        "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, _#D3_ custom visualisations, Maps)",
-        "Work on the Datamodel, Auth and Frontend cli project management utilities tools",
-        "Led the ground-up rebuild of BA _#core data mapping and data harmonisation_ interface, used to integrate any number of data sources, define custom sub-queries to create new data sources, create custom KPIs that use re-usable metric definitions, define rules to automatically harmonise _#ETL_ data, manage dimension values and colour schemes"
+        "Spent time on sabbatical, focusing on well-being and upskilling on some of the most interesting web development technologies of late - rust, webassembly,  serverside rendering and others",
+        "Development of several side projects of which 2 full SPAs in beta / production: _#interactiveme.net_ (github.com/dani-lo/cv-interactive-me) and _#qrated-review.net_ (github.com/dani-lo/qrated) - both aimed at features facilitating smart / collaborative reviewing processes"
       ],
-      "from": [4, 2017],
-      "to": [4, 2023],
-      "jobType": [1, 4, 5]
+      "from": [4, 2023],
+      "to": [2, 2024],
+      "jobType": [4, 6]
     },
+    {
+      "uid": 17,
+        "title":"April 2017 - April 2023,   BrightAnalytics, London",
+        "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
+        "tech": [29, 38, 30, 54, 91, 55, 39, 22, 34, 35, 42, 43, 45, 53, 31, 24, 86, 85,52, 89, 35, 44, 86, 76, 75, 32, 33, 59],
+        "position":"Fullstack / Lead Frontend developer",
+        "company": 1,
+        "description":[
+          "Working on _#dashboard_ and _#report engine_ react platforms - leading on visualisations, new features, maintainance",
+          "Mentoring junior developers",
+          "S3 and Node Express project work for _#micro services_, Auth engine",
+          "RnD work (React Native app,  AWS Lambda + S3 based remote settings engine, _#D3_ custom visualisations, Maps)",
+          "Work on the Datamodel, Auth and Frontend cli project management utilities tools",
+          "Led the ground-up rebuild of BA _#core data mapping and data harmonisation_ interface, used to integrate any number of data sources, define custom sub-queries to create new data sources, create custom KPIs that use re-usable metric definitions, define rules to automatically harmonise _#ETL_ data, manage dimension values and colour schemes"
+        ],
+        "from": [4, 2017],
+        "to": [4, 2023],
+        "jobType": [1, 4, 5]
+      },
     {
       "uid": 16,
       "title":"December 2015 ­ - March 2017,   Admedo, London",
       "tech_str":"Angular 1.5, Gmaps, d3, Gulp, Mocha, Protractor, Karma, Sinon, Scss, Git, AWS S3",
-      "tech": [28, 51, 75, 24, 25, 26, 49, 52, 89, 38],
+      "tech": [28, 25, 24, 49, 51, 75, 26, 52, 89, 38],
       "position":"Frontend developer",
       "company": 2,
       "description":[
@@ -55,7 +70,7 @@ const jobs = [
       "uid": 14,
       "title":"July 2013 ­ - August 2015,   ATP, London ",
       "tech_str":"Backbone, RequireJS, Underscore, d3, Moment, Svg, Grunt, Less, Bower, Git",
-      "tech": [19, 18, 24, 23, 49, 52],
+      "tech": [19, 18, 24, 52, 49, 23],
       "position":"Frontend developer",
       "company": 4,
       "description":[
@@ -70,7 +85,7 @@ const jobs = [
       "uid": 13,
       "title":"May 2013 ­ - June 2013, Hangar 7, London",
       "tech_str":"Jquery, Git, HTML5, Code Igniter",
-      "tech": [6, 52, 56, 12],
+      "tech": [6, 52, 39, 56, 12],
       "position":"Frontend developer ",
       "company": 5,
       "description":[
@@ -301,4 +316,5 @@ const jobs = [
       "jobType": [1, 5]
     }
   ];
+  
 module.exports = jobs;

@@ -23,6 +23,11 @@ const jobTypes = [
         "uid": 5,
         "name": "office",
         "prefix": "PLACE"
+    },
+    {
+        "uid": 6,
+        "name": "sabbatical",
+        "prefix": "TIME"
     }
 ];
 

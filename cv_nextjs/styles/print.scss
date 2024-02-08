@@ -122,4 +122,14 @@
       
     }
 
+    ul.some-tech {
+        li {
+            display: inline-block;
+            padding: 0 0.1rem;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
 }
