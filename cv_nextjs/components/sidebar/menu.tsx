@@ -15,7 +15,7 @@ export const AppMenu = () => {
 
   const router = useRouter()
 
-  const [_clearSelections, setClearSelections] = useAtom(atoms.clearSelections)
+  const [, setClearSelections] = useAtom(atoms.clearSelections)
 
   return <ul className="nav">
     <li className={ cname(router.pathname.indexOf('jobs') !== -1) }>

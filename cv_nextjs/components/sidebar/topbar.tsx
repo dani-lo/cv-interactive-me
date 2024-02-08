@@ -12,7 +12,7 @@ export const TopBarComponent = () => {
 
   const router = useRouter()
 
-  const [_clearSelections, setClearSelections] = useAtom(atoms.clearSelections)
+  const [, setClearSelections] = useAtom(atoms.clearSelections)
 
   const [showsettings, setShowsettings] = useAtom(atoms.uiShowSettingsAtom)
   const [showactions, setShowactions] = useAtom(atoms.uiShowActionsAtom)

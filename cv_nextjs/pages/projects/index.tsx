@@ -64,7 +64,7 @@ const ProjectsPage = (props: AppDataProps) => {
             setSelectedProjectId(maybeUid)
         } 
 
-    }, [router, setSelectedProjectId, selectedProjectId])
+    }, [router])
     
     useEffect(() => {
 
@@ -77,7 +77,7 @@ const ProjectsPage = (props: AppDataProps) => {
             } 
         }
         
-    }, [page, selectedProjectId, chunks])
+    }, [page, selectedProjectId])
 
     useEffect(() => {
         
