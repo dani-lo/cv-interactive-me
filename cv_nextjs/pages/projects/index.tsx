@@ -51,9 +51,9 @@ const ProjectsPage = (props: AppDataProps) => {
 
     const { projectModels } = transformData(props)
 
-    const displayProjectModelsArr =  Array.from(projectModels).filter(([k, proj], i) => !pagedOut(page, i, pageSize.sparse) && !filteredOut(proj, filters || null))
+    const displayProjectModelsArr =  Array.from(projectModels).filter(([k, proj], i) => !pagedOut(page, i, pageSize.dense) && !filteredOut(proj, filters || null))
     
-    const chunks = chunker<DateRangedItem>([...Array.from(projectModels.values())], pageSize.sparse)
+    const chunks = chunker<DateRangedItem>([...Array.from(projectModels.values())], pageSize.dense)
 
     useEffect(() => {
 
@@ -117,7 +117,7 @@ const ProjectsPage = (props: AppDataProps) => {
         const selected = selectedProject !== null && selectedProject !== undefined && selectedProject.id == project.id
         
         return  <ProjectComponent
-            pagedOut={ pagedOut(page, i, pageSize.sparse) }
+            pagedOut={ pagedOut(page, i, pageSize.dense) }
             filteredOut={ filteredOut(project, filters || null) }
             key={ project.name } 
             id={ `project-${ project.uid }` }

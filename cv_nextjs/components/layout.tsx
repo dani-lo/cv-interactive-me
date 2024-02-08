@@ -65,6 +65,12 @@ const Layout = ({
                 }}>
                     <i aria-hidden="true" className="fa fa-cog" />
             </span> 
+            <span 
+                className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
+                style={{ right: '3rem', left: 'auto'}}
+                >
+                    <a href="/print" target="_blank"><i aria-hidden="true" className="fa fa-print" /></a>
+            </span> 
                 { uiBusy ? null : <TopBarComponent /> }
                 { uiBusy ? null :  <SettingsComponent
                     disabled = { !showsettings }
