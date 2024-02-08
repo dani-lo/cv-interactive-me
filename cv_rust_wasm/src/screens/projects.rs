@@ -207,7 +207,7 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
                     unsafe {
                         if CV_APP_LOADED.unwrap() == false {
                             html!{
-                                <h3>{ "Loading data please wait ......." }</h3>
+                                <h3>{ "Downloading the wasm binary - this might take a bit please wait ..." }</h3>
                             }
                         } else {
                             html!{
