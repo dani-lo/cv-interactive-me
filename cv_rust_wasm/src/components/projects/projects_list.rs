@@ -121,9 +121,10 @@ pub fn projects_list_component(ProjectListProps {
     //     else { Ordering::Equal }
     // });
 
-    let projects_list = curr_chunk.iter().map(|project| {
+    let projects_list = projects.iter().map(|project| {
         
         let is_filtered_out = if  has_filters && !project.included_in_filters(&state.filters) {true } else { false };
+        let is_paginated_out = if !project.included_in_page(&curr_chunk) { true } else { false };
 
         // if  has_filters && !project.included_in_filters(&state.filters) {
         //     return html!{
@@ -149,6 +150,7 @@ pub fn projects_list_component(ProjectListProps {
                 bookmarked={ has_project_bookmarks && bookmark.is_some() }
                 selected={ *active_project_id == project.uid }
                 is_filtered_out={ is_filtered_out }
+                is_paginated_out={ is_paginated_out }
             />
         }
     }).collect::<Html>();

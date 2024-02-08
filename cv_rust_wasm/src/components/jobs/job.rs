@@ -27,6 +27,7 @@ pub struct Props {
     pub bookmarked: bool,
     pub job_annotations: Vec<Annotation>,
     pub is_filtered_out: bool,
+    pub is_paginated_out: bool,
 }
 
 #[function_component(JobComponent)]
@@ -36,7 +37,8 @@ pub fn job(Props {
     selected,
     bookmarked,
     job_annotations,
-    is_filtered_out
+    is_filtered_out,
+    is_paginated_out
 }: &Props) -> Html {
 
     let c_job = job.clone(); 
@@ -47,13 +49,14 @@ pub fn job(Props {
 
     if *bookmarked { c_name.push_str(" bookmarked"); }
     if *selected { c_name.push_str(" selected"); }
-
+    if *is_paginated_out { c_name.push_str(" paginated");}
     if *is_filtered_out { c_name.push_str(" disabled") };
 
     let at_company_name = if job.company.is_none() { "Various Agencies".to_string() } else { format!("{}", &job.company.as_ref().unwrap().name) };
 
     let desc = job.description[0].clone();
-    let desc_text:fstr<80> = fstr::make(&desc);
+
+    // let desc_text:fstr<80> = fstr::make(&desc);
 
     html! {
         <div class={ c_name } id={ format!("slot-{}", c_uid) } onclick={ move |_| c_job_detail.emit(c_uid) }>

@@ -13,9 +13,15 @@
        display: none;
     }
 
+
+
     .StyledJobContainer, .StyledAboutContainer {
         width: auto;
         margin: var(--gap-large);
+    }
+
+    .StyledJobContainer.paginated {
+        display: block;
     }
     
     .StyledJobDetail {

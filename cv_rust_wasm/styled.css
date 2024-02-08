@@ -86,6 +86,10 @@
     pointer-events: none;
 }
 
+.StyledJobContainer.paginated {
+    display: none;
+}
+
 
 
 /* UNPORTED */

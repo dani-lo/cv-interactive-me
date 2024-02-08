@@ -64,7 +64,7 @@ const ProjectsPage = (props: AppDataProps) => {
             setSelectedProjectId(maybeUid)
         } 
 
-    }, [router])
+    }, [router, setSelectedProjectId, selectedProjectId])
     
     useEffect(() => {
 

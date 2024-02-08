@@ -87,6 +87,7 @@ impl Ord for ProjectModel {
  }
 
 impl ProjectModel {
+
     pub fn make (
         project_data: &ProjectData, 
         techs_hashmap: &HashMap<usize, TechModel>, 
@@ -110,7 +111,17 @@ impl ProjectModel {
             period: DateRange::new(project_data.from, project_data.to),
         }
        
-     }
+    }
+
+    pub fn included_in_page (&self, page_projects: &Vec<ProjectModel>) -> bool {
+      
+        let ids: Vec<_> = page_projects.iter().map(|d|  {
+           d.get_resource_id()
+        })
+        .collect();
+  
+        ids.contains(&self.get_resource_id())
+    }
 }
 
 impl Model for ProjectModel {

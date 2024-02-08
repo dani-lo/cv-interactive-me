@@ -25,6 +25,7 @@ pub struct Props {
     pub selected: bool,
     pub bookmarked: bool,
     pub is_filtered_out: bool,
+    pub is_paginated_out: bool,
 }
 
 #[function_component(ProjectComponent)]
@@ -34,7 +35,7 @@ pub fn project(Props {
     on_select_project_detail,
     selected,
     bookmarked,
-    
+    is_paginated_out
 }: &Props) -> Html {
 
     let c_project = project.clone(); 
@@ -44,6 +45,7 @@ pub fn project(Props {
 
     if *bookmarked { c_name.push_str(" bookmarked"); }
     if *selected { c_name.push_str(" selected"); }
+    if *is_paginated_out { c_name.push_str(" paginated");}
     if *is_filtered_out { c_name.push_str(" disabled"); }
 
     let c_uid = c_project.uid.clone();

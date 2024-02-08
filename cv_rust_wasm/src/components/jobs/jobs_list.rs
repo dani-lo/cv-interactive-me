@@ -116,9 +116,11 @@ pub fn jobs_list_component(JobListProps {
     //     else { Ordering::Equal }
     // });
 
-    let jobs_list = curr_chunk.iter().map(|job| {
+    let jobs_list = jobs.iter().map(|job| {
         
-        let is_filtered_out = if !for_print && has_filters && !job.included_in_filters(&state.filters) {true } else { false };
+        let is_filtered_out = if !for_print && has_filters && !job.included_in_filters(&state.filters) { true } else { false };
+        let is_paginated_out = if !for_print && !job.included_in_page(&curr_chunk) { true } else { false };
+
         // if  !for_print && has_filters && !job.included_in_filters(&state.filters) {
 
         //     return html!{
@@ -145,6 +147,7 @@ pub fn jobs_list_component(JobListProps {
                 job_annotations={ notes.clone() }
                 selected={ *active_job_id == job.uid }
                 is_filtered_out={ is_filtered_out }
+                is_paginated_out={ is_paginated_out }
             />
         }
     }).collect::<Html>();

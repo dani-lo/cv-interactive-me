@@ -193,4 +193,14 @@ impl JobModel {
          }
       }
    }
+
+   pub fn included_in_page (&self, page_jobs: &Vec<JobModel>) -> bool {
+      
+      let ids: Vec<_> = page_jobs.iter().map(|d|  {
+         d.get_resource_id()
+      })
+      .collect();
+
+      ids.contains(&self.get_resource_id())
+   }
 }
