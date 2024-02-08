@@ -5,6 +5,10 @@
         top: 0;
    }
 
+   h3.loading-title {
+        margin: 4rem 0 0 1rem;
+   }
+
    .jobs-container {
         padding-top: 3rem;
    }
@@ -12,8 +16,6 @@
    .jobs-container.with-selected {
        display: none;
     }
-
-
 
     .StyledJobContainer, .StyledAboutContainer {
         width: auto;
@@ -30,6 +32,10 @@
         height: 100%;
         width: auto;
         top: 35px;
+    }
+
+    .StyledJobDetail h2 {
+        margin-top: 1.5rem;
     }
 
     .StyledModalWrap > div {

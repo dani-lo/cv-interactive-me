@@ -207,7 +207,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                     unsafe {
                         if CV_APP_LOADED.unwrap() == false {
                             html!{
-                                <h3>{ "Downloading the wasm binary - this might take a bit please wait ..." }</h3>
+                                <h3 class="loading-title">{ "Loading data please wait .." }</h3>
                             }
                         } else {
                             html!{
@@ -221,6 +221,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                         }
                     }
                 }
+                
                 <JobDetailComponent
                     selected_job_uid={ route_id }
                 />
