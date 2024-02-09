@@ -62,23 +62,28 @@ export const ProjectDetailsComponentBase = ({
                         }
                     </h2>
                     { annotationText ? <AnnotationsComponent note={ annotationText }/> : null }
-                        <p className="proj-repo"><a href={ proj.repo } target="_blank" rel="noreferrer">Github Repo</a></p>
-                        <ul>
-                        {
-                            proj.description.map((task: string, i: number) => {
-                                return <li key={ task.replace(/\s/g, '') }>
-                                    <RichTextParagraphComponent 
-                                        text={ `${ task }${  i < proj.description.length - 1 ? ';' : '.' }` } 
-                                    />
-                                </li>
-                            })
-                        }
-                        </ul>
+                    <p className="proj-repo"><a href={ proj.repo } target="_blank" rel="noreferrer">Github Repo</a></p>                    
+                    <ul>
+                    {
+                        proj.description.map((task: string, i: number) => {
+                            return <li key={ task.replace(/\s/g, '') }>
+                                <RichTextParagraphComponent 
+                                    text={ `${ task }${  i < proj.description.length - 1 ? ';' : '.' }` } 
+                                />
+                            </li>
+                        })
+                    }
+                    </ul>
                     <ul style={{ marginTop: 'var(--gap-huge)' }}>
                     { 
                         proj.status.map((ps, i) => <li key={ i }><RichTextParagraphComponent text={ ps } /></li>)
                     }
                     </ul>
+                    {
+                        proj.liveUrl ? 
+                            <p className="proj-repo"><a href={ proj.liveUrl } target="_blank" rel="noreferrer">{ proj.liveUrl }</a></p>:
+                            null
+                    }
                     <h4 style={{ marginTop: 'var(--gap-huge' }}>Tech</h4>
                     <TechListComponent
                         techs={ project.tech}
