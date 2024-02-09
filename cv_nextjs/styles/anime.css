@@ -4,7 +4,7 @@
 
 .anime-fade-init {
   opacity: 0;
-  display: none;
+  /* display: none; */
 }
 
 .anime-fade-node-enter {
@@ -27,7 +27,7 @@
 }
 
 .anime-fade-node-exit-done {
-  display:none;
+  /* display:none; */
 }
 
 /* */

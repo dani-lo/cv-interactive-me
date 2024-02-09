@@ -81,11 +81,11 @@ const JobsPage = (props: AppDataProps) => {
     
     useEffect(() => {
         
-        setTimeout(() => {
+        // setTimeout(() => {
                 setInprop(true)
             
-        }, 100)
-    }, [displayJobsModelsArr])
+        // }, 100)
+    }, [page])
 
     const handleOpen = (item: Resource | null) => {       
         if (item !== null) { 

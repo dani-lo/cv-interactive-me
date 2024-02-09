@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useAtom } from 'jotai'
 import { CSSTransition } from 'react-transition-group';
 
@@ -79,12 +79,13 @@ const ProjectsPage = (props: AppDataProps) => {
         
     }, [page, selectedProjectId])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         
-        setTimeout(() => {
+        // setTimeout(() => {
             setInprop(true)
-        }, 100)
-    }, [displayProjectModelsArr])
+        // }, 100)
+    }, [page])
+    
 
     const handleOpenModal = (item: Resource | null) => {  
 
