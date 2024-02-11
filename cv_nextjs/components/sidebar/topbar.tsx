@@ -51,7 +51,15 @@ export const TopBarComponent = () => {
                         </span> : null
             }
         </Link>
-        <div>
+        <div className="topbar-icons">
+            <span 
+                className={ `html-icon` }
+                style={{ right: '5rem', left: 'auto'}}
+                >
+                    <a href="https://github.com/dani-lo/cv-interactive-me"  target="_blank" rel="noreferrer">
+                        <i aria-hidden="true" className="fa fa-github" />
+                    </a>
+            </span> 
             <span className={ `html-icon${ showsettings || showactions ? ' disabled' : '' }` }>
                 <i 
                     aria-hidden="true" 

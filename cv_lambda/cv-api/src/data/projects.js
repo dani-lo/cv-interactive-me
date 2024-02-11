@@ -8,7 +8,7 @@ const projects = [
         ],
         "repo": "https://github.com/dani-lo/qrated",
         "status": ["_#Beta_", "Ongoing development"], 
-        "live_url": "",
+        "live_url": "https://fullstacked.qrated-review.net",
         "notes": "Collborative articles review tool",
         "tech": [
             75,
@@ -67,7 +67,7 @@ const projects = [
         ],
         "repo": "https://github.com/dani-lo/cv-interactive-me",
         "status": ["_#Live_", "Ongoing development"],
-        "live_url": "",
+        "live_url": "https://interactiveme.net/",
         "notes": "Interactive CV reviewing app",
         "tech": [
             36,
@@ -178,6 +178,6 @@ const projects = [
         "from": [1, 2016],
         "to": [2, 2016]
     }
-];
+]
 
 module.exports = projects;

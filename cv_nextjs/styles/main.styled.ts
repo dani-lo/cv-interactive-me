@@ -472,12 +472,18 @@ export const StyledMobileBar = styled.div`
         font-size: 1.25rem!important;
     }
 
-    > div > span:first-child {
-        margin-right: var(--gap-large);
-    }
+    // > div > span:first-child {
+    //     margin-right: var(--gap-large);
+    // }
 
     @media only screen and (max-width: 768px) {
         display: flex;
+    }
+
+    .topbar-icons {
+        width: 77px;
+  display: flex;
+  justify-content: space-between;
     }
 `
 
@@ -491,6 +497,7 @@ export const StyledAboutContainer = styled.div`
 
     @media only screen and (max-width: 768px) {
         width: auto;
+        padding: var(--gap-large);
     }
 `
 

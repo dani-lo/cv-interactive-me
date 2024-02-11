@@ -8,7 +8,7 @@
       "company": 17,
       "description":[
         "Spent time on sabbatical, focusing on well-being and upskilling on some of the most interesting web development technologies of late - rust, webassembly,  serverside rendering and others",
-        "Development of several side projects of which 2 full SPAs in beta / production: _#interactiveme.net_ (github.com/dani-lo/cv-interactive-me) and _#qrated-review.net_ (github.com/dani-lo/qrated) - both aimed at features facilitating smart / collaborative reviewing processes"
+        "Development of several side projects, from SPAs to CLI tools: amongst these, 2  SPAs are in beta / production: _#interactiveme.net_ (github.com/dani-lo/cv-interactive-me) and _#qrated-review.net_ (github.com/dani-lo/qrated) - both aimed at features facilitating smart / collaborative reviewing processes"
       ],
       "from": [4, 2023],
       "to": [2, 2024],

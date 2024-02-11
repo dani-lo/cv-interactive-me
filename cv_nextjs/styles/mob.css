@@ -6,8 +6,11 @@
         padding-left: 0;
    }
 
+   span.html-icon.app-ctrl {
+    display: none;
+   }
    .jobs-container {
-        padding-top: 3rem;
+        padding-top: 1rem;
    }
    
    .jobs-container.with-selected {

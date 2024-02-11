@@ -56,6 +56,14 @@ const Layout = ({
 
     
     return <div className={`${ feCname } anime-relative ${ isPrint ? 'print' : '' }`}>
+        <span 
+                className={ `html-icon` }
+                style={{ right: '5rem', left: 'auto'}}
+                >
+                    <a href="https://github.com/dani-lo/cv-interactive-me"  target="_blank" rel="noreferrer">
+                        <i aria-hidden="true" className="fa fa-github" />
+                    </a>
+            </span> 
             <span 
                 className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
                 style={{ right: '1rem', left: 'auto'}}
@@ -71,6 +79,7 @@ const Layout = ({
                 >
                     <a href="/print" target="_blank"><i aria-hidden="true" className="fa fa-print" /></a>
             </span> 
+            
                 { uiBusy ? null : <TopBarComponent /> }
                 { uiBusy ? null :  <SettingsComponent
                     disabled = { !showsettings }
