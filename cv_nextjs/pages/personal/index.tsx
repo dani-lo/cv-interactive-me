@@ -70,7 +70,7 @@ const PersonalPage = (props: AppDataProps) => {
             <StyledAboutContainer>
                 <ul className="itemised">
                     <li><strong>Daniele Longo</strong></li>
-                    <li><strong>danielelongo@hotmail.com</strong></li>
+                    <li><strong>daniele.longo.development@gmail.com</strong></li>
                     <li><a href="https://github.com/dani-lo"><strong>github</strong></a></li>
                     {/* <li><a href="https://interactiveme.net"><strong>interactiveme.net</strong></a></li> */}
                 </ul>
