@@ -9,20 +9,25 @@
     h2 {
         margin: 1.25rem 0 0.5rem;
         font-size: 16px;
-        color: var(--text-main);
-        border-bottom: 1px solid #aaa;
+        color:#641140;
+        border-bottom: 1px solid #531337;
     }
 
     h2.detail-list strong {
         display: list-item;
         font-size: 12px;
+        color: var(--text-main);
     }
 
     h3 {
         font-size: 13px;
         // color: var(--text-main);
         margin: 14px 0 10px;
-        color: #0a5f79;  
+        color: #641140;  
+    }
+
+    h3 span {
+        color: #7d0e4d;  
     }
 
     h3 span.job-pos {
@@ -131,5 +136,9 @@
                 font-weight: bold;
             }
         }
+    }
+
+    .html-icon {
+        display: none;
     }
 }

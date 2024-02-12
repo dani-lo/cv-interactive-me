@@ -57,7 +57,7 @@ const Layout = ({
     
     return <div className={`${ feCname } anime-relative ${ isPrint ? 'print' : '' }`}>
         <span 
-                className={ `html-icon` }
+                className={ `html-icon app-ctrl` }
                 style={{ right: '5rem', left: 'auto'}}
                 >
                     <a href="https://github.com/dani-lo/cv-interactive-me"  target="_blank" rel="noreferrer">
