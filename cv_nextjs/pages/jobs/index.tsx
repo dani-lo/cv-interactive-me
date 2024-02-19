@@ -33,6 +33,7 @@ export const getStaticProps = getAppStaticProps
 
 const JobsPage = (props: AppDataProps) => {
     
+    console.log(props)
     const router = useRouter()
 
     const ctx = useContext(CvJobsContext)

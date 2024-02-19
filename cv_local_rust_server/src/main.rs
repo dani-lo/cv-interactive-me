@@ -100,57 +100,57 @@ fn projects() -> Json<Vec<ProjectData>> {
 }
 
 
-#[get("/foolers")]
-pub fn foolers() -> Json<Vec<JobData>> {
+// #[get("/foolers")]
+// pub fn foolers() -> Json<Vec<JobData>> {
     
-    let path = Path::new("./json/jobs.json");
-    let path_tech = Path::new("./json/tech.json");
-    let path_compnies = Path::new("./json/companies.json");
-    let contents = fs::read_to_string(path).unwrap();
-    let contents_tech = fs::read_to_string(path_tech).unwrap();
-    let contents_comps = fs::read_to_string(path_compnies).unwrap();
+//     let path = Path::new("./json/jobs.json");
+//     let path_tech = Path::new("./json/tech.json");
+//     let path_compnies = Path::new("./json/companies.json");
+//     let contents = fs::read_to_string(path).unwrap();
+//     let contents_tech = fs::read_to_string(path_tech).unwrap();
+//     let contents_comps = fs::read_to_string(path_compnies).unwrap();
 
-    let res : Vec<JobData> = from_str(&contents.as_str()).unwrap();
-    let res_tech: Vec<TechData> = from_str(&contents_tech.as_str()).unwrap();
-    let res_comps: Vec<CompanyData> = from_str(&&contents_comps.as_str()).unwrap();
+//     let res : Vec<JobData> = from_str(&contents.as_str()).unwrap();
+//     let res_tech: Vec<TechData> = from_str(&contents_tech.as_str()).unwrap();
+//     let res_comps: Vec<CompanyData> = from_str(&&contents_comps.as_str()).unwrap();
 
-    // let res_out = Vec::new();
+//     // let res_out = Vec::new();
 
-    // res_out.app
+//     // res_out.app
 
-    println!("HELOOOOOOOOO");
+//     println!("HELOOOOOOOOO");
 
-    for job in &res {
-        // println!("===================== {} =======================", job.company.);
+//     for job in &res {
+//         // println!("===================== {} =======================", job.company.);
 
-        let comp = res_comps.iter().find(|c| {
-            if job.company.is_some() {
-                return c.uid == job.company.unwrap();
-            }
-            return false
-        });
+//         let comp = res_comps.iter().find(|c| {
+//             if job.company.is_some() {
+//                 return c.uid == job.company.unwrap();
+//             }
+//             return false
+//         });
 
-        if comp.is_some() {
-            println!("__________________ {}", comp.unwrap().name)
-        } else {
-            println!("__________________  no companysssss")
-        }
+//         if comp.is_some() {
+//             println!("__________________ {}", comp.unwrap().name)
+//         } else {
+//             println!("__________________  no companysssss")
+//         }
 
-        for tech in &job.tech {
+//         for tech in &job.tech {
 
-            let tech_def = res_tech.iter().find(|rt| {
-                return rt.uid == *tech
-            });
+//             let tech_def = res_tech.iter().find(|rt| {
+//                 return rt.uid == *tech
+//             });
 
-            if tech_def.is_some() {
-                println!("{}", tech_def.unwrap().name)
-            }
-        }
-    }
+//             if tech_def.is_some() {
+//                 println!("{}", tech_def.unwrap().name)
+//             }
+//         }
+//     }
 
     
-    Json(res)
-}
+//     Json(res)
+// }
 
 
 fn main() {
@@ -172,5 +172,6 @@ fn main() {
         jobtypes,
         fields,
         projects,
-        foolers]).launch();
+        // foolers
+        ]).launch();
 }

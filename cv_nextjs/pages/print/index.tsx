@@ -18,7 +18,7 @@ import { RichTextParagraphComponent } from '../../components/widget/richTextPara
 export const getStaticProps = getAppStaticProps
 
 const JobsPage = (props: AppDataProps) => {
-            
+        console.log(props)    
     const { jobModels, projectModels, techModels } = transformData(props)
 
     const jobs = Array.from(jobModels.values())
@@ -41,6 +41,9 @@ const JobsPage = (props: AppDataProps) => {
         listStylePosition: 'inside'
     }
 
+    
+    console.log(techs)
+
     return <div className="print">  
         <div className="pers-data">
             <h2 className="dani">
@@ -54,10 +57,9 @@ const JobsPage = (props: AppDataProps) => {
             </h2>
         </div>
             
-            <h2 style={{ marginTop: '2rem' }}>Professional Qualities</h2>
-            <p>I am an experienced developer, with a positive can do attitude.<br />A naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
-            <h2>Team fit</h2>
-            <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
+            <h2 style={{ marginTop: '2rem' }}>Professional Qualities and Team Fit</h2>
+            <p>I am an experienced developer, with a positive can do attitude; a naturally respectful and approachable person, I enjoy finding simple solutions to complex problems.</p>
+            <p>My extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment</p>
             
             {/* <h2>Projects</h2>
             <ul>
@@ -66,6 +68,15 @@ const JobsPage = (props: AppDataProps) => {
                 <li>CLI</li>
                 <li>NextJS</li>
             </ul> */}
+                <h2>Education</h2>
+                <ul>
+                    <li className="itemised">
+                        Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelors Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st).
+                    </li>
+                    <li className="itemised">
+                        Certified - <strong>AWS</strong> Cloud Practitioner
+                    </li>
+                </ul>
             <h2>Professional Experience</h2>
             {            
                 mapToComponents<Job>(jobModels, (job: Job, i: number)  => {
@@ -88,7 +99,7 @@ const JobsPage = (props: AppDataProps) => {
                             </span>
                         </h3>
 
-                        <h4 className="job-subtitle" style={ { display: 'flex', justifyContent: 'space-between', textTransform: 'capitalize' } }>
+                        <h3 className="job-subtitle" style={ { display: 'flex', justifyContent: 'space-between', textTransform: 'capitalize' } }>
                         <span> 
                             Type:
                             {
@@ -106,7 +117,7 @@ const JobsPage = (props: AppDataProps) => {
                                 })
                             } 
                         </span>
-                        </h4>
+                        </h3>
                         <ul>
                             {
                                 job.description.map((task: string, i: number) => {
@@ -136,13 +147,31 @@ const JobsPage = (props: AppDataProps) => {
             }
 
             <h2>Technical Skills and Exposure</h2>
+            <h3>Primary</h3>
             <ul className="skills">
             {
-                techs.map(tech => {
+                techs.filter(t => t.primary).map(tech => {
                     return <li key={ tech.name }>{ tech.name }</li>
                 })
             }
             </ul>
+            <h3>Other</h3>
+            <ul className="skills">
+            {/* <p><b>NOTE</b> most of the following skills hasve been honed in a professional environment, some on a personal projects basis</p> */}
+            {
+                techs.filter(t => !t.primary).map(tech => {
+                    return <li key={ tech.name }>{ tech.name }</li>
+                })
+            }
+            </ul>
+            <h2>Personal Interests</h2>
+                <ul>
+                    <li className="itemised list-item">Yoga, Meditation</li>
+                    <li className="itemised list-item">Traveling</li>
+                    <li className="itemised list-item">Books</li>
+                    <li className="itemised list-item">Cooking</li>
+                    <li className="itemised list-item">Indian Philosophy</li>
+                </ul>
         </div> 
         
        

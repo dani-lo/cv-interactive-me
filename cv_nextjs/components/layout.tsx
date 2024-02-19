@@ -55,10 +55,11 @@ const Layout = ({
 
 
     
-    return <div className={`${ feCname } anime-relative ${ isPrint ? 'print' : '' }`}>
-        <span 
+    return <div className={`${ feCname }  anime-relative ${ isPrint ? 'print' : '' }`}>
+        <div className="app-links top-slot">
+            <span 
                 className={ `html-icon app-ctrl` }
-                style={{ right: '5rem', left: 'auto'}}
+                
                 >
                     <a href="https://github.com/dani-lo/cv-interactive-me"  target="_blank" rel="noreferrer">
                         <i aria-hidden="true" className="fa fa-github" />
@@ -66,7 +67,7 @@ const Layout = ({
             </span> 
             <span 
                 className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
-                style={{ right: '1rem', left: 'auto'}}
+                
                 onClick={ () => {
                     setShowsettings(true) 
                     setFoo(true)
@@ -75,11 +76,11 @@ const Layout = ({
             </span> 
             <span 
                 className={ `html-icon app-ctrl ${ showsettings ? ' disabled' : '' }` }
-                style={{ right: '3rem', left: 'auto'}}
+                
                 >
                     <a href="/print" target="_blank"><i aria-hidden="true" className="fa fa-print" /></a>
             </span> 
-            
+        </div>
                 { uiBusy ? null : <TopBarComponent /> }
                 { uiBusy ? null :  <SettingsComponent
                     disabled = { !showsettings }
@@ -107,13 +108,15 @@ const Layout = ({
                     
                         <>
                         { uiBusy ? null : 
-                            <span 
-                                className="html-icon app-ctrl"
-                                onClick={ () => {
-                                    setFoo(true) 
-                                }}>
-                                    <i aria-hidden="true" className="fa fa-bars" />
-                            </span>  
+                            <div className="top-slot main-menu-toggle">
+                                <span 
+                                    className="html-icon app-ctrl"
+                                    onClick={ () => {
+                                        setFoo(true) 
+                                    }}>
+                                        <i aria-hidden="true" className="fa fa-bars" />
+                                </span>  
+                            </div>
                         }
                         <SidebarComponent pageProps={ pageProps } />
                         </>

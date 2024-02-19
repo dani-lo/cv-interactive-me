@@ -1,375 +1,395 @@
 const techs = [{
  
   "name": "Classic ASP (VBscript)",
-  "uid": 1
-},{
+  "uid": 1,
+  "techtype": "backend"
+,"primary": false },{
  
   "name": "MySql",
-  "uid": 2
-},{
+  "uid": 2,
+  "techtype": "database"
+, "primary": false },{
  
   "name": "Perl",
-  "uid": 3
-},{
+  "uid": 3,
+  "techtype": "backend"
+, "primary": false },{
  
   "name": "Css",
-  "uid": 4
-},{
+  "uid": 4,
+  "primary": true
+,"techtype": "" },{
  
   "name": "html",
-  "uid": 5
-},{
+  "uid": 5,
+  "primary": true
+,"techtype": "" },{
  
   "name": "JQuery",
   "uid": 6
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Flex",
   "uid": 7
-},{
+,"techtype": "", "primary": false },{
  
   "name": "AS3",
   "uid": 8
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Php",
-  "uid": 9
-},{
+  "uid": 9,
+  "techtype": "backend"
+, "primary": false },{
  
   "name": "svn",
   "uid": 10
-},{
+,"techtype": "", "primary": false },{
  
   "name": "CakePHP",
-  "uid": 11
-},{
+  "uid": 11,
+  "techtype": "backend"
+, "primary": false },{
  
   "name": "Code Igniter",
-  "uid": 12
-},{
+  "uid": 12,
+  "techtype": "backend"
+, "primary": false },{
  
   "name": "ANT Galio",
   "uid": 13
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Ajax",
   "uid": 14
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Chrome FS",
   "uid": 15
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Springboard mvc",
   "uid": 16
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Modernizr",
   "uid": 17
-},{
+,"techtype": "", "primary": false },{
  
   "name": "RequireJS",
   "uid": 18
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Backbone",
   "uid": 19
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Vagrant",
   "uid": 20
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Mustache",
   "uid": 21
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Coffeescript",
   "uid": 22
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Grunt",
   "uid": 23
-},{
+,"techtype": "", "primary": false },{
  
   "name": "D3",
   "uid": 24
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Mocha",
   "uid": 25
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Sinon",
   "uid": 26
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Karma",
   "uid": 27
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Angular 1.5",
   "uid": 28
-},{
+,"techtype": "", "primary": false },{
  
   "name": "React",
-  "uid": 29
-},{
+  "uid": 29,
+  "primary": true
+,"techtype": ""},{
  
   "name": "Meteor",
   "uid": 30
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Express",
   "uid": 31
-},{
+,"techtype": "", "primary": false },{
  
   "name": "AWS Lambda",
   "uid": 32
-},{
+,"techtype": "", "primary": false },{
  
   "name": "AWS EC2",
-  "uid": 33
-},{
+  "uid": 33,
+  "primary": true
+,"techtype": "" },{
  
   "name": "Jest",
   "uid": 34
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Mapbox",
   "uid": 35
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Rust",
-  "uid": 36
-},{
+  "uid": 36,
+  "techtype": "backend"
+, "primary": false },{
  
   "name": "Yew (Rust wasm)",
   "uid": 37
-},{
+,"techtype": "", "primary": false },{
  
   "uid": 38,
-  "name": "Typescript"
-},{
+  "name": "typescript",
+  "primary": true
+,"techtype": "" },{
  
   "uid": 39,
-  "name": "Javascript"
-}, {
+  "name": "Javascript",
+  "primary": true
+,"techtype": "" }, {
  
 "uid": 40,
 "name": "Regex"
-}, {
+,"techtype": "", "primary": false }, {
  
 "uid": 41,
 "name": "Xslt"
-}, {
+,"techtype": "", "primary": false }, {
  
 "uid": 42,
 "name": "React Native"
-},{
+,"techtype": "", "primary": false },{
  
   "name": "Highcharts Maps",
   "uid": 43
-},
+,"techtype": "", "primary": false },
 {
   "name": "PM2",
   "uid": 44
-},
+,"techtype": "", "primary": false },
 
 {
   "name": "Scss",
   "uid": 45
-},
+,"techtype": "", "primary": false },
 
 {
   "name": "Chrome FS",
   "uid": 46
-},
+,"techtype": "", "primary": false },
 {
   "name": "Google Maps api v3",
   "uid": 47
-},
+,"techtype": "", "primary": false },
 {
   "name": "Youtube api",
   "uid": 48
-},
+,"techtype": "", "primary": false },
 {
   "name": "Scss",
   "uid" : 49
-},
+,"techtype": "", "primary": false },
 {
   "name": "Bootstrap",
   "uid" : 50
-},
+,"techtype": "", "primary": false },
 {
   "name": "Gmaps",
   "uid": 51
-},
+,"techtype": "", "primary": false },
 {
   "name": "Git",
-  "uid": 52
-},
+  "uid": 52,
+  "primary": true
+,"techtype": "" },
 {
   "name": "Styled Components",
   "uid": 53
-},
+,"techtype": "", "primary": false },
 {
   "name": "Highcharts",
   "uid": 54
-},
+,"techtype": "", "primary": false },
 {
   "name": "Nodejs",
-  "uid": 55
+  "uid": 55,
+  "primary": true,
+  "techtype": "backend"
 },
 {
   "name": "HTML5",
   "uid": 56
-},
+,"techtype": "", "primary": false },
 {
   "name": "Python",
-  "uid": 57
-},
+  "uid": 57,
+  "techtype": "backend"
+, "primary": false },
 {
   "name": "Terminator",
   "uid": 58
-},
+,"techtype": "", "primary": false },
 {
   "name": "Nextjs",
-  "uid": 59
-},
+  "uid": 59,
+  "primary": true
+,"techtype": "" },
 {
   "name": "Jotai",
   "uid": 60
-},
+,"techtype": "", "primary": false },
 {
   "name": "Github actions",
   "uid": 61
-},
+,"techtype": "", "primary": false },
 {
   "name": "Deno",
   "uid": 62
-},
+,"techtype": "", "primary": false },
 {
   "name": "Nginx",
   "uid": 63
-},
+,"techtype": "", "primary": false },
 {
   "name": "rocket",
   "uid": 64
-},
+,"techtype": "", "primary": false },
 {
   "name": "Yewdux",
   "uid": 65
-},
+,"techtype": "", "primary": false },
 {
   "name": "Flask",
   "uid": 66
-},
+,"techtype": "", "primary": false },
 {
  
   "name": "Classic ASP (Jscript)",
-  "uid": 67
-},
+  "uid": 67,
+  "techtype": "backend"
+, "primary": false },
 {
  
   "name": "xml",
   "uid": 68
-},
+,"techtype": "", "primary": false },
 {
  
   "name": "actionscript",
   "uid": 69
-},
+,"techtype": "", "primary": false },
 {
  
   "name": "iss",
   "uid": 70
-},
+,"techtype": "", "primary": false },
 {
  
   "name": "Sourcesafe",
   "uid": 71
-},
+,"techtype": "", "primary": false },
 {
  
   "name": "husky",
   "uid": 72
-},
+,"techtype": "", "primary": false },
 {
   "name": "SOAP",
   "uid": 73
-},
+,"techtype": "", "primary": false },
 {
   "name": "AWS ECS",
   "uid": 74
-},
+,"techtype": "", "primary": false },
 {
   "name": "AWS S3",
   "uid": 75
-},
+,"techtype": "", "primary": false },
 {
   "name": "Docker",
   "uid": 76
-},
+,"techtype": "", "primary": false },
 {
   "name": "AWS API Gateway",
   "uid": 77
-},
+,"techtype": "", "primary": false },
 {
   "name": "AWS Route 53",
   "uid": 78
-},
+,"techtype": "", "primary": false },
 {
   "name": "Terraform",
   "uid": 79
-},
+,"techtype": "", "primary": false },
 {
   "name": "GraphQL",
   "uid": 80
-},
+,"techtype": "", "primary": false },
 {
   "name": "Tanstack Query",
   "uid": 81
-},
+,"techtype": "", "primary": false },
 {
   "name": "Prisma",
-  "uid": 82
-},
+  "uid": 82,
+  "techtype": "database", "primary": false },
 {
   "name": "OAK",
   "uid": 83
-},
+,"techtype": "", "primary": false },
 {
   "name": "Chai",
   "uid": 84
-},
+,"techtype": "", "primary": false },
 {
   "name": "Playwright",
   "uid": 85
-},
+,"techtype": "", "primary": false },
 {
   "name": "CircleCI",
   "uid": 86
-},
+,"techtype": "", "primary": false },
 {
   "name": "JWT",
   "uid": 87
-},
+,"techtype": "", "primary": false },
 {
   "name": "Tailwind",
   "uid": 88
-},
+,"techtype": "", "primary": false },
 {
   "name": "Postman",
   "uid": 89
-},
+,"techtype": "", "primary": false },
 {
   "name": "Postgresql",
   "uid": 90
-},
+,"techtype": "", "primary": false },
 {
   "name": "Mongo",
-  "uid": 91
+  "uid": 91,
+  "primary": true
 }
 ];
 

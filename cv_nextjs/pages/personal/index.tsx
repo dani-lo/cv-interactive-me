@@ -86,7 +86,13 @@ const PersonalPage = (props: AppDataProps) => {
             <StyledAboutContainer>
                 <h3>Education</h3>
                 <ul>
-                    <li className="itemised">Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelors Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st).</li></ul>
+                    <li className="itemised">
+                        Laurea in <strong>Scienze della Comunicazione </strong>at Universita degli studi di Siena - Bachelors Degree (BSc) equivalent in <strong>Media Studies</strong> at Siena University, Italy, First class honours (1st).
+                    </li>
+                    <li className="itemised">
+                        Certified - <strong>AWS</strong> Cloud Practitioner
+                    </li>
+                </ul>
             </StyledAboutContainer>
             <StyledAboutContainer>
                 <h3>Skills</h3>

@@ -92,6 +92,7 @@ export interface IField {
 export interface ITech  {
     uid: number;
     name: string;
+    primary ?: boolean;
 }
 export interface ICompany {
     uid: number;

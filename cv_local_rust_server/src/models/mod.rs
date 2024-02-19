@@ -42,6 +42,8 @@ pub struct JobtypeData {
 pub struct TechData {
     pub uid: usize,
     pub name: String,
+    pub techtype: Option<String>,
+    pub primary: Option<bool>
 }
 
 #[derive(Deserialize, Serialize)]

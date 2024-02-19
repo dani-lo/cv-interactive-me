@@ -490,7 +490,11 @@ export const StyledMobileBar = styled.div`
 export const StyledAboutContainer = styled.div`
     padding:  var(--gap-medium);
     max-width: 700px;
+    
 
+    &:first-child {
+        margin-top: 0.5rem;
+    }
     h3 {
         margin-top: var(--gap-small);
     }
@@ -510,8 +514,9 @@ export const StyledTechList = styled.ul`
 `
 
 export const StyledTabber = styled.ul`
-    margin-bottom: var(--gap-huge);
-    margin-top: var(--gap-large);
+    margin-bottom: var(--gap-large);
+    display: inline-block;
+    // margin-top: var(--gap-large);
     li {
         display: inline-block;
         margin: 0 var(--gap-medium) 0 0;

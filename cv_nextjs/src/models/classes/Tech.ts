@@ -8,12 +8,15 @@ export class Tech extends canFilter(ConcreteMdel) implements ITech {
 
     declare name: string
     declare uid: number 
+    declare primary: boolean
 
     constructor (doc: ITech) {
         super(doc.uid, ResourceType.Tech)
 
         this.name = doc.name
         this.uid = doc.uid
+
+        this.primary = doc.primary || false
     }
 
     toString() : string {

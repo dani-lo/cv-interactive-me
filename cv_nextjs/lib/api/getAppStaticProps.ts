@@ -32,6 +32,9 @@ export const getAppStaticPropsBase = (async () : Promise<{props: AppStaticData}>
         projects,
     ] = await getStaticData()
 
+    console.log('API RES')
+    console.log(tech)
+    
     return  { props: { 
         jobs, 
         tech, 

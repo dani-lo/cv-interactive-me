@@ -9,8 +9,10 @@
     h2 {
         margin: 1.25rem 0 0.5rem;
         font-size: 16px;
-        color:#641140;
-        border-bottom: 1px solid #ddd;
+        // color:#fff;
+        border-bottom: 1px solid #999;
+//         background: #aaa;
+//   padding-left: 1rem;
     }
 
     h2.detail-list strong {
@@ -19,15 +21,20 @@
         color: var(--text-main);
     }
 
+
+    h2.detail-list, h2.dani {
+        color: var(--text-main);
+        background: transparent;
+    }
     h3 {
         font-size: 13px;
-        // color: var(--text-main);
-        margin: 14px 0 10px;
-        color: #641140;  
+        color: var(--text-main);
+        margin: 8px 0;
+        color: #113164;  
     }
 
     h3 span {
-        color: #7d0e4d;  
+        // color: #7d0e4d;  
     }
 
     h3 span.job-pos {
@@ -49,6 +56,10 @@
         margin: 8px 0px;
         display: block;
         line-height: 19px;
+    }
+
+    b {
+        font-weight: bold;
     }
 
     ul {

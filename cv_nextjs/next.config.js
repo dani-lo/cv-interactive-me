@@ -19,6 +19,24 @@ const nextConfig = {
       }
     ]
   },
+  webpack: (config, {dev, isServer, defaultLoaders}) => {
+    console.log('------------------ options.webpack.version'); // Should be webpack v5 now
+    if (dev && !isServer) {
+      
+      const originalEntry = config.entry
+
+      config.entry = async () => {
+      
+        const entries = await originalEntry();
+      
+        if (entries['main.js'] && !entries['main.js'].includes('./src/helpers/whyDidYouRender.js')) {
+          entries['main.js'].unshift('./src/helpers/whyDidYouRender.js');
+        }
+        return entries;
+      }
+    }
+    return config;
+  },
   // async redirects() {
   //   return [
   //     {
