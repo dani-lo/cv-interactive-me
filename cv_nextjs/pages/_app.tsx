@@ -1,4 +1,4 @@
-// import  '../src/helpers/wdyr'
+import  '../src/helpers/whyDidYouRender'
 
 import { useReducer, createContext, useEffect, useState } from 'react'
 import { useAtom } from 'jotai'

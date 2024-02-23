@@ -2,7 +2,6 @@ import React from 'react'
 
 import { getAppStaticProps } from '../../lib/api/getAppStaticProps'
 
-import { JobComponent } from '../../components/jobs/job'
 import { Job } from '../../src/models/classes/Job'
 
 import { mapToComponents } from '../../src/helpers/mapMap'
@@ -12,19 +11,13 @@ import { transformData } from '../../src/helpers/transformData'
 import { 
     AppDataProps,
 } from '../../src/types'
-import { techsWithMonthsDuration } from '../../src/helpers/weightTechs'
 import { RichTextParagraphComponent } from '../../components/widget/richTextParagraph'
 
 export const getStaticProps = getAppStaticProps
 
 const JobsPage = (props: AppDataProps) => {
-        console.log(props)    
-    const { jobModels, projectModels, techModels } = transformData(props)
-
-    const jobs = Array.from(jobModels.values())
-    const projects = Array.from(projectModels.values())
-
-    const allTechhavers = [ ...jobs, ...projects ]
+ 
+    const { jobModels, techModels } = transformData(props)
 
     const techs = Array.from(techModels.values()).sort((a, b) => {
         if (a.name.toUpperCase() > b.name.toUpperCase()) {
@@ -35,21 +28,12 @@ const JobsPage = (props: AppDataProps) => {
         return 0
     })
 
-    const listStyle = {
-        display: 'list-item',
-        listStyle: 'circle',
-        listStylePosition: 'inside'
-    }
-
-    
-    console.log(techs)
-
     return <div className="print">  
         <div className="pers-data">
             <h2 className="dani">
                 <strong>Daniele Longo</strong>
                 <br />
-                <strong style={{ fontSize: '13px'}}>daniele.longo.development@gmail.com</strong>
+                <strong style={{ fontSize: '13px'}}>dani@interactiveme.net</strong>
             </h2>
             <h2 className="detail-list">
                 <strong>github.com/dani-lo</strong>

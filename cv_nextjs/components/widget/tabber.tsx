@@ -41,10 +41,12 @@ export const pageForItem = (items: DateRangedItem[][], uid: number) => {
 } 
 
 export const Tabber = ({ items, page, onPageSelect }: Props) => {
+    
+    // items.map((chunk, i) => console.log(`${ chunk[0].uid }${ chunk[1].uid }`))
 
     return <StyledTabber className="top-slot">
         {
-            items.map((chunk, i) => <li key={ i }>
+            items.map((chunk, i) => <li key={ `${ chunk[0].uid }${ chunk[1].uid }` }>
                 <button 
                     className={ i == page ? "disabled" : "" }
                     onClick={() =>  onPageSelect(i) }>

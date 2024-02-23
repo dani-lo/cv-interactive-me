@@ -25,13 +25,19 @@ const nextConfig = {
       
       const originalEntry = config.entry
 
+      
+
       config.entry = async () => {
       
         const entries = await originalEntry();
+
+        console.log(entries)
       
         if (entries['main.js'] && !entries['main.js'].includes('./src/helpers/whyDidYouRender.js')) {
           entries['main.js'].unshift('./src/helpers/whyDidYouRender.js');
         }
+
+        entries['main'] = './src/helpers/whyDidYouRender.js'
         return entries;
       }
     }

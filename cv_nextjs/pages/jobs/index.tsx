@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 
 import { CvJobsContext } from '../_app'
@@ -49,12 +49,14 @@ const JobsPage = (props: AppDataProps) => {
     const [actionItem, setActionItem] = useState<Resource | null>(null)
 
     const { jobModels } = transformData(props)
-    const chunks = chunker<DateRangedItem>([...Array.from(jobModels.values())], pageSize.dense)
+    
+    const chunks = useMemo(() => {
+        return chunker<DateRangedItem>([...Array.from(jobModels.values())], pageSize.dense)
+    }, [jobModels])
+
     const selectedJob = selectedJobId !== null ? jobModels.get(selectedJobId) : null
     
     const { filters} = ctx?.appstate || {}
-
-    const displayJobsModelsArr =  Array.from(jobModels).filter(([k, job], i) => !pagedOut(page, i, pageSize.dense) && !filteredOut(job, filters || null))
 
     useEffect(() => {
 
