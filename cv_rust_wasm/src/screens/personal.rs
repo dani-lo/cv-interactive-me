@@ -225,7 +225,7 @@ pub fn personal() -> Html {
                                                 
                                             </li>
                                             <li>
-                                            <strong>{"danielelongo@hotmail.com"}</strong>
+                                            <strong>{"dani@interactiveme.net"}</strong>
                                             </li>
                                             <li></li>
                                             <li><a href="https://github.com/dani-lo"><strong>{"github"}</strong></a></li>
