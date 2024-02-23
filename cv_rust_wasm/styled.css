@@ -152,8 +152,8 @@
 
 .StyledSidebar > .html-icon {
     position: absolute;
-    left: var(--gap-small);
-    top: var(--gap-small);
+    left: var(--gap-medium);
+    top: var(--gap-medium);
 }
 
 .StyledSidebar > div {

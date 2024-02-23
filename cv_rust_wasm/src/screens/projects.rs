@@ -181,7 +181,7 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
                                     </span>
                                     <p>
                                         {
-                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                            "You are viewing the Web Asssembly (Rust) implementation."
                                         }
                                     </p>
                                     <p>

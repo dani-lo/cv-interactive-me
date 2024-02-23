@@ -153,6 +153,7 @@ pub fn personal() -> Html {
                 on_back={ on_back } 
             />
             <ActionsModalComponent />
+            
             <div class={ if ui_state.sidebar_ui { "StyledSidebar active" } else { "StyledSidebar" } }>
                 <span 
                     class="html-icon"
@@ -186,7 +187,7 @@ pub fn personal() -> Html {
                                     </span>
                                     <p>
                                         {
-                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                            "You are viewing the Web Asssembly (Rust) implementation."
                                         }
                                     </p>
                                     <p>
@@ -206,6 +207,14 @@ pub fn personal() -> Html {
                         html!{ <></> }
                     }
                 }
+            </div>
+            <div class="app-links">
+                <span  class="html-icon">
+                    <a href="https://nextjs.interactiveme.net/print" target="_blank"><i class="fa fa-print" aria-hidden="true" /></a>
+                </span> 
+                <span  class="html-icon">
+                    <a href="https://github.com/dani-lo/cv-interactive-me" target="_blank"><i class="fa fa-github" aria-hidden="true" /></a>
+                </span> 
             </div>
             <div class="page">
                 {

@@ -181,7 +181,7 @@ pub fn jobs(JobsProps { route_id } : &JobsProps) -> Html {
                                     </span>
                                     <p>
                                         {
-                                            "You are viewing the Web Asssembly (Rust) implemntation."
+                                            "You are viewing the Web Asssembly (Rust) implementation."
                                         }
                                     </p>
                                     <p>
