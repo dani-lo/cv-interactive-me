@@ -84,7 +84,9 @@ pub fn project(Props {
                 />
             </h3>
             <ul>
-            <li class="itemised"><RichTextParagraphComponent text={ project.status[0].clone() } /></li>
+            <li class="itemised">
+                <RichTextParagraphComponent text={ project.status[0].clone() } />
+            </li>
             // { 
             //     project.status.iter().map(|ps| {
                     

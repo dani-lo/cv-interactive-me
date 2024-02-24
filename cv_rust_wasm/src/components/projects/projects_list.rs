@@ -62,8 +62,8 @@ pub fn projects_list_component(ProjectListProps {
     let mut sorted = projects.clone();
 
     sorted.sort_by(|a, b| {
-        if a < b { Ordering::Greater } 
-        else if a > b { Ordering::Less } 
+        if a > b { Ordering::Greater } 
+        else if a < b { Ordering::Less } 
         else { Ordering::Equal }
     });
 
@@ -86,7 +86,6 @@ pub fn projects_list_component(ProjectListProps {
 
     use_effect_with_deps(move|_| {
         if selected_id > 0 {
-            info!("SCROLLING TO SLOT {}", selected_id);
             scroll_to_slot(selected_id);
         } else {
             scroll_top();

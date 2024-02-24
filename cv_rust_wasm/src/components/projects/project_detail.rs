@@ -122,6 +122,20 @@ pub fn job_detail(ProjectDetailProps {
                         html!{ <></> }
                     }
                 }
+                <span>
+                   
+                    {
+                        if &project.live_url.len() > &1 {
+                            html!{
+                                <p class="proj-repo">
+                                    <a href={ project.live_url.clone() } target="_blank">{ &project.live_url }</a>
+                                </p>
+                            }
+                        } else {
+                            html!{ <></> }
+                        }
+                    }
+                </span>
                 <p class="proj-repo">
                     <a href={ project.repo.clone() } target="_blank">{ "Github Repo" }</a>
                 </p>
