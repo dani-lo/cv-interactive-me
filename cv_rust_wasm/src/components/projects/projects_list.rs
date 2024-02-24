@@ -58,6 +58,14 @@ pub fn projects_list_component(ProjectListProps {
     let (state, _dispatch) = use_store::<StoreApp>();
         
     let page = use_state(|| 0);
+    
+    let mut sorted = projects.clone();
+
+    sorted.sort_by(|a, b| {
+        if a < b { Ordering::Greater } 
+        else if a > b { Ordering::Less } 
+        else { Ordering::Equal }
+    });
 
     let selected_id = *active_project_id;
 
@@ -86,9 +94,9 @@ pub fn projects_list_component(ProjectListProps {
     }, ());
 
     // let mut sorted_projects = projects.clone();
-    let c_projects = projects.clone();
+    let c_projects = sorted.clone();
 
-    let chunks : Vec<Vec<ProjectModel>> = chunker(projects.clone(), 4);
+    let chunks : Vec<Vec<ProjectModel>> = chunker(sorted.clone(), 4);
     let curr_chunk = &chunks[*page];
 
     let active_project_id_c = active_project_id.clone();
@@ -121,7 +129,7 @@ pub fn projects_list_component(ProjectListProps {
     //     else { Ordering::Equal }
     // });
 
-    let projects_list = projects.iter().map(|project| {
+    let projects_list = sorted.iter().map(|project| {
         
         let is_filtered_out = if  has_filters && !project.included_in_filters(&state.filters) {true } else { false };
         let is_paginated_out = if !project.included_in_page(&curr_chunk) { true } else { false };

@@ -62,6 +62,14 @@ pub fn jobs_list_component(JobListProps {
         }
     }, ());
 
+    let mut sorted = jobs.clone();
+
+    sorted.sort_by(|a, b| {
+        if a < b { Ordering::Greater } 
+        else if a > b { Ordering::Less } 
+        else { Ordering::Equal }
+    });
+
     let (state, _dispatch) = use_store::<StoreApp>();
 
     let page = use_state(|| 0);
@@ -82,9 +90,9 @@ pub fn jobs_list_component(JobListProps {
     // let mut anything_rendered = 0;
 
     // let mut c_jobs = jobs.clone();
-    let c_jobs = jobs.clone();
+    let c_jobs = sorted.clone();
     
-    let chunks : Vec<Vec<JobModel>> = chunker(jobs.clone(), 4);
+    let chunks : Vec<Vec<JobModel>> = chunker(sorted.clone(), 4);
     let curr_chunk = &chunks[*page];
 
     let active_job_id_c = active_job_id.clone();
@@ -109,14 +117,8 @@ pub fn jobs_list_component(JobListProps {
             }
         }
     }, active_job_id.clone());
-    
-    // c_jobs.sort_by(|a, b| {
-    //     if a < b { Ordering::Greater } 
-    //     else if a > b { Ordering::Less } 
-    //     else { Ordering::Equal }
-    // });
 
-    let jobs_list = jobs.iter().map(|job| {
+    let jobs_list = sorted.iter().map(|job| {
         
         let is_filtered_out = if !for_print && has_filters && !job.included_in_filters(&state.filters) { true } else { false };
         let is_paginated_out = if !for_print && !job.included_in_page(&curr_chunk) { true } else { false };

@@ -50,7 +50,7 @@ pub fn job_tech(TechProps {
 
     html!{  
         <div>
-            <h3 style="margin-top: var(--gap-huge);">{ "Tech" }</h3>
+            <h3>{ "Tech" }</h3>
             <ul class="StyledTechList">
             {
                 show_techs.iter().map(|jt| {

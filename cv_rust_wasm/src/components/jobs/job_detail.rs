@@ -7,20 +7,14 @@ use yew::{
 use yewdux::prelude::{use_store, Dispatch};
 
 use crate::{
-    models::{ModelTypes, company_model::CompanyModel, field_model::FieldModel}, 
-    traits::{ 
+    appdata::stores::store_app::StoreApp, components::widget::{
+        job_type::JobTypeComponent, rich_text_paragraph::RichTextParagraphComponent, tech::TechComponent
+    }, models::{company_model::CompanyModel, field_model::FieldModel, ModelTypes}, traits::{ 
         can_annotate::Annotation, 
         can_bookmark::Bookmark
-    }, 
-    appdata::stores::store_app::StoreApp,
-    components::widget::{
-        job_type::JobTypeComponent,
-        tech::TechComponent,
-    },
-    util::{
-        resource_for_actions::set_state_modal_item, 
-        action_for_resource::resource_annotation
-    },
+    }, util::{
+        action_for_resource::resource_annotation, resource_for_actions::set_state_modal_item
+    }
 };
 
 
@@ -167,7 +161,9 @@ pub fn job_list(JobDescriptionListProps { description }: &JobDescriptionListProp
 
     description.iter().map(|d: &String| {
         html! {
-            <li>{ d }</li>
+            <li>
+                <RichTextParagraphComponent text={ d.clone() } />
+            </li>
         }
     }).collect()
 }

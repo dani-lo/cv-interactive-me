@@ -202,6 +202,14 @@ pub fn projects(ProjectsProps { route_id} : &ProjectsProps) -> Html {
                     }
                 } 
             </div>
+            <div class="app-links">
+                <span  class="html-icon">
+                    <a href="https://nextjs.interactiveme.net/print" target="_blank"><i class="fa fa-print" aria-hidden="true" /></a>
+                </span> 
+                <span  class="html-icon">
+                    <a href="https://github.com/dani-lo/cv-interactive-me" target="_blank"><i class="fa fa-github" aria-hidden="true" /></a>
+                </span> 
+            </div>
             <div class="page">
                 {
                     unsafe {

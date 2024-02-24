@@ -4,13 +4,13 @@
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #f2f2f2;
-  --black : #462c20;
-  --active-action: #c16d30;
-  --text-clear: #c16d30;
+  --black : #2d3342;
+  --active-action: #164659;
+  --text-clear: #164659;
   --active-pink: #bdc9ce;
   --pending-action: grey;
-  --text-main: #462c20;
-  --text-dark: #462c20;
+  --text-main: #2d3342;
+  --text-dark: #2d3342;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -25,6 +25,8 @@
   --z-3: 100;
   --z-4: 1000;
   --z-5: 10000;
+
+  --unactive: #6c95a6;
 }
 
 * {
@@ -172,7 +174,7 @@ button {
   margin: var(--gap-small) 0;
 }
 
-button.disabled, button:hover {
+ button:hover {
   background: var(--text-clear);
   opacity: 1;
 }
@@ -257,7 +259,6 @@ li.itemised {
   line-height: 1.2rem;
 }
 
-
 li.list-footer-meta-action {
   text-decoration: underline;
   cursor: pointer;
@@ -284,9 +285,14 @@ i.fa {
   font-size: 1rem;
 }
 
+.itemised .action-wrap i.fa {
+  font-size: 0.8rem;
+}
+
 .xplain-actions i.fa {
   font-size: 0.8rem;
 }
+
 i.fa.action {
   cursor: pointer;
   padding: var(--gap-medium)0;
@@ -308,7 +314,6 @@ span.action-wrap {
   display: flex;
   align-items: baseline;
   cursor: pointer;
-  ;
 }
 
 span.action-wrap i {

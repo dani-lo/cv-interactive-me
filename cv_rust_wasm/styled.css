@@ -13,9 +13,10 @@
     width: 380px;
     margin: var(--gap-medium) 0;
     cursor: pointer;
-    background: #f1f4f4;
+    background: #ebeeee;
     margin: var(--gap-large) 0;
     transition: background 0.2s;
+    border-radius: 0.2rem;
 }
 
 .StyledJobContainer:hover {   
@@ -76,7 +77,7 @@
 
 
 .StyledJobContainer.selected {
-    background: var(--active-action);
+    background: var(--black);
     /* padding:  var(--gap-medium); */
     cursor: default;
     pointer-events: none; 
@@ -129,12 +130,17 @@
     padding: 0 var(--gap-large);
     left: 760px;
     /* background: var(--white); */
+
 }
 
 .StyledJobDetail h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.StyledJobDetail ul {
+    margin: var(--gap-large) 0;
 }
 
 .StyledSidebar {
@@ -514,6 +520,10 @@
     margin: 0 var(--gap-medium) 0 0;
     
 }
+
+.StyledTabber li button.disabled {
+    background: var(--unactive);
+}
 /* 
 .StyledAppPayoff {
     position: absolute;
@@ -553,7 +563,7 @@
     width:80%;
     border-radius: 0.25rem;
     background: var(--white);
-    background: #dfcfc6;;
+    background: #c6dddf;;
     position: relative;
   }
   
@@ -578,6 +588,7 @@
   .StyledAppPayoff span.html-icon i {
     color: black;
     cursor: pointer;
+    font-size: 1rem;
   }
   
   .StyledAppPayoff span.html-icon i:hover {
