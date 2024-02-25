@@ -29,12 +29,7 @@
 }
 
 .logo {
-    /* padding: 0; */
-    /* align-items: center; */
-    /* position: fixed; */
-    /* top: var(--gap-huge); */
-    /* left: 800px; */
-    /* bottom: var(--gap-huge); */
+    box-shadow: 1px 3px 3px #d7d7d7;
     width: 500px;
     margin: var(--gap-huge) auto;
     position: relative;
@@ -56,7 +51,7 @@
 
 
 body {
-    background: #642323;
+    /* background: #642323; */
 }
 .logo h1 {
    color: var(--black);
