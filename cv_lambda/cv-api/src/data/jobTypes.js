@@ -21,7 +21,7 @@ const jobTypes = [
     },
     {
         "uid": 5,
-        "name": "office",
+        "name": "on-site",
         "prefix": "PLACE"
     },
     {
@@ -29,6 +29,6 @@ const jobTypes = [
         "name": "sabbatical",
         "prefix": "TIME"
     }
-];
+]
 
 module.exports = jobTypes;

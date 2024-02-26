@@ -11,7 +11,7 @@ const companies = [
         "name": "Admedo",
         "location": "London",
         "description": "A performance based DSP, aiming at democratising programmatic advertising and simplifying the access to display media",
-        "field": [3]
+        "field": [3, 4]
     },
     {
         "uid": 3,
@@ -116,8 +116,8 @@ const companies = [
         "name": "Dev Interactive - own LTD",
         "location": "London",
         "description": "Own LTD company: used extensively in the past for contract work",
-        "field": [5]
+        "field": []
     }
-];
+]
 
 module.exports = companies;
