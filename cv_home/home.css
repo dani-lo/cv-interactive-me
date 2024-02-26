@@ -148,7 +148,8 @@ h1 {
     color: var(--black);
 }
 /* 
-.content-sect .xplain.bg-mid p {
+.con{
+    tent-sect .xplain.bg-mid p {
 
 } */
 
@@ -170,4 +171,41 @@ h5 {
   position: absolute;
   text-align: center;
   width: 100%;
+}
+
+#img-splash {
+    width: 100%;
+    height: 43vw;
+    object-fit: cover;
+    position: absolute;
+    top: auto;
+    bottom: -300%;
+    left: 0%;
+    right: 0%;
+    opacity: 0;
+    transition: all 1s;
+}
+
+#img-splash.show-up {
+    opacity: 1;
+    bottom: 0%;
+}
+
+#spot {
+    border-radius: 50%;
+    position: fixed;
+    width: 85%;
+    height: 577px;
+    background: var(--active-action);
+    top: -570px;
+    left:0;
+    margin: -3rem;
+    /* transition: all 0.5ms; */
+    transition: all 500ms ease-in ;
+    opacity: 1;
+    position: absolute;
+}
+#spot.show-down {
+    opacity: 1;
+    top: -270px;
 }

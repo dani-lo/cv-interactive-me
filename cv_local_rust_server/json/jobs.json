@@ -19,7 +19,7 @@
         "title":"April 2017 - April 2023,   BrightAnalytics, London",
         "tech_str":"Typescript, Coffeescript, React, Meteor, Node, d3, Express, Highcharts, Jest, Mapbox, Styled Components, Husky",
         "tech": [29, 38, 30, 54, 91, 55, 39, 22, 34, 35, 42, 43, 45, 53, 31, 24, 86, 85,52, 89, 35, 44, 86, 76, 75, 32, 33, 59],
-        "position":"Fullstack / Lead Frontend developer",
+        "position":"Frontend Lead, Fullstack",
         "company": 1,
         "description":[
           "Working on _#dashboard_ and _#report engine_ react platforms - leading on visualisations, new features, maintainance",

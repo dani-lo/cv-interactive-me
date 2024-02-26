@@ -12,6 +12,8 @@ import {
     AppDataProps,
 } from '../../src/types'
 import { RichTextParagraphComponent } from '../../components/widget/richTextParagraph'
+import { JobType } from '../../src/models/classes/JobType'
+import { Field } from '../../src/models/classes/Field'
 
 export const getStaticProps = getAppStaticProps
 
@@ -69,39 +71,7 @@ const JobsPage = (props: AppDataProps) => {
                     const jobtypesPlace = job.jobType.filter(jt => jt.prefix == "PLACE") 
                     const fields = job.company?.field || []
                     return  <>
-                        <h3 className="job-itle" style={ { display: 'flex', textTransform: 'capitalize'  } }> 
-                            <span className="job-pos">
-                                { job.period.formatted }: { job.position }
-                            </span>
-                            
-                            <span> 
-                                { job.company  ? <span>{  job.company.name  }</span> : null }
-                                {/* { fields?.length ? <span>Field: </span> : null } */}
-                                {
-                                    fields.map(f => <span style={{ paddingLeft: '0.5rem', display: 'inline-block'}} key={ f.name }>({ f.name })</span>)
-                                }
-                            </span>
-                        </h3>
-
-                        <h3 className="job-subtitle" style={ { display: 'flex', justifyContent: 'space-between', textTransform: 'capitalize' } }>
-                        <span> 
-                            Type:
-                            {
-                                jobtypesTime.map((jobTypeItem, i) => {
-                                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesTime.length - 1 ? ', ' : '' }` }</span>
-                                })
-                            }
-                        </span>
-                        {/* <span> - </span> */}
-                        <span> 
-                            From: 
-                            {
-                                jobtypesPlace.map((jobTypeItem, i) => {
-                                    return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesPlace.length - 1  ? ' + ' : '' }` }</span>
-                                })
-                            } 
-                        </span>
-                        </h3>
+                        <JobTitlePrint job={ job } jobtypesPlace={ jobtypesPlace} jobtypesTime={ jobtypesTime } fields={ fields } />
                         <ul>
                             {
                                 job.description.map((task: string, i: number) => {
@@ -161,4 +131,34 @@ const JobsPage = (props: AppDataProps) => {
        
 }
 
+const JobTitlePrint = ({ job, jobtypesTime, jobtypesPlace, fields }: { job: Job, jobtypesTime: JobType[], jobtypesPlace: JobType[], fields: Field[] }) => {
+    return <div className='job-title-container'>
+        <h3>{ job.period.formatted }: { job.position }</h3>
+        <div className="job-details-info">
+            <span className="job-pos-how"> 
+                { job.company  ? <span>@ {  job.company.name  }</span> : <span>@ Various Clients</span> }
+                { fields?.length ? <span> - </span> : null }
+                {
+                    fields.map((f, i) => <span  key={ f.name }>{ f.name }{ i < fields.length - 1 ? ', ' : '' }</span>)
+                }
+            </span>
+            <span className="job-pos-what"> 
+                {
+                    jobtypesTime.map((jobTypeItem, i) => {
+                        return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesTime.length - 1 ? ', ' : '' }` }</span>
+                    })
+                };
+            </span>
+            <span  className="job-pos-how"> 
+                {
+                    jobtypesPlace.map((jobTypeItem, i) => {
+                        return <span className="resource-name" key={ jobTypeItem.uid }> { jobTypeItem.name }{ `${ i < jobtypesPlace.length - 1  ? ' + ' : '' }` }</span>
+                    })
+                } 
+            </span>
+        </div>
+    </div>
+}
+
 export default JobsPage
+

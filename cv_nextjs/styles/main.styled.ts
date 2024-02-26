@@ -169,6 +169,7 @@ export const StyledCompanyContainer = styled.div`
     padding: var(--gap-medium) var(--gap-large);
     border-radius: 0.2rem;
     background: var(--active-action);
+
     > h3 {
         padding: var(--gap-medium) 0 var(--gap-small);
         margin-top: 0;
@@ -180,6 +181,15 @@ export const StyledCompanyContainer = styled.div`
 
     i.bookmark {
         color: var(--white);
+    }
+
+    ul {
+        padding-top: var(--gap-medium);
+        
+        li {
+            margin: 0;
+            padding: 0;
+        }
     }
 `
 

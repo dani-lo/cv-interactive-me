@@ -9,7 +9,8 @@
     h2 {
         margin: 1.25rem 0 0.5rem;
         font-size: 16px;
-        // color:#fff;
+        color:#714b1a;
+        
         border-bottom: 1px solid #999;
 //         background: #aaa;
 //   padding-left: 1rem;
@@ -27,7 +28,7 @@
         background: transparent;
     }
     h3 {
-        font-size: 13px;
+        font-size: 14px;
         color: var(--text-main);
         margin: 8px 0;
         color: #113164;  
@@ -115,28 +116,31 @@
         display: none;
     }
 
-    .job-title {
-        display: flex;
-        justify-content: space-between;
-        text-transform: capitalize;
-    }
+    // .job-title-elem {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     text-transform: capitalize;
+    //     padding: 0;
+    //     margin: 0;
+    //     font-size: 13px;
+    // }
 
-    .job-subtitle {
-        
-        display: flex;
-        justify-content: space-between;
-        text-transform: capitalize;
-      
-    }
+    // .job-title-elem > span {
+    //     display: block;
+    //     width: 50%;
+    // }
 
-    .job-title span {
-        text-transform: capitalize;
-    }
+    // .job-title-elem span {
+    //     text-transform: capitalize;
+    // }
 
-    .job-subtitle span, .job-subtitle span span {
-        text-transform: capitalize;
-      
-    }
+    // h3.job-subtitle {
+    //     font-size: 12px;
+    //     margin: 0;
+    //     padding: 0;
+    // }
+
+
 
     ul.some-tech {
         li {
@@ -151,5 +155,27 @@
 
     .html-icon {
         display: none;
+    }
+
+    .job-details-info {
+        display: flex;
+        margin-bottom: 12px;
+        
+        span {
+            font-size: 12px;
+            color: var(--text-main);
+            padding: 0;
+            text-transform: capitalize;
+        }
+
+        >  span {
+            // width: 15%;
+            padding: 0 12px 0 0;
+        }
+
+        > span:first-child {
+            width: 40%;
+            font-weight: bold;
+        }
     }
 }
