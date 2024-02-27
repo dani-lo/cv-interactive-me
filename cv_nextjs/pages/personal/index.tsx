@@ -76,11 +76,8 @@ const PersonalPage = (props: AppDataProps) => {
                 </ul>
             </StyledAboutContainer>
             <StyledAboutContainer>
-                <h3>Professional Qualities</h3>
+                <h3>Professional Qualities and Team Fit</h3>
                 <p>I am an experienced developer, with a positive can do attitude. A good communicator with both technical and non-technical colleagues, I enjoy finding simple solutions to complex problems.</p>
-            </StyledAboutContainer>
-            <StyledAboutContainer>
-                <h3>Experience and team fit</h3>
                 <p>A naturally respectful and approachable person, my extensive experience in working within different sized teams, management styles and work arrangements has given me a solid understanding of work processes and collaborative best practices across all aspects of the professional environment.</p>
             </StyledAboutContainer>
             <StyledAboutContainer>

@@ -36,6 +36,7 @@
         top: 10px;
         left: 0;
         margin: var(--gap-medium);
+        height: calc(100% - 50px);
     }
 
     .anime-popright-init {

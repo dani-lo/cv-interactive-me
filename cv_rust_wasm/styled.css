@@ -125,7 +125,7 @@
     position: fixed;
     width: 380px;
     overflow-y: scroll;
-    height: 100%;
+    height: calc(100% - 100px);
     top: 94px;
     padding: 0 var(--gap-large);
     left: 760px;

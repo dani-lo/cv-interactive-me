@@ -55,7 +55,7 @@ const Layout = ({
 
 
     
-    return <div className={`${ feCname }  anime-relative ${ isPrint ? 'print' : '' }`}>
+    return <div className={`${ feCname }  anime-relative ${ isPrint ? 'print' : '' } main-wrapper`}>
         <div className="app-links top-slot">
             <span 
                 className={ `html-icon app-ctrl` }

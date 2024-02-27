@@ -1,28 +1,17 @@
 :root {
   --border-col: #d0d0d0;
-
-  /* --border-col-dark: #0d252f; */
-  --border-col-dark: #13252d;;
-  
+  --border-col-dark: #13252d;;  
   --bg-grey: #fafafa;
   --bg-white: #fff;
   --white : #fbfbfb;
-
-  /* --black : #0d252f; */
---black: #13252d;;
+  --black: #13252d;;
   --active-action: #5b9395;
-  /* --active-action: #0a2f3f; */
   --text-clear: #5b9395;
-  /* --text-clear: #0a2f3f; */
-
   --active-pink: #bdc9ce;
   --pending-action: grey;
-
-  /* --text-main: #0d252f; */
-  --text-main: #13252d;;
-  /* --text-dark: #0d252f; */
-  --text-dark: #13252d;;
-  
+  --text-main: #13252d;
+  --text-dark: #13252d;
+  --bg-btn: #43758a;
   --text-inactive: #ccc;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
@@ -51,15 +40,21 @@ body {
 
 body {
   font-size: 100%;
-  /* padding: var(--gap-large) 0 var(--gap-large); */
-  /* font-family: Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
-  /* font-family: 'Roboto', sans-serif; */
-  /* font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
-  /* font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
   font-family:  -apple-system, BlinkMacSystemFont, 'Open Sans', Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, sans-serif;
-  /* font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
   font-weight: 300; 
   background: white;
+  overflow-x: hidden;
+}
+
+#__next {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.main-wrapper, .content-container, .page, .jobs-container {
+  height: 100%;
 }
 
 body.scroll-down .mobile-bar {
@@ -174,7 +169,7 @@ button {
   font-weight: bold;
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
-  background: var(--text-clear);
+  background: var(--bg-btn);
   font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
@@ -454,6 +449,7 @@ span.html-icon.app-ctrl:hover {
 
 .jobs-container {
   display: flex;
+  position: relative;
 }
 
 .app-links {
