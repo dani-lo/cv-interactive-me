@@ -12,6 +12,7 @@
   --text-main: #384951;
   --text-dark: #384951;
   --text-inactive: #ccc;
+  --bg-btn: #43758a;
   --gap-micro: 0.15rem;
   --gap-small: 0.25rem;
   --gap-medium: 0.5rem;
@@ -167,7 +168,7 @@ button {
   font-weight: bold;
   border-radius: 4px;
   padding: var(--gap-medium) var(--gap-large);
-  background: var(--black);
+  background: var(--bg-btn);
   font-size: 0.8rem;
   text-transform: lowercase;
   text-align: center;
