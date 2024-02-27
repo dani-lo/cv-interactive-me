@@ -1,6 +1,6 @@
 const projects = [
     {
-        "uid": 7,
+        "uid": 1,
         "name": "Q-Rated",
         "description": [
             "Collborative articles review tool",
@@ -38,7 +38,7 @@ const projects = [
         "to": [12, 2023]
     },
     {
-        "uid": 1,
+        "uid": 2,
         "name": "Terminator tabs plugin",
         "description": [
             "Plugin for Terminator _#terminal emulator_ - adds functionality to launch named new tabs",
@@ -58,7 +58,7 @@ const projects = [
     },
     {
         
-        "uid": 2,
+        "uid": 3,
         "name": "Interactive me",
         "description": [
             "Interactive CV review app: allows CV reviewers to take _#notes_, apply _#filters_ and set _#bookmarks_ on several parts of a candidate cv data.",
@@ -101,7 +101,7 @@ const projects = [
         "to": [4, 2023]
     },
     {
-        "uid": 3,
+        "uid": 4,
         "name": "Terminator layout plugin",
         "description": [
             "Plugin for Terminator _#terminal emulator_: allows to save Terminator's window position and layout (width, height) to the layout settings",
@@ -120,7 +120,7 @@ const projects = [
         "to": [2, 2022]
     },
     {
-        "uid": 4,
+        "uid": 5,
         "name": "Shapes Trading",
         "description": ["Shape based _#pattern recognition_ and _#reporting_ of financial instrument charts", "A lockdown fun project", "Please refer to _#shape-trading-md.html_ (in repo root) for detailed instructions of how this app works, including in depth discussion of the matching parameters and user interface"],
         "repo": "https://github.com/dani-lo/shapes-trading",
@@ -144,7 +144,7 @@ const projects = [
         "to": [2, 2019]
     },
     {
-        "uid": 5,
+        "uid": 6,
         "name": "Outliers",
         "description": ["A small  app written in Python to detect _#outlier datapoints_ within large datasets", "Built in Python with Flask, employing classic algorithms for _#outliers detection_"],
         "repo": "https://github.com/dani-lo/baoutliers",
@@ -161,7 +161,7 @@ const projects = [
         "to": [2, 2018]
     },
     {
-        "uid": 6,
+        "uid": 7,
         "name": "React D3 Dashboard",
         "description": ["A multi panels basic _#dashboard_ based on a mock dataset", "Old Project, uses _#D3 v3.0_ and an early version of React"],
         "repo": "https://github.com/dani-lo/react-d3-dashboard",
@@ -178,6 +178,6 @@ const projects = [
         "from": [1, 2016],
         "to": [2, 2016]
     }
-]
+];
 
 module.exports = projects;

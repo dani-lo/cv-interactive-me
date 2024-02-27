@@ -154,6 +154,7 @@
     padding: var(--gap-large);
     z-index: var(--z-4);
     transition: left 0.25s;
+    overflow-y: scroll;
 }
 
 .StyledSidebar > .html-icon {
@@ -552,10 +553,9 @@
  */
 
 .StyledAppPayoff {
-    position: absolute;
-    bottom: 1rem;
+    
     width: 100%;
-    left: 0;
+    margin-top: var(--gap-large);
   }
   .StyledAppPayoff > div {
     padding: var(--gap-large);

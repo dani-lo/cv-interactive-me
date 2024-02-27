@@ -73,7 +73,7 @@ export const ActionsList = (props: AppDataProps) => {
                                 <i className="action fa fa-times" onClick={ () => resource[IFilterKeys.UNDO_ACTION](ctx) } />
                             </li>
                     }) :
-                    <p>You did not add any filters yet. To add filters please use the plus action button (<i className="fa fa-plus" />) within filterable CV items</p>
+                    <p>To add filters please use the plus action button (<i className="fa fa-plus" />) within filterable CV items</p>
             }
             </StyledActionsList>
         </div>
@@ -103,7 +103,7 @@ export const ActionsList = (props: AppDataProps) => {
                                 <i className="action fa fa-times" onClick={ () => resource[IBookmarkKeys.UNDO_ACTION](ctx) } />
                             </li>
                     }) :
-                    <p>You did not add any bookmarks yet. To add bookmarks please use action button (<i className="fa fa-plus" />) within bookmarkable CV items</p>
+                    <p>To add bookmarks please use action button (<i className="fa fa-plus" />) within bookmarkable CV items</p>
             }
             </StyledActionsList>
         </div>
@@ -132,7 +132,7 @@ export const ActionsList = (props: AppDataProps) => {
                             <i className="action fa fa-times" onClick={ () => resource[IAnnotateKeys.UNDO_ACTION](ctx) } />    
                         </li>
                     }) :
-                    <p>You did not add any notes yet. To add notes please use the action button (<i className="fa fa-plus" />) within annotateable CV items</p>
+                    <p>To add notes please use the action button (<i className="fa fa-plus" />) within annotateable CV items</p>
             }
             </StyledActionsList>
         </div>

@@ -111,6 +111,7 @@ export const StyledSidebar = styled.div`
         width: 100%;
         top: 35px;
         left: -768px;
+        
 
         i.fa-cog {
             display: none;
@@ -130,6 +131,7 @@ export const StyledSidebar = styled.div`
     z-index: var(--z-4);
     transition: left 0.25s;
     top: 0;
+    overflow-y: scroll;
 
     > .html-icon {
         position: absolute;
@@ -551,12 +553,12 @@ export const StyledTabber = styled.ul`
 `
 
 export const StyledAppPayoff = styled.div`
-    position: absolute;
     bottom: 1rem;
     width: 100%;
     left: 0;
     opacity: 1;
     transition: opacity 100ms;
+    margin-top: var(--gap-huge);
 
     &.disabled {
         opacity: 0;

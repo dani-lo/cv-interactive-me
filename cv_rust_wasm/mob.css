@@ -5,6 +5,9 @@
         top: 0;
    }
 
+   h1 {
+    margin-top: 0;
+   }
    h3.loading-title {
         margin: 4rem 0 0 1rem;
    }
