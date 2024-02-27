@@ -50,4 +50,7 @@
     .active > .main-toggle {
         display: none;
     }
+    .content-container {
+        left: 0!important;
+    }
 }
